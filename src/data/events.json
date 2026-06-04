@@ -1,0 +1,3504 @@
+[
+  {
+    "id": "team-message",
+    "title": "被忽略的消息",
+    "text": "你在小组频道里提出一个方案，过了半小时没有人回应。几分钟后，另一个人发了相似的想法，大家开始讨论。",
+    "attentionHooks": [
+      {
+        "id": "tone",
+        "label": "语气",
+        "description": "沉默本身就是一种冷淡。",
+        "categories": [
+          "tone"
+        ],
+        "text": "沉默本身就是一种冷淡。",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "power-relation",
+        "label": "权力关系",
+        "description": "只是他们不跟你玩罢了。",
+        "categories": [
+          "power-relation",
+          "structure"
+        ],
+        "text": "只是他们不跟你玩罢了。",
+        "type": "power-relation",
+        "traitBias": [
+          "abstraction",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "literal-meaning",
+        "label": "字面含义",
+        "description": "方向明确，大家只是开始讨论，未必在针对。",
+        "categories": [
+          "literal"
+        ],
+        "text": "方向明确，大家只是开始讨论，未必在针对。",
+        "type": "literal",
+        "traitBias": [
+          "stability"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "hidden-belittling",
+        "label": "隐含贬低",
+        "description": "同样的想法换个人说才被回应，让人感到有点不爽。",
+        "categories": [
+          "hidden-belittling",
+          "relationship-change"
+        ],
+        "text": "同样的想法换个人说才被回应，让人感到有点不爽。",
+        "type": "hidden-belittling",
+        "traitBias": [
+          "sensitivity",
+          "aggression"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "social-risk",
+        "label": "群冷场风险",
+        "description": "直接指出可能让气氛变紧张，也可能让边界变清楚。",
+        "categories": [
+          "hostility",
+          "attack-signal"
+        ],
+        "text": "直接指出可能让气氛变紧张，也可能让边界变清楚。",
+        "type": "hostility",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "action-opportunity",
+        "label": "绝佳的行动机会",
+        "description": "相似方案已经打开讨论入口，可以顺势补充和合并。",
+        "categories": [
+          "process",
+          "long-term-signal"
+        ],
+        "text": "相似方案已经打开讨论入口，可以顺势补充和合并。",
+        "type": "process",
+        "traitBias": [
+          "orderNeed",
+          "strategist",
+          "abstraction"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "rejection",
+        "label": "我被否定了",
+        "description": "把沉默理解成他人不认可自己。",
+        "moodDelta": {
+          "sensitivity": 8,
+          "arousal": 10,
+          "shame": 8,
+          "trust": -8,
+          "selfEsteem": -6
+        }
+      },
+      {
+        "id": "competition",
+        "label": "竞争罢了",
+        "description": "把讨论看成资源和位置的争夺。",
+        "moodDelta": {
+          "aggression": 8,
+          "anger": 10,
+          "arousal": 8,
+          "actionPower": 5,
+          "trust": -5
+        }
+      },
+      {
+        "id": "noise",
+        "label": "这无所谓吧",
+        "description": "认为大家可能只是没有看见或没有接上。",
+        "moodDelta": {
+          "abstraction": 5,
+          "stability": 6,
+          "anger": -4,
+          "shame": -4,
+          "trust": 4
+        }
+      },
+      {
+        "id": "coordination",
+        "label": "新的协作机会来了，我要把握",
+        "description": "把相似想法看成可以合流的信号。",
+        "moodDelta": {
+          "empathy": 6,
+          "trust": 7,
+          "pleasure": 5,
+          "actionPower": 4,
+          "anger": -5
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "clarify",
+        "label": "补充说明",
+        "description": "展开自己的原始方案，邀请大家一起讨论。",
+        "moodDelta": {
+          "actionPower": 8,
+          "trust": 5,
+          "selfEsteem": 4,
+          "arousal": -3
+        }
+      },
+      {
+        "id": "withdraw",
+        "label": "先退出",
+        "description": "不再发言，观察大家后续怎么说。",
+        "moodDelta": {
+          "actionPower": -8,
+          "pleasure": -5,
+          "shame": 5,
+          "stability": 2
+        }
+      },
+      {
+        "id": "push-back",
+        "label": "直接指出",
+        "description": "提醒大家自己刚刚已经提出类似想法。",
+        "moodDelta": {
+          "actionPower": 10,
+          "anger": 5,
+          "aggression": 5,
+          "trust": -3
+        }
+      },
+      {
+        "id": "ask",
+        "label": "询问连接",
+        "description": "现在先问，汇报的时候反正是我讲。",
+        "moodDelta": {
+          "empathy": 5,
+          "trust": 6,
+          "pleasure": 4,
+          "actionPower": 5
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "make",
+        "label": "我可以创造入口",
+        "description": "把注意力放在下一步能产出的东西上。",
+        "pathDelta": {
+          "creator": 8,
+          "actionPower": 4,
+          "selfEsteem": 3
+        }
+      },
+      {
+        "id": "read",
+        "label": "我要读懂局势",
+        "description": "把这次经验归结为需要更早判断群体节奏。",
+        "pathDelta": {
+          "strategist": 8,
+          "abstraction": 4,
+          "orderNeed": 3
+        }
+      },
+      {
+        "id": "please",
+        "label": "我要减少摩擦",
+        "description": "把重点放在减少沟通成本上。",
+        "pathDelta": {
+          "pleaser": 8,
+          "empathy": 4,
+          "selfEsteem": -2
+        }
+      },
+      {
+        "id": "watch",
+        "label": "我先保持距离",
+        "description": "把沉默当成保护自己的方式。",
+        "pathDelta": {
+          "observer": 6,
+          "avoider": 6,
+          "trust": -3
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "stay-quiet-and-observe",
+        "text": "先不说话，看看大家到底会不会接这个话题。",
+        "tone": "观察",
+        "linkedAttentionHookIds": [
+          "tone",
+          "power-relation"
+        ],
+        "emotionDelta": {
+          "arousal": 2,
+          "trust": -1
+        },
+        "traitDelta": {
+          "abstraction": 1,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "maybe-i-was-unclear",
+        "text": "有点尴尬，怀疑是不是自己表达得不够清楚",
+        "tone": "自疑",
+        "linkedAttentionHookIds": [
+          "literal-meaning",
+          "hidden-belittling"
+        ],
+        "emotionDelta": {
+          "shame": 4,
+          "arousal": 3
+        },
+        "traitDelta": {
+          "selfEsteem": -2,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "why-him-not-me",
+        "text": "不是，凭什么他说就有人回？",
+        "tone": "反击",
+        "linkedAttentionHookIds": [
+          "power-relation",
+          "social-risk"
+        ],
+        "emotionDelta": {
+          "anger": 5,
+          "arousal": 4
+        },
+        "traitDelta": {
+          "aggression": 2
+        },
+        "pathDelta": {
+          "avenger": 1
+        }
+      },
+      {
+        "id": "maybe-they-missed-it",
+        "text": "算了，也许大家刚才只是没看到。",
+        "tone": "缓和",
+        "linkedAttentionHookIds": [
+          "literal-meaning",
+          "action-opportunity"
+        ],
+        "emotionDelta": {
+          "anger": -2,
+          "trust": 2
+        },
+        "traitDelta": {
+          "empathy": 1,
+          "stability": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "late-feedback",
+    "title": "迟来的反馈",
+    "text": "你交付了一份草案。对方两天后才回复，只说“方向不太对，我们再看看”。没有指出具体问题。",
+    "attentionHooks": [
+      {
+        "id": "tone",
+        "label": "语气",
+        "description": "回复很短，缺少具体说明",
+        "categories": [
+          "tone",
+          "hidden-belittling"
+        ],
+        "text": "回复很短，缺少具体说明",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "aggression"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "rule",
+        "label": "规则",
+        "description": "对方没有说明什么才算“方向正确”",
+        "categories": [
+          "rule",
+          "responsibility"
+        ],
+        "text": "对方没有说明什么才算“方向正确”",
+        "type": "rule",
+        "traitBias": [
+          "orderNeed"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "process",
+        "label": "流程",
+        "description": "草案、反馈、修订之间缺少清晰步骤。",
+        "categories": [
+          "process",
+          "responsibility"
+        ],
+        "text": "草案、反馈、修订之间缺少清晰步骤。",
+        "type": "process",
+        "traitBias": [
+          "orderNeed",
+          "strategist"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "structure",
+        "label": "结构",
+        "description": "问题可能来自目标、标准和决策方式没有对齐。",
+        "categories": [
+          "structure",
+          "long-term-signal"
+        ],
+        "text": "问题可能来自目标、标准和决策方式没有对齐。",
+        "type": "structure",
+        "traitBias": [
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "other-motive",
+        "label": "对方动机",
+        "description": "对方可能还没想清楚，只能先给出模糊判断。",
+        "categories": [
+          "other-motive",
+          "vulnerability"
+        ],
+        "text": "对方可能还没想清楚，只能先给出模糊判断。",
+        "type": "other-motive",
+        "traitBias": [
+          "empathy",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "attack-signal",
+        "label": "攻击信号",
+        "description": "模糊否定可能被感受为对个人产出/能力的打击。",
+        "categories": [
+          "attack-signal",
+          "hostility"
+        ],
+        "text": "模糊否定可能被感受为对个人产出/能力的打击。",
+        "type": "attack-signal",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "vague-threat",
+        "label": "总感觉他对我不怀好意",
+        "description": "把不明确反馈理解成潜在风险。",
+        "moodDelta": {
+          "sensitivity": 7,
+          "arousal": 9,
+          "shame": 6,
+          "orderNeed": 5,
+          "trust": -6
+        }
+      },
+      {
+        "id": "quality-gap",
+        "label": "可能就是质量问题",
+        "description": "认为作品可能没有达到对方期待。",
+        "moodDelta": {
+          "shame": 8,
+          "selfEsteem": -5,
+          "orderNeed": 6,
+          "actionPower": -2
+        }
+      },
+      {
+        "id": "missing-criteria",
+        "label": "还没对齐需求",
+        "description": "问题可能在双方还没有对齐判断标准。",
+        "moodDelta": {
+          "abstraction": 7,
+          "orderNeed": 5,
+          "stability": 4,
+          "anger": -2
+        }
+      },
+      {
+        "id": "shared-search",
+        "label": "大家一起找找方向",
+        "description": "把反馈看成还在找方向，而不是失败结论。",
+        "moodDelta": {
+          "trust": 6,
+          "pleasure": 4,
+          "empathy": 4,
+          "shame": -4
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "request-criteria",
+        "label": "问他要标准",
+        "description": "请对方列出判断方向是否正确的三个条件。",
+        "moodDelta": {
+          "orderNeed": 5,
+          "actionPower": 8,
+          "stability": 5,
+          "trust": 2
+        }
+      },
+      {
+        "id": "revise-fast",
+        "label": "立刻重做",
+        "description": "先按自己的理解快速改一版，之后看看对方意见。",
+        "moodDelta": {
+          "actionPower": 6,
+          "arousal": 6,
+          "shame": 2,
+          "pleasure": -3
+        }
+      },
+      {
+        "id": "defend",
+        "label": "你理解错了",
+        "description": "说明草案背后的判断，争取让对方理解。",
+        "moodDelta": {
+          "selfEsteem": 4,
+          "actionPower": 5,
+          "anger": 3,
+          "trust": -2
+        }
+      },
+      {
+        "id": "pause",
+        "label": "先拖一会",
+        "description": "先不回复，等情绪下降后再整理问题。",
+        "moodDelta": {
+          "arousal": -8,
+          "anger": -4,
+          "actionPower": -4,
+          "stability": 5
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "systemize",
+        "label": "我需要建立自己的工作流程",
+        "description": "以后先问标准，再推进内容。",
+        "pathDelta": {
+          "strategist": 7,
+          "orderNeed": 5,
+          "stability": 3
+        }
+      },
+      {
+        "id": "experiment",
+        "label": "没关系，好东西都是试出来的",
+        "description": "把模糊看成自我迭代的空间。",
+        "pathDelta": {
+          "creator": 7,
+          "abstraction": 4,
+          "pleasure": 3
+        }
+      },
+      {
+        "id": "appease",
+        "label": "肯定我也有问题",
+        "description": "把问题归因于自己没有提前照顾对方期待。",
+        "pathDelta": {
+          "pleaser": 7,
+          "empathy": 4,
+          "shame": 2
+        }
+      },
+      {
+        "id": "protect",
+        "label": "我是低精力人，匿了",
+        "description": "把这次经历归结为不能太快投入。",
+        "pathDelta": {
+          "avoider": 7,
+          "observer": 4,
+          "trust": -3
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "what-does-wrong-mean",
+        "text": "“方向不太对”到底是哪儿不对？",
+        "tone": "追问",
+        "linkedAttentionHookIds": [
+          "rule",
+          "process"
+        ],
+        "emotionDelta": {
+          "arousal": 3,
+          "anger": 2
+        },
+        "traitDelta": {
+          "orderNeed": 2
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "maybe-i-did-badly",
+        "text": "完了，是不是我这版真的很差。",
+        "tone": "自疑",
+        "linkedAttentionHookIds": [
+          "tone",
+          "attack-signal"
+        ],
+        "emotionDelta": {
+          "shame": 5,
+          "arousal": 4
+        },
+        "traitDelta": {
+          "selfEsteem": -2,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "they-dont-know-either",
+        "text": "我感觉对方也没想清楚，只是先把我挡回来。",
+        "tone": "结构",
+        "linkedAttentionHookIds": [
+          "structure",
+          "other-motive"
+        ],
+        "emotionDelta": {
+          "trust": -2,
+          "anger": 2
+        },
+        "traitDelta": {
+          "abstraction": 2
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "need-a-standard",
+        "text": "先别慌，我得把标准问出来",
+        "tone": "整理",
+        "linkedAttentionHookIds": [
+          "rule",
+          "process"
+        ],
+        "emotionDelta": {
+          "arousal": -1,
+          "actionPower": 3
+        },
+        "traitDelta": {
+          "orderNeed": 2,
+          "stability": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "operator-hidden-charge",
+    "title": "运营商扣费",
+    "text": "你发现运营商莫名其妙扣了35元话费。你越想越烦，觉得这钱像是被偷偷吞掉了，眼看马上就要吃饭了。",
+    "attentionHooks": [
+      {
+        "id": "economic-loss",
+        "label": "小额经济损失",
+        "description": "不是一笔大钱，但真实地减少了你的生活预算。",
+        "categories": [
+          "responsibility",
+          "long-term-signal"
+        ],
+        "text": "不是一笔大钱，但真实地减少了你的生活预算。",
+        "type": "responsibility",
+        "traitBias": [
+          "orderNeed",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "opaque-rules",
+        "label": "不透明的规则",
+        "description": "你不知道这笔扣费从哪里来，也不知道该如何快速追回",
+        "categories": [
+          "rule",
+          "process",
+          "structure"
+        ],
+        "text": "你不知道这笔扣费从哪里来，也不知道该如何快速追回",
+        "type": "rule",
+        "traitBias": [
+          "orderNeed",
+          "strategist",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "institutional-power",
+        "label": "压迫感",
+        "description": "面对庞大系统，你很难获得对等解释权",
+        "categories": [
+          "power-relation",
+          "structure"
+        ],
+        "text": "面对庞大系统，你很难获得对等解释权。",
+        "type": "power-relation",
+        "traitBias": [
+          "abstraction",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "anger-transfer",
+        "label": "愤怒转移",
+        "description": "你没有立刻把愤怒指向系统，而是开始压缩自己的需求。",
+        "categories": [
+          "hostility",
+          "relationship-change"
+        ],
+        "text": "你没有立刻把愤怒指向系统，而是开始压缩自己的需求。",
+        "type": "hostility",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "self-punishment",
+        "label": "自我惩罚倾向",
+        "description": "你试图通过不吃饭，把外部损失从身体上补回来。",
+        "categories": [
+          "hidden-belittling",
+          "vulnerability"
+        ],
+        "text": "你试图通过不吃饭，把外部损失从身体上补回来。",
+        "type": "hidden-belittling",
+        "traitBias": [
+          "sensitivity",
+          "aggression",
+          "empathy"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "survival-pressure",
+        "label": "生活压力",
+        "description": "小额损失之所以刺痛，是因为你正在精确计算每一笔支出。",
+        "categories": [
+          "tone",
+          "long-term-signal",
+          "vulnerability"
+        ],
+        "text": "小额损失之所以刺痛，是因为你正在精确计算每一笔支出。",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "abstraction",
+          "empathy"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "small-money-let-it-go",
+        "label": "只是35块，算了吧",
+        "description": "只是不值得追究的小事。",
+        "moodDelta": {
+          "pleasure": -4,
+          "anger": -2,
+          "shame": 5,
+          "actionPower": -6,
+          "avoider": 2
+        }
+      },
+      {
+        "id": "opaque-system-extraction",
+        "label": "为什么不早点发提醒？",
+        "description": "把痛感指向规则不透明和解释权不对等。",
+        "moodDelta": {
+          "anger": 10,
+          "arousal": 8,
+          "abstraction": 6,
+          "trust": -8,
+          "actionPower": 3
+        }
+      },
+      {
+        "id": "tricked-again",
+        "label": "我又被坑了",
+        "description": "把扣费理解成自己的失误",
+        "moodDelta": {
+          "sensitivity": 6,
+          "shame": 6,
+          "anger": 6,
+          "trust": -6,
+          "selfEsteem": -4
+        }
+      },
+      {
+        "id": "body-pays-the-bill",
+        "label": "让身体替损失买单",
+        "description": "向内的刀怎么戳都疼。",
+        "moodDelta": {
+          "shame": 9,
+          "pleasure": -8,
+          "actionPower": -5,
+          "orderNeed": 4,
+          "selfEsteem": -5
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "ignore-it",
+        "label": "忍了",
+        "description": "当作没发生，把这件事从今天里推开。",
+        "moodDelta": {
+          "arousal": -4,
+          "anger": -3,
+          "trust": -3,
+          "actionPower": -7
+        }
+      },
+      {
+        "id": "complain-to-operator",
+        "label": "查账单并投诉",
+        "description": "去查明扣费来源，联系客服要求解释。",
+        "moodDelta": {
+          "actionPower": 10,
+          "anger": 3,
+          "orderNeed": 5,
+          "stability": 3
+        }
+      },
+      {
+        "id": "ask-friends",
+        "label": "发到群里问问",
+        "description": "向朋友吐槽，确认是不是有人也遇到过。",
+        "moodDelta": {
+          "trust": 4,
+          "empathy": 3,
+          "arousal": -2,
+          "actionPower": 4
+        }
+      },
+      {
+        "id": "skip-lunch",
+        "label": "中午不吃了",
+        "description": "试图用节食抵消这笔莫名其妙的损失。",
+        "moodDelta": {
+          "pleasure": -10,
+          "shame": 8,
+          "stability": -5,
+          "actionPower": -4,
+          "selfEsteem": -4
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "too-poor",
+        "label": "是我太穷了",
+        "description": "把刺痛归因于自己资源太紧，连 35 元都放不下。",
+        "pathDelta": {
+          "pleaser": 5,
+          "avoider": 5,
+          "selfEsteem": -5,
+          "shame": 4
+        }
+      },
+      {
+        "id": "system-is-opaque",
+        "label": "扣费系统本来就不透明",
+        "description": "把问题放回规则和解释权，而不是责怪自己小题大做。",
+        "pathDelta": {
+          "observer": 7,
+          "strategist": 6,
+          "abstraction": 4,
+          "trust": -3
+        }
+      },
+      {
+        "id": "solve-not-punish-self",
+        "label": "要解决问题，不惩罚身体",
+        "description": "把经验沉淀为追查扣费，而不是压缩基本需求。",
+        "pathDelta": {
+          "strategist": 7,
+          "stability": 5,
+          "selfEsteem": 4,
+          "actionPower": 3
+        }
+      },
+      {
+        "id": "turn-anger-into-action",
+        "label": "把愤怒变成行动",
+        "description": "用查账单、投诉和记录夺回控制感。",
+        "pathDelta": {
+          "creator": 4,
+          "strategist": 7,
+          "observer": 5,
+          "actionPower": 6
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "thirty-five-still-hurts",
+        "text": "35 块不是大钱，但它就这么没了，我真的很烦。",
+        "tone": "刺痛",
+        "linkedAttentionHookIds": [
+          "economic-loss",
+          "survival-pressure"
+        ],
+        "emotionDelta": {
+          "anger": 3,
+          "shame": 2
+        },
+        "traitDelta": {
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "where-did-it-go",
+        "text": "这钱到底从哪扣的？我连规则都看不见。",
+        "tone": "追查",
+        "linkedAttentionHookIds": [
+          "opaque-rules",
+          "institutional-power"
+        ],
+        "emotionDelta": {
+          "anger": 4,
+          "arousal": 3
+        },
+        "traitDelta": {
+          "orderNeed": 2,
+          "abstraction": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "skip-lunch-now",
+        "text": "算了，中午不吃了，至少能把这口气补回来。",
+        "tone": "自罚",
+        "linkedAttentionHookIds": [
+          "anger-transfer",
+          "self-punishment"
+        ],
+        "emotionDelta": {
+          "shame": 5,
+          "pleasure": -5
+        },
+        "traitDelta": {
+          "selfEsteem": -2
+        },
+        "pathDelta": {
+          "avoider": 1
+        }
+      },
+      {
+        "id": "complain-first",
+        "text": "不行，先查账单，不能让身体替运营商买单。",
+        "tone": "行动",
+        "linkedAttentionHookIds": [
+          "opaque-rules",
+          "anger-transfer"
+        ],
+        "emotionDelta": {
+          "actionPower": 4,
+          "anger": 2
+        },
+        "traitDelta": {
+          "orderNeed": 1,
+          "stability": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "armor-hole-trivia",
+    "title": "板甲上的奇怪开口",
+    "theme": "荒诞冷知识题",
+    "text": "你在一个群聊里看到别人发来一张中世纪板甲图，下前甲片上有个显眼的圆形开口。配文问：“这个洞的用途是什么？A. 透气 B. 展示雄风 C. 设计缺陷 D. 都行。”群里已经有人一本正经分析，也有人开始起哄。",
+    "image": "/images/events/armor-hole.png",
+    "attentionHooks": [
+      {
+        "id": "knowledge-joke-mix",
+        "label": "知识和玩笑混在一起",
+        "description": "这道题把严肃冷知识和低级玩笑揉成了一团。",
+        "categories": [
+          "tone",
+          "structure"
+        ],
+        "text": "你注意到的不是洞本身，而是这道题背后的恶趣味。",
+        "type": "mixed_frame",
+        "traitBias": [
+          "abstraction",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "group-direction",
+        "label": "别人怎么说？",
+        "description": "重点变成其他人的看法",
+        "categories": [
+          "relationship-change",
+          "other-motive"
+        ],
+        "text": "你开始在意：其他人会视作科普，还是起哄。",
+        "type": "social_drift",
+        "traitBias": [
+          "sensitivity",
+          "empathy"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "design-authority-display",
+        "label": "设计用途背后的展示欲",
+        "description": "“用途”这个问题里藏着权力、身体和审美的暗示。",
+        "categories": [
+          "power-relation",
+          "long-term-signal"
+        ],
+        "text": "你盯住的是“设计用途”这个问题背后的权力和审美暗示。",
+        "type": "power_structure",
+        "traitBias": [
+          "abstraction",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "standard-answer-anxiety",
+        "label": "标准答案焦虑",
+        "description": "题目看起来像选择题，但标准可能根本不稳定。",
+        "categories": [
+          "rule",
+          "process"
+        ],
+        "text": "你忍不住想问：这题到底有没有标准答案，还是在诱导大家选一个共同答案。",
+        "type": "unclear_rule",
+        "traitBias": [
+          "orderNeed",
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "male-gaze-default",
+        "label": "凝视",
+        "description": "这个玩笑可能默认了某种凝视。",
+        "categories": [
+          "hidden-belittling",
+          "power-relation"
+        ],
+        "text": "你其实在确认：这是无害玩笑，还是本身给你挖了个天坑。",
+        "type": "default_gaze",
+        "traitBias": [
+          "sensitivity",
+          "aggression",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "cheap-joke-resistance",
+        "label": "对低级玩笑的反感",
+        "description": "你对暧昧起哄本能地不耐烦。",
+        "categories": [
+          "hostility",
+          "attack-signal"
+        ],
+        "text": "倒不是没有幽默感，只是有点烦这种把人往低级笑点里推的气氛。",
+        "type": "joke_resistance",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "is-this-history-or-bait",
+        "text": "等一下，这题到底是在考历史，还是在钓大家开黄腔？",
+        "tone": "辨框",
+        "linkedAttentionHookIds": [
+          "knowledge-joke-mix",
+          "group-direction"
+        ],
+        "emotionDelta": {
+          "arousal": 3,
+          "anger": 1
+        },
+        "traitDelta": {
+          "abstraction": 2,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "actually-thinking-function",
+        "text": "我第一反应居然真在想它的结构功能……",
+        "tone": "认真",
+        "linkedAttentionHookIds": [
+          "standard-answer-anxiety",
+          "design-authority-display"
+        ],
+        "emotionDelta": {
+          "arousal": 2,
+          "pleasure": 1
+        },
+        "traitDelta": {
+          "orderNeed": 2,
+          "abstraction": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "too-much-male-gaze",
+        "text": "这也太像那种默认大家都要跟着笑的“玩笑”了吧。",
+        "tone": "反感",
+        "linkedAttentionHookIds": [
+          "male-gaze-default",
+          "cheap-joke-resistance"
+        ],
+        "emotionDelta": {
+          "anger": 4,
+          "arousal": 3,
+          "trust": -2
+        },
+        "traitDelta": {
+          "aggression": 2,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "avenger": 1
+        }
+      },
+      {
+        "id": "watch-others-answer",
+        "text": "我先看看别人会怎么答，这种题很容易暴露自己的想法。",
+        "tone": "观察",
+        "linkedAttentionHookIds": [
+          "group-direction",
+          "knowledge-joke-mix"
+        ],
+        "emotionDelta": {
+          "arousal": 1,
+          "trust": -1
+        },
+        "traitDelta": {
+          "abstraction": 1,
+          "empathy": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "this-is-frame-bait",
+        "label": "这题在钓大家怎么站队",
+        "description": "它表面问用途，实际在看你会往知识、玩笑还是起哄里走。",
+        "moodDelta": {
+          "abstraction": 6,
+          "arousal": 3,
+          "trust": -3,
+          "observer": 2
+        }
+      },
+      {
+        "id": "i-want-real-answer",
+        "label": "我想先知道它到底有没有正经答案",
+        "description": "你更在意题目是否严谨，而不是先加入玩笑",
+        "moodDelta": {
+          "orderNeed": 7,
+          "actionPower": 3,
+          "shame": -1,
+          "stability": 2
+        }
+      },
+      {
+        "id": "cheap-joke-disguised-as-trivia",
+        "label": "这是披着冷知识皮的低级玩笑",
+        "description": "你把它理解成用历史外壳包装暧昧起哄",
+        "moodDelta": {
+          "anger": 7,
+          "aggression": 5,
+          "trust": -5,
+          "arousal": 5
+        }
+      },
+      {
+        "id": "maybe-just-silly-fun",
+        "label": "也许就是大家随便乐一下",
+        "description": "你先把它放在轻松荒诞的语境里，不急着定罪",
+        "moodDelta": {
+          "pleasure": 4,
+          "empathy": 3,
+          "anger": -3,
+          "trust": 2
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "look-up-before-answering",
+        "label": "先查一下再说",
+        "description": "你不急着选，先去确认它是不是有历史来源",
+        "moodDelta": {
+          "actionPower": 5,
+          "orderNeed": 4,
+          "stability": 3,
+          "arousal": -1
+        }
+      },
+      {
+        "id": "drop-a-dry-joke",
+        "label": "用干巴巴的冷笑话接住",
+        "description": "你不完全扫兴，但也不把自己交给起哄",
+        "moodDelta": {
+          "pleasure": 3,
+          "creator": 2,
+          "trust": 1,
+          "anger": -1
+        }
+      },
+      {
+        "id": "call-out-the-frame",
+        "label": "直接指出这题在诱导起哄",
+        "description": "你把玩笑背后的框架说出来，让群里别装没看见",
+        "moodDelta": {
+          "actionPower": 7,
+          "anger": 4,
+          "aggression": 3,
+          "trust": -2
+        }
+      },
+      {
+        "id": "stay-quiet-and-read-room",
+        "label": "先不答，看群里怎么飘",
+        "description": "你把这当成观察群体气氛的小窗口",
+        "moodDelta": {
+          "observer": 3,
+          "arousal": -2,
+          "trust": -2,
+          "abstraction": 2
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "uncertain-info-needs-frame-reading",
+        "label": "模糊信息要先读框架",
+        "description": "以后遇到似是而非的梗，你会先看它在引导什么",
+        "pathDelta": {
+          "observer": 8,
+          "abstraction": 5,
+          "trust": -2
+        }
+      },
+      {
+        "id": "rigor-keeps-me-grounded",
+        "label": "标准答案能帮我稳住场面",
+        "description": "你把荒诞题转成查证、对齐和判断依据",
+        "pathDelta": {
+          "strategist": 8,
+          "orderNeed": 5,
+          "stability": 3
+        }
+      },
+      {
+        "id": "jokes-also-have-power",
+        "label": "玩笑也有权力方向",
+        "description": "你不再把所有起哄都当成无害气氛",
+        "pathDelta": {
+          "avenger": 6,
+          "observer": 4,
+          "aggression": 3
+        }
+      },
+      {
+        "id": "absurdity-can-be-made-into-material",
+        "label": "荒诞也能变成素材",
+        "description": "你把这个怪题收进自己的素材库，准备以后写成段子或小作品。",
+        "pathDelta": {
+          "creator": 7,
+          "pleasure": 3,
+          "actionPower": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "friend-last-minute-cancel",
+    "title": "朋友爽约",
+    "text": "你提前空出晚上，连路线都查好了。出门前半小时，朋友发来一句“今天有点累，下次吧”。你回了个“没事”，但手机放下后，房间突然安静得有点刺耳。",
+    "attentionHooks": [
+      {
+        "id": "late-tone",
+        "label": "轻飘飘的语气",
+        "description": "对方说得很轻巧，好像你的等待不需要被认真对待。",
+        "categories": [
+          "tone",
+          "hidden-belittling"
+        ],
+        "text": "对方说得很轻巧，好像你的等待不需要被认真对待。",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "aggression"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "time-cost",
+        "label": "时间成本",
+        "description": "为了这个约定，你推掉了同事一起聚会的邀约。",
+        "categories": [
+          "responsibility",
+          "process"
+        ],
+        "text": "为了这个约定，你推掉了同事一起聚会的邀约。",
+        "type": "responsibility",
+        "traitBias": [
+          "orderNeed",
+          "strategist"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "relationship-rank",
+        "label": "关系排序",
+        "description": "你开始怀疑自己是不是对这段关系投入得更多。",
+        "categories": [
+          "relationship-change",
+          "power-relation"
+        ],
+        "text": "你开始怀疑自己是不是对这段关系投入得更多。",
+        "type": "relationship-change",
+        "traitBias": [
+          "sensitivity",
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "other-tiredness",
+        "label": "对方也许真的累了",
+        "description": "不是针对你，对方确实没力气社交。",
+        "categories": [
+          "other-motive",
+          "vulnerability"
+        ],
+        "text": "不是针对你，对方确实没力气社交。",
+        "type": "other-motive",
+        "traitBias": [
+          "empathy",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "leftover-evening",
+        "label": "突然空出来的晚上",
+        "description": "算了，打打游戏看看书。",
+        "categories": [
+          "long-term-signal",
+          "process"
+        ],
+        "text": "算了，打打游戏看看书。",
+        "type": "long-term-signal",
+        "traitBias": [
+          "abstraction",
+          "orderNeed",
+          "strategist"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "unspoken-disappointment",
+        "label": "没说出口的失望",
+        "description": "难过像一道长长的倒影，斜刺进心里",
+        "categories": [
+          "tone",
+          "vulnerability"
+        ],
+        "text": "难过像一道长长的倒影，斜刺进心里",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "empathy"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "i-am-not-important",
+        "label": "看来我没那么重要",
+        "description": "“别逗了，世界上没有人觉得你重要。”",
+        "moodDelta": {
+          "sensitivity": 7,
+          "shame": 5,
+          "trust": -6,
+          "selfEsteem": -4,
+          "arousal": 4
+        }
+      },
+      {
+        "id": "they-are-just-tired",
+        "label": "也许对方真的累了",
+        "description": "先给对方留一个“不是故意”的解释。",
+        "moodDelta": {
+          "empathy": 6,
+          "anger": -4,
+          "trust": 3,
+          "stability": 3
+        }
+      },
+      {
+        "id": "my-time-was-not-respected",
+        "label": "我的时间被随手放掉了",
+        "description": "你付出的时间没有被认可。",
+        "moodDelta": {
+          "anger": 7,
+          "orderNeed": 4,
+          "actionPower": 3,
+          "trust": -4
+        }
+      },
+      {
+        "id": "i-should-not-expect",
+        "label": "不该期待别人太多",
+        "description": "把注意力收回自己身上，提醒自己以后别太认真。",
+        "moodDelta": {
+          "avoider": 3,
+          "pleasure": -5,
+          "selfEsteem": -3,
+          "actionPower": -4
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "say-its-okay",
+        "label": "回一句“没事”",
+        "description": "自己吃一点点点点亏没事。",
+        "moodDelta": {
+          "pleaser": 3,
+          "shame": 4,
+          "anger": -2,
+          "selfEsteem": -3
+        }
+      },
+      {
+        "id": "name-disappointment",
+        "label": "直接告诉对方",
+        "description": "平静地告知，自己也付出了时间。",
+        "moodDelta": {
+          "actionPower": 6,
+          "selfEsteem": 4,
+          "trust": 2,
+          "arousal": 3
+        }
+      },
+      {
+        "id": "make-solo-plan",
+        "label": "太好了终于有自己的时间了",
+        "description": "出门吃点东西，或者做一件原本想做的小事。",
+        "moodDelta": {
+          "creator": 3,
+          "pleasure": 5,
+          "stability": 4,
+          "actionPower": 5
+        }
+      },
+      {
+        "id": "stop-initiating",
+        "label": "以后再也不约他了",
+        "description": "不吵，也不闹，只是心里默默后撤",
+        "moodDelta": {
+          "avoider": 4,
+          "trust": -5,
+          "arousal": -3,
+          "pleasure": -3
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "i-need-clearer-boundaries",
+        "label": "我需要更清楚地保护时间和边界",
+        "description": "以后约定要更早确认，不只是时间。",
+        "pathDelta": {
+          "strategist": 6,
+          "selfEsteem": 3,
+          "orderNeed": 4
+        }
+      },
+      {
+        "id": "maybe-i-am-too-needy",
+        "label": "可能是我太需要被重视了",
+        "description": "把痛感归因于自己太在意关系回应。",
+        "pathDelta": {
+          "pleaser": 6,
+          "shame": 4,
+          "selfEsteem": -4
+        }
+      },
+      {
+        "id": "relationships-need-reciprocity",
+        "label": "关系应该有来有回",
+        "description": "把这次当成观察双方投入是否对等的信号。",
+        "pathDelta": {
+          "observer": 7,
+          "abstraction": 3,
+          "trust": -2
+        }
+      },
+      {
+        "id": "distance-keeps-me-safe",
+        "label": "少期待就少受伤",
+        "description": "以后降低暴露，减少把期待交到别人手里。",
+        "pathDelta": {
+          "avoider": 7,
+          "observer": 3,
+          "trust": -4
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "say-fine-but-sink",
+        "text": "嘴上想回没事，心里已经沉下去了。",
+        "tone": "受伤",
+        "linkedAttentionHookIds": [
+          "late-tone",
+          "unspoken-disappointment"
+        ],
+        "emotionDelta": {
+          "shame": 3,
+          "trust": -3
+        },
+        "traitDelta": {
+          "sensitivity": 2
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "maybe-they-are-tired",
+        "text": "也许对方真的累了，我先别把话说重。",
+        "tone": "体谅",
+        "linkedAttentionHookIds": [
+          "other-tiredness",
+          "leftover-evening"
+        ],
+        "emotionDelta": {
+          "anger": -2,
+          "trust": 2
+        },
+        "traitDelta": {
+          "empathy": 2
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "my-time-counts",
+        "text": "可我也安排了时间啊，不能每次都这样。",
+        "tone": "边界",
+        "linkedAttentionHookIds": [
+          "time-cost",
+          "relationship-rank"
+        ],
+        "emotionDelta": {
+          "anger": 4,
+          "actionPower": 2
+        },
+        "traitDelta": {
+          "orderNeed": 1,
+          "selfEsteem": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "pull-back-next-time",
+        "text": "那我以后也别这么认真约了。",
+        "tone": "退后",
+        "linkedAttentionHookIds": [
+          "relationship-rank",
+          "unspoken-disappointment"
+        ],
+        "emotionDelta": {
+          "trust": -4,
+          "arousal": -1
+        },
+        "traitDelta": {
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "avoider": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "work-credit-taken",
+    "title": "你的方案被同事偷走了",
+    "text": "你连续改了三版方案，终于把问题理顺。会议上，同事用一句“我们这边整理了一下”带过，然后把你的核心想法讲了出来。大家点头，主管夸他说得很清楚。",
+    "attentionHooks": [
+      {
+        "id": "credit-language",
+        "label": "模糊的归属",
+        "description": "“我们这边”把具体劳动变成了他自己一个人的。",
+        "categories": [
+          "tone",
+          "hidden-belittling"
+        ],
+        "text": "“我们这边”把具体劳动变成了他自己一个人的。",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "aggression"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "meeting-power",
+        "label": "会议权力关系",
+        "description": "谁在会议里开口，谁就更容易拥有成果。",
+        "categories": [
+          "power-relation",
+          "structure"
+        ],
+        "text": "谁在会议里开口，谁就更容易拥有成果。",
+        "type": "power-relation",
+        "traitBias": [
+          "abstraction",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "proof-gap",
+        "label": "证据缺口",
+        "description": "你知道自己做了很多，但没有留下清晰记录。",
+        "categories": [
+          "rule",
+          "responsibility"
+        ],
+        "text": "你知道自己做了很多，但没有留下清晰记录。",
+        "type": "rule",
+        "traitBias": [
+          "orderNeed"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "anger-signal",
+        "label": "我要跟他爆了",
+        "description": "这事儿没完了",
+        "categories": [
+          "hostility",
+          "attack-signal"
+        ],
+        "text": "我要跟他爆了",
+        "type": "hostility",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "future-pattern",
+        "label": "长期主义",
+        "description": "如果这次不处理好，下次可能还是同样的剧本。",
+        "categories": [
+          "long-term-signal",
+          "structure"
+        ],
+        "text": "如果这次不处理好，下次可能还是同样的剧本。",
+        "type": "long-term-signal",
+        "traitBias": [
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "collaboration-possibility",
+        "label": "和气生财",
+        "description": "也许还能事后挽回，而不是马上撕破脸。",
+        "categories": [
+          "other-motive",
+          "process"
+        ],
+        "text": "也许还能事后挽回，而不是马上撕破脸。",
+        "type": "other-motive",
+        "traitBias": [
+          "empathy",
+          "orderNeed",
+          "strategist"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "they-stole-my-work",
+        "label": "他把我的成果拿走了",
+        "description": "没有才华的小偷！",
+        "moodDelta": {
+          "anger": 10,
+          "aggression": 5,
+          "arousal": 8,
+          "trust": -7
+        }
+      },
+      {
+        "id": "i-did-not-mark-credit",
+        "label": "是我没有提前跟领导汇报",
+        "description": "把问题归到自己没有留痕和声明边界。",
+        "moodDelta": {
+          "shame": 6,
+          "orderNeed": 5,
+          "selfEsteem": -3,
+          "actionPower": 2
+        }
+      },
+      {
+        "id": "workplace-rewards-speakers",
+        "label": "会哭的同事有奶吃",
+        "description": "环境更奖赏发言权，而不是真实贡献。",
+        "moodDelta": {
+          "abstraction": 7,
+          "anger": 5,
+          "trust": -5,
+          "strategist": 2
+        }
+      },
+      {
+        "id": "maybe-team-credit",
+        "label": "也许他只是当成团队成果",
+        "description": "先保留对方不是恶意的可能",
+        "moodDelta": {
+          "empathy": 4,
+          "anger": -3,
+          "trust": 2,
+          "arousal": -2
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "add-context-in-meeting",
+        "label": "当场补充",
+        "description": "平静道：XX说得好，接下来我跟大家汇报一下我是怎么通过三版方案迭代出现在结果的",
+        "moodDelta": {
+          "actionPower": 9,
+          "selfEsteem": 5,
+          "arousal": 4,
+          "trust": -1
+        }
+      },
+      {
+        "id": "write-followup",
+        "label": "会后发纪要留痕",
+        "description": "把曾经的过程和修改，自己的贡献写进邮件，发给Boss。",
+        "moodDelta": {
+          "strategist": 3,
+          "orderNeed": 5,
+          "actionPower": 7,
+          "stability": 4
+        }
+      },
+      {
+        "id": "swallow-credit",
+        "label": "算了，别把场面弄僵",
+        "description": "我是忍者神龟",
+        "moodDelta": {
+          "pleaser": 4,
+          "anger": -2,
+          "shame": 4,
+          "selfEsteem": -5
+        }
+      },
+      {
+        "id": "private-warning",
+        "label": "私下提醒他别再这样",
+        "description": "会后直接说明这件事让你不舒服。",
+        "moodDelta": {
+          "aggression": 4,
+          "actionPower": 7,
+          "anger": 3,
+          "trust": -3
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "document-my-work",
+        "label": "以后我要让贡献有证据",
+        "description": "留痕、命名和提前同步。",
+        "pathDelta": {
+          "strategist": 8,
+          "orderNeed": 5,
+          "selfEsteem": 2
+        }
+      },
+      {
+        "id": "watch-power-flow",
+        "label": "我倒是要看看谁那么爱偷",
+        "description": "把注意力放到会议结构和价值流向上。",
+        "pathDelta": {
+          "observer": 8,
+          "abstraction": 5,
+          "trust": -3
+        }
+      },
+      {
+        "id": "fight-for-credit",
+        "label": "该争的时候不能再让",
+        "description": "我管你的谦让，这是我自己做的！",
+        "pathDelta": {
+          "avenger": 8,
+          "aggression": 4,
+          "actionPower": 4
+        }
+      },
+      {
+        "id": "make-better-system",
+        "label": "把协作流程做清楚",
+        "description": "不只保护自己，也让团队分工更透明。",
+        "pathDelta": {
+          "creator": 4,
+          "strategist": 6,
+          "trust": 2
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "did-he-just-take-it",
+        "text": "等一下，他是不是把我的东西讲成自己的了？",
+        "tone": "警觉",
+        "linkedAttentionHookIds": [
+          "credit-language",
+          "meeting-power"
+        ],
+        "emotionDelta": {
+          "anger": 4,
+          "arousal": 3
+        },
+        "traitDelta": {
+          "sensitivity": 1,
+          "abstraction": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "should-have-left-traces",
+        "text": "怪我没提前留痕，才会被带过去。",
+        "tone": "自责",
+        "linkedAttentionHookIds": [
+          "proof-gap",
+          "credit-language"
+        ],
+        "emotionDelta": {
+          "shame": 4,
+          "arousal": 2
+        },
+        "traitDelta": {
+          "orderNeed": 2,
+          "selfEsteem": -1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "say-it-now",
+        "text": "不行，我得当场争回来我自己的东西",
+        "tone": "争取",
+        "linkedAttentionHookIds": [
+          "anger-signal",
+          "future-pattern"
+        ],
+        "emotionDelta": {
+          "actionPower": 4,
+          "anger": 3
+        },
+        "traitDelta": {
+          "aggression": 1
+        },
+        "pathDelta": {
+          "avenger": 1
+        }
+      },
+      {
+        "id": "watch-the-table",
+        "text": "先看清这张桌上谁的话最有重量。",
+        "tone": "观察",
+        "linkedAttentionHookIds": [
+          "meeting-power",
+          "future-pattern"
+        ],
+        "emotionDelta": {
+          "trust": -2,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "abstraction": 2
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "interview-vague-rejection",
+    "title": "面试",
+    "text": "业务听完你的经历，笑着说“整体还可以，但我们可能需要更匹配的人”。你问哪里不匹配，对方只说“综合感觉吧”。走出楼下大门时，你突然开始怀疑自己是不是真的不够好。",
+    "attentionHooks": [
+      {
+        "id": "polite-vagueness",
+        "label": "礼貌的模糊",
+        "description": "对方没有攻击你，但也没有给出可修正的信息。",
+        "categories": [
+          "tone",
+          "hidden-belittling"
+        ],
+        "text": "对方没有攻击你，但也没有给出可修正的信息。",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "aggression"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "criteria-missing",
+        "label": "标准缺失",
+        "description": "你不知道“不匹配”到底指能力、气质还是预算。",
+        "categories": [
+          "rule",
+          "structure"
+        ],
+        "text": "你不知道“不匹配”到底指能力、气质还是预算。",
+        "type": "rule",
+        "traitBias": [
+          "orderNeed",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "gatekeeping",
+        "label": "筛选权力",
+        "description": "你只能从一句话里猜答案。",
+        "categories": [
+          "power-relation",
+          "structure"
+        ],
+        "text": "你只能从一句话里猜答案。",
+        "type": "power-relation",
+        "traitBias": [
+          "abstraction",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "self-doubt",
+        "label": "自我怀疑",
+        "description": "模糊反馈很容易扩散成对自我的否定。",
+        "categories": [
+          "vulnerability",
+          "long-term-signal"
+        ],
+        "text": "模糊反馈很容易扩散成对自我的否定。",
+        "type": "vulnerability",
+        "traitBias": [
+          "empathy",
+          "sensitivity",
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "learning-signal",
+        "label": "可追问的信息",
+        "description": "即使对方不给标准，你也可以自我复盘。",
+        "categories": [
+          "process",
+          "responsibility"
+        ],
+        "text": "即使对方不给标准，你也可以自我复盘。",
+        "type": "process",
+        "traitBias": [
+          "orderNeed",
+          "strategist"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "hidden-hostility",
+        "label": "隐含的否认",
+        "description": "温和措辞背后仍然有一种被关在门外的感觉。",
+        "categories": [
+          "attack-signal",
+          "relationship-change"
+        ],
+        "text": "温和措辞背后仍然有一种被关在门外的感觉。",
+        "type": "attack-signal",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "i-am-not-good-enough",
+        "label": "可能我真的不够好",
+        "description": "把模糊否定扩展成对个人能力和价值的怀疑。",
+        "moodDelta": {
+          "selfEsteem": -8,
+          "shame": 9,
+          "arousal": 5,
+          "actionPower": -4
+        }
+      },
+      {
+        "id": "they-did-not-give-criteria",
+        "label": "他们根本没给标准",
+        "description": "把焦点放回不透明的筛选和反馈方式。",
+        "moodDelta": {
+          "abstraction": 6,
+          "orderNeed": 6,
+          "anger": 4,
+          "shame": -2
+        }
+      },
+      {
+        "id": "this-job-not-fit",
+        "label": "也许只是这份工作不合适",
+        "description": "把结果看成匹配失败，而不是人格失败。",
+        "moodDelta": {
+          "stability": 5,
+          "selfEsteem": 3,
+          "trust": 1,
+          "shame": -4
+        }
+      },
+      {
+        "id": "they-looked-down-on-me",
+        "label": "他们是不是看不上我",
+        "description": "礼貌拒绝是假，被筛选是真。",
+        "moodDelta": {
+          "sensitivity": 7,
+          "anger": 6,
+          "trust": -6,
+          "arousal": 7
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "ask-specific-feedback",
+        "label": "追问一个具体标准",
+        "description": "礼貌请求对方说出最主要的不匹配点。",
+        "moodDelta": {
+          "actionPower": 7,
+          "orderNeed": 4,
+          "selfEsteem": 2,
+          "arousal": 2
+        }
+      },
+      {
+        "id": "go-home-collapse",
+        "label": "回家躺着怀疑人生",
+        "description": "什么也不做，任由那句话在脑子里反复播放。",
+        "moodDelta": {
+          "avoider": 4,
+          "pleasure": -7,
+          "shame": 6,
+          "actionPower": -7
+        }
+      },
+      {
+        "id": "rewrite-interview-notes",
+        "label": "整理面试复盘",
+        "description": "把问题、回答和卡住的地方写下来。",
+        "moodDelta": {
+          "strategist": 3,
+          "stability": 5,
+          "actionPower": 6,
+          "shame": -2
+        }
+      },
+      {
+        "id": "apply-next-one",
+        "label": "投下一家",
+        "description": "不让一次模糊否定结束今天的行动。",
+        "moodDelta": {
+          "creator": 3,
+          "actionPower": 8,
+          "selfEsteem": 3,
+          "arousal": 3
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "feedback-system-is-vague",
+        "label": "这类反馈本来就很省事",
+        "description": "不是所有拒绝都值得你替它补全理由。",
+        "pathDelta": {
+          "observer": 7,
+          "strategist": 4,
+          "shame": -3
+        }
+      },
+      {
+        "id": "i-need-better-stories",
+        "label": "我要把经历讲得更有抓手",
+        "description": "把模糊挫败沉淀成面经。",
+        "pathDelta": {
+          "creator": 5,
+          "strategist": 5,
+          "actionPower": 4
+        }
+      },
+      {
+        "id": "maybe-i-am-too-ordinary",
+        "label": "可能我确实太普通了",
+        "description": "把结果收回自己身上，降低下一次期待。",
+        "pathDelta": {
+          "pleaser": 5,
+          "avoider": 4,
+          "selfEsteem": -5
+        }
+      },
+      {
+        "id": "protect-from-vague-judgment",
+        "label": "我要少被模糊评价牵着走",
+        "description": "不然他们真把我当狗",
+        "pathDelta": {
+          "observer": 4,
+          "stability": 5,
+          "selfEsteem": 3
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "what-is-not-matching",
+        "text": "“不匹配”到底是什么意思？有具体一点的吗？",
+        "tone": "追问",
+        "linkedAttentionHookIds": [
+          "criteria-missing",
+          "polite-vagueness"
+        ],
+        "emotionDelta": {
+          "arousal": 3,
+          "anger": 1
+        },
+        "traitDelta": {
+          "orderNeed": 2
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "maybe-i-am-not-enough",
+        "text": "是不是我不够好？",
+        "tone": "自疑",
+        "linkedAttentionHookIds": [
+          "self-doubt",
+          "hidden-hostility"
+        ],
+        "emotionDelta": {
+          "shame": 5,
+          "selfEsteem": -3
+        },
+        "traitDelta": {
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "they-hold-the-door",
+        "text": "决定我能不能进入的是他们，我只能猜为什么。",
+        "tone": "权力",
+        "linkedAttentionHookIds": [
+          "gatekeeping",
+          "criteria-missing"
+        ],
+        "emotionDelta": {
+          "trust": -3,
+          "anger": 2
+        },
+        "traitDelta": {
+          "abstraction": 2
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "take-notes-later",
+        "text": "先记下来，回去再说。",
+        "tone": "复盘",
+        "linkedAttentionHookIds": [
+          "learning-signal",
+          "self-doubt"
+        ],
+        "emotionDelta": {
+          "actionPower": 3,
+          "arousal": -1
+        },
+        "traitDelta": {
+          "stability": 1,
+          "orderNeed": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "family-caring-denial",
+    "title": "家人的关心",
+    "text": "你说想换个方向试试，家人说：“我们也是为你好，你别太理想化，稳定一点不好吗？”听起来像关心，但你突然不知道该怎么继续解释自己的梦想和渴望。",
+    "attentionHooks": [
+      {
+        "id": "soft-control",
+        "label": "控制",
+        "description": "说着为你好，结果却是把你推回去",
+        "categories": [
+          "tone",
+          "power-relation"
+        ],
+        "text": "说着为你好，结果却是把你推回去。",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "family-risk-frame",
+        "label": "风险",
+        "description": "对方首先看到的是不稳定，而不是你多优秀。",
+        "categories": [
+          "structure",
+          "long-term-signal"
+        ],
+        "text": "对方首先看到的是不稳定，而不是你多优秀。",
+        "type": "structure",
+        "traitBias": [
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "care-motive",
+        "label": "担心",
+        "description": "可能真的害怕你受苦，也不知道怎么支持。",
+        "categories": [
+          "other-motive",
+          "vulnerability"
+        ],
+        "text": "可能真的害怕你受苦，也不知道怎么支持。",
+        "type": "other-motive",
+        "traitBias": [
+          "empathy",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "need-erasure",
+        "label": "需求被否认",
+        "description": "你的理想和尝试被翻译成不成熟和不现实。",
+        "categories": [
+          "hidden-belittling",
+          "relationship-change"
+        ],
+        "text": "你的理想和尝试被翻译成不成熟和不现实。",
+        "type": "hidden-belittling",
+        "traitBias": [
+          "sensitivity",
+          "aggression"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "old-family-script",
+        "label": "熟悉的情景",
+        "description": "类似的话可能不止出现过一次。",
+        "categories": [
+          "long-term-signal",
+          "structure"
+        ],
+        "text": "类似的话可能不止出现过一次。",
+        "type": "long-term-signal",
+        "traitBias": [
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "argument-risk",
+        "label": "争执风险",
+        "description": "继续说下去，可能很快变成“爸妈养你不容易”。",
+        "categories": [
+          "hostility",
+          "attack-signal"
+        ],
+        "text": "继续说下去，可能很快变成“爸妈养你不容易”。",
+        "type": "hostility",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "they-dont-believe-me",
+        "label": "他们其实不相信我",
+        "description": "把关心听成不信任和能力否定。",
+        "moodDelta": {
+          "anger": 6,
+          "shame": 5,
+          "trust": -7,
+          "sensitivity": 5
+        }
+      },
+      {
+        "id": "they-are-afraid",
+        "label": "他们只是害怕我吃亏",
+        "description": "看见对方的焦虑，而不是只看到控制。",
+        "moodDelta": {
+          "empathy": 7,
+          "anger": -4,
+          "trust": 3,
+          "stability": 2
+        }
+      },
+      {
+        "id": "my-want-is-being-shrunk",
+        "label": "我的渴望被轻视了",
+        "description": "重点是被迅速贴上“不现实”的标签。",
+        "moodDelta": {
+          "selfEsteem": -4,
+          "anger": 5,
+          "arousal": 5,
+          "actionPower": -2
+        }
+      },
+      {
+        "id": "maybe-i-am-naive",
+        "label": "也许我真的太天真",
+        "description": "自我怀疑。",
+        "moodDelta": {
+          "shame": 7,
+          "selfEsteem": -6,
+          "pleaser": 3,
+          "actionPower": -5
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "explain-more",
+        "label": "解释计划",
+        "description": "把你为什么想换方向、准备怎么做讲得更具体。",
+        "moodDelta": {
+          "actionPower": 6,
+          "orderNeed": 3,
+          "arousal": 4,
+          "selfEsteem": 2
+        }
+      },
+      {
+        "id": "stop-sharing",
+        "label": "以后先不说了",
+        "description": "把这部分愿望从家庭谈话里收起来。",
+        "moodDelta": {
+          "avoider": 5,
+          "trust": -5,
+          "arousal": -2,
+          "pleasure": -4
+        }
+      },
+      {
+        "id": "ask-for-listening",
+        "label": "请他们先听完",
+        "description": "告诉他们你现在需要的是被听见，不是马上被纠正。",
+        "moodDelta": {
+          "selfEsteem": 4,
+          "actionPower": 5,
+          "trust": 2,
+          "arousal": 3
+        }
+      },
+      {
+        "id": "agree-to-end",
+        "label": "点头说“你们说得对”",
+        "description": "三十六计走为上计。",
+        "moodDelta": {
+          "pleaser": 5,
+          "anger": -3,
+          "shame": 4,
+          "selfEsteem": -4
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "care-can-still-hurt",
+        "label": "关心也可能让人受伤",
+        "description": "言语总是双刃剑。",
+        "pathDelta": {
+          "observer": 7,
+          "abstraction": 4,
+          "empathy": 2
+        }
+      },
+      {
+        "id": "make-plan-visible",
+        "label": "我要把自己的计划想得更清楚",
+        "description": "用具体步骤减少别人替你想象风险的空间。",
+        "pathDelta": {
+          "strategist": 7,
+          "orderNeed": 4,
+          "actionPower": 3
+        }
+      },
+      {
+        "id": "maybe-i-should-be-good",
+        "label": "也许听话会轻松一点",
+        "description": "没必要去争",
+        "pathDelta": {
+          "pleaser": 8,
+          "selfEsteem": -3,
+          "trust": 2
+        }
+      },
+      {
+        "id": "keep-dream-private",
+        "label": "别人养不好算了，我会自己养好自己",
+        "description": "先学会把自己的事情做好",
+        "pathDelta": {
+          "avoider": 6,
+          "creator": 3,
+          "stability": 3
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "care-feels-like-cage",
+        "text": "他们说为我好，但我怎么觉得自己被打压了",
+        "tone": "难过",
+        "linkedAttentionHookIds": [
+          "soft-control",
+          "need-erasure"
+        ],
+        "emotionDelta": {
+          "anger": 3,
+          "shame": 2
+        },
+        "traitDelta": {
+          "sensitivity": 2
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "they-are-worried",
+        "text": "也许他们真的只是怕我以后吃苦",
+        "tone": "体谅",
+        "linkedAttentionHookIds": [
+          "care-motive",
+          "family-risk-frame"
+        ],
+        "emotionDelta": {
+          "anger": -2,
+          "trust": 2
+        },
+        "traitDelta": {
+          "empathy": 2
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "my-plan-needs-shape",
+        "text": "如果我说不清楚，他们就会替我想象最坏结果",
+        "tone": "整理",
+        "linkedAttentionHookIds": [
+          "family-risk-frame",
+          "old-family-script"
+        ],
+        "emotionDelta": {
+          "actionPower": 2,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "orderNeed": 2
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "dont-tell-them-next-time",
+        "text": "算了，下次这种事先别告诉家里。",
+        "tone": "回避",
+        "linkedAttentionHookIds": [
+          "old-family-script",
+          "argument-risk"
+        ],
+        "emotionDelta": {
+          "trust": -4,
+          "arousal": -2
+        },
+        "traitDelta": {
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "avoider": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "group-joke-belittle",
+    "title": "群聊里的玩笑贬低",
+    "text": "群里有人把你的认真回复截图出来，配了一句“学霸又开始写小作文了”。大家发了几个哈哈哈。你也跟着发了个表情包，但心里像被什么划了一下。",
+    "attentionHooks": [
+      {
+        "id": "joke-tone",
+        "label": "玩笑",
+        "description": "你很难说自己被伤到了。",
+        "categories": [
+          "tone",
+          "hidden-belittling"
+        ],
+        "text": "你很难说自己被伤到了。",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "aggression"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "group-laughter",
+        "label": "集体的嘲笑",
+        "description": "你感觉自己是动物园里的猴子",
+        "categories": [
+          "relationship-change",
+          "power-relation"
+        ],
+        "text": "你感觉自己是动物园里的猴子",
+        "type": "relationship-change",
+        "traitBias": [
+          "sensitivity",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "seriousness-policed",
+        "label": "认真的代价",
+        "description": "反而呢，变成了可以调侃的对象。",
+        "categories": [
+          "structure",
+          "long-term-signal"
+        ],
+        "text": "反而呢，变成了可以调侃的对象。",
+        "type": "structure",
+        "traitBias": [
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "social-cost",
+        "label": "反驳的成本",
+        "description": "别人可能说你开不起玩笑。",
+        "categories": [
+          "process",
+          "responsibility"
+        ],
+        "text": "别人可能说你开不起玩笑。",
+        "type": "process",
+        "traitBias": [
+          "orderNeed",
+          "strategist"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "attack-in-joke",
+        "label": "藏在玩笑里的攻击",
+        "description": "轻松语气下，有贬损你的恶意。",
+        "categories": [
+          "hostility",
+          "attack-signal"
+        ],
+        "text": "轻松语气下，有贬损你的恶意。",
+        "type": "hostility",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "belonging-need",
+        "label": "想被接纳",
+        "description": "故作轻松，是因为不想被孤立",
+        "categories": [
+          "vulnerability",
+          "other-motive"
+        ],
+        "text": "故作轻松，是因为不想被孤立",
+        "type": "vulnerability",
+        "traitBias": [
+          "empathy",
+          "sensitivity"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "they-are-laughing-at-me",
+        "label": "他们是在笑我",
+        "description": "我很不爽，但是向谁诉苦呢？",
+        "moodDelta": {
+          "sensitivity": 8,
+          "shame": 7,
+          "anger": 5,
+          "trust": -6
+        }
+      },
+      {
+        "id": "maybe-just-joke",
+        "label": "只是玩笑，别扫兴",
+        "description": "提醒自己不要太认真。",
+        "moodDelta": {
+          "pleaser": 4,
+          "anger": -3,
+          "selfEsteem": -4,
+          "shame": 4
+        }
+      },
+      {
+        "id": "seriousness-has-no-place",
+        "label": "这里不欢迎认真",
+        "description": "只玩抽象。",
+        "moodDelta": {
+          "abstraction": 5,
+          "trust": -5,
+          "pleasure": -4,
+          "observer": 2
+        }
+      },
+      {
+        "id": "i-want-to-hit-back",
+        "label": "我想怼回去",
+        "description": "君子报仇十年不晚？我今天就报。",
+        "moodDelta": {
+          "aggression": 7,
+          "anger": 8,
+          "arousal": 6,
+          "actionPower": 4
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "laugh-with-them",
+        "label": "发个更有梗的东西盖过去",
+        "description": "假装没被刺到。",
+        "moodDelta": {
+          "pleaser": 5,
+          "shame": 4,
+          "anger": -2,
+          "selfEsteem": -4
+        }
+      },
+      {
+        "id": "set-soft-boundary",
+        "label": "“别这样”",
+        "description": "用不太激烈的方式告诉对方，自己有边界。",
+        "moodDelta": {
+          "actionPower": 6,
+          "selfEsteem": 4,
+          "arousal": 3,
+          "trust": -1
+        }
+      },
+      {
+        "id": "snap-back",
+        "label": "当场怼回去",
+        "description": "“不玩了，我掀桌了。”",
+        "moodDelta": {
+          "avenger": 3,
+          "anger": 4,
+          "aggression": 5,
+          "actionPower": 6
+        }
+      },
+      {
+        "id": "mute-group",
+        "label": "把群免打扰",
+        "description": "不解释，不听，我很忙。",
+        "moodDelta": {
+          "avoider": 4,
+          "arousal": -5,
+          "trust": -4,
+          "pleasure": -2
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "jokes-show-rank",
+        "label": "玩笑会暴露关系里的位置",
+        "description": "把调侃当成观察群体边界的记录。",
+        "pathDelta": {
+          "observer": 7,
+          "abstraction": 4,
+          "trust": -3
+        }
+      },
+      {
+        "id": "protect-seriousness",
+        "label": "我的认真值得被保护",
+        "description": "不因为别人调侃，就把自己的锋芒收起来。",
+        "pathDelta": {
+          "creator": 5,
+          "selfEsteem": 5,
+          "actionPower": 3
+        }
+      },
+      {
+        "id": "i-should-be-easier",
+        "label": "也许我该显得更好玩一点",
+        "description": "把被调侃归因于不够松弛、不够合群。",
+        "pathDelta": {
+          "pleaser": 7,
+          "selfEsteem": -4,
+          "shame": 3
+        }
+      },
+      {
+        "id": "strike-when-belittled",
+        "label": "以牙还牙",
+        "description": "兽人永不为奴。",
+        "pathDelta": {
+          "avenger": 8,
+          "aggression": 4,
+          "trust": -4
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "laugh-but-hurt",
+        "text": "我也想跟着笑，但心里其实被戳了一下。",
+        "tone": "受伤",
+        "linkedAttentionHookIds": [
+          "joke-tone",
+          "belonging-need"
+        ],
+        "emotionDelta": {
+          "shame": 4,
+          "anger": 1
+        },
+        "traitDelta": {
+          "sensitivity": 2
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "this-is-not-funny",
+        "text": "这不是好笑，是把我的认真拿出来玩。",
+        "tone": "冒犯",
+        "linkedAttentionHookIds": [
+          "attack-in-joke",
+          "seriousness-policed"
+        ],
+        "emotionDelta": {
+          "anger": 5,
+          "arousal": 3
+        },
+        "traitDelta": {
+          "aggression": 2
+        },
+        "pathDelta": {
+          "avenger": 1
+        }
+      },
+      {
+        "id": "group-is-testing-rank",
+        "text": "又在比大小了",
+        "tone": "位置",
+        "linkedAttentionHookIds": [
+          "group-laughter",
+          "social-cost"
+        ],
+        "emotionDelta": {
+          "trust": -3,
+          "arousal": 2
+        },
+        "traitDelta": {
+          "abstraction": 2
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "mute-it",
+        "text": "先不回了。",
+        "tone": "退后",
+        "linkedAttentionHookIds": [
+          "social-cost",
+          "belonging-need"
+        ],
+        "emotionDelta": {
+          "arousal": -3,
+          "trust": -2
+        },
+        "traitDelta": {
+          "stability": 1
+        },
+        "pathDelta": {
+          "avoider": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "opaque-rule-extra-work",
+    "title": "背锅",
+    "text": "你按群公告提交了材料，结果负责人说格式不对，要你今天下班前全部重填。你翻回公告，发现要求写得很含糊。对方只说：“大家都这么交的，你再配合一下。”",
+    "attentionHooks": [
+      {
+        "id": "unclear-rule",
+        "label": "规则没写清楚",
+        "description": "本来就不够可执行。",
+        "categories": [
+          "rule",
+          "process"
+        ],
+        "text": "本来就不够可执行。",
+        "type": "rule",
+        "traitBias": [
+          "orderNeed",
+          "strategist"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "responsibility-shift",
+        "label": "责任被转嫁",
+        "description": "含糊规则的成本最后落到了你身上。",
+        "categories": [
+          "responsibility",
+          "power-relation"
+        ],
+        "text": "含糊规则的成本最后落到了你身上。",
+        "type": "responsibility",
+        "traitBias": [
+          "orderNeed",
+          "abstraction",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "compliance-tone",
+        "label": "配合一下",
+        "description": "说的好轻松，还不是你的问题。",
+        "categories": [
+          "tone",
+          "hidden-belittling"
+        ],
+        "text": "说的好轻松，还不是你的问题。",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "aggression"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "institutional-process",
+        "label": "流程漏洞",
+        "description": "规则、模板和验收不一致，类似问题会反复出现。",
+        "categories": [
+          "structure",
+          "long-term-signal"
+        ],
+        "text": "规则、模板和验收不一致，类似问题会反复出现。",
+        "type": "structure",
+        "traitBias": [
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "anger-at-system",
+        "label": "不会做事能不能别组织",
+        "description": "不想用自己的努力替别人的懒惰买单",
+        "categories": [
+          "hostility",
+          "attack-signal"
+        ],
+        "text": "不想用自己的努力替别人的懒惰买单",
+        "type": "hostility",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "others-may-also-suffer",
+        "label": "对方可能也被这么折腾",
+        "description": "好糟糕的世界",
+        "categories": [
+          "other-motive",
+          "structure"
+        ],
+        "text": "好糟糕的世界",
+        "type": "other-motive",
+        "traitBias": [
+          "empathy",
+          "abstraction"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "i-messed-up",
+        "label": "是不是我没问清楚",
+        "description": "把错误揽回自己身上。",
+        "moodDelta": {
+          "shame": 7,
+          "selfEsteem": -5,
+          "orderNeed": 4,
+          "arousal": 5
+        }
+      },
+      {
+        "id": "rule-was-unclear",
+        "label": "你本来就没说清楚",
+        "description": "把问题定位到说明、模板和验收标准不一致。",
+        "moodDelta": {
+          "abstraction": 6,
+          "anger": 5,
+          "orderNeed": 7,
+          "shame": -3
+        }
+      },
+      {
+        "id": "they-are-dumping-work",
+        "label": "你只是想把麻烦甩给我",
+        "description": "责任转移不可取。",
+        "moodDelta": {
+          "anger": 9,
+          "aggression": 4,
+          "trust": -7,
+          "actionPower": 3
+        }
+      },
+      {
+        "id": "dont-make-trouble",
+        "label": "别较真，赶紧改完算了",
+        "description": "赶紧整完下班。",
+        "moodDelta": {
+          "pleaser": 3,
+          "actionPower": -2,
+          "pleasure": -5,
+          "anger": -2
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "redo-quietly",
+        "label": "闷头重填",
+        "description": "不争辩，先把事情做完。",
+        "moodDelta": {
+          "actionPower": -3,
+          "shame": 3,
+          "pleasure": -6,
+          "stability": -2
+        }
+      },
+      {
+        "id": "ask-template",
+        "label": "要求给明确模板",
+        "description": "让对方发一份可复用的正确格式。",
+        "moodDelta": {
+          "orderNeed": 5,
+          "actionPower": 7,
+          "stability": 4,
+          "anger": -1
+        }
+      },
+      {
+        "id": "quote-announcement",
+        "label": "截图公告反问",
+        "description": "指出公告没有写清，要求确认以后按哪个版本。",
+        "moodDelta": {
+          "aggression": 3,
+          "actionPower": 8,
+          "anger": 4,
+          "trust": -3
+        }
+      },
+      {
+        "id": "make-checklist",
+        "label": "整理一份检查清单",
+        "description": "把这次踩坑变成以后提交前的核对表。",
+        "moodDelta": {
+          "strategist": 3,
+          "creator": 2,
+          "stability": 5,
+          "actionPower": 6
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "rules-need-receipts",
+        "label": "规则要留下凭据",
+        "description": "以后遇到含糊要求，要先保存版本和确认口径。",
+        "pathDelta": {
+          "strategist": 8,
+          "observer": 4,
+          "orderNeed": 4
+        }
+      },
+      {
+        "id": "systems-hide-costs",
+        "label": "流程设计有问题",
+        "description": "流程设计不良，不是单纯自己倒霉。",
+        "pathDelta": {
+          "observer": 8,
+          "abstraction": 5,
+          "trust": -4
+        }
+      },
+      {
+        "id": "comply-to-survive",
+        "label": "先配合才能少受折腾",
+        "description": "不顶撞、不出头，才不会被继续盯上。",
+        "pathDelta": {
+          "pleaser": 5,
+          "avoider": 5,
+          "selfEsteem": -2
+        }
+      },
+      {
+        "id": "push-back-on-dumping",
+        "label": "甩锅不能每次都接",
+        "description": "下次更快指出责任边界。",
+        "pathDelta": {
+          "avenger": 6,
+          "strategist": 4,
+          "actionPower": 4
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "did-i-miss-it",
+        "text": "是不是我没看仔细，才又要重填。",
+        "tone": "自责",
+        "linkedAttentionHookIds": [
+          "unclear-rule",
+          "compliance-tone"
+        ],
+        "emotionDelta": {
+          "shame": 4,
+          "arousal": 3
+        },
+        "traitDelta": {
+          "orderNeed": 1,
+          "selfEsteem": -1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "rule-is-bad",
+        "text": "又不是我没配合，要求一开始就没写清。",
+        "tone": "规则",
+        "linkedAttentionHookIds": [
+          "unclear-rule",
+          "institutional-process"
+        ],
+        "emotionDelta": {
+          "anger": 3,
+          "actionPower": 2
+        },
+        "traitDelta": {
+          "orderNeed": 2,
+          "abstraction": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "cost-is-being-dumped",
+        "text": "不好，流程漏洞的成本甩我身上了",
+        "tone": "背锅",
+        "linkedAttentionHookIds": [
+          "responsibility-shift",
+          "anger-at-system"
+        ],
+        "emotionDelta": {
+          "anger": 5,
+          "trust": -3
+        },
+        "traitDelta": {
+          "aggression": 1,
+          "abstraction": 1
+        },
+        "pathDelta": {
+          "avenger": 1
+        }
+      },
+      {
+        "id": "make-checklist-now",
+        "text": "先别被气走，我要把正确格式问清楚。",
+        "tone": "整理",
+        "linkedAttentionHookIds": [
+          "unclear-rule",
+          "others-may-also-suffer"
+        ],
+        "emotionDelta": {
+          "actionPower": 4,
+          "arousal": -1
+        },
+        "traitDelta": {
+          "orderNeed": 2
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "need-expression-silence",
+    "title": "表达需求后的沉默",
+    "text": "你鼓起勇气说：“我最近有点累，希望你能多主动关心一下我。”消息发出去后，对方一直没回。你看着聊天框，从下午等到晚上，开始后悔自己是不是说太多了。",
+    "attentionHooks": [
+      {
+        "id": "silence-after-need",
+        "label": "平时大爱小爱真君，今天不打算理我？",
+        "description": "“我一直在哭。”",
+        "categories": [
+          "tone",
+          "relationship-change"
+        ],
+        "text": "“我一直在哭。”",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "vulnerability-opened",
+        "label": "难受，香菇",
+        "description": "把需求说出来，你又不听。",
+        "categories": [
+          "vulnerability",
+          "long-term-signal"
+        ],
+        "text": "把需求说出来，你又不听。",
+        "type": "vulnerability",
+        "traitBias": [
+          "empathy",
+          "sensitivity",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "response-power",
+        "label": "回应权在对方手里",
+        "description": "你已经说完了，接下来就是对方的事了",
+        "categories": [
+          "power-relation",
+          "structure"
+        ],
+        "text": "你已经说完了，接下来就是对方的事了",
+        "type": "power-relation",
+        "traitBias": [
+          "abstraction",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "possible-overload",
+        "label": "对方可能也不知道怎么接",
+        "description": "沉默不一定是不在乎，也可能是不会回应",
+        "categories": [
+          "other-motive",
+          "vulnerability"
+        ],
+        "text": "沉默不一定是不在乎，也可能是不会回应",
+        "type": "other-motive",
+        "traitBias": [
+          "empathy",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "self-blame-loop",
+        "label": "自责循环",
+        "description": "越等不到回应，越觉得是自己太麻烦",
+        "categories": [
+          "hidden-belittling",
+          "long-term-signal"
+        ],
+        "text": "越等不到回应，你越觉得是自己太麻烦",
+        "type": "hidden-belittling",
+        "traitBias": [
+          "sensitivity",
+          "aggression",
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "ask-cost",
+        "label": "开口的成本",
+        "description": "你意识到表达需求，并不只是说一句话那么简单",
+        "categories": [
+          "responsibility",
+          "process"
+        ],
+        "text": "你意识到表达需求，并不只是说一句话那么简单",
+        "type": "responsibility",
+        "traitBias": [
+          "orderNeed",
+          "strategist"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "i-asked-too-much",
+        "label": "我是不是要求太多了",
+        "description": "“我真的贪心吗？”",
+        "moodDelta": {
+          "shame": 8,
+          "selfEsteem": -6,
+          "pleaser": 3,
+          "actionPower": -5
+        }
+      },
+      {
+        "id": "they-dont-care",
+        "label": "对方其实不在乎",
+        "description": "关系的冷淡和对方的回避。",
+        "moodDelta": {
+          "anger": 6,
+          "trust": -8,
+          "sensitivity": 6,
+          "arousal": 6
+        }
+      },
+      {
+        "id": "they-may-need-time",
+        "label": "也许对方需要时间消化",
+        "description": "给沉默留一点不是拒绝的空间。",
+        "moodDelta": {
+          "empathy": 5,
+          "trust": 2,
+          "arousal": -3,
+          "stability": 3
+        }
+      },
+      {
+        "id": "my-need-is-real",
+        "label": "我没错",
+        "description": "自己确实需要回应",
+        "moodDelta": {
+          "selfEsteem": 5,
+          "actionPower": 4,
+          "shame": -4,
+          "stability": 3
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "delete-message",
+        "label": "撤回，或补一句“算了”",
+        "description": "试图让场面不那么尴尬。",
+        "moodDelta": {
+          "avoider": 4,
+          "shame": 5,
+          "selfEsteem": -4,
+          "actionPower": -5
+        }
+      },
+      {
+        "id": "send-clarifying-message",
+        "label": "补充说：不用立刻回答",
+        "description": "给对方空间，也让自己的表达不被误解成逼迫。",
+        "moodDelta": {
+          "empathy": 4,
+          "trust": 2,
+          "stability": 4,
+          "actionPower": 2
+        }
+      },
+      {
+        "id": "wait-and-observe",
+        "label": "先不追问，默默观察",
+        "description": "把这次沉默当成关系里的一个真实信号。",
+        "moodDelta": {
+          "observer": 3,
+          "arousal": -3,
+          "trust": -2,
+          "stability": 2
+        }
+      },
+      {
+        "id": "state-boundary-later",
+        "label": "晚点说明这件事对你很重要",
+        "description": "不要把情绪带进工作中",
+        "moodDelta": {
+          "actionPower": 6,
+          "selfEsteem": 4,
+          "orderNeed": 3,
+          "arousal": 2
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "needs-deserve-space",
+        "label": "需求应该有位置",
+        "description": "表达需要不是讨债，而是关系的一部分。",
+        "pathDelta": {
+          "creator": 3,
+          "selfEsteem": 6,
+          "trust": 2
+        }
+      },
+      {
+        "id": "watch-response-pattern",
+        "label": "我要看回应模式，不只看一句话",
+        "description": "把沉默放进长期互动里观察。",
+        "pathDelta": {
+          "observer": 8,
+          "abstraction": 4,
+          "stability": 2
+        }
+      },
+      {
+        "id": "maybe-i-am-too-much",
+        "label": "也许我真的太麻烦了",
+        "description": "试图让自己变得更省事。",
+        "pathDelta": {
+          "pleaser": 8,
+          "selfEsteem": -6,
+          "shame": 4
+        }
+      },
+      {
+        "id": "hide-needs-next-time",
+        "label": "下次还是别说了",
+        "description": "沉默是金。",
+        "pathDelta": {
+          "avoider": 8,
+          "trust": -5,
+          "actionPower": -2
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "i-said-too-much",
+        "text": "完了，我是不是太沉重了",
+        "tone": "自疑",
+        "linkedAttentionHookIds": [
+          "self-blame-loop",
+          "vulnerability-opened"
+        ],
+        "emotionDelta": {
+          "shame": 5,
+          "arousal": 4
+        },
+        "traitDelta": {
+          "selfEsteem": -2,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "silence-is-answer",
+        "text": "不回，其实已经是一种回答了吧。",
+        "tone": "回避",
+        "linkedAttentionHookIds": [
+          "silence-after-need",
+          "response-power"
+        ],
+        "emotionDelta": {
+          "trust": -5,
+          "anger": 2
+        },
+        "traitDelta": {
+          "sensitivity": 2
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "maybe-they-need-time",
+        "text": "也许对方只是不会接这种话，我先等一下。",
+        "tone": "体谅",
+        "linkedAttentionHookIds": [
+          "possible-overload",
+          "vulnerability-opened"
+        ],
+        "emotionDelta": {
+          "arousal": -2,
+          "trust": 1
+        },
+        "traitDelta": {
+          "empathy": 2
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "my-need-still-counts",
+        "text": "可我确实累了",
+        "tone": "确认",
+        "linkedAttentionHookIds": [
+          "ask-cost",
+          "self-blame-loop"
+        ],
+        "emotionDelta": {
+          "selfEsteem": 3,
+          "actionPower": 2
+        },
+        "traitDelta": {
+          "stability": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      }
+    ]
+  }
+]
