@@ -1,6 +1,7 @@
 import { AttentionHooks } from './AttentionHooks'
 import { OptionButton } from './OptionButton'
 import { copy } from '../data/copy'
+import { getLabelToneClass } from '../utils/labelColorMap'
 import type {
   AttributionOption,
   BehaviorOption,
@@ -9,8 +10,6 @@ import type {
   FirstReactionOption,
   SimEvent,
   Stage,
-  StateDelta,
-  StateKey,
 } from '../engine/types'
 
 type EventPanelProps = {
@@ -43,17 +42,6 @@ export function EventPanel({
         <h1>{event.title}</h1>
       </header>
 
-      <section className="event-text">
-        <p>{event.text}</p>
-        {event.image && (
-          <img
-            className="event-image"
-            src={event.image}
-            alt={`${event.title} ${copy.eventPanel.imageAltSuffix}`}
-          />
-        )}
-      </section>
-
       {stage === 'attentionReveal' && choices.revealedAttentionHooks && (
         <AttentionHooks hooks={choices.revealedAttentionHooks} />
       )}
@@ -70,6 +58,9 @@ export function EventPanel({
                 type="button"
                 onClick={() => onFirstReaction(option)}
               >
+                <div className={`option-corner-label ${getLabelToneClass(option.tone)}`}>
+                  #{option.tone}
+                </div>
                 <span>{option.text}</span>
               </button>
             ))}
@@ -105,8 +96,8 @@ export function EventPanel({
               {event.tags.map((option) => (
                 <OptionButton
                   key={option.id}
-                  label={option.label}
                   description={option.description}
+                  cornerLabel={option.label}
                   onClick={() => onTag(option)}
                 />
               ))}
@@ -124,8 +115,8 @@ export function EventPanel({
               {event.behaviors.map((option) => (
                 <OptionButton
                   key={option.id}
-                  label={option.label}
                   description={option.description}
+                  cornerLabel={option.label}
                   onClick={() => onBehavior(option)}
                 />
               ))}
@@ -147,8 +138,8 @@ export function EventPanel({
               {event.attributions.map((option) => (
                 <OptionButton
                   key={option.id}
-                  label={option.label}
                   description={option.description}
+                  cornerLabel={option.label}
                   onClick={() => onAttribution(option)}
                 />
               ))}
@@ -205,36 +196,10 @@ function ChoiceLine({ label, value }: { label: string; value?: string }) {
 }
 
 function ReactionTrace({ reaction }: { reaction: FirstReactionOption }) {
-  const visibleDeltas = getVisibleDeltas(reaction)
-
   return (
     <div className="reaction-trace">
       <p className="trace-title">{copy.eventPanel.reactionTraceTitle}</p>
       <p>{buildReactionSentence(reaction)}</p>
-      {visibleDeltas.length > 0 && (
-        <div className="trace-chip-list">
-          {visibleDeltas.map(([key, value]) => (
-            <span key={key}>
-              {copy.shortStateLabels[key]} {formatDelta(value)}
-            </span>
-          ))}
-        </div>
-      )}
-      <details>
-        <summary>{copy.eventPanel.reactionTraceDetails}</summary>
-        <DeltaList
-          title={copy.eventPanel.deltaTitles.emotion}
-          delta={reaction.emotionDelta}
-        />
-        <DeltaList
-          title={copy.eventPanel.deltaTitles.trait}
-          delta={reaction.traitDelta}
-        />
-        <DeltaList
-          title={copy.eventPanel.deltaTitles.path}
-          delta={reaction.pathDelta ?? {}}
-        />
-      </details>
     </div>
   )
 }
@@ -252,38 +217,6 @@ function RoundTrace({
       <p>{buildRoundSentence(reaction, attribution)}</p>
     </div>
   )
-}
-
-function DeltaList({ title, delta }: { title: string; delta: StateDelta }) {
-  const entries = Object.entries(delta).filter(([, value]) => value !== 0)
-
-  if (entries.length === 0) {
-    return null
-  }
-
-  return (
-    <div className="delta-group">
-      <strong>{title}</strong>
-      <ul>
-        {entries.map(([key, value]) => (
-          <li key={key}>
-            {copy.shortStateLabels[key as StateKey] ?? key}{' '}
-            {formatDelta(value ?? 0)}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-function getVisibleDeltas(reaction: FirstReactionOption) {
-  return Object.entries({
-    ...reaction.emotionDelta,
-    ...reaction.traitDelta,
-    ...reaction.pathDelta,
-  })
-    .filter(([, value]) => value !== undefined && value !== 0)
-    .slice(0, 4) as Array<[StateKey, number]>
 }
 
 function buildReactionSentence(reaction: FirstReactionOption) {
@@ -314,32 +247,8 @@ function buildRoundSentence(
   reaction: FirstReactionOption,
   attribution?: AttributionOption,
 ) {
-  const emotionText = describeDelta(reaction.emotionDelta)
-  const pathText = describeDelta({
-    ...reaction.pathDelta,
-    ...attribution?.pathDelta,
-  })
+  void reaction
+  void attribution
 
-  return `${copy.eventPanel.roundTrace.emotionPrefix}：${
-    emotionText || copy.eventPanel.roundTrace.noEmotion
-  }。${copy.eventPanel.roundTrace.pathPrefix}：${
-    pathText || copy.eventPanel.roundTrace.noPath
-  }。${copy.eventPanel.roundTrace.suffix}`
-}
-
-function describeDelta(delta: StateDelta) {
-  return Object.entries(delta)
-    .filter(([, value]) => value !== undefined && value !== 0)
-    .slice(0, 3)
-    .map(
-      ([key, value]) =>
-        `${copy.shortStateLabels[key as StateKey] ?? key}${formatDelta(
-          value ?? 0,
-        )}`,
-    )
-    .join('，')
-}
-
-function formatDelta(value: number) {
-  return value > 0 ? `+${value}` : `${value}`
+  return copy.eventPanel.roundTrace.suffix
 }

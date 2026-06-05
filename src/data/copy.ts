@@ -29,6 +29,7 @@ export const copy = {
     appEyebrow: 'Personality Sim',
     imageAltSuffix: '插图',
     stageTitles: {
+      eventIntro: '事件正文',
       firstReaction: '你第一反应是？',
       attentionReveal: '注意力浮现',
       label: '你把这件事理解成了什么？',

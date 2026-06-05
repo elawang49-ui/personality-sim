@@ -28,6 +28,14 @@ export type CharacterState = Record<StateKey, number>
 
 export type StateDelta = Partial<Record<StateKey, number>>
 
+export type EventPressure = 'low' | 'medium' | 'high'
+
+export type EventMeta = {
+  pressure?: EventPressure
+  directorTags?: string[]
+  weight?: number
+}
+
 export type StartProfileTag = {
   id: string
   title: string
@@ -82,6 +90,9 @@ export type SimEvent = {
   id: string
   title: string
   theme?: string
+  meta?: EventMeta
+  inactive?: boolean
+  backup?: boolean
   text: string
   image?: string
   attentionHooks: AttentionHook[]
@@ -92,6 +103,7 @@ export type SimEvent = {
 }
 
 export type Stage =
+  | 'eventIntro'
   | 'firstReaction'
   | 'attentionReveal'
   | 'label'

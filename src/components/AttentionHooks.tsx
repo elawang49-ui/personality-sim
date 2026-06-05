@@ -1,5 +1,6 @@
 import { copy } from '../data/copy'
 import type { AttentionHook } from '../engine/types'
+import { getLabelToneClass } from '../utils/labelColorMap'
 
 type AttentionHooksProps = {
   hooks: AttentionHook[]
@@ -18,9 +19,11 @@ export function AttentionHooks({ hooks }: AttentionHooksProps) {
             style={{ animationDelay: `${index * 140}ms` }}
           >
             <div className="attention-title">
-              <span>{hook.label}</span>
+              <div className={`attention-corner-label ${getLabelToneClass(hook.label)}`}>
+                #{hook.label}
+              </div>
             </div>
-            <p>{hook.text}</p>
+            <p>{hook.text || hook.description}</p>
           </div>
         ))}
       </div>

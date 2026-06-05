@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { EventIntroPage } from './components/EventIntroPage'
 import { EventPanel } from './components/EventPanel'
 import { PersonaReport } from './components/PersonaReport'
 import { StartProfile } from './components/StartProfile'
@@ -6,7 +7,8 @@ import { StatePanel } from './components/StatePanel'
 import { TitlePage } from './components/TitlePage'
 import { copy } from './data/copy'
 import { getRevealedAttentionHooks } from './engine/attention'
-import { getEvent } from './engine/events'
+import { selectNextEvent } from './engine/eventDirector'
+import { events } from './engine/events'
 import { calculatePathUpdate } from './engine/pathUpdate'
 import {
   buildPersonaReport,
@@ -33,6 +35,8 @@ import type {
 } from './engine/types'
 import './App.css'
 
+const fallbackEvent = events[0]
+
 function App() {
   const [characterState, setCharacterState] =
     useState<CharacterState>(() => loadState())
@@ -44,13 +48,28 @@ function App() {
     [],
   )
   const [profileWarning, setProfileWarning] = useState('')
-  const [eventIndex, setEventIndex] = useState(0)
-  const [stage, setStage] = useState<Stage>('firstReaction')
+  const [selectedEventIds, setSelectedEventIds] = useState<string[]>(() => {
+    const firstEvent =
+      selectNextEvent({
+        events,
+        characterState: loadState(),
+        usedEventIds: [],
+      }) ?? fallbackEvent
+
+    return [firstEvent.id]
+  })
+  const [currentEventId, setCurrentEventId] = useState(
+    () => selectedEventIds[0] ?? fallbackEvent.id,
+  )
+  const [stage, setStage] = useState<Stage>('eventIntro')
   const [choices, setChoices] = useState<ChoiceRecord>({})
   const [completedEvents, setCompletedEvents] = useState<CompletedEventRecord[]>(
     [],
   )
-  const event = useMemo(() => getEvent(eventIndex), [eventIndex])
+  const event = useMemo(
+    () => events.find((item) => item.id === currentEventId) ?? fallbackEvent,
+    [currentEventId],
+  )
   const personaReport = useMemo(
     () => buildPersonaReport(characterState, completedEvents),
     [characterState, completedEvents],
@@ -70,7 +89,7 @@ function App() {
     window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
     })
-  }, [eventIndex, isProfileReady])
+  }, [currentEventId, isProfileReady])
 
   const startPreviewState = useMemo(
     () =>
@@ -108,9 +127,20 @@ function App() {
     saveState(startPreviewState)
     saveStartProfileReady()
     setIsProfileReady(true)
-    setEventIndex(0)
+    const firstEvent =
+      selectNextEvent({
+        events,
+        characterState: startPreviewState,
+        usedEventIds: [],
+      }) ?? fallbackEvent
+    setSelectedEventIds([firstEvent.id])
+    setCurrentEventId(firstEvent.id)
     setChoices({})
     setCompletedEvents([])
+    setStage('eventIntro')
+  }
+
+  function enterEvent() {
     setStage('firstReaction')
   }
 
@@ -189,13 +219,27 @@ function App() {
       attribution: option,
       summaryText: result.summaryText,
     }))
-    setStage(completedEvents.length + 1 >= 10 ? 'report' : 'summary')
+    const nextCompletedCount = completedEvents.length + 1
+    const nextStage = nextCompletedCount >= 10 ? 'report' : 'summary'
+    setStage(nextStage)
   }
 
   function goToNextEvent() {
-    setEventIndex((current) => current + 1)
+    const nextEvent = selectNextEvent({
+      events,
+      characterState,
+      usedEventIds: selectedEventIds,
+    })
+
+    if (!nextEvent) {
+      setStage('report')
+      return
+    }
+
+    setSelectedEventIds((current) => [...current, nextEvent.id])
+    setCurrentEventId(nextEvent.id)
     setChoices({})
-    setStage('firstReaction')
+    setStage('eventIntro')
   }
 
   function handleReset() {
@@ -204,10 +248,17 @@ function App() {
     setHasEnteredTitle(true)
     setSelectedStartTags([])
     setProfileWarning('')
-    setEventIndex(0)
+    const firstEvent =
+      selectNextEvent({
+        events,
+        characterState: initialState,
+        usedEventIds: [],
+      }) ?? fallbackEvent
+    setSelectedEventIds([firstEvent.id])
+    setCurrentEventId(firstEvent.id)
     setChoices({})
     setCompletedEvents([])
-    setStage('firstReaction')
+    setStage('eventIntro')
   }
 
   function handleStartFromTitle() {
@@ -247,17 +298,26 @@ function App() {
 
   return (
     <div className="app-shell">
-      <EventPanel
-        event={event}
-        stage={stage}
-        choices={choices}
-        onFirstReaction={chooseFirstReaction}
-        onContinueFromAttention={continueFromAttention}
-        onTag={chooseTag}
-        onBehavior={chooseBehavior}
-        onAttribution={chooseAttribution}
-        onNextEvent={goToNextEvent}
-      />
+      {stage === 'eventIntro' ? (
+        <EventIntroPage
+          event={event}
+          roundIndex={completedEvents.length + 1}
+          totalRounds={10}
+          onEnterEvent={enterEvent}
+        />
+      ) : (
+        <EventPanel
+          event={event}
+          stage={stage}
+          choices={choices}
+          onFirstReaction={chooseFirstReaction}
+          onContinueFromAttention={continueFromAttention}
+          onTag={chooseTag}
+          onBehavior={chooseBehavior}
+          onAttribution={chooseAttribution}
+          onNextEvent={goToNextEvent}
+        />
+      )}
       <StatePanel state={characterState} onReset={handleReset} />
     </div>
   )

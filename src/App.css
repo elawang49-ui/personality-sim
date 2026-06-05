@@ -55,6 +55,88 @@
   line-height: 1.65;
 }
 
+.event-intro-page {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.event-intro-card {
+  display: grid;
+  gap: 24px;
+  padding: 30px;
+  border: 1px solid rgba(217, 211, 200, 0.84);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 48px rgba(68, 56, 42, 0.08);
+}
+
+.event-intro-header {
+  display: grid;
+  gap: 12px;
+}
+
+.event-intro-kicker {
+  margin: 0;
+  color: #69707a;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.event-intro-title {
+  margin: 0;
+  color: #17191d;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.event-intro-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.event-intro-meta span {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: #6a6258;
+  background: #f4f0e8;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.event-intro-text {
+  margin: 0;
+  color: #30343a;
+  font-size: 18px;
+  line-height: 1.85;
+  white-space: pre-wrap;
+}
+
+.event-intro-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.event-intro-enter-button {
+  padding: 13px 22px;
+  border: 1px solid #5a4c3c;
+  border-radius: 999px;
+  color: #ffffff;
+  background: #5a4c3c;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.event-intro-enter-button:hover {
+  background: #6d5a46;
+}
+
 .event-image {
   display: block;
   width: 100%;
@@ -152,6 +234,66 @@
 
 .first-reaction-button span {
   line-height: 1.45;
+}
+
+.option-corner-label,
+.attention-corner-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 3px 8px;
+  margin-bottom: 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  opacity: 0.82;
+}
+
+.chip-danger {
+  background: rgba(140, 60, 45, 0.12);
+  border-color: rgba(140, 60, 45, 0.28);
+}
+
+.chip-shame {
+  background: rgba(110, 85, 130, 0.12);
+  border-color: rgba(110, 85, 130, 0.26);
+}
+
+.chip-observe {
+  background: rgba(70, 95, 125, 0.12);
+  border-color: rgba(70, 95, 125, 0.26);
+}
+
+.chip-structure {
+  background: rgba(65, 80, 150, 0.12);
+  border-color: rgba(65, 80, 150, 0.26);
+}
+
+.chip-trust {
+  background: rgba(75, 125, 95, 0.12);
+  border-color: rgba(75, 125, 95, 0.26);
+}
+
+.chip-create {
+  background: rgba(160, 110, 45, 0.12);
+  border-color: rgba(160, 110, 45, 0.28);
+}
+
+.chip-recover {
+  background: rgba(55, 125, 120, 0.12);
+  border-color: rgba(55, 125, 120, 0.26);
+}
+
+.chip-withdraw {
+  background: rgba(100, 100, 100, 0.12);
+  border-color: rgba(100, 100, 100, 0.24);
+}
+
+.chip-neutral {
+  background: rgba(120, 110, 100, 0.1);
+  border-color: rgba(120, 110, 100, 0.22);
 }
 
 @keyframes revealAttention {
@@ -921,6 +1063,18 @@
 
   .event-panel {
     padding: 24px 18px;
+  }
+
+  .event-intro-page {
+    padding: 24px 18px;
+  }
+
+  .event-intro-card {
+    padding: 22px;
+  }
+
+  .event-intro-title {
+    font-size: 28px;
   }
 
   .state-panel {
