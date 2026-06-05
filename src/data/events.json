@@ -984,6 +984,322 @@
     ]
   },
   {
+    "id": "elevator-plan-in-fandou-garden",
+    "title": "翻斗花园的电梯计划",
+    "theme": "公共资源与人设背书",
+    "category": "中压结构观察类",
+    "text": "你是翻斗花园的一名居民。翻斗花园一直都有居委会，但平时没什么存在感。有一天，一个开着豪车、打扮得很像富二代的人来到翻斗花园，说这个小区太老旧了，应该加装电梯。居委会的人很高兴，觉得终于有人愿意带翻斗花园升级了，连夜开会，准备把小区维修基金交给他来统筹。公告也贴得很夸张，说这位年轻人背景很硬，资源很多，眼光很远，能带翻斗花园走向新时代。结果没过多久，富二代以前的朋友出来说：他哪是什么富二代，车是他岳父的，以前也不是这么回事。居民们这才开始翻旧账。有人说他讲话一直很大，有人说他朋友圈包装得太满，也有人说，居委会怎么连这都没核实，就差点把维修基金交出去了。后来，小区把那张夸张公告撤了，维修基金也不交了。翻斗花园又恢复了安静。只是大家从此记住了一件事：开豪车的人，不一定会修电梯。会讲未来的人，也不一定能负责现在。",
+    "attentionHooks": [
+      {
+        "id": "luxury-car-filter",
+        "label": "豪车滤镜",
+        "description": "开豪车和资源感很容易制造信任，但它不能直接证明一个人有执行能力。",
+        "categories": [
+          "structure",
+          "other-motive"
+        ],
+        "text": "你注意到，豪车和背景故事制造了一种“他应该很有办法”的感觉，但这和会不会修电梯不是一回事。",
+        "type": "status_signal",
+        "traitBias": [
+          "observer",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "maintenance-fund",
+        "label": "维修基金",
+        "description": "真正被推上桌面的不是一个创意，而是小区居民共同的钱。",
+        "categories": [
+          "structure",
+          "responsibility"
+        ],
+        "text": "你意识到，问题不只是一个人包装得像不像，而是公共资金差点被交给一个没有被充分核验的人。",
+        "type": "public_resource",
+        "traitBias": [
+          "orderNeed",
+          "observer"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "exaggerated-notice",
+        "label": "夸张公告",
+        "description": "居委会的背书让这个人看起来更可信，也让风险变得更像集体共识。",
+        "categories": [
+          "structure",
+          "long-term-signal"
+        ],
+        "text": "公告写得越激动，居民越容易以为事情已经被核实过了。",
+        "type": "endorsement_risk",
+        "traitBias": [
+          "abstraction",
+          "orderNeed"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "verify-present-first",
+        "label": "先查现在",
+        "description": "宏大未来感不能替代资质、合同、资金流向和责任边界。",
+        "categories": [
+          "structure",
+          "shameSafe"
+        ],
+        "text": "你把注意力从“他看起来有没有资源”，移回“他现在能不能对具体事情负责”。",
+        "type": "verification",
+        "traitBias": [
+          "orderNeed",
+          "stability"
+        ],
+        "weight": 2
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "fund-almost-handed-over",
+        "text": "等一下，维修基金差点就这么交出去了？",
+        "tone": "警觉",
+        "linkedAttentionHookIds": [
+          "maintenance-fund",
+          "exaggerated-notice"
+        ],
+        "emotionDelta": {
+          "arousal": 1,
+          "trust": -1,
+          "shame": -1
+        },
+        "traitDelta": {
+          "observer": 2,
+          "orderNeed": 2
+        },
+        "pathDelta": {
+          "observer": 2,
+          "strategist": 1
+        }
+      },
+      {
+        "id": "car-does-not-repair-elevator",
+        "text": "开豪车和会修电梯到底有什么关系。",
+        "tone": "拆解",
+        "linkedAttentionHookIds": [
+          "luxury-car-filter",
+          "verify-present-first"
+        ],
+        "emotionDelta": {
+          "stability": 1,
+          "shame": -1
+        },
+        "traitDelta": {
+          "abstraction": 2,
+          "observer": 2
+        },
+        "pathDelta": {
+          "observer": 3,
+          "abstraction": 1
+        }
+      },
+      {
+        "id": "notice-like-roadshow",
+        "text": "居委会这公告写得比招商路演还激动。",
+        "tone": "吐槽",
+        "linkedAttentionHookIds": [
+          "exaggerated-notice",
+          "luxury-car-filter"
+        ],
+        "emotionDelta": {
+          "pleasure": 1,
+          "anger": 1,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "abstraction": 2,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 2,
+          "creator": 1
+        }
+      },
+      {
+        "id": "big-future-check-present",
+        "text": "未来讲得越大，越应该先查现在。",
+        "tone": "结构",
+        "linkedAttentionHookIds": [
+          "verify-present-first",
+          "maintenance-fund"
+        ],
+        "emotionDelta": {
+          "stability": 2,
+          "selfEsteem": 1,
+          "trust": -1
+        },
+        "traitDelta": {
+          "orderNeed": 2,
+          "abstraction": 2
+        },
+        "pathDelta": {
+          "strategist": 3,
+          "observer": 2
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "luxury-car-filter",
+        "label": "豪车滤镜",
+        "description": "资源感会制造信任，但不能直接证明一个人能负责具体项目。",
+        "moodDelta": {
+          "observer": 3,
+          "abstraction": 2,
+          "trust": -1
+        }
+      },
+      {
+        "id": "maintenance-fund",
+        "label": "维修基金",
+        "description": "被推上桌面的不是一个漂亮想法，而是居民共同的钱。",
+        "moodDelta": {
+          "orderNeed": 3,
+          "observer": 2,
+          "arousal": 1
+        }
+      },
+      {
+        "id": "exaggerated-notice",
+        "label": "夸张公告",
+        "description": "背书越热烈，越容易让人误以为核验已经完成。",
+        "moodDelta": {
+          "observer": 2,
+          "abstraction": 2,
+          "anger": 1,
+          "pleasure": 1
+        }
+      },
+      {
+        "id": "verify-present-first",
+        "label": "先查现在",
+        "description": "宏大未来不能替代资质、合同、资金流向和责任边界。",
+        "moodDelta": {
+          "orderNeed": 3,
+          "strategist": 2,
+          "stability": 2,
+          "shame": -1
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "check-qualification-contract-funds",
+        "label": "先看资质和合同",
+        "description": "先看资质、合同和资金流向，不被人设带着走。",
+        "moodDelta": {
+          "orderNeed": 3,
+          "strategist": 3,
+          "actionPower": 2,
+          "stability": 1
+        },
+        "feedback": "你把注意力从“他看起来很有资源”，拉回到谁负责、钱怎么走、合同怎么写。"
+      },
+      {
+        "id": "separate-status-from-responsibility",
+        "label": "拆开资源感",
+        "description": "把“他看起来很有资源”和“他能不能负责项目”分开放。",
+        "moodDelta": {
+          "observer": 3,
+          "abstraction": 3,
+          "shame": -1,
+          "stability": 1
+        },
+        "feedback": "你没有被豪车和大词带着走，而是把人设包装和具体执行能力拆成了两件事。"
+      },
+      {
+        "id": "question-fast-endorsement",
+        "label": "追问背书速度",
+        "description": "关注居委会为什么会这么快替他背书。",
+        "moodDelta": {
+          "observer": 3,
+          "orderNeed": 2,
+          "strategist": 2,
+          "trust": -1
+        },
+        "feedback": "你没有只盯着那个会讲未来的人，也开始看是谁把他的包装变成了公共决策。"
+      },
+      {
+        "id": "record-public-resource-risk",
+        "label": "记成风险样本",
+        "description": "把这件事记成一次公共资源风险样本。",
+        "moodDelta": {
+          "observer": 3,
+          "abstraction": 2,
+          "creator": 1,
+          "actionPower": 1
+        },
+        "feedback": "你把这件事从小区八卦里拆出来，记成了公共资源如何被人设和背书推着走的样本。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "packaging-cannot-replace-verification",
+        "label": "包装不能代替核验",
+        "description": "包装能制造信任感，但不能代替资质、合同和责任边界。",
+        "pathDelta": {
+          "observer": 4,
+          "abstraction": 3,
+          "strategist": 2
+        }
+      },
+      {
+        "id": "public-funds-need-process",
+        "label": "公共资金需要流程",
+        "description": "公共资金最怕被宏大叙事和熟人背书一起推着走。",
+        "pathDelta": {
+          "orderNeed": 4,
+          "observer": 3,
+          "strategist": 2
+        }
+      },
+      {
+        "id": "future-talk-not-present-responsibility",
+        "label": "未来感不是责任力",
+        "description": "会讲未来的人，不一定能负责现在的具体流程。",
+        "pathDelta": {
+          "abstraction": 3,
+          "observer": 3,
+          "stability": 2
+        }
+      },
+      {
+        "id": "verification-is-not-paranoia",
+        "label": "核验不是多疑",
+        "description": "不是居民太多疑，是流程本来就不该靠人设通过。",
+        "pathDelta": {
+          "selfEsteem": 3,
+          "stability": 3,
+          "orderNeed": 2,
+          "shame": -1
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "observer",
+      "orderNeed",
+      "strategist",
+      "abstraction",
+      "stability"
+    ],
+    "summaryText": "翻斗花园差点把维修基金交给一个看起来很有资源、很会讲未来的人。后来大家才发现，豪车、背景故事和夸张公告都不能替代资质、合同、资金流向和责任边界。你没有把这件事理解成“不信任有钱人”，而是把它重新命名为一次公共资源风险：开豪车的人，不一定会修电梯。会讲未来的人，也不一定能负责现在。",
+    "meta": {
+      "pressure": "medium",
+      "directorTags": [
+        "observer",
+        "structure",
+        "shameSafe"
+      ],
+      "weight": 9
+    }
+  },
+  {
     "id": "armor-hole-trivia",
     "title": "板甲上的奇怪开口",
     "theme": "荒诞冷知识题",
