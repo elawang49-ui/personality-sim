@@ -966,6 +966,1905 @@
     ]
   },
   {
+    "id": "friend-remembered-insomnia",
+    "title": "朋友真的记得你说过的话",
+    "theme": "善意与信任类",
+    "category": "善意与信任类",
+    "text": "你随口在群里吐槽了一句“最近老失眠，脑子要炸”。几天后，朋友给你点了一杯热牛奶外卖，备注：“不知道有没有用，喝完早点睡，别修仙了。”就这么点小事，你盯着外卖单看了五分钟。",
+    "attentionHooks": [
+      {
+        "id": "remembered-small-thing",
+        "label": "被记住的小事",
+        "description": "有人把你随口说过的话存进了大脑缓存。",
+        "categories": [
+          "relationship-change",
+          "other-motive"
+        ],
+        "text": "你注意到的不是牛奶，是有人把你随口说的话存进了大脑缓存。",
+        "type": "care_signal",
+        "traitBias": [
+          "sensitivity",
+          "empathy"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "quiet-goodwill",
+        "label": "安静的善意",
+        "description": "善意没有敲锣打鼓，只是安静地出现了一下。",
+        "categories": [
+          "tone",
+          "vulnerability"
+        ],
+        "text": "善意没有敲锣打鼓，它只是安静地出现了一下，像一只猫蹭你手。",
+        "type": "trust_signal",
+        "traitBias": [
+          "empathy",
+          "stability"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "can-this-be-trusted",
+        "label": "能不能信",
+        "description": "你开始判断这是不是能交心的关系。",
+        "categories": [
+          "long-term-signal",
+          "relationship-change"
+        ],
+        "text": "你开始判断：这是不是可以交心的那种朋友。",
+        "type": "trust_check",
+        "traitBias": [
+          "sensitivity",
+          "observer"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "receiving-care-is-clumsy",
+        "label": "接住关心也会慌",
+        "description": "被人记挂会让你手忙脚乱。",
+        "categories": [
+          "vulnerability",
+          "tone"
+        ],
+        "text": "被人记挂这件事，也会让你手忙脚乱。",
+        "type": "receiving_care",
+        "traitBias": [
+          "sensitivity",
+          "pleaser"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "not-a-debt",
+        "label": "好意不是欠债",
+        "description": "你在确认收下是否意味着必须马上偿还。",
+        "categories": [
+          "responsibility",
+          "other-motive"
+        ],
+        "text": "你在心里计算：收下这杯牛奶，会不会从此欠下一张人情账单。",
+        "type": "debt_anxiety",
+        "traitBias": [
+          "orderNeed",
+          "pleaser"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "he-remembered",
+        "text": "啊？他居然真的记住了……",
+        "tone": "惊讶",
+        "linkedAttentionHookIds": [
+          "remembered-small-thing",
+          "quiet-goodwill"
+        ],
+        "emotionDelta": {
+          "trust": 3,
+          "pleasure": 3,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "empathy": 1,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "moved-but-ashamed",
+        "text": "有点鼻子一酸，但又觉得为这种事感动显得我很缺爱。",
+        "tone": "慌张",
+        "linkedAttentionHookIds": [
+          "receiving-care-is-clumsy",
+          "not-a-debt"
+        ],
+        "emotionDelta": {
+          "shame": 2,
+          "pleasure": 2,
+          "arousal": 2
+        },
+        "traitDelta": {
+          "sensitivity": 1,
+          "selfEsteem": -1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "do-i-look-broken",
+        "text": "是不是我最近看起来太惨了，像要碎了？",
+        "tone": "自疑",
+        "linkedAttentionHookIds": [
+          "can-this-be-trusted",
+          "receiving-care-is-clumsy"
+        ],
+        "emotionDelta": {
+          "shame": 3,
+          "trust": -1
+        },
+        "traitDelta": {
+          "sensitivity": 1,
+          "selfEsteem": -1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "drink-first-think-less",
+        "text": "先喝了再说，想太多对睡眠不好。",
+        "tone": "接住",
+        "linkedAttentionHookIds": [
+          "quiet-goodwill",
+          "not-a-debt"
+        ],
+        "emotionDelta": {
+          "pleasure": 3,
+          "arousal": -2,
+          "trust": 2
+        },
+        "traitDelta": {
+          "stability": 1
+        },
+        "pathDelta": {
+          "caregiver": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "small-real-care",
+        "label": "这是一次很小但很真的关心。",
+        "description": "把这杯牛奶理解成一次具体、低调、没有表演的照顾。",
+        "moodDelta": {
+          "trust": 5,
+          "pleasure": 4,
+          "selfEsteem": 2,
+          "empathy": 3
+        }
+      },
+      {
+        "id": "seen-but-clumsy",
+        "label": "我好像被看见了，但我不太会接。",
+        "description": "重点不是对方做了什么，而是你突然不知道怎么站在善意里。",
+        "moodDelta": {
+          "sensitivity": 3,
+          "shame": 2,
+          "trust": 2,
+          "arousal": 1
+        }
+      },
+      {
+        "id": "afraid-of-cheap-feeling",
+        "label": "我怕自己一感动，就显得太廉价。",
+        "description": "把感动压低，避免暴露自己其实很需要被记住。",
+        "moodDelta": {
+          "shame": 4,
+          "selfEsteem": -2,
+          "pleaser": 2,
+          "trust": -1
+        }
+      },
+      {
+        "id": "receive-and-stop-overthinking",
+        "label": "这不用上纲上线，收下就完事了。",
+        "description": "把事情放回日常，不把温柔算成大型债务。",
+        "moodDelta": {
+          "stability": 4,
+          "trust": 3,
+          "arousal": -2,
+          "pleasure": 2
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "voice-thanks",
+        "label": "认真发语音说谢谢，并告诉对方你很开心。",
+        "description": "不躲进表情包，直接接住这份好意。",
+        "moodDelta": {
+          "trust": 5,
+          "selfEsteem": 3,
+          "empathy": 3,
+          "arousal": -1
+        },
+        "feedback": "你没有把温柔打折，关系里多了一点光。"
+      },
+      {
+        "id": "light-joke-back",
+        "label": "回一句“你也太会做人了吧”，把气氛带轻一点。",
+        "description": "用玩笑接住，但不把心完全摊开。",
+        "moodDelta": {
+          "trust": 3,
+          "pleasure": 4,
+          "creator": 1,
+          "shame": -1
+        },
+        "feedback": "你接住了好意，但给自己留了一层社交外壳。"
+      },
+      {
+        "id": "moon-emoji-only",
+        "label": "只回一个“🌙”表情包，假装没那么感动。",
+        "description": "把情绪缩成一个安全的小图标。",
+        "moodDelta": {
+          "avoider": 2,
+          "shame": 1,
+          "trust": 1,
+          "arousal": -1
+        },
+        "feedback": "你把心动藏起来了，安全，但有点可惜。"
+      },
+      {
+        "id": "remember-back",
+        "label": "下次也记住对方的小事，反向投喂。",
+        "description": "把被照顾转成来回流动的关系。",
+        "moodDelta": {
+          "empathy": 5,
+          "trust": 4,
+          "actionPower": 2,
+          "caregiver": 2
+        },
+        "feedback": "你开始把信任变成来回流动的东西。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "remembered-not-debt",
+        "label": "有人记得我，不代表我要立刻欠债。",
+        "description": "允许好意停留为好意，而不是马上变成人情计算。",
+        "pathDelta": {
+          "trust": 6,
+          "selfEsteem": 3,
+          "stability": 2
+        }
+      },
+      {
+        "id": "receive-before-repay",
+        "label": "我可以接受好意，不用马上还清。",
+        "description": "先收下，再慢慢回应。",
+        "pathDelta": {
+          "caregiver": 4,
+          "pleaser": 2,
+          "trust": 4,
+          "selfEsteem": 2
+        }
+      },
+      {
+        "id": "trust-is-hard-because-rare",
+        "label": "我怕信任，是因为以前太少被稳稳接住。",
+        "description": "把慌张看成旧经验，不把这次善意直接推远。",
+        "pathDelta": {
+          "observer": 5,
+          "trust": 2,
+          "stability": 2,
+          "shame": -2
+        }
+      },
+      {
+        "id": "relationships-not-finals",
+        "label": "关系不是期末考试，有些温柔可以先收下。",
+        "description": "关系不是答题卡，不必每一格都算分。",
+        "pathDelta": {
+          "empathy": 4,
+          "trust": 5,
+          "avoider": -1,
+          "selfEsteem": 2
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "trust",
+      "selfEsteem",
+      "empathy",
+      "pleaser",
+      "caregiver",
+      "observer"
+    ],
+    "summaryText": "这次没人攻击你，现实只是轻轻递来一杯热牛奶。你发现最难的不是分辨恶意，而是在善意出现时，不立刻把它解释成负担。"
+  },
+  {
+    "id": "public-praise-small-work",
+    "title": "你的作品被公开夸了",
+    "theme": "成功与曝光类",
+    "category": "成功与曝光类",
+    "text": "你随手发了一个小作品到社交平台，本来只想当个电子日记。没想到转发出圈了，有人评论：“这个真的很有灵气。”你盯着那句话看了好一会儿，开心得像只不敢出窝的小猫。",
+    "attentionHooks": [
+      {
+        "id": "praise-hard-to-believe",
+        "label": "夸奖很难全信",
+        "description": "你第一时间不是快乐，而是在确认这是不是随便夸夸。",
+        "categories": [
+          "tone",
+          "vulnerability"
+        ],
+        "text": "你注意到的不是夸奖本身，而是自己不敢完全相信。",
+        "type": "praise_signal",
+        "traitBias": [
+          "sensitivity",
+          "selfEsteem"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "visibility-pressure",
+        "label": "曝光压力",
+        "description": "被看见带来的不是纯快乐，还有下次会不会翻车。",
+        "categories": [
+          "long-term-signal",
+          "process"
+        ],
+        "text": "被看见带来的不是纯快乐，还有“下次会不会翻车”的焦虑。",
+        "type": "visibility_pressure",
+        "traitBias": [
+          "orderNeed",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "work-reached-someone",
+        "label": "作品抵达了别人",
+        "description": "这个东西真的被别人接收到了。",
+        "categories": [
+          "relationship-change",
+          "other-motive"
+        ],
+        "text": "你开始确认：这个东西真的抵达了别人。",
+        "type": "creator_signal",
+        "traitBias": [
+          "creator",
+          "empathy"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "light-on-you",
+        "label": "灯照到你身上",
+        "description": "曝光照亮作品，也照亮你想躲起来的部分。",
+        "categories": [
+          "vulnerability",
+          "long-term-signal"
+        ],
+        "text": "曝光像一盏大灯，照亮作品，也照亮你想躲起来的部分。",
+        "type": "exposure",
+        "traitBias": [
+          "sensitivity",
+          "observer"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "joy-needs-permission",
+        "label": "开心需要许可",
+        "description": "你在给自己的开心找一个合法理由。",
+        "categories": [
+          "tone",
+          "responsibility"
+        ],
+        "text": "你甚至开始审核自己的开心：这样高兴，会不会太普信。",
+        "type": "joy_permission",
+        "traitBias": [
+          "pleaser",
+          "selfEsteem"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "is-this-real-praise",
+        "text": "真的假的？还是大家随便夸夸？",
+        "tone": "怀疑",
+        "linkedAttentionHookIds": [
+          "praise-hard-to-believe",
+          "work-reached-someone"
+        ],
+        "emotionDelta": {
+          "trust": 1,
+          "pleasure": 2,
+          "arousal": 2
+        },
+        "traitDelta": {
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "happy-but-hide-it",
+        "text": "我好开心，但我不敢表现得太开心，怕显得普信。",
+        "tone": "压住",
+        "linkedAttentionHookIds": [
+          "joy-needs-permission",
+          "light-on-you"
+        ],
+        "emotionDelta": {
+          "pleasure": 4,
+          "shame": 2,
+          "arousal": 2
+        },
+        "traitDelta": {
+          "selfEsteem": -1,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "next-one-pressure",
+        "text": "完了，下一次是不是要更好？压力来了。",
+        "tone": "紧张",
+        "linkedAttentionHookIds": [
+          "visibility-pressure",
+          "light-on-you"
+        ],
+        "emotionDelta": {
+          "arousal": 4,
+          "shame": 1
+        },
+        "traitDelta": {
+          "orderNeed": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "keep-making",
+        "text": "那我是不是可以继续做下去？",
+        "tone": "被点亮",
+        "linkedAttentionHookIds": [
+          "work-reached-someone",
+          "praise-hard-to-believe"
+        ],
+        "emotionDelta": {
+          "pleasure": 4,
+          "actionPower": 3,
+          "trust": 2
+        },
+        "traitDelta": {
+          "selfEsteem": 1
+        },
+        "pathDelta": {
+          "creator": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "real-seen",
+        "label": "这是一次真实的被看见。",
+        "description": "承认这不是幻觉，也不是礼貌性捧场。",
+        "moodDelta": {
+          "selfEsteem": 5,
+          "trust": 3,
+          "pleasure": 4,
+          "creator": 2
+        }
+      },
+      {
+        "id": "cannot-hold-praise",
+        "label": "我开心，但我怕自己接不住夸奖。",
+        "description": "快乐是真的，慌也是真的。",
+        "moodDelta": {
+          "shame": 2,
+          "sensitivity": 3,
+          "pleasure": 3,
+          "arousal": 2
+        }
+      },
+      {
+        "id": "recognition-pressure",
+        "label": "认可让我兴奋，也让我紧张。",
+        "description": "把被看见理解成机会，也理解成压力。",
+        "moodDelta": {
+          "arousal": 4,
+          "orderNeed": 2,
+          "actionPower": 2,
+          "stability": -1
+        }
+      },
+      {
+        "id": "signal-to-continue",
+        "label": "这可能是继续创作的信号。",
+        "description": "把夸奖看成下一步的燃料，而不是审判。",
+        "moodDelta": {
+          "creator": 4,
+          "actionPower": 4,
+          "selfEsteem": 3,
+          "trust": 2
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "thank-directly",
+        "label": "大方回复：谢谢，很开心你喜欢。",
+        "description": "把认可接下来，不急着缩小。",
+        "moodDelta": {
+          "trust": 4,
+          "selfEsteem": 4,
+          "pleasure": 3,
+          "shame": -2
+        },
+        "feedback": "你接住了夸奖，没有把它推回去。"
+      },
+      {
+        "id": "shrink-credit",
+        "label": "说“随便做的啦”，把功劳缩小。",
+        "description": "用熟练的谦虚把光调暗。",
+        "moodDelta": {
+          "pleaser": 3,
+          "shame": 2,
+          "selfEsteem": -2,
+          "trust": 1
+        },
+        "feedback": "你把光调暗了一点，熟练得让人心疼。"
+      },
+      {
+        "id": "plan-next-version",
+        "label": "马上开始计划下一版，焦虑地卷自己。",
+        "description": "把喜悦转成任务清单。",
+        "moodDelta": {
+          "actionPower": 4,
+          "orderNeed": 3,
+          "arousal": 3,
+          "pleasure": -1
+        },
+        "feedback": "你把喜悦变成任务，安全，但有点累。"
+      },
+      {
+        "id": "screenshot-happy-five-min",
+        "label": "先截图保存，再允许自己开心五分钟。",
+        "description": "给快乐一个很小但合法的位置。",
+        "moodDelta": {
+          "pleasure": 5,
+          "stability": 3,
+          "selfEsteem": 3,
+          "arousal": -1
+        },
+        "feedback": "你给快乐留了一个合法席位。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "can-be-praised",
+        "label": "我可以被夸，不必立刻谦虚到消失。",
+        "description": "不把认可折叠成“没有没有”。",
+        "pathDelta": {
+          "selfEsteem": 7,
+          "trust": 3,
+          "pleaser": -1
+        }
+      },
+      {
+        "id": "not-luck-made-thing",
+        "label": "这不是侥幸，是我真的做出了能被看见的东西。",
+        "description": "承认作品的存在，也承认自己的手。",
+        "pathDelta": {
+          "creator": 7,
+          "selfEsteem": 5,
+          "actionPower": 2
+        }
+      },
+      {
+        "id": "visibility-is-entry",
+        "label": "曝光不只是风险，也可能是入口。",
+        "description": "把被看见当成新入口，而不是纯粹危险。",
+        "pathDelta": {
+          "observer": 4,
+          "creator": 4,
+          "trust": 2,
+          "stability": 2
+        }
+      },
+      {
+        "id": "one-good-time-counts",
+        "label": "我不用马上更强，先承认这一次很好。",
+        "description": "先让这一次成立，不急着透支下一次。",
+        "pathDelta": {
+          "stability": 5,
+          "selfEsteem": 4,
+          "pleasure": 2
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "creator",
+      "selfEsteem",
+      "trust",
+      "arousal",
+      "observer"
+    ],
+    "summaryText": "这次现实没有打你，它把一束灯打到了你身上。你发现自己不是不想被看见，而是太久没练习站在光里。"
+  },
+  {
+    "id": "nine-hour-sleep",
+    "title": "你终于睡了一个长觉",
+    "theme": "疲劳与自我修复类",
+    "category": "疲劳与自我修复类",
+    "text": "你本来打算晚上继续肝东西，结果洗完澡躺下就睡着了，一觉醒来发现睡了九个小时。任务没有推进，但你第一次觉得脑袋没那么吵，像手机恢复了出厂设置。",
+    "attentionHooks": [
+      {
+        "id": "body-took-over",
+        "label": "身体接管",
+        "description": "身体终于夺回了一次话语权。",
+        "categories": [
+          "vulnerability",
+          "long-term-signal"
+        ],
+        "text": "你注意到的不是偷懒，而是身体终于夺回了一次话语权。",
+        "type": "body_signal",
+        "traitBias": [
+          "stability",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "tasks-still-there",
+        "label": "任务还在",
+        "description": "任务没消失，但你也没继续被吞掉。",
+        "categories": [
+          "process",
+          "responsibility"
+        ],
+        "text": "任务没消失，但你也没有继续被任务吞掉。",
+        "type": "process",
+        "traitBias": [
+          "orderNeed",
+          "stability"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "rest-is-charger",
+        "label": "休息是充电口",
+        "description": "休息不是奖励，而是维持运行的接口。",
+        "categories": [
+          "structure",
+          "long-term-signal"
+        ],
+        "text": "休息不是奖励，它像充电口，早该插上。",
+        "type": "recovery",
+        "traitBias": [
+          "stability",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "cooling-system",
+        "label": "系统降温",
+        "description": "停下来不是失败，是系统降温。",
+        "categories": [
+          "process",
+          "literal"
+        ],
+        "text": "你开始分辨：停下来不是失败，是系统降温。",
+        "type": "repair",
+        "traitBias": [
+          "stability",
+          "observer"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "guilt-after-rest",
+        "label": "休息后的愧疚",
+        "description": "你醒来之后先检查自己有没有欠世界什么。",
+        "categories": [
+          "tone",
+          "responsibility"
+        ],
+        "text": "你一睁眼就开始查账：睡这九小时，到底算不算犯罪。",
+        "type": "guilt",
+        "traitBias": [
+          "pleaser",
+          "orderNeed"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "did-nothing-panic",
+        "text": "完了完了，我怎么又什么都没干！",
+        "tone": "自责",
+        "linkedAttentionHookIds": [
+          "guilt-after-rest",
+          "tasks-still-there"
+        ],
+        "emotionDelta": {
+          "shame": 3,
+          "arousal": 3
+        },
+        "traitDelta": {
+          "orderNeed": 1,
+          "selfEsteem": -1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "auto-shutdown",
+        "text": "原来我真的累到自动关机了。",
+        "tone": "确认疲惫",
+        "linkedAttentionHookIds": [
+          "body-took-over",
+          "rest-is-charger"
+        ],
+        "emotionDelta": {
+          "arousal": -2,
+          "shame": -1
+        },
+        "traitDelta": {
+          "stability": 2
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "less-scary-after-sleep",
+        "text": "睡饱以后，事情好像也没那么可怕。",
+        "tone": "恢复",
+        "linkedAttentionHookIds": [
+          "cooling-system",
+          "tasks-still-there"
+        ],
+        "emotionDelta": {
+          "pleasure": 2,
+          "arousal": -3,
+          "trust": 1
+        },
+        "traitDelta": {
+          "stability": 2
+        },
+        "pathDelta": {
+          "avoider": 1
+        }
+      },
+      {
+        "id": "change-plan-before-crash",
+        "text": "我得把计划改一下，不然还会再崩。",
+        "tone": "整理",
+        "linkedAttentionHookIds": [
+          "cooling-system",
+          "rest-is-charger"
+        ],
+        "emotionDelta": {
+          "actionPower": 2,
+          "arousal": -1
+        },
+        "traitDelta": {
+          "orderNeed": 1,
+          "stability": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "forced-maintenance",
+        "label": "这是身体在强制维修。",
+        "description": "把睡着理解成身体的保护，而不是道德失败。",
+        "moodDelta": {
+          "stability": 5,
+          "shame": -3,
+          "arousal": -2,
+          "selfEsteem": 2
+        }
+      },
+      {
+        "id": "really-at-limit",
+        "label": "我不是懒，我是真的到线了。",
+        "description": "承认疲惫是事实，不是借口。",
+        "moodDelta": {
+          "selfEsteem": 3,
+          "stability": 4,
+          "shame": -2,
+          "sensitivity": 1
+        }
+      },
+      {
+        "id": "world-not-ruined",
+        "label": "睡一觉没有毁掉世界。",
+        "description": "醒来之后，世界没有因为你休息而爆炸。",
+        "moodDelta": {
+          "stability": 4,
+          "trust": 2,
+          "arousal": -3,
+          "pleasure": 2
+        }
+      },
+      {
+        "id": "need-replan-not-hardcarry",
+        "label": "我需要重新安排，而不是继续硬扛。",
+        "description": "把休息后的空白转成更现实的计划。",
+        "moodDelta": {
+          "orderNeed": 3,
+          "actionPower": 3,
+          "stability": 3,
+          "shame": -1
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "eat-and-one-step",
+        "label": "先吃点东西，再看今天能做哪一小步。",
+        "description": "恢复之后接一小步，不补偿式燃烧。",
+        "moodDelta": {
+          "stability": 4,
+          "actionPower": 3,
+          "selfEsteem": 2,
+          "pleasure": 2
+        },
+        "feedback": "你把恢复接回了行动，而不是审判。"
+      },
+      {
+        "id": "compensate-three-hours",
+        "label": "立刻补偿式狂干三小时。",
+        "description": "用新的透支填旧的愧疚。",
+        "moodDelta": {
+          "actionPower": 4,
+          "arousal": 4,
+          "shame": 2,
+          "stability": -3
+        },
+        "feedback": "你又把电量花光了，熟悉但危险。"
+      },
+      {
+        "id": "minimum-mode",
+        "label": "承认今天只做最低限度。",
+        "description": "给自己开一个低功耗模式。",
+        "moodDelta": {
+          "stability": 5,
+          "avoider": 2,
+          "shame": -2,
+          "arousal": -2
+        },
+        "feedback": "你给自己开了一个现实版本的低功耗模式。"
+      },
+      {
+        "id": "split-plan-with-rest",
+        "label": "把计划拆小，留出固定休息。",
+        "description": "不美化疲惫，直接管理它。",
+        "moodDelta": {
+          "strategist": 2,
+          "orderNeed": 4,
+          "stability": 5,
+          "actionPower": 2
+        },
+        "feedback": "你没有美化疲惫，而是开始管理它。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "not-machine",
+        "label": "我不是机器，断电不是道德失败。",
+        "description": "把休息从羞耻里拿出来。",
+        "pathDelta": {
+          "stability": 7,
+          "selfEsteem": 4,
+          "shame": -3
+        }
+      },
+      {
+        "id": "stability-over-hardcarry",
+        "label": "稳定比硬撑更有用。",
+        "description": "不把崩溃当成努力的勋章。",
+        "pathDelta": {
+          "stability": 8,
+          "strategist": 2,
+          "actionPower": 2
+        }
+      },
+      {
+        "id": "discipline-not-burning-out",
+        "label": "真正的自律不是不休息，是不把自己烧穿。",
+        "description": "给自律换一个不自虐的定义。",
+        "pathDelta": {
+          "observer": 4,
+          "stability": 5,
+          "selfEsteem": 2
+        }
+      },
+      {
+        "id": "slow-not-overdrawn",
+        "label": "我可以慢一点，但不要一直透支。",
+        "description": "承认慢速也是一种路线。",
+        "pathDelta": {
+          "avoider": 4,
+          "stability": 5,
+          "selfEsteem": 3
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "stability",
+      "selfEsteem",
+      "avoider",
+      "strategist",
+      "actionPower"
+    ],
+    "summaryText": "这次没有剧情高潮，只有一场长觉。但你开始明白：现实敲打你的时候，身体不是拖后腿的东西，它是最后还在保护你的队友。"
+  },
+  {
+    "id": "useless-little-thing",
+    "title": "你突然想做一个没用的小东西",
+    "theme": "低冲突创作转化类",
+    "category": "低冲突创作转化类",
+    "text": "你路过文具店，看到一叠奇怪颜色的便签，突然想做一个“今日倒霉指数牌”——记录今天掉了多少次东西、打错几次字。它不赚钱、不解决问题、不证明能力，但你就是想做。",
+    "attentionHooks": [
+      {
+        "id": "light-play-urge",
+        "label": "想玩一下",
+        "description": "那一点很轻的想玩冒出来了。",
+        "categories": [
+          "tone",
+          "long-term-signal"
+        ],
+        "text": "你注意到的不是项目价值，而是那一点很轻的想玩。",
+        "type": "play_signal",
+        "traitBias": [
+          "creator",
+          "stability"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "creation-without-pain",
+        "label": "不靠痛苦创作",
+        "description": "创作也可以从手痒开始。",
+        "categories": [
+          "structure",
+          "process"
+        ],
+        "text": "创作不一定要从痛苦里长出来，也可以从手痒开始。",
+        "type": "creator_signal",
+        "traitBias": [
+          "creator",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "useless-can-revive",
+        "label": "没用也能续命",
+        "description": "没用的东西也能让人活过来。",
+        "categories": [
+          "vulnerability",
+          "long-term-signal"
+        ],
+        "text": "你开始确认：没用的东西也能让人活过来。",
+        "type": "repair",
+        "traitBias": [
+          "stability",
+          "selfEsteem"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "self-started-expression",
+        "label": "主动表达",
+        "description": "这次不是现实逼你产出，是你自己想伸手。",
+        "categories": [
+          "process",
+          "literal"
+        ],
+        "text": "这次不是现实逼你产出，是你自己想伸手。",
+        "type": "self_expression",
+        "traitBias": [
+          "creator",
+          "actionPower"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "need-permission-to-play",
+        "label": "玩也要许可",
+        "description": "你在问一个小玩意儿有没有资格存在。",
+        "categories": [
+          "responsibility",
+          "tone"
+        ],
+        "text": "你甚至想先给这叠便签做立项评审，好证明它配占用今晚。",
+        "type": "permission",
+        "traitBias": [
+          "orderNeed",
+          "pleaser"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "useless-but-want",
+        "text": "这东西有什么用啊……但我好想做。",
+        "tone": "手痒",
+        "linkedAttentionHookIds": [
+          "light-play-urge",
+          "need-permission-to-play"
+        ],
+        "emotionDelta": {
+          "pleasure": 3,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "creator": 1
+        },
+        "pathDelta": {
+          "creator": 1
+        }
+      },
+      {
+        "id": "meaning-if-no-one-sees",
+        "text": "如果没人看，是不是就没意义？",
+        "tone": "犹豫",
+        "linkedAttentionHookIds": [
+          "need-permission-to-play",
+          "useless-can-revive"
+        ],
+        "emotionDelta": {
+          "shame": 2,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "selfEsteem": -1,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "small-version-first",
+        "text": "我可以先做一版很小的。",
+        "tone": "试做",
+        "linkedAttentionHookIds": [
+          "self-started-expression",
+          "creation-without-pain"
+        ],
+        "emotionDelta": {
+          "actionPower": 2,
+          "arousal": -1
+        },
+        "traitDelta": {
+          "stability": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "this-is-what-i-want-to-play",
+        "text": "这可能就是我最近最想玩的东西。",
+        "tone": "点亮",
+        "linkedAttentionHookIds": [
+          "light-play-urge",
+          "self-started-expression"
+        ],
+        "emotionDelta": {
+          "pleasure": 4,
+          "actionPower": 3
+        },
+        "traitDelta": {
+          "selfEsteem": 1
+        },
+        "pathDelta": {
+          "creator": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "low-cost-creation",
+        "label": "这是一次低成本创作冲动。",
+        "description": "不用立项，不用融资，今晚就能做一点。",
+        "moodDelta": {
+          "creator": 4,
+          "actionPower": 3,
+          "pleasure": 3,
+          "arousal": -1
+        }
+      },
+      {
+        "id": "want-not-need-useful",
+        "label": "我想做，不代表它必须有用。",
+        "description": "给“没用但想做”留一条活路。",
+        "moodDelta": {
+          "selfEsteem": 3,
+          "creator": 3,
+          "stability": 2,
+          "shame": -2
+        }
+      },
+      {
+        "id": "fear-no-one-watches",
+        "label": "我怕没人看，所以先否定它。",
+        "description": "把没人看提前解释成没意义。",
+        "moodDelta": {
+          "shame": 3,
+          "selfEsteem": -2,
+          "sensitivity": 2,
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "tiny-fire-in-life",
+        "label": "这可能是生活里很小的火苗。",
+        "description": "不是宏大梦想，只是一个能让今晚亮一点的小东西。",
+        "moodDelta": {
+          "pleasure": 4,
+          "stability": 3,
+          "creator": 3,
+          "trust": 1
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "buy-and-make-first",
+        "label": "买下便签，今晚做第一张。",
+        "description": "不等万事俱备，先让它出现。",
+        "moodDelta": {
+          "creator": 4,
+          "actionPower": 4,
+          "pleasure": 3,
+          "selfEsteem": 2
+        },
+        "feedback": "你没有让灵感排队等死。"
+      },
+      {
+        "id": "note-for-later",
+        "label": "先记在手机里，等有空再说。",
+        "description": "保存火苗，但没有马上点燃。",
+        "moodDelta": {
+          "observer": 2,
+          "stability": 2,
+          "actionPower": -1,
+          "creator": 1
+        },
+        "feedback": "你保存了火苗，但风还在吹。"
+      },
+      {
+        "id": "ask-friend-permission",
+        "label": "发给朋友问：这个会不会太无聊？",
+        "description": "把许可权交出去一点。",
+        "moodDelta": {
+          "trust": 2,
+          "pleaser": 2,
+          "shame": 1,
+          "selfEsteem": -1
+        },
+        "feedback": "你把许可权交出去了一点。"
+      },
+      {
+        "id": "rough-version-now",
+        "label": "直接做一个粗糙版本，不追求完美。",
+        "description": "让作品先出生，再慢慢长大。",
+        "moodDelta": {
+          "creator": 5,
+          "actionPower": 5,
+          "stability": 2,
+          "orderNeed": -1
+        },
+        "feedback": "你让作品先出生，再慢慢长大。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "make-for-fun",
+        "label": "我可以为了好玩而做东西。",
+        "description": "把玩从浪费时间里救出来。",
+        "pathDelta": {
+          "creator": 8,
+          "pleasure": 3,
+          "selfEsteem": 3
+        }
+      },
+      {
+        "id": "creation-not-only-suffering",
+        "label": "创作不是必须先受苦才能开始。",
+        "description": "创作也可以来自轻轻一动。",
+        "pathDelta": {
+          "creator": 7,
+          "observer": 3,
+          "stability": 2
+        }
+      },
+      {
+        "id": "useless-can-save-me",
+        "label": "没用的小东西，也可能救我一下。",
+        "description": "无用不是无意义。",
+        "pathDelta": {
+          "stability": 5,
+          "selfEsteem": 3,
+          "avoider": 2
+        }
+      },
+      {
+        "id": "allowed-before-ready",
+        "label": "我不必等到准备好，才允许自己表达。",
+        "description": "表达可以先粗糙，之后再长出样子。",
+        "pathDelta": {
+          "creator": 6,
+          "actionPower": 4,
+          "selfEsteem": 3
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "creator",
+      "actionPower",
+      "selfEsteem",
+      "stability",
+      "observer"
+    ],
+    "summaryText": "这次没有创伤转化，没有宏大意义。你只是被一叠便签拽了一下袖子，然后发现：想玩，本身也是一种活着的证据。"
+  },
+  {
+    "id": "coworker-short-reply-busy",
+    "title": "同事只是太忙，语气有点短",
+    "theme": "模糊但不敌意的社交类",
+    "category": "模糊但不敌意的社交类",
+    "text": "你在钉钉上问同事一个问题，对方很快回了两个字：“等下。”没表情，也没解释。你心里咯噔一下，开始脑补自己是不是被讨厌了。十分钟后，对方补了一句：“刚在接电话，我现在看。”",
+    "attentionHooks": [
+      {
+        "id": "tone-empty-space",
+        "label": "语气空白",
+        "description": "你捕捉到的是语气空白，不是完整事实。",
+        "categories": [
+          "tone",
+          "literal"
+        ],
+        "text": "你注意到的是语气的空白，不是事实本身。",
+        "type": "tone_gap",
+        "traitBias": [
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "two-words-open-door",
+        "label": "两个字的大戏",
+        "description": "两个字像一扇没关好的门，你会自动往里想。",
+        "categories": [
+          "relationship-change",
+          "tone"
+        ],
+        "text": "两个字像一扇没关好的门，你会自动往里想。",
+        "type": "ambiguity",
+        "traitBias": [
+          "sensitivity",
+          "observer"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "short-not-hostile",
+        "label": "短不等于凶",
+        "description": "信号很短，但不一定是敌意。",
+        "categories": [
+          "literal",
+          "other-motive"
+        ],
+        "text": "这次信号很短，但不一定是敌意。",
+        "type": "context_check",
+        "traitBias": [
+          "stability",
+          "empathy"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "wait-for-second-message",
+        "label": "等第二条消息",
+        "description": "第一秒的刺痛可以放到第二条消息之后再判。",
+        "categories": [
+          "process",
+          "long-term-signal"
+        ],
+        "text": "你开始练习把第一秒的刺痛，放到第二条消息之后再判。",
+        "type": "delay_judgment",
+        "traitBias": [
+          "stability",
+          "observer"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "busy-person-context",
+        "label": "对方也有上下文",
+        "description": "对方可能只是被别的事情占住，不是在处理你这个人。",
+        "categories": [
+          "other-motive",
+          "process"
+        ],
+        "text": "对方也有自己的后台进程，不一定每个短句都在针对你。",
+        "type": "empathy_context",
+        "traitBias": [
+          "empathy",
+          "stability"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "does-he-hate-me",
+        "text": "他是不是嫌我烦？",
+        "tone": "自疑",
+        "linkedAttentionHookIds": [
+          "tone-empty-space",
+          "two-words-open-door"
+        ],
+        "emotionDelta": {
+          "shame": 2,
+          "trust": -2,
+          "arousal": 2
+        },
+        "traitDelta": {
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "maybe-busy",
+        "text": "先别急，可能真的在忙。",
+        "tone": "缓冲",
+        "linkedAttentionHookIds": [
+          "short-not-hostile",
+          "busy-person-context"
+        ],
+        "emotionDelta": {
+          "arousal": -2,
+          "trust": 2
+        },
+        "traitDelta": {
+          "empathy": 1,
+          "stability": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "two-words-cold",
+        "text": "这两个字好冷，我已经开始不舒服了。",
+        "tone": "刺痛",
+        "linkedAttentionHookIds": [
+          "tone-empty-space",
+          "two-words-open-door"
+        ],
+        "emotionDelta": {
+          "arousal": 2,
+          "trust": -1
+        },
+        "traitDelta": {
+          "sensitivity": 2
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "wait-for-more",
+        "text": "等他补充一句再判断。",
+        "tone": "延迟判断",
+        "linkedAttentionHookIds": [
+          "wait-for-second-message",
+          "short-not-hostile"
+        ],
+        "emotionDelta": {
+          "arousal": -1,
+          "trust": 1
+        },
+        "traitDelta": {
+          "stability": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "ambiguous-tone-not-answer",
+        "label": "这是一次模糊语气，不是完整答案。",
+        "description": "把两个字暂时放在信息不足的位置。",
+        "moodDelta": {
+          "observer": 3,
+          "stability": 3,
+          "arousal": -2,
+          "trust": 1
+        }
+      },
+      {
+        "id": "short-reply-stung",
+        "label": "我被短回复刺了一下。",
+        "description": "承认不舒服，但不立刻把它升级。",
+        "moodDelta": {
+          "sensitivity": 3,
+          "shame": 1,
+          "arousal": 1,
+          "observer": 1
+        }
+      },
+      {
+        "id": "wait-info-incomplete",
+        "label": "先等等，信息还没齐。",
+        "description": "先等上下文出现，再决定怎么解释。",
+        "moodDelta": {
+          "stability": 4,
+          "trust": 2,
+          "arousal": -2,
+          "orderNeed": 1
+        }
+      },
+      {
+        "id": "uncomfortable-not-convict",
+        "label": "我可以感到不舒服，但不急着定罪。",
+        "description": "保留感受，也保留事实。",
+        "moodDelta": {
+          "selfEsteem": 2,
+          "observer": 3,
+          "stability": 3,
+          "shame": -1
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "pause-judgment",
+        "label": "先暂停判断，等对方后续回复。",
+        "description": "不把两字回复直接判成关系事故。",
+        "moodDelta": {
+          "stability": 4,
+          "trust": 2,
+          "arousal": -2,
+          "observer": 2
+        },
+        "feedback": "你没有把两字回复直接判成关系事故。"
+      },
+      {
+        "id": "withdraw-politely",
+        "label": "立刻补一句“不方便就算了”。",
+        "description": "提前撤退，顺便给自己找台阶。",
+        "moodDelta": {
+          "pleaser": 3,
+          "avoider": 2,
+          "shame": 1,
+          "actionPower": -1
+        },
+        "feedback": "你提前撤退了，像在给自己找台阶。"
+      },
+      {
+        "id": "continue-after-context",
+        "label": "等对方解释后，正常继续沟通。",
+        "description": "把关系从误判边缘拉回来。",
+        "moodDelta": {
+          "trust": 4,
+          "stability": 3,
+          "empathy": 2,
+          "arousal": -1
+        },
+        "feedback": "你把关系从误判边缘拉了回来。"
+      },
+      {
+        "id": "remind-short-not-hate",
+        "label": "提醒自己：短不等于凶，忙不等于讨厌我。",
+        "description": "不给敏感判死刑，只给它加缓冲。",
+        "moodDelta": {
+          "selfEsteem": 3,
+          "stability": 4,
+          "trust": 2,
+          "shame": -1
+        },
+        "feedback": "你没有否定敏感，只是给它加了一个缓冲区。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "not-every-space-rejection",
+        "label": "不是每个冷掉的空格都是拒绝。",
+        "description": "把沉默和短句从拒绝里拆出来。",
+        "pathDelta": {
+          "trust": 5,
+          "stability": 4,
+          "observer": 3
+        }
+      },
+      {
+        "id": "feel-first-judge-slower",
+        "label": "我可以先感到刺痛，再慢一点判断。",
+        "description": "不否认敏感，但延迟定案。",
+        "pathDelta": {
+          "observer": 5,
+          "stability": 4,
+          "selfEsteem": 2
+        }
+      },
+      {
+        "id": "signals-need-context",
+        "label": "关系里的信号要看上下文，不只看一个词。",
+        "description": "把社交判断从单词升级成上下文阅读。",
+        "pathDelta": {
+          "observer": 6,
+          "empathy": 3,
+          "trust": 2
+        }
+      },
+      {
+        "id": "sensitive-not-worst-script",
+        "label": "敏感不是错，但不必每次都替现实写最坏剧本。",
+        "description": "敏感可以做雷达，不必每次都拉警报。",
+        "pathDelta": {
+          "selfEsteem": 4,
+          "stability": 5,
+          "avoider": -1
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "sensitivity",
+      "trust",
+      "observer",
+      "stability",
+      "pleaser",
+      "avoider"
+    ],
+    "summaryText": "这次你没有迟钝，也没有爆炸。你只是把一句“等下”放回了上下文里，发现有些刺痛不需要立刻升级成战争。"
+  },
+  {
+    "id": "family-caring-denial",
+    "title": "家人的关心",
+    "text": "你说想换个方向试试，家人说：“我们也是为你好，你别太理想化，稳定一点不好吗？”听起来像关心，但你突然不知道该怎么继续解释自己的梦想和渴望。",
+    "attentionHooks": [
+      {
+        "id": "soft-control",
+        "label": "控制",
+        "description": "说着为你好，结果却是把你推回去",
+        "categories": [
+          "tone",
+          "power-relation"
+        ],
+        "text": "说着为你好，结果却是把你推回去。",
+        "type": "tone",
+        "traitBias": [
+          "sensitivity",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "family-risk-frame",
+        "label": "风险",
+        "description": "对方首先看到的是不稳定，而不是你多优秀。",
+        "categories": [
+          "structure",
+          "long-term-signal"
+        ],
+        "text": "对方首先看到的是不稳定，而不是你多优秀。",
+        "type": "structure",
+        "traitBias": [
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "care-motive",
+        "label": "担心",
+        "description": "可能真的害怕你受苦，也不知道怎么支持。",
+        "categories": [
+          "other-motive",
+          "vulnerability"
+        ],
+        "text": "可能真的害怕你受苦，也不知道怎么支持。",
+        "type": "other-motive",
+        "traitBias": [
+          "empathy",
+          "sensitivity"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "need-erasure",
+        "label": "需求被否认",
+        "description": "你的理想和尝试被翻译成不成熟和不现实。",
+        "categories": [
+          "hidden-belittling",
+          "relationship-change"
+        ],
+        "text": "你的理想和尝试被翻译成不成熟和不现实。",
+        "type": "hidden-belittling",
+        "traitBias": [
+          "sensitivity",
+          "aggression"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "old-family-script",
+        "label": "熟悉的情景",
+        "description": "类似的话可能不止出现过一次。",
+        "categories": [
+          "long-term-signal",
+          "structure"
+        ],
+        "text": "类似的话可能不止出现过一次。",
+        "type": "long-term-signal",
+        "traitBias": [
+          "abstraction"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "argument-risk",
+        "label": "争执风险",
+        "description": "继续说下去，可能很快变成“爸妈养你不容易”。",
+        "categories": [
+          "hostility",
+          "attack-signal"
+        ],
+        "text": "继续说下去，可能很快变成“爸妈养你不容易”。",
+        "type": "hostility",
+        "traitBias": [
+          "aggression",
+          "sensitivity"
+        ],
+        "weight": 1
+      }
+    ],
+    "tags": [
+      {
+        "id": "they-dont-believe-me",
+        "label": "他们其实不相信我",
+        "description": "把关心听成不信任和能力否定。",
+        "moodDelta": {
+          "anger": 6,
+          "shame": 5,
+          "trust": -7,
+          "sensitivity": 5
+        }
+      },
+      {
+        "id": "they-are-afraid",
+        "label": "他们只是害怕我吃亏",
+        "description": "看见对方的焦虑，而不是只看到控制。",
+        "moodDelta": {
+          "empathy": 7,
+          "anger": -4,
+          "trust": 3,
+          "stability": 2
+        }
+      },
+      {
+        "id": "my-want-is-being-shrunk",
+        "label": "我的渴望被轻视了",
+        "description": "重点是被迅速贴上“不现实”的标签。",
+        "moodDelta": {
+          "selfEsteem": -4,
+          "anger": 5,
+          "arousal": 5,
+          "actionPower": -2
+        }
+      },
+      {
+        "id": "maybe-i-am-naive",
+        "label": "也许我真的太天真",
+        "description": "自我怀疑。",
+        "moodDelta": {
+          "shame": 7,
+          "selfEsteem": -6,
+          "pleaser": 3,
+          "actionPower": -5
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "explain-more",
+        "label": "解释计划",
+        "description": "把你为什么想换方向、准备怎么做讲得更具体。",
+        "moodDelta": {
+          "actionPower": 6,
+          "orderNeed": 3,
+          "arousal": 4,
+          "selfEsteem": 2
+        }
+      },
+      {
+        "id": "stop-sharing",
+        "label": "以后先不说了",
+        "description": "把这部分愿望从家庭谈话里收起来。",
+        "moodDelta": {
+          "avoider": 5,
+          "trust": -5,
+          "arousal": -2,
+          "pleasure": -4
+        }
+      },
+      {
+        "id": "ask-for-listening",
+        "label": "请他们先听完",
+        "description": "告诉他们你现在需要的是被听见，不是马上被纠正。",
+        "moodDelta": {
+          "selfEsteem": 4,
+          "actionPower": 5,
+          "trust": 2,
+          "arousal": 3
+        }
+      },
+      {
+        "id": "agree-to-end",
+        "label": "点头说“你们说得对”",
+        "description": "三十六计走为上计。",
+        "moodDelta": {
+          "pleaser": 5,
+          "anger": -3,
+          "shame": 4,
+          "selfEsteem": -4
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "care-can-still-hurt",
+        "label": "关心也可能让人受伤",
+        "description": "言语总是双刃剑。",
+        "pathDelta": {
+          "observer": 7,
+          "abstraction": 4,
+          "empathy": 2
+        }
+      },
+      {
+        "id": "make-plan-visible",
+        "label": "我要把自己的计划想得更清楚",
+        "description": "用具体步骤减少别人替你想象风险的空间。",
+        "pathDelta": {
+          "strategist": 7,
+          "orderNeed": 4,
+          "actionPower": 3
+        }
+      },
+      {
+        "id": "maybe-i-should-be-good",
+        "label": "也许听话会轻松一点",
+        "description": "没必要去争",
+        "pathDelta": {
+          "pleaser": 8,
+          "selfEsteem": -3,
+          "trust": 2
+        }
+      },
+      {
+        "id": "keep-dream-private",
+        "label": "别人养不好算了，我会自己养好自己",
+        "description": "先学会把自己的事情做好",
+        "pathDelta": {
+          "avoider": 6,
+          "creator": 3,
+          "stability": 3
+        }
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "care-feels-like-cage",
+        "text": "他们说为我好，但我怎么觉得自己被打压了",
+        "tone": "难过",
+        "linkedAttentionHookIds": [
+          "soft-control",
+          "need-erasure"
+        ],
+        "emotionDelta": {
+          "anger": 3,
+          "shame": 2
+        },
+        "traitDelta": {
+          "sensitivity": 2
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "they-are-worried",
+        "text": "也许他们真的只是怕我以后吃苦",
+        "tone": "体谅",
+        "linkedAttentionHookIds": [
+          "care-motive",
+          "family-risk-frame"
+        ],
+        "emotionDelta": {
+          "anger": -2,
+          "trust": 2
+        },
+        "traitDelta": {
+          "empathy": 2
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "my-plan-needs-shape",
+        "text": "如果我说不清楚，他们就会替我想象最坏结果",
+        "tone": "整理",
+        "linkedAttentionHookIds": [
+          "family-risk-frame",
+          "old-family-script"
+        ],
+        "emotionDelta": {
+          "actionPower": 2,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "orderNeed": 2
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "dont-tell-them-next-time",
+        "text": "算了，下次这种事先别告诉家里。",
+        "tone": "回避",
+        "linkedAttentionHookIds": [
+          "old-family-script",
+          "argument-risk"
+        ],
+        "emotionDelta": {
+          "trust": -4,
+          "arousal": -2
+        },
+        "traitDelta": {
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "avoider": 1
+        }
+      }
+    ]
+  },
+  {
     "id": "armor-hole-trivia",
     "title": "板甲上的奇怪开口",
     "theme": "荒诞冷知识题",
@@ -1604,7 +3503,10 @@
           "avoider": 1
         }
       }
-    ]
+    ],
+    "inactive": true,
+    "backup": true,
+    "backupReason": "默认 10 轮平衡版暂不启用，保留素材。"
   },
   {
     "id": "work-credit-taken",
@@ -1920,7 +3822,10 @@
           "observer": 1
         }
       }
-    ]
+    ],
+    "inactive": true,
+    "backup": true,
+    "backupReason": "默认 10 轮平衡版暂不启用，保留素材。"
   },
   {
     "id": "interview-vague-rejection",
@@ -2237,320 +4142,10 @@
           "strategist": 1
         }
       }
-    ]
-  },
-  {
-    "id": "family-caring-denial",
-    "title": "家人的关心",
-    "text": "你说想换个方向试试，家人说：“我们也是为你好，你别太理想化，稳定一点不好吗？”听起来像关心，但你突然不知道该怎么继续解释自己的梦想和渴望。",
-    "attentionHooks": [
-      {
-        "id": "soft-control",
-        "label": "控制",
-        "description": "说着为你好，结果却是把你推回去",
-        "categories": [
-          "tone",
-          "power-relation"
-        ],
-        "text": "说着为你好，结果却是把你推回去。",
-        "type": "tone",
-        "traitBias": [
-          "sensitivity",
-          "abstraction"
-        ],
-        "weight": 2
-      },
-      {
-        "id": "family-risk-frame",
-        "label": "风险",
-        "description": "对方首先看到的是不稳定，而不是你多优秀。",
-        "categories": [
-          "structure",
-          "long-term-signal"
-        ],
-        "text": "对方首先看到的是不稳定，而不是你多优秀。",
-        "type": "structure",
-        "traitBias": [
-          "abstraction"
-        ],
-        "weight": 2
-      },
-      {
-        "id": "care-motive",
-        "label": "担心",
-        "description": "可能真的害怕你受苦，也不知道怎么支持。",
-        "categories": [
-          "other-motive",
-          "vulnerability"
-        ],
-        "text": "可能真的害怕你受苦，也不知道怎么支持。",
-        "type": "other-motive",
-        "traitBias": [
-          "empathy",
-          "sensitivity"
-        ],
-        "weight": 1
-      },
-      {
-        "id": "need-erasure",
-        "label": "需求被否认",
-        "description": "你的理想和尝试被翻译成不成熟和不现实。",
-        "categories": [
-          "hidden-belittling",
-          "relationship-change"
-        ],
-        "text": "你的理想和尝试被翻译成不成熟和不现实。",
-        "type": "hidden-belittling",
-        "traitBias": [
-          "sensitivity",
-          "aggression"
-        ],
-        "weight": 1
-      },
-      {
-        "id": "old-family-script",
-        "label": "熟悉的情景",
-        "description": "类似的话可能不止出现过一次。",
-        "categories": [
-          "long-term-signal",
-          "structure"
-        ],
-        "text": "类似的话可能不止出现过一次。",
-        "type": "long-term-signal",
-        "traitBias": [
-          "abstraction"
-        ],
-        "weight": 1
-      },
-      {
-        "id": "argument-risk",
-        "label": "争执风险",
-        "description": "继续说下去，可能很快变成“爸妈养你不容易”。",
-        "categories": [
-          "hostility",
-          "attack-signal"
-        ],
-        "text": "继续说下去，可能很快变成“爸妈养你不容易”。",
-        "type": "hostility",
-        "traitBias": [
-          "aggression",
-          "sensitivity"
-        ],
-        "weight": 1
-      }
     ],
-    "tags": [
-      {
-        "id": "they-dont-believe-me",
-        "label": "他们其实不相信我",
-        "description": "把关心听成不信任和能力否定。",
-        "moodDelta": {
-          "anger": 6,
-          "shame": 5,
-          "trust": -7,
-          "sensitivity": 5
-        }
-      },
-      {
-        "id": "they-are-afraid",
-        "label": "他们只是害怕我吃亏",
-        "description": "看见对方的焦虑，而不是只看到控制。",
-        "moodDelta": {
-          "empathy": 7,
-          "anger": -4,
-          "trust": 3,
-          "stability": 2
-        }
-      },
-      {
-        "id": "my-want-is-being-shrunk",
-        "label": "我的渴望被轻视了",
-        "description": "重点是被迅速贴上“不现实”的标签。",
-        "moodDelta": {
-          "selfEsteem": -4,
-          "anger": 5,
-          "arousal": 5,
-          "actionPower": -2
-        }
-      },
-      {
-        "id": "maybe-i-am-naive",
-        "label": "也许我真的太天真",
-        "description": "自我怀疑。",
-        "moodDelta": {
-          "shame": 7,
-          "selfEsteem": -6,
-          "pleaser": 3,
-          "actionPower": -5
-        }
-      }
-    ],
-    "behaviors": [
-      {
-        "id": "explain-more",
-        "label": "解释计划",
-        "description": "把你为什么想换方向、准备怎么做讲得更具体。",
-        "moodDelta": {
-          "actionPower": 6,
-          "orderNeed": 3,
-          "arousal": 4,
-          "selfEsteem": 2
-        }
-      },
-      {
-        "id": "stop-sharing",
-        "label": "以后先不说了",
-        "description": "把这部分愿望从家庭谈话里收起来。",
-        "moodDelta": {
-          "avoider": 5,
-          "trust": -5,
-          "arousal": -2,
-          "pleasure": -4
-        }
-      },
-      {
-        "id": "ask-for-listening",
-        "label": "请他们先听完",
-        "description": "告诉他们你现在需要的是被听见，不是马上被纠正。",
-        "moodDelta": {
-          "selfEsteem": 4,
-          "actionPower": 5,
-          "trust": 2,
-          "arousal": 3
-        }
-      },
-      {
-        "id": "agree-to-end",
-        "label": "点头说“你们说得对”",
-        "description": "三十六计走为上计。",
-        "moodDelta": {
-          "pleaser": 5,
-          "anger": -3,
-          "shame": 4,
-          "selfEsteem": -4
-        }
-      }
-    ],
-    "attributions": [
-      {
-        "id": "care-can-still-hurt",
-        "label": "关心也可能让人受伤",
-        "description": "言语总是双刃剑。",
-        "pathDelta": {
-          "observer": 7,
-          "abstraction": 4,
-          "empathy": 2
-        }
-      },
-      {
-        "id": "make-plan-visible",
-        "label": "我要把自己的计划想得更清楚",
-        "description": "用具体步骤减少别人替你想象风险的空间。",
-        "pathDelta": {
-          "strategist": 7,
-          "orderNeed": 4,
-          "actionPower": 3
-        }
-      },
-      {
-        "id": "maybe-i-should-be-good",
-        "label": "也许听话会轻松一点",
-        "description": "没必要去争",
-        "pathDelta": {
-          "pleaser": 8,
-          "selfEsteem": -3,
-          "trust": 2
-        }
-      },
-      {
-        "id": "keep-dream-private",
-        "label": "别人养不好算了，我会自己养好自己",
-        "description": "先学会把自己的事情做好",
-        "pathDelta": {
-          "avoider": 6,
-          "creator": 3,
-          "stability": 3
-        }
-      }
-    ],
-    "firstReactions": [
-      {
-        "id": "care-feels-like-cage",
-        "text": "他们说为我好，但我怎么觉得自己被打压了",
-        "tone": "难过",
-        "linkedAttentionHookIds": [
-          "soft-control",
-          "need-erasure"
-        ],
-        "emotionDelta": {
-          "anger": 3,
-          "shame": 2
-        },
-        "traitDelta": {
-          "sensitivity": 2
-        },
-        "pathDelta": {
-          "observer": 1
-        }
-      },
-      {
-        "id": "they-are-worried",
-        "text": "也许他们真的只是怕我以后吃苦",
-        "tone": "体谅",
-        "linkedAttentionHookIds": [
-          "care-motive",
-          "family-risk-frame"
-        ],
-        "emotionDelta": {
-          "anger": -2,
-          "trust": 2
-        },
-        "traitDelta": {
-          "empathy": 2
-        },
-        "pathDelta": {
-          "pleaser": 1
-        }
-      },
-      {
-        "id": "my-plan-needs-shape",
-        "text": "如果我说不清楚，他们就会替我想象最坏结果",
-        "tone": "整理",
-        "linkedAttentionHookIds": [
-          "family-risk-frame",
-          "old-family-script"
-        ],
-        "emotionDelta": {
-          "actionPower": 2,
-          "arousal": 1
-        },
-        "traitDelta": {
-          "orderNeed": 2
-        },
-        "pathDelta": {
-          "strategist": 1
-        }
-      },
-      {
-        "id": "dont-tell-them-next-time",
-        "text": "算了，下次这种事先别告诉家里。",
-        "tone": "回避",
-        "linkedAttentionHookIds": [
-          "old-family-script",
-          "argument-risk"
-        ],
-        "emotionDelta": {
-          "trust": -4,
-          "arousal": -2
-        },
-        "traitDelta": {
-          "sensitivity": 1
-        },
-        "pathDelta": {
-          "avoider": 1
-        }
-      }
-    ]
+    "inactive": true,
+    "backup": true,
+    "backupReason": "默认 10 轮平衡版暂不启用，保留素材。"
   },
   {
     "id": "group-joke-belittle",
@@ -2864,7 +4459,10 @@
           "avoider": 1
         }
       }
-    ]
+    ],
+    "inactive": true,
+    "backup": true,
+    "backupReason": "默认 10 轮平衡版暂不启用，保留素材。"
   },
   {
     "id": "opaque-rule-extra-work",
@@ -3182,7 +4780,10 @@
           "strategist": 1
         }
       }
-    ]
+    ],
+    "inactive": true,
+    "backup": true,
+    "backupReason": "默认 10 轮平衡版暂不启用，保留素材。"
   },
   {
     "id": "need-expression-silence",
@@ -3499,6 +5100,1221 @@
           "strategist": 1
         }
       }
-    ]
+    ],
+    "inactive": true,
+    "backup": true,
+    "backupReason": "默认 10 轮平衡版暂不启用，保留素材。"
+  },
+  {
+    "id": "stranger-elevator-help",
+    "title": "陌生人顺手帮你扶了一下",
+    "theme": "善意与信任类",
+    "category": "善意与信任类",
+    "inactive": true,
+    "backup": true,
+    "backupReason": "下一版再启用：善意与信任补充事件。",
+    "text": "你抱着一堆快递挤进电梯，顶上的箱子快要滑下去。旁边一个陌生人顺手帮你托了一把，还说了句：“别急，慢慢来。”电梯里很安静，你突然不知道该把这短短三秒钟放进心里的哪个文件夹。",
+    "attentionHooks": [
+      {
+        "id": "no-mock-help",
+        "label": "没有嘲笑的帮助",
+        "description": "对方没有趁机阴阳怪气。",
+        "categories": [
+          "other-motive",
+          "tone"
+        ],
+        "text": "你注意到的不是帮助本身，而是对方没有趁机阴阳怪气。",
+        "type": "care_signal",
+        "traitBias": [
+          "sensitivity",
+          "empathy"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "elevator-light-kindness",
+        "label": "电梯灯一样的善意",
+        "description": "短暂的善意亮了一下就够了。",
+        "categories": [
+          "tone",
+          "vulnerability"
+        ],
+        "text": "短暂的善意像电梯灯，亮了一下就够了，不用非得上热搜。",
+        "type": "trust_signal",
+        "traitBias": [
+          "stability",
+          "empathy"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "help-not-failure",
+        "label": "被帮忙不是失败",
+        "description": "被帮忙不等于失败。",
+        "categories": [
+          "literal",
+          "relationship-change"
+        ],
+        "text": "你开始分辨：被帮忙不等于失败。",
+        "type": "self_esteem",
+        "traitBias": [
+          "selfEsteem",
+          "stability"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "body-relaxes-brain-explains",
+        "label": "身体先放松",
+        "description": "身体放松了，脑子还在找理由。",
+        "categories": [
+          "vulnerability",
+          "long-term-signal"
+        ],
+        "text": "你身体先放松了一点，脑子还在找理由。",
+        "type": "repair",
+        "traitBias": [
+          "observer",
+          "stability"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "thanks-and-awkward",
+        "text": "谢谢谢谢——（然后脚趾抠地）",
+        "tone": "尴尬",
+        "linkedAttentionHookIds": [
+          "no-mock-help",
+          "body-relaxes-brain-explains"
+        ],
+        "emotionDelta": {
+          "shame": 1,
+          "trust": 2
+        },
+        "traitDelta": {
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "world-not-that-bad",
+        "text": "世界偶尔也没那么烂，佛了。",
+        "tone": "松动",
+        "linkedAttentionHookIds": [
+          "elevator-light-kindness",
+          "help-not-failure"
+        ],
+        "emotionDelta": {
+          "trust": 3,
+          "pleasure": 2
+        },
+        "traitDelta": {
+          "stability": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "do-i-look-too-messy",
+        "text": "我是不是看起来太狼狈了？像搬家逃难？",
+        "tone": "自疑",
+        "linkedAttentionHookIds": [
+          "help-not-failure",
+          "body-relaxes-brain-explains"
+        ],
+        "emotionDelta": {
+          "shame": 2,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "selfEsteem": -1,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "avoider": 1
+        }
+      },
+      {
+        "id": "remember-this-feeling",
+        "text": "这人挺好，我记一下这种感觉。",
+        "tone": "记录",
+        "linkedAttentionHookIds": [
+          "elevator-light-kindness",
+          "no-mock-help"
+        ],
+        "emotionDelta": {
+          "trust": 3,
+          "pleasure": 1
+        },
+        "traitDelta": {
+          "empathy": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "conditionless-help",
+        "label": "这是一次没有附加条件的帮助。",
+        "description": "不用还，不用解释，只是搭把手。",
+        "moodDelta": {
+          "trust": 4,
+          "selfEsteem": 2,
+          "stability": 2
+        }
+      },
+      {
+        "id": "seen-not-mocked",
+        "label": "我被人看到了狼狈，但没有被嘲笑。",
+        "description": "狼狈被看见，也可以不变成羞耻事故。",
+        "moodDelta": {
+          "selfEsteem": 3,
+          "shame": -2,
+          "trust": 3
+        }
+      },
+      {
+        "id": "not-used-to-kindness",
+        "label": "我有点不习惯别人对我好。",
+        "description": "陌生善意让你短暂失去应对模板。",
+        "moodDelta": {
+          "sensitivity": 2,
+          "shame": 1,
+          "observer": 2
+        }
+      },
+      {
+        "id": "small-thing-extends-life",
+        "label": "这种小事也能给人续一点命。",
+        "description": "三秒钟不大，但够给今天回血。",
+        "moodDelta": {
+          "stability": 4,
+          "pleasure": 3,
+          "trust": 2
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "stand-still-thanks",
+        "label": "认真道谢，然后让自己慢慢站稳。",
+        "description": "不急着证明自己没事。",
+        "moodDelta": {
+          "selfEsteem": 3,
+          "stability": 3,
+          "trust": 2
+        },
+        "feedback": "你没有急着证明自己没事。"
+      },
+      {
+        "id": "joke-clumsy-day",
+        "label": "笑一下，说“今天手忙脚乱了”。",
+        "description": "把尴尬变成一点轻松。",
+        "moodDelta": {
+          "pleasure": 3,
+          "trust": 2,
+          "shame": -1
+        },
+        "feedback": "你把尴尬变成了一点轻松。"
+      },
+      {
+        "id": "look-down-fix-fast",
+        "label": "赶紧低头整理东西，想快点结束。",
+        "description": "快速撤出被看见的现场。",
+        "moodDelta": {
+          "avoider": 3,
+          "arousal": -1,
+          "trust": 1
+        },
+        "feedback": "你安全撤退了，但也错过了一点暖意。"
+      },
+      {
+        "id": "memo-softness",
+        "label": "回家后把这件事记在手机备忘录里。",
+        "description": "把罕见的柔软存档。",
+        "moodDelta": {
+          "observer": 3,
+          "stability": 2,
+          "trust": 2
+        },
+        "feedback": "你把现实里罕见的柔软保存进了库存。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "help-is-human",
+        "label": "被帮忙不是丢脸，是人类偶尔互相搭把手。",
+        "description": "允许自己短暂接受别人的手。",
+        "pathDelta": {
+          "selfEsteem": 4,
+          "trust": 4,
+          "stability": 2
+        }
+      },
+      {
+        "id": "not-always-decent",
+        "label": "我不用每秒都体面。",
+        "description": "狼狈也是普通人类格式。",
+        "pathDelta": {
+          "selfEsteem": 4,
+          "shame": -2,
+          "avoider": 2
+        }
+      },
+      {
+        "id": "light-kindness-light-repay",
+        "label": "有些善意很轻，不需要我用很重的方式偿还。",
+        "description": "不把三秒钟好意算成巨额贷款。",
+        "pathDelta": {
+          "trust": 5,
+          "stability": 3,
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "world-not-all-bad",
+        "label": "今天的世界没有变好很多，但也没有全坏。",
+        "description": "给世界留一点未完待续。",
+        "pathDelta": {
+          "observer": 4,
+          "trust": 4,
+          "stability": 3
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "trust",
+      "stability",
+      "selfEsteem",
+      "observer",
+      "caregiver",
+      "avoider"
+    ],
+    "summaryText": "这不是一场命运翻盘，只是有人在电梯里扶了你一下。但你开始记得：现实偶尔也会伸手，不一定每次都伸拳头。"
+  },
+  {
+    "id": "invited-to-share",
+    "title": "你被邀请上台分享",
+    "theme": "成功与曝光类",
+    "category": "成功与曝光类",
+    "inactive": true,
+    "backup": true,
+    "backupReason": "下一版再启用：成功与曝光补充事件。",
+    "text": "一个小活动邀请你去分享经验。你第一反应不是高兴，而是开始内心OS：我配吗？会不会讲得很拉胯？但邀请是真的，对方不是客气。",
+    "attentionHooks": [
+      {
+        "id": "am-i-qualified-old-question",
+        "label": "我配不配",
+        "description": "邀请来了，你先听见了老问题。",
+        "categories": [
+          "vulnerability",
+          "long-term-signal"
+        ],
+        "text": "你注意到的不是邀请，而是“我配不配”这道经典老题。",
+        "type": "exposure",
+        "traitBias": [
+          "selfEsteem",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "brain-starts-minesweeping",
+        "label": "脑子开始排雷",
+        "description": "机会来了，你先想怎么不翻车。",
+        "categories": [
+          "process",
+          "responsibility"
+        ],
+        "text": "机会来了，你的脑子先开始排雷。",
+        "type": "planning",
+        "traitBias": [
+          "orderNeed",
+          "strategist"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "seen-too-clearly",
+        "label": "怕被看太清楚",
+        "description": "想被看见，又怕被看透。",
+        "categories": [
+          "vulnerability",
+          "relationship-change"
+        ],
+        "text": "你想被看见，又怕被看得太清楚。",
+        "type": "visibility",
+        "traitBias": [
+          "sensitivity",
+          "observer"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "self-judgment-first",
+        "label": "提前审判自己",
+        "description": "这次不是别人否定你，是你先动手。",
+        "categories": [
+          "tone",
+          "hidden-belittling"
+        ],
+        "text": "这次不是别人否定你，是你在提前审判自己。",
+        "type": "self_judgment",
+        "traitBias": [
+          "selfEsteem",
+          "judge"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "not-big-v",
+        "text": "我？我有什么好讲的？我又不是大V。",
+        "tone": "自疑",
+        "linkedAttentionHookIds": [
+          "am-i-qualified-old-question",
+          "self-judgment-first"
+        ],
+        "emotionDelta": {
+          "shame": 3,
+          "arousal": 2
+        },
+        "traitDelta": {
+          "selfEsteem": -1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "prepare-to-no-social-death",
+        "text": "这机会不错，但我得准备到万无一失，不然社死。",
+        "tone": "备战",
+        "linkedAttentionHookIds": [
+          "brain-starts-minesweeping",
+          "seen-too-clearly"
+        ],
+        "emotionDelta": {
+          "arousal": 3,
+          "actionPower": 2
+        },
+        "traitDelta": {
+          "orderNeed": 2
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      },
+      {
+        "id": "want-but-ordinary",
+        "text": "我有点想去，但又怕别人发现我其实很普通。",
+        "tone": "想去又怕",
+        "linkedAttentionHookIds": [
+          "seen-too-clearly",
+          "am-i-qualified-old-question"
+        ],
+        "emotionDelta": {
+          "pleasure": 2,
+          "shame": 2,
+          "arousal": 2
+        },
+        "traitDelta": {
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "real-version-not-expert",
+        "text": "也许我可以讲一个真实版本，不装专家。",
+        "tone": "真实",
+        "linkedAttentionHookIds": [
+          "brain-starts-minesweeping",
+          "self-judgment-first"
+        ],
+        "emotionDelta": {
+          "actionPower": 2,
+          "trust": 1
+        },
+        "traitDelta": {
+          "selfEsteem": 1
+        },
+        "pathDelta": {
+          "creator": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "exposure-opportunity",
+        "label": "这是一次曝光机会。",
+        "description": "不是危险警报，也可能是入口。",
+        "moodDelta": {
+          "creator": 3,
+          "selfEsteem": 3,
+          "arousal": 2
+        }
+      },
+      {
+        "id": "afraid-judged-not-stage",
+        "label": "我害怕的不是上台，是被判断。",
+        "description": "把害怕对象说清楚。",
+        "moodDelta": {
+          "observer": 3,
+          "shame": 1,
+          "arousal": 2
+        }
+      },
+      {
+        "id": "safe-version-needed",
+        "label": "我想把它准备成一个安全版本。",
+        "description": "用准备降低失控感。",
+        "moodDelta": {
+          "strategist": 3,
+          "orderNeed": 3,
+          "stability": 2
+        }
+      },
+      {
+        "id": "imperfect-but-real",
+        "label": "我可以不完美，但要真实。",
+        "description": "让真实比完美先上台。",
+        "moodDelta": {
+          "creator": 4,
+          "selfEsteem": 3,
+          "shame": -1
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "accept-simple-outline",
+        "label": "答应下来，先写一个简单大纲。",
+        "description": "不等完全不怕再开始。",
+        "moodDelta": {
+          "actionPower": 4,
+          "creator": 2,
+          "selfEsteem": 2
+        },
+        "feedback": "你没有等到完全不怕才开始。"
+      },
+      {
+        "id": "decline-not-ready",
+        "label": "婉拒，说自己还没准备好。",
+        "description": "把机会放回门外。",
+        "moodDelta": {
+          "avoider": 3,
+          "stability": 1,
+          "selfEsteem": -1
+        },
+        "feedback": "你保住了安全，也把机会放回了门外。"
+      },
+      {
+        "id": "ask-audience-time",
+        "label": "问清楚听众和时长，再决定。",
+        "description": "把恐惧拆成信息。",
+        "moodDelta": {
+          "strategist": 4,
+          "orderNeed": 3,
+          "arousal": -1
+        },
+        "feedback": "你把恐惧拆成了可以处理的信息。"
+      },
+      {
+        "id": "share-failures-too",
+        "label": "决定讲失败和绕路，而不是只讲漂亮结果。",
+        "description": "把曝光变成叙事权。",
+        "moodDelta": {
+          "creator": 4,
+          "selfEsteem": 3,
+          "trust": 2
+        },
+        "feedback": "你把曝光变成了自己的叙事权。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "not-expert-to-speak",
+        "label": "我不是非要像专家，才配说话。",
+        "description": "普通人的经验也有重量。",
+        "pathDelta": {
+          "selfEsteem": 5,
+          "creator": 3
+        }
+      },
+      {
+        "id": "fear-not-empty",
+        "label": "害怕曝光，不代表我没有内容。",
+        "description": "恐惧不是空白判定书。",
+        "pathDelta": {
+          "observer": 4,
+          "selfEsteem": 4
+        }
+      },
+      {
+        "id": "prepare-is-protection",
+        "label": "准备是保护，不是把自己关起来。",
+        "description": "把准备从拖延里拆出来。",
+        "pathDelta": {
+          "strategist": 5,
+          "stability": 3
+        }
+      },
+      {
+        "id": "shaking-can-go",
+        "label": "这次我可以带着发抖上场。",
+        "description": "不必等不怕。",
+        "pathDelta": {
+          "creator": 4,
+          "actionPower": 3,
+          "selfEsteem": 3
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "creator",
+      "strategist",
+      "selfEsteem",
+      "stability",
+      "observer"
+    ],
+    "summaryText": "机会不是奖杯，它更像一扇忽然打开的门。你可以先探头，可以带稿，可以声音发紧，但你不必再假装自己没有想进去。"
+  },
+  {
+    "id": "cancel-unnecessary-hangout",
+    "title": "你取消了一个不必要的局",
+    "theme": "疲劳与自我修复类",
+    "category": "疲劳与自我修复类",
+    "inactive": true,
+    "backup": true,
+    "backupReason": "下一版再启用：低冲突边界与修复事件。",
+    "text": "你收到一个聚会邀请，去也行，不去也不会怎样。你看着日历上密密麻麻的安排，突然很想把今晚还给自己，躺在床上刷手机发呆。",
+    "attentionHooks": [
+      {
+        "id": "battery-low",
+        "label": "电量见底",
+        "description": "你注意到的不是聚会，而是电量。",
+        "categories": [
+          "vulnerability",
+          "long-term-signal"
+        ],
+        "text": "你注意到的不是聚会，而是自己的电量已经见底。",
+        "type": "energy",
+        "traitBias": [
+          "stability",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "not-automatic-attendance",
+        "label": "不用自动出席",
+        "description": "没有人伤害你，但你也不必自动出席。",
+        "categories": [
+          "literal",
+          "responsibility"
+        ],
+        "text": "没有人伤害你，但你也不必自动出席。",
+        "type": "boundary",
+        "traitBias": [
+          "selfEsteem",
+          "orderNeed"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "boundary-before-explosion",
+        "label": "爆炸前的边界",
+        "description": "边界不一定等到爆炸后才成立。",
+        "categories": [
+          "process",
+          "long-term-signal"
+        ],
+        "text": "边界不一定要等到爆炸后才成立。",
+        "type": "boundary",
+        "traitBias": [
+          "stability",
+          "observer"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "ordinary-refusal",
+        "label": "普通拒绝",
+        "description": "拒绝可以很普通，不必演成事故。",
+        "categories": [
+          "tone",
+          "process"
+        ],
+        "text": "你开始学习：拒绝可以很普通，不必演成事故。",
+        "type": "refusal",
+        "traitBias": [
+          "stability",
+          "pleaser"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "will-i-be-boring",
+        "text": "不去会不会显得我很扫兴？",
+        "tone": "顾虑",
+        "linkedAttentionHookIds": [
+          "ordinary-refusal",
+          "not-automatic-attendance"
+        ],
+        "emotionDelta": {
+          "shame": 2,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "empathy": 1
+        },
+        "pathDelta": {
+          "pleaser": 1
+        }
+      },
+      {
+        "id": "done-socializing",
+        "text": "我真的不想再社交了，哪怕大家都很好。",
+        "tone": "疲惫",
+        "linkedAttentionHookIds": [
+          "battery-low",
+          "boundary-before-explosion"
+        ],
+        "emotionDelta": {
+          "arousal": -2,
+          "pleasure": -1
+        },
+        "traitDelta": {
+          "stability": 1
+        },
+        "pathDelta": {
+          "avoider": 1
+        }
+      },
+      {
+        "id": "need-heal-not-hate",
+        "text": "这不是讨厌他们，是我需要回血。",
+        "tone": "修复",
+        "linkedAttentionHookIds": [
+          "battery-low",
+          "not-automatic-attendance"
+        ],
+        "emotionDelta": {
+          "stability": 2,
+          "trust": 1
+        },
+        "traitDelta": {
+          "selfEsteem": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "reject-without-tragedy",
+        "text": "我可以好好拒绝，不用编很惨的理由。",
+        "tone": "边界",
+        "linkedAttentionHookIds": [
+          "ordinary-refusal",
+          "boundary-before-explosion"
+        ],
+        "emotionDelta": {
+          "actionPower": 2,
+          "arousal": -1
+        },
+        "traitDelta": {
+          "selfEsteem": 1
+        },
+        "pathDelta": {
+          "strategist": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "low-conflict-refusal",
+        "label": "这是一次低冲突拒绝。",
+        "description": "没有战争，只是选择不去。",
+        "moodDelta": {
+          "stability": 3,
+          "selfEsteem": 2,
+          "arousal": -1
+        }
+      },
+      {
+        "id": "need-rest-not-disappear",
+        "label": "我需要休息，不是需要消失。",
+        "description": "把休息和断联区分开。",
+        "moodDelta": {
+          "stability": 4,
+          "trust": 2,
+          "avoider": 1
+        }
+      },
+      {
+        "id": "fear-disappointing",
+        "label": "我怕别人失望，所以总是硬撑。",
+        "description": "看见自己自动出席的旧逻辑。",
+        "moodDelta": {
+          "observer": 3,
+          "shame": 2,
+          "pleaser": 2
+        }
+      },
+      {
+        "id": "tonight-is-mine",
+        "label": "今晚属于我自己。",
+        "description": "给自己留一个不生产的夜晚。",
+        "moodDelta": {
+          "selfEsteem": 3,
+          "stability": 4,
+          "pleasure": 2
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "say-rest-next-time",
+        "label": "直接说今天想休息，下次再约。",
+        "description": "轻轻拒绝。",
+        "moodDelta": {
+          "selfEsteem": 3,
+          "stability": 4,
+          "trust": 1
+        },
+        "feedback": "你拒绝得很轻，世界没有塌。"
+      },
+      {
+        "id": "invent-work-excuse",
+        "label": "编一个工作理由，让自己显得没办法。",
+        "description": "保住体面，也藏起真实。",
+        "moodDelta": {
+          "pleaser": 3,
+          "shame": 1,
+          "trust": -1
+        },
+        "feedback": "你保住了体面，但又把真实藏起来了。"
+      },
+      {
+        "id": "go-but-offline",
+        "label": "还是去了，结果全程放空刷手机。",
+        "description": "人在场，心下线。",
+        "moodDelta": {
+          "avoider": 2,
+          "pleasure": -2,
+          "stability": -1
+        },
+        "feedback": "你人在场，电量已经离线。"
+      },
+      {
+        "id": "stay-and-soft-night",
+        "label": "不去，并给自己安排一个舒服的小夜晚。",
+        "description": "不是逃跑，是回血。",
+        "moodDelta": {
+          "stability": 5,
+          "pleasure": 3,
+          "selfEsteem": 2
+        },
+        "feedback": "你不是逃跑，你是在给自己回血。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "rest-before-collapse",
+        "label": "我可以不靠崩溃来证明自己需要休息。",
+        "description": "休息不用先领病危通知。",
+        "pathDelta": {
+          "stability": 6,
+          "selfEsteem": 3
+        }
+      },
+      {
+        "id": "refusal-not-ruin",
+        "label": "拒绝不等于关系变差。",
+        "description": "关系可以承受一次普通拒绝。",
+        "pathDelta": {
+          "trust": 4,
+          "selfEsteem": 3,
+          "stability": 2
+        }
+      },
+      {
+        "id": "battery-deserves-calendar",
+        "label": "我的电量也值得被安排进日程。",
+        "description": "把自己放进日程，而不是只放别人。",
+        "pathDelta": {
+          "stability": 6,
+          "strategist": 2,
+          "selfEsteem": 2
+        }
+      },
+      {
+        "id": "unproductive-night-useful",
+        "label": "有些夜晚不生产任何东西，也很有用。",
+        "description": "无产出不等于无价值。",
+        "pathDelta": {
+          "avoider": 3,
+          "stability": 5,
+          "pleasure": 2
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "stability",
+      "avoider",
+      "selfEsteem",
+      "trust",
+      "pleaser"
+    ],
+    "summaryText": "你没有跟谁吵架，也没有被谁逼迫。你只是把今晚从世界手里拿回来一点，发现边界也可以是安静的。"
+  },
+  {
+    "id": "comments-rewrite-fatigue",
+    "title": "被评论区改写的疲惫",
+    "theme": "创作疲惫与评论区误读",
+    "category": "低冲突创作转化类",
+    "text": "你发了一条小动态，配图是电脑前的工位、贴着护具的手腕、堆在旁边的草稿和没喝完的饮料。\n\n配文很短：“感觉快被项目榨干了。”\n\n你原本只是想记录一下：最近写东西、改系统、赶进度，身体真的有点撑不住。\n\n评论区一开始有人问你还好吗，但很快重点开始跑偏：有人玩梗，有人观察图片细节，有人接力吐槽，还有人突然把这件事上升成“内容生产者生态切片”。",
+    "attentionHooks": [
+      {
+        "id": "body-is-alarming",
+        "label": "身体报警",
+        "description": "这条动态最开始不是段子，而是身体在提醒你已经快到线了。",
+        "categories": [
+          "vulnerability",
+          "long-term-signal"
+        ],
+        "text": "你注意到的不是评论区，而是手腕、工位和那杯没喝完的饮料都在说：先别硬撑了。",
+        "type": "body_signal",
+        "traitBias": [
+          "sensitivity",
+          "stability"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "not-held-as-expected",
+        "label": "没有被接住",
+        "description": "你发出的疲惫没有完全按你期待的方式被回应。",
+        "categories": [
+          "relationship-change",
+          "other-motive"
+        ],
+        "text": "有人关心你，但更多人把你的疲惫接成了梗、观察报告和临场吐槽。",
+        "type": "relationship_drift",
+        "traitBias": [
+          "sensitivity",
+          "empathy"
+        ],
+        "weight": 1
+      },
+      {
+        "id": "absurdity-as-material",
+        "label": "荒诞素材",
+        "description": "这个跑偏现场本身很像一个可以被写进作品的事件。",
+        "categories": [
+          "structure",
+          "long-term-signal"
+        ],
+        "text": "你忽然发现：评论区没有完全接住你，但它自己长成了一段荒诞小剧场。",
+        "type": "creative_material",
+        "traitBias": [
+          "creator",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "comment-section-has-life",
+        "label": "评论区自转",
+        "description": "评论区会脱离原意，长出自己的节奏和方向。",
+        "categories": [
+          "relationship-change",
+          "process"
+        ],
+        "text": "评论区像开了自动驾驶：你只是发出疲惫，它却开始自己拐弯、漂移、上价值。",
+        "type": "social_drift",
+        "traitBias": [
+          "observer",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "comment-section-as-sample",
+        "label": "样本观察",
+        "description": "这个场面可以被当作观察互联网回应机制的样本。",
+        "categories": [
+          "structure",
+          "other-motive"
+        ],
+        "text": "你开始把这些评论当成样本：关心、玩梗、误读、投射，全部挤在同一个评论区里。",
+        "type": "observation_sample",
+        "traitBias": [
+          "observer",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "rest-is-also-a-path",
+        "label": "休息也是路径",
+        "description": "把疲惫写进系统之前，身体也需要先被保护。",
+        "categories": [
+          "process",
+          "responsibility"
+        ],
+        "text": "你意识到：这当然能变成素材，但身体不是无限素材库。",
+        "type": "recovery_choice",
+        "traitBias": [
+          "stability",
+          "selfEsteem"
+        ],
+        "weight": 2
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "i-was-really-exhausted",
+        "text": "我只是想说我真的快被榨干了。",
+        "tone": "疲惫",
+        "linkedAttentionHookIds": [
+          "body-is-alarming",
+          "not-held-as-expected"
+        ],
+        "emotionDelta": {
+          "shame": 1,
+          "arousal": 2,
+          "trust": -1
+        },
+        "traitDelta": {
+          "sensitivity": 1,
+          "stability": -1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "they-are-better-at-memes",
+        "text": "不是，你们怎么比我还会接梗。",
+        "tone": "玩梗",
+        "linkedAttentionHookIds": [
+          "comment-section-has-life",
+          "absurdity-as-material"
+        ],
+        "emotionDelta": {
+          "pleasure": 2,
+          "arousal": 1,
+          "shame": -1
+        },
+        "traitDelta": {
+          "empathy": 1,
+          "abstraction": 1
+        },
+        "pathDelta": {
+          "creator": 1
+        }
+      },
+      {
+        "id": "comments-drifted-too-far",
+        "text": "评论区的重点怎么能歪成这样。",
+        "tone": "观察",
+        "linkedAttentionHookIds": [
+          "comment-section-has-life",
+          "comment-section-as-sample"
+        ],
+        "emotionDelta": {
+          "arousal": 2,
+          "trust": -1
+        },
+        "traitDelta": {
+          "abstraction": 2,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "this-is-an-event-now",
+        "text": "等一下，这不就是一个现成事件吗？",
+        "tone": "转化",
+        "linkedAttentionHookIds": [
+          "absurdity-as-material",
+          "comment-section-as-sample"
+        ],
+        "emotionDelta": {
+          "pleasure": 2,
+          "actionPower": 2,
+          "arousal": -1
+        },
+        "traitDelta": {
+          "abstraction": 2,
+          "selfEsteem": 1
+        },
+        "pathDelta": {
+          "creator": 1,
+          "observer": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "body-alarm",
+        "label": "身体报警",
+        "description": "这不是普通吐槽，是身体已经在提醒你别继续硬扛。",
+        "moodDelta": {
+          "stability": 3,
+          "selfEsteem": 2,
+          "arousal": -2,
+          "shame": -1
+        }
+      },
+      {
+        "id": "comment-section-drift",
+        "label": "评论区跑偏",
+        "description": "你发出的是疲惫，评论区接住的却是梗、细节和二次创作。",
+        "moodDelta": {
+          "observer": 3,
+          "abstraction": 3,
+          "trust": -1,
+          "arousal": 1
+        }
+      },
+      {
+        "id": "unacknowledged-cost",
+        "label": "无人承认的损耗",
+        "description": "大家看见了场面，但不一定真的看见了你身体里的消耗。",
+        "moodDelta": {
+          "sensitivity": 2,
+          "shame": 1,
+          "trust": -1
+        }
+      },
+      {
+        "id": "excellent-material",
+        "label": "绝佳素材",
+        "description": "这个失焦现场太荒诞了，几乎可以直接塞进人格模拟器。",
+        "moodDelta": {
+          "creator": 3,
+          "observer": 3,
+          "actionPower": 2,
+          "pleasure": 2
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "keep-reading-comments",
+        "label": "继续刷评论",
+        "description": "观察大家如何把一个疲惫信号玩成接龙。",
+        "moodDelta": {
+          "observer": 3,
+          "abstraction": 2,
+          "arousal": 2,
+          "trust": -1
+        },
+        "feedback": "你没有急着定性，而是看着评论区自己长出奇怪的分支。"
+      },
+      {
+        "id": "explain-real-fatigue",
+        "label": "认真解释",
+        "description": "说明自己是真的累，不只是发疯文学。",
+        "moodDelta": {
+          "selfEsteem": 2,
+          "trust": 2,
+          "actionPower": 2,
+          "arousal": 1
+        },
+        "feedback": "你把身体的报警声重新拉回了主线，没有让它彻底变成梗。"
+      },
+      {
+        "id": "turn-into-simulator-material",
+        "label": "写进模拟器",
+        "description": "把身体损耗、评论区误读和荒诞感打包入库。",
+        "moodDelta": {
+          "creator": 4,
+          "observer": 3,
+          "actionPower": 3,
+          "abstraction": 2
+        },
+        "feedback": "你把这片混乱收进素材库，但没有假装它一点也不疼。"
+      },
+      {
+        "id": "stop-and-rest",
+        "label": "立刻休息",
+        "description": "戴好护具，关掉电脑，让生产队的牛下线十分钟。",
+        "moodDelta": {
+          "stability": 4,
+          "selfEsteem": 2,
+          "arousal": -3,
+          "actionPower": -1
+        },
+        "feedback": "你没有继续把自己炼成素材，身体终于获得了短暂的停机维护。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "comments-grow-sideways",
+        "label": "评论区会自己长歪",
+        "description": "不是完全没人关心你，只是评论区有自己的跑偏本能。",
+        "pathDelta": {
+          "observer": 4,
+          "abstraction": 3,
+          "trust": 1
+        }
+      },
+      {
+        "id": "fatigue-can-be-material-not-only-pain",
+        "label": "疲惫不只剩痛苦",
+        "description": "我的疲惫是真的，但它不必只以痛苦的形式存在。",
+        "pathDelta": {
+          "creator": 4,
+          "observer": 2,
+          "selfEsteem": 2
+        }
+      },
+      {
+        "id": "creator-cannot-live-on-overdraft",
+        "label": "创作者不能只靠透支",
+        "description": "产出不是把身体榨干后的副产品，休息也要写进系统。",
+        "pathDelta": {
+          "stability": 5,
+          "creator": 2,
+          "selfEsteem": 3
+        }
+      },
+      {
+        "id": "awkward-scenes-are-branch-points",
+        "label": "尴尬场面也是分叉点",
+        "description": "这类没被完全接住的瞬间，本身就是人格如何转向的现场。",
+        "pathDelta": {
+          "observer": 4,
+          "creator": 3,
+          "abstraction": 3,
+          "stability": 2
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "creator",
+      "observer",
+      "stability",
+      "selfEsteem",
+      "abstraction"
+    ],
+    "summaryText": "你发出疲惫，评论区却把它改写成了一场小型荒诞剧。你没有完全被接住，但也没有彻底被伤害。你开始意识到：尴尬、误读和疲惫都可以成为素材；但身体不是无限素材库。真正成熟的创作者，不只是会把痛苦写进系统，也知道什么时候该先停下来。"
   }
 ]

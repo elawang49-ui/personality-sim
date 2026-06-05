@@ -1,6 +1,8 @@
 import { AttentionHooks } from './AttentionHooks'
+import { GrowthFeedback } from './GrowthFeedback'
 import { OptionButton } from './OptionButton'
 import { copy } from '../data/copy'
+import { getLabelToneClass } from '../utils/labelColorMap'
 import type {
   AttributionOption,
   BehaviorOption,
@@ -17,6 +19,7 @@ type EventPanelProps = {
   event: SimEvent
   stage: Stage
   choices: ChoiceRecord
+  onEnterScene: () => void
   onFirstReaction: (option: FirstReactionOption) => void
   onContinueFromAttention: () => void
   onTag: (option: EventTagOption) => void
@@ -29,6 +32,7 @@ export function EventPanel({
   event,
   stage,
   choices,
+  onEnterScene,
   onFirstReaction,
   onContinueFromAttention,
   onTag,
@@ -43,21 +47,32 @@ export function EventPanel({
         <h1>{event.title}</h1>
       </header>
 
-      <section className="event-text">
-        <p>{event.text}</p>
-        {event.image && (
-          <img
-            className="event-image"
-            src={event.image}
-            alt={`${event.title} ${copy.eventPanel.imageAltSuffix}`}
-          />
-        )}
-      </section>
+      {stage === 'sceneIntro' ? (
+        <section className="scene-intro-card">
+          {event.image && (
+            <img
+              className="event-image"
+              src={event.image}
+              alt={`${event.title} ${copy.eventPanel.imageAltSuffix}`}
+            />
+          )}
+          <p>{event.text}</p>
+          <button className="primary-button" type="button" onClick={onEnterScene}>
+            {copy.eventPanel.eventScene.continueButton}
+          </button>
+        </section>
+      ) : (
+        <section className="scene-context">
+          <span>{copy.eventPanel.eventScene.compactEyebrow}</span>
+          <strong>{event.title}</strong>
+        </section>
+      )}
 
       {stage === 'attentionReveal' && choices.revealedAttentionHooks && (
         <AttentionHooks hooks={choices.revealedAttentionHooks} />
       )}
 
+      {stage !== 'sceneIntro' && (
       <section className="stage-block">
         <h2>{copy.eventPanel.stageTitles[stage]}</h2>
 
@@ -70,7 +85,14 @@ export function EventPanel({
                 type="button"
                 onClick={() => onFirstReaction(option)}
               >
-                <span>{option.text}</span>
+                <span
+                  className={`option-corner-label ${getLabelToneClass(
+                    option.tone,
+                  )}`}
+                >
+                  #{option.tone}
+                </span>
+                <span className="option-main-text">{option.text}</span>
               </button>
             ))}
           </div>
@@ -105,6 +127,7 @@ export function EventPanel({
               {event.tags.map((option) => (
                 <OptionButton
                   key={option.id}
+                  cornerLabel={option.label}
                   label={option.label}
                   description={option.description}
                   onClick={() => onTag(option)}
@@ -124,6 +147,7 @@ export function EventPanel({
               {event.behaviors.map((option) => (
                 <OptionButton
                   key={option.id}
+                  cornerLabel={option.label}
                   label={option.label}
                   description={option.description}
                   onClick={() => onBehavior(option)}
@@ -147,6 +171,7 @@ export function EventPanel({
               {event.attributions.map((option) => (
                 <OptionButton
                   key={option.id}
+                  cornerLabel={option.label}
                   label={option.label}
                   description={option.description}
                   onClick={() => onAttribution(option)}
@@ -181,12 +206,14 @@ export function EventPanel({
               />
             )}
             <p>{choices.summaryText}</p>
+            <GrowthFeedback event={event} choices={choices} />
             <button className="primary-button" type="button" onClick={onNextEvent}>
               {copy.eventPanel.nextEventButton}
             </button>
           </div>
         )}
       </section>
+      )}
     </main>
   )
 }

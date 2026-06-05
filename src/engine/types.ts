@@ -92,6 +92,7 @@ export type SimEvent = {
 }
 
 export type Stage =
+  | 'sceneIntro'
   | 'firstReaction'
   | 'attentionReveal'
   | 'label'

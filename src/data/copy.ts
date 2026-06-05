@@ -29,6 +29,7 @@ export const copy = {
     appEyebrow: 'Personality Sim',
     imageAltSuffix: '插图',
     stageTitles: {
+      sceneIntro: '事件发生了',
       firstReaction: '你第一反应是？',
       attentionReveal: '注意力浮现',
       label: '你把这件事理解成了什么？',
@@ -37,6 +38,10 @@ export const copy = {
       summary: '总结',
       report: '最终结算',
     } satisfies Record<Stage, string>,
+    eventScene: {
+      continueButton: '进入这个场景',
+      compactEyebrow: '当前场景',
+    },
     choiceLabels: {
       firstReaction: '第一反应',
       eventTag: '事件标注',
@@ -74,6 +79,13 @@ export const copy = {
   attentionReveal: {
     eyebrow: 'Attention reveal',
     title: '你没有明说，但你的注意力已经落在了这里：',
+  },
+
+  growthFeedback: {
+    title: '这一轮你练习了什么',
+    protected: '你保护了',
+    sacrificed: '你可能牺牲了',
+    alternative: '另一种可能',
   },
 
   statePanel: {

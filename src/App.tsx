@@ -33,7 +33,27 @@ import type {
 } from './engine/types'
 import './App.css'
 
+const GAME_PROGRESS_KEY = 'personality-sim.game-progress'
+const validStages: Stage[] = [
+  'sceneIntro',
+  'firstReaction',
+  'attentionReveal',
+  'label',
+  'response',
+  'attribution',
+  'summary',
+  'report',
+]
+
+type GameProgress = {
+  eventIndex: number
+  stage: Stage
+  choices: ChoiceRecord
+  completedEvents: CompletedEventRecord[]
+}
+
 function App() {
+  const savedProgress = loadGameProgress()
   const [characterState, setCharacterState] =
     useState<CharacterState>(() => loadState())
   const [isProfileReady, setIsProfileReady] = useState(() =>
@@ -44,11 +64,11 @@ function App() {
     [],
   )
   const [profileWarning, setProfileWarning] = useState('')
-  const [eventIndex, setEventIndex] = useState(0)
-  const [stage, setStage] = useState<Stage>('firstReaction')
-  const [choices, setChoices] = useState<ChoiceRecord>({})
+  const [eventIndex, setEventIndex] = useState(savedProgress.eventIndex)
+  const [stage, setStage] = useState<Stage>(savedProgress.stage)
+  const [choices, setChoices] = useState<ChoiceRecord>(savedProgress.choices)
   const [completedEvents, setCompletedEvents] = useState<CompletedEventRecord[]>(
-    [],
+    savedProgress.completedEvents,
   )
   const event = useMemo(() => getEvent(eventIndex), [eventIndex])
   const personaReport = useMemo(
@@ -61,6 +81,19 @@ function App() {
       saveState(characterState)
     }
   }, [characterState, isProfileReady])
+
+  useEffect(() => {
+    if (!isProfileReady) {
+      return
+    }
+
+    saveGameProgress({
+      eventIndex,
+      stage,
+      choices,
+      completedEvents,
+    })
+  }, [choices, completedEvents, eventIndex, isProfileReady, stage])
 
   useEffect(() => {
     if (!isProfileReady) {
@@ -107,10 +140,15 @@ function App() {
     setCharacterState(startPreviewState)
     saveState(startPreviewState)
     saveStartProfileReady()
+    clearGameProgress()
     setIsProfileReady(true)
     setEventIndex(0)
     setChoices({})
     setCompletedEvents([])
+    setStage('sceneIntro')
+  }
+
+  function enterScene() {
     setStage('firstReaction')
   }
 
@@ -195,7 +233,7 @@ function App() {
   function goToNextEvent() {
     setEventIndex((current) => current + 1)
     setChoices({})
-    setStage('firstReaction')
+    setStage('sceneIntro')
   }
 
   function handleReset() {
@@ -207,7 +245,8 @@ function App() {
     setEventIndex(0)
     setChoices({})
     setCompletedEvents([])
-    setStage('firstReaction')
+    setStage('sceneIntro')
+    clearGameProgress()
   }
 
   function handleStartFromTitle() {
@@ -251,6 +290,7 @@ function App() {
         event={event}
         stage={stage}
         choices={choices}
+        onEnterScene={enterScene}
         onFirstReaction={chooseFirstReaction}
         onContinueFromAttention={continueFromAttention}
         onTag={chooseTag}
@@ -261,6 +301,50 @@ function App() {
       <StatePanel state={characterState} onReset={handleReset} />
     </div>
   )
+}
+
+function loadGameProgress(): GameProgress {
+  const fallback: GameProgress = {
+    eventIndex: 0,
+    stage: 'sceneIntro',
+    choices: {},
+    completedEvents: [],
+  }
+  const saved = window.localStorage.getItem(GAME_PROGRESS_KEY)
+
+  if (!saved) {
+    return fallback
+  }
+
+  try {
+    const parsed = JSON.parse(saved) as Partial<GameProgress>
+    const parsedStage = parsed.stage
+
+    return {
+      eventIndex:
+        typeof parsed.eventIndex === 'number' && parsed.eventIndex >= 0
+          ? parsed.eventIndex
+          : fallback.eventIndex,
+      stage:
+        parsedStage && validStages.includes(parsedStage)
+          ? parsedStage
+          : 'firstReaction',
+      choices: parsed.choices ?? fallback.choices,
+      completedEvents: Array.isArray(parsed.completedEvents)
+        ? parsed.completedEvents
+        : fallback.completedEvents,
+    }
+  } catch {
+    return fallback
+  }
+}
+
+function saveGameProgress(progress: GameProgress) {
+  window.localStorage.setItem(GAME_PROGRESS_KEY, JSON.stringify(progress))
+}
+
+function clearGameProgress() {
+  window.localStorage.removeItem(GAME_PROGRESS_KEY)
 }
 
 export default App
