@@ -984,6 +984,320 @@
     ]
   },
   {
+    "id": "this-is-good-meme",
+    "title": "这是好事啊",
+    "theme": "互联网黑色幽默与宏大叙事塌缩",
+    "category": "中压结构观察类",
+    "text": "前几天，你还看到一个人在谈光模块、算力和宏大叙事。那些词很大，像是离普通生活很远：产业周期、时代机会、技术路线、未来空间。几天后，他却说，最对不起的是家人。你看到这句话时，心里先是一沉。那种落差太大了，大到一时间不知道该怎么接。可评论区很快刷起了同一句话：“这是好事啊。”你盯着那几个字看了几秒，忽然意识到它当然不是在认真说这是好事。它很黑，很荒诞，也很互联网。评论区把悲剧、抽象、巨大落差和集体防御，压缩成了一句表情包。你能看懂这个梗，但不一定要跟着刷。真正刺人的地方，是那些宏大叙事最后落到了具体家庭身上。",
+    "attentionHooks": [
+      {
+        "id": "grand-narrative-collapse",
+        "label": "宏大叙事塌缩",
+        "description": "前几天还在谈光模块和算力，几天后就变成了对不起家人。",
+        "text": "前几天还在谈光模块和算力，几天后就变成了对不起家人。",
+        "categories": [
+          "observe",
+          "structure"
+        ],
+        "type": "narrative_collapse",
+        "traitBias": [
+          "abstraction",
+          "observer"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "meme-as-black-humor-defense",
+        "label": "这是好事啊",
+        "description": "评论区用一句表情包，把沉重落差处理成黑色幽默。",
+        "text": "评论区用一句表情包，把沉重落差处理成黑色幽默。",
+        "categories": [
+          "observe",
+          "structure"
+        ],
+        "type": "meme_defense",
+        "traitBias": [
+          "observer",
+          "sensitivity"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "sorry-to-family",
+        "label": "对不起家人",
+        "description": "当一个人开始这样说，事情往往已经不只是判断错了。",
+        "text": "当一个人开始这样说，事情往往已经不只是判断错了。",
+        "categories": [
+          "structure",
+          "observe"
+        ],
+        "type": "consequence",
+        "traitBias": [
+          "sensitivity",
+          "orderNeed"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "not-following-the-meme",
+        "label": "不跟风刷梗",
+        "description": "你能看懂梗，但也允许自己不把每个沉重场面都立刻玩笑化。",
+        "text": "你能看懂梗，但也允许自己不把每个沉重场面都立刻玩笑化。",
+        "categories": [
+          "observe",
+          "structure"
+        ],
+        "type": "restraint",
+        "traitBias": [
+          "stability",
+          "sensitivity"
+        ],
+        "weight": 2
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "black-humor-but-i-get-it",
+        "text": "这笑点也太黑了，但我确实懂为什么有人刷。",
+        "tone": "黑色幽默",
+        "linkedAttentionHookIds": [
+          "meme-as-black-humor-defense",
+          "grand-narrative-collapse"
+        ],
+        "emotionDelta": {
+          "stability": 1,
+          "arousal": -1,
+          "pleasure": 1
+        },
+        "traitDelta": {
+          "abstraction": 1,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 1,
+          "creator": 1
+        }
+      },
+      {
+        "id": "what-happened-between",
+        "text": "从算力叙事到对不起家人，中间到底发生了什么。",
+        "tone": "追问",
+        "linkedAttentionHookIds": [
+          "grand-narrative-collapse",
+          "sorry-to-family"
+        ],
+        "emotionDelta": {
+          "arousal": 1,
+          "stability": 1,
+          "trust": -1
+        },
+        "traitDelta": {
+          "abstraction": 1,
+          "orderNeed": 1
+        },
+        "pathDelta": {
+          "observer": 2,
+          "strategist": 1
+        }
+      },
+      {
+        "id": "comments-cannot-be-serious",
+        "text": "评论区不是不懂痛苦，是已经不知道怎么正经接了。",
+        "tone": "观察",
+        "linkedAttentionHookIds": [
+          "meme-as-black-humor-defense",
+          "not-following-the-meme"
+        ],
+        "emotionDelta": {
+          "stability": 1,
+          "arousal": -1,
+          "selfEsteem": 1
+        },
+        "traitDelta": {
+          "sensitivity": 1,
+          "abstraction": 1
+        },
+        "pathDelta": {
+          "observer": 1
+        }
+      },
+      {
+        "id": "not-following-this-one",
+        "text": "我先不跟风刷，这事有点沉。",
+        "tone": "克制",
+        "linkedAttentionHookIds": [
+          "not-following-the-meme",
+          "sorry-to-family"
+        ],
+        "emotionDelta": {
+          "stability": 1,
+          "arousal": -2,
+          "selfEsteem": 2,
+          "shame": -1
+        },
+        "traitDelta": {
+          "sensitivity": 1,
+          "orderNeed": 1
+        },
+        "pathDelta": {
+          "observer": 1,
+          "strategist": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "grand-narrative-collapse-tag",
+        "label": "宏大叙事塌缩",
+        "description": "前几天还在谈算力，几天后却说对不起家人。",
+        "moodDelta": {
+          "observer": 1,
+          "abstraction": 2,
+          "arousal": 1
+        }
+      },
+      {
+        "id": "this-is-good-meme-tag",
+        "label": "这是好事啊",
+        "description": "这句话不是在说事情真的好，而是在用梗处理不好处理的东西。",
+        "moodDelta": {
+          "observer": 1,
+          "pleasure": 1,
+          "arousal": -1,
+          "creator": 1
+        }
+      },
+      {
+        "id": "sorry-to-family-tag",
+        "label": "对不起家人",
+        "description": "这句话一出来，事情就从抽象判断落到了具体的人身上。",
+        "moodDelta": {
+          "sensitivity": 2,
+          "stability": 1,
+          "arousal": 1,
+          "observer": 1
+        }
+      },
+      {
+        "id": "not-that-funny",
+        "label": "笑不太出来",
+        "description": "你能看懂这个梗，但也知道这事不只是梗。",
+        "moodDelta": {
+          "stability": 1,
+          "selfEsteem": 2,
+          "arousal": -2,
+          "shame": -1
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "save-but-not-share",
+        "label": "截图存一下",
+        "description": "你看见了这个荒诞现场，但没有立刻加入刷屏。",
+        "moodDelta": {
+          "observer": 1,
+          "stability": 1,
+          "arousal": -1
+        },
+        "feedback": "你把这个场面记了下来，但没有急着把它继续推成下一轮笑料。"
+      },
+      {
+        "id": "check-context-first",
+        "label": "先看前后文",
+        "description": "先把时间线和上下文看清楚，再判断这场落差到底发生了什么。",
+        "moodDelta": {
+          "orderNeed": 2,
+          "observer": 2,
+          "stability": 1,
+          "trust": 1
+        },
+        "feedback": "你没有只接住表情包，而是先去看宏大叙事是怎么落到这一步的。"
+      },
+      {
+        "id": "close-comments-quietly",
+        "label": "默默关掉评论区",
+        "description": "你能理解黑色幽默，但这一次不想继续往下刷。",
+        "moodDelta": {
+          "stability": 1,
+          "arousal": -2,
+          "selfEsteem": 1,
+          "shame": -1
+        },
+        "feedback": "你没有要求自己必须跟上评论区的节奏，也没有把沉重场面立刻玩笑化。"
+      },
+      {
+        "id": "record-black-humor-sample",
+        "label": "记录黑色幽默样本",
+        "description": "不是为了嘲笑谁，而是记录评论区如何处理巨大落差。",
+        "moodDelta": {
+          "observer": 1,
+          "creator": 1,
+          "abstraction": 1
+        },
+        "feedback": "你把它记成了一个互联网黑色幽默样本：不是好笑本身，而是大家如何处理不好处理的东西。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "grand-narrative-lands-on-family",
+        "label": "宏大叙事会落到具体的人身上",
+        "description": "那些很大的词，最后可能都会落到某个家庭、某个人的身上。",
+        "pathDelta": {
+          "observer": 2,
+          "abstraction": 2,
+          "strategist": 1
+        }
+      },
+      {
+        "id": "memes-can-be-defense",
+        "label": "玩梗也可能是防御",
+        "description": "黑色幽默不一定是不懂痛苦，也可能是大家不知道怎么接住它。",
+        "pathDelta": {
+          "observer": 2,
+          "abstraction": 1
+        }
+      },
+      {
+        "id": "understand-not-join",
+        "label": "看懂不等于参与",
+        "description": "理解一种互联网反应，不等于必须跟着做同一种反应。",
+        "pathDelta": {
+          "stability": 1,
+          "selfEsteem": 2,
+          "observer": 1
+        }
+      },
+      {
+        "id": "not-really-good",
+        "label": "这不是真的好事",
+        "description": "这不是“好事”，这是互联网把不好处理的事压成一句话。",
+        "pathDelta": {
+          "observer": 1,
+          "strategist": 1,
+          "abstraction": 1
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "observer",
+      "abstraction",
+      "stability",
+      "selfEsteem",
+      "strategist"
+    ],
+    "summaryText": "你看见一个人从光模块、算力和宏大叙事，忽然落到“最对不起的是家人”。评论区刷起“这是好事啊”，它当然不是在认真说这是好事，而是在用黑色幽默处理巨大落差。你能看懂这个梗，但不一定要跟着刷。真正刺人的地方，是那些很大的词最后落到了具体的人身上。",
+    "meta": {
+      "pressure": "medium",
+      "directorTags": [
+        "observer",
+        "structure",
+        "shameSafe"
+      ],
+      "weight": 9
+    }
+  },
+  {
     "id": "armor-hole-trivia",
     "title": "板甲上的奇怪开口",
     "theme": "荒诞冷知识题",
