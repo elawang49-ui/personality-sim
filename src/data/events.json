@@ -654,334 +654,328 @@
   },
   {
     "id": "operator-hidden-charge",
-    "title": "运营商扣费",
-    "text": "你发现运营商莫名其妙扣了35元话费。你越想越烦，觉得这钱像是被偷偷吞掉了，眼看马上就要吃饭了。",
+    "title": "她已经付过一次了",
+    "theme": "小额纠纷与重复自证",
+    "category": "medium pressure / structure / observe / shameSafe",
+    "text": "朋友前几天刷卡时发现没有进站记录。她没有逃票，也没有扯皮，而是当场用另一张卡主动让系统扣了钱，把那次异常处理掉了。事情本来应该到这里结束。结果今天，她又被拦下了。理由还是那张卡：没有进站记录，需要扣钱。她解释说，那天已经用另一张卡处理过了。她不是没付，她是已经付过一次了。但对方还是先把钱扣了。金额只有两块。可她那会儿又饿又痛，被流程来回耗了很久。你听完之后沉默了一下。重点好像不是两块钱。是她已经付过一次了。",
     "attentionHooks": [
       {
-        "id": "economic-loss",
-        "label": "小额经济损失",
-        "description": "不是一笔大钱，但真实地减少了你的生活预算。",
+        "id": "already-paid-once",
+        "label": "已经付过一次",
+        "description": "这件事的重点不是她有没有付，而是她已经主动处理过一次异常。",
         "categories": [
-          "responsibility",
+          "structure",
+          "responsibility"
+        ],
+        "text": "你注意到，最荒谬的地方不是扣了两块，而是她已经把异常补上了，却又被推回“你是不是没付”的位置。",
+        "type": "structure_signal",
+        "traitBias": [
+          "observer",
+          "orderNeed"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "small-amount-big-cost",
+        "label": "小金额大消耗",
+        "description": "金额很小，但解释、证明和等待消耗了很多精力。",
+        "categories": [
+          "structure",
           "long-term-signal"
         ],
-        "text": "不是一笔大钱，但真实地减少了你的生活预算。",
-        "type": "responsibility",
+        "text": "两块钱很小，小到人一开口就像在计较；但那种被迫解释的消耗并不小。",
+        "type": "cost_mismatch",
         "traitBias": [
-          "orderNeed",
-          "abstraction"
+          "sensitivity",
+          "observer"
         ],
         "weight": 2
       },
       {
-        "id": "opaque-rules",
-        "label": "不透明的规则",
-        "description": "你不知道这笔扣费从哪里来，也不知道该如何快速追回",
+        "id": "forced-self-proof",
+        "label": "被迫自证",
+        "description": "流程没有骂人，但它让一个已经处理过异常的人继续证明自己没有占便宜。",
         "categories": [
-          "rule",
+          "structure",
+          "other-motive"
+        ],
+        "text": "你意识到，她不是在争两块钱，而是在被迫证明：我没有逃，我没有赖账，我不是想占便宜。",
+        "type": "self_proof_pressure",
+        "traitBias": [
+          "observer",
+          "orderNeed"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "body-gives-out-first",
+        "label": "身体先撑不住",
+        "description": "人在又饿又痛的时候，没有义务当场把流程错误修完。",
+        "categories": [
           "process",
-          "structure"
+          "responsibility"
         ],
-        "text": "你不知道这笔扣费从哪里来，也不知道该如何快速追回",
-        "type": "rule",
+        "text": "你想到她当时又饿又痛。系统可以慢慢查，但人的身体不一定等得起。",
+        "type": "body_signal",
         "traitBias": [
-          "orderNeed",
-          "strategist",
-          "abstraction"
+          "stability",
+          "selfEsteem"
         ],
         "weight": 2
-      },
-      {
-        "id": "institutional-power",
-        "label": "压迫感",
-        "description": "面对庞大系统，你很难获得对等解释权",
-        "categories": [
-          "power-relation",
-          "structure"
-        ],
-        "text": "面对庞大系统，你很难获得对等解释权。",
-        "type": "power-relation",
-        "traitBias": [
-          "abstraction",
-          "sensitivity"
-        ],
-        "weight": 1
-      },
-      {
-        "id": "anger-transfer",
-        "label": "愤怒转移",
-        "description": "你没有立刻把愤怒指向系统，而是开始压缩自己的需求。",
-        "categories": [
-          "hostility",
-          "relationship-change"
-        ],
-        "text": "你没有立刻把愤怒指向系统，而是开始压缩自己的需求。",
-        "type": "hostility",
-        "traitBias": [
-          "aggression",
-          "sensitivity"
-        ],
-        "weight": 1
-      },
-      {
-        "id": "self-punishment",
-        "label": "自我惩罚倾向",
-        "description": "你试图通过不吃饭，把外部损失从身体上补回来。",
-        "categories": [
-          "hidden-belittling",
-          "vulnerability"
-        ],
-        "text": "你试图通过不吃饭，把外部损失从身体上补回来。",
-        "type": "hidden-belittling",
-        "traitBias": [
-          "sensitivity",
-          "aggression",
-          "empathy"
-        ],
-        "weight": 1
-      },
-      {
-        "id": "survival-pressure",
-        "label": "生活压力",
-        "description": "小额损失之所以刺痛，是因为你正在精确计算每一笔支出。",
-        "categories": [
-          "tone",
-          "long-term-signal",
-          "vulnerability"
-        ],
-        "text": "小额损失之所以刺痛，是因为你正在精确计算每一笔支出。",
-        "type": "tone",
-        "traitBias": [
-          "sensitivity",
-          "abstraction",
-          "empathy"
-        ],
-        "weight": 1
-      }
-    ],
-    "tags": [
-      {
-        "id": "small-money-let-it-go",
-        "label": "只是35块，算了吧",
-        "description": "只是不值得追究的小事。",
-        "moodDelta": {
-          "pleasure": -4,
-          "anger": -2,
-          "shame": 5,
-          "actionPower": -6,
-          "avoider": 2
-        }
-      },
-      {
-        "id": "opaque-system-extraction",
-        "label": "为什么不早点发提醒？",
-        "description": "把痛感指向规则不透明和解释权不对等。",
-        "moodDelta": {
-          "anger": 10,
-          "arousal": 8,
-          "abstraction": 6,
-          "trust": -8,
-          "actionPower": 3
-        }
-      },
-      {
-        "id": "tricked-again",
-        "label": "我又被坑了",
-        "description": "把扣费理解成自己的失误",
-        "moodDelta": {
-          "sensitivity": 6,
-          "shame": 6,
-          "anger": 6,
-          "trust": -6,
-          "selfEsteem": -4
-        }
-      },
-      {
-        "id": "body-pays-the-bill",
-        "label": "让身体替损失买单",
-        "description": "向内的刀怎么戳都疼。",
-        "moodDelta": {
-          "shame": 9,
-          "pleasure": -8,
-          "actionPower": -5,
-          "orderNeed": 4,
-          "selfEsteem": -5
-        }
-      }
-    ],
-    "behaviors": [
-      {
-        "id": "ignore-it",
-        "label": "忍了",
-        "description": "当作没发生，把这件事从今天里推开。",
-        "moodDelta": {
-          "arousal": -4,
-          "anger": -3,
-          "trust": -3,
-          "actionPower": -7
-        }
-      },
-      {
-        "id": "complain-to-operator",
-        "label": "查账单并投诉",
-        "description": "去查明扣费来源，联系客服要求解释。",
-        "moodDelta": {
-          "actionPower": 10,
-          "anger": 3,
-          "orderNeed": 5,
-          "stability": 3
-        }
-      },
-      {
-        "id": "ask-friends",
-        "label": "发到群里问问",
-        "description": "向朋友吐槽，确认是不是有人也遇到过。",
-        "moodDelta": {
-          "trust": 4,
-          "empathy": 3,
-          "arousal": -2,
-          "actionPower": 4
-        }
-      },
-      {
-        "id": "skip-lunch",
-        "label": "中午不吃了",
-        "description": "试图用节食抵消这笔莫名其妙的损失。",
-        "moodDelta": {
-          "pleasure": -10,
-          "shame": 8,
-          "stability": -5,
-          "actionPower": -4,
-          "selfEsteem": -4
-        }
-      }
-    ],
-    "attributions": [
-      {
-        "id": "too-poor",
-        "label": "是我太穷了",
-        "description": "把刺痛归因于自己资源太紧，连 35 元都放不下。",
-        "pathDelta": {
-          "pleaser": 5,
-          "avoider": 5,
-          "selfEsteem": -5,
-          "shame": 4
-        }
-      },
-      {
-        "id": "system-is-opaque",
-        "label": "扣费系统本来就不透明",
-        "description": "把问题放回规则和解释权，而不是责怪自己小题大做。",
-        "pathDelta": {
-          "observer": 7,
-          "strategist": 6,
-          "abstraction": 4,
-          "trust": -3
-        }
-      },
-      {
-        "id": "solve-not-punish-self",
-        "label": "要解决问题，不惩罚身体",
-        "description": "把经验沉淀为追查扣费，而不是压缩基本需求。",
-        "pathDelta": {
-          "strategist": 7,
-          "stability": 5,
-          "selfEsteem": 4,
-          "actionPower": 3
-        }
-      },
-      {
-        "id": "turn-anger-into-action",
-        "label": "把愤怒变成行动",
-        "description": "用查账单、投诉和记录夺回控制感。",
-        "pathDelta": {
-          "creator": 4,
-          "strategist": 7,
-          "observer": 5,
-          "actionPower": 6
-        }
       }
     ],
     "firstReactions": [
       {
-        "id": "thirty-five-still-hurts",
-        "text": "35 块不是大钱，但它就这么没了，我真的很烦。",
-        "tone": "刺痛",
+        "id": "not-about-two-yuan",
+        "text": "重点不是两块钱，是她已经付过一次了。",
+        "tone": "识别",
         "linkedAttentionHookIds": [
-          "economic-loss",
-          "survival-pressure"
+          "already-paid-once",
+          "forced-self-proof"
         ],
         "emotionDelta": {
-          "anger": 3,
-          "shame": 2
+          "shame": -2,
+          "arousal": -1,
+          "trust": -1
         },
         "traitDelta": {
-          "sensitivity": 1
+          "observer": 2,
+          "orderNeed": 2,
+          "selfEsteem": 1
         },
         "pathDelta": {
-          "observer": 1
+          "observer": 2,
+          "stability": 1
         }
       },
       {
-        "id": "where-did-it-go",
-        "text": "这钱到底从哪扣的？我连规则都看不见。",
-        "tone": "追查",
+        "id": "small-money-feels-petty",
+        "text": "这就是小金额最恶心的地方，吵起来像我计较。",
+        "tone": "憋火",
         "linkedAttentionHookIds": [
-          "opaque-rules",
-          "institutional-power"
+          "small-amount-big-cost",
+          "forced-self-proof"
         ],
         "emotionDelta": {
-          "anger": 4,
-          "arousal": 3
+          "anger": 2,
+          "shame": -1,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "sensitivity": 1,
+          "selfEsteem": 1
+        },
+        "pathDelta": {
+          "observer": 1,
+          "selfEsteem": 1
+        }
+      },
+      {
+        "id": "why-proof-again",
+        "text": "她都主动处理异常了，为什么还要再证明一次？",
+        "tone": "追问",
+        "linkedAttentionHookIds": [
+          "already-paid-once",
+          "forced-self-proof"
+        ],
+        "emotionDelta": {
+          "arousal": 1,
+          "trust": -1,
+          "shame": -1
         },
         "traitDelta": {
           "orderNeed": 2,
           "abstraction": 1
         },
         "pathDelta": {
-          "strategist": 1
-        }
-      },
-      {
-        "id": "skip-lunch-now",
-        "text": "算了，中午不吃了，至少能把这口气补回来。",
-        "tone": "自罚",
-        "linkedAttentionHookIds": [
-          "anger-transfer",
-          "self-punishment"
-        ],
-        "emotionDelta": {
-          "shame": 5,
-          "pleasure": -5
-        },
-        "traitDelta": {
-          "selfEsteem": -2
-        },
-        "pathDelta": {
-          "avoider": 1
-        }
-      },
-      {
-        "id": "complain-first",
-        "text": "不行，先查账单，不能让身体替运营商买单。",
-        "tone": "行动",
-        "linkedAttentionHookIds": [
-          "opaque-rules",
-          "anger-transfer"
-        ],
-        "emotionDelta": {
-          "actionPower": 4,
-          "anger": 2
-        },
-        "traitDelta": {
-          "orderNeed": 1,
+          "observer": 2,
           "stability": 1
+        }
+      },
+      {
+        "id": "body-first-not-world-repair",
+        "text": "先别硬耗了，人饿着痛着，真的没必要当场修完世界。",
+        "tone": "保护",
+        "linkedAttentionHookIds": [
+          "body-gives-out-first",
+          "small-amount-big-cost"
+        ],
+        "emotionDelta": {
+          "arousal": -2,
+          "shame": -1,
+          "trust": 1
+        },
+        "traitDelta": {
+          "stability": 2,
+          "selfEsteem": 1
         },
         "pathDelta": {
-          "strategist": 1
+          "stability": 2,
+          "selfEsteem": 1
         }
       }
-    ]
+    ],
+    "tags": [
+      {
+        "id": "already-paid",
+        "label": "已经付过",
+        "description": "这不是没付钱，而是已经主动处理过的异常又被重新算了一次。",
+        "moodDelta": {
+          "observer": 3,
+          "orderNeed": 2,
+          "shame": -2,
+          "selfEsteem": 1
+        }
+      },
+      {
+        "id": "two-yuan-cash",
+        "label": "两块钱现金",
+        "description": "金额小到很难开口，但不代表消耗也小。",
+        "moodDelta": {
+          "observer": 2,
+          "anger": 1,
+          "shame": -1,
+          "abstraction": 1
+        }
+      },
+      {
+        "id": "record-denied",
+        "label": "流程不认账",
+        "description": "真正的问题是记录没有承认她已经处理过这件事。",
+        "moodDelta": {
+          "orderNeed": 3,
+          "observer": 3,
+          "trust": -1,
+          "abstraction": 2
+        }
+      },
+      {
+        "id": "do-not-overhold",
+        "label": "先别硬耗",
+        "description": "身体状态很差时，人没有义务当场把系统错误修完。",
+        "moodDelta": {
+          "stability": 3,
+          "selfEsteem": 2,
+          "arousal": -2,
+          "actionPower": 1
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "organize-payment-records",
+        "label": "整理记录",
+        "description": "把两次扣费记录、时间和卡号先整理出来。",
+        "moodDelta": {
+          "actionPower": 3,
+          "strategist": 2,
+          "orderNeed": 2,
+          "stability": 1
+        },
+        "feedback": "你没有把情绪硬压下去，而是先把能被系统识别的证据整理成一条线。"
+      },
+      {
+        "id": "leave-scene-first",
+        "label": "暂时离开现场",
+        "description": "不继续在现场硬耗，等身体缓过来再处理。",
+        "moodDelta": {
+          "stability": 4,
+          "selfEsteem": 2,
+          "arousal": -3,
+          "actionPower": -1
+        },
+        "feedback": "你没有把自己钉在现场证明清白。人先缓过来，问题才有后续处理的余地。"
+      },
+      {
+        "id": "rename-the-problem",
+        "label": "重新命名问题",
+        "description": "把问题从“退两块钱”改成“重复扣费和记录不承认”。",
+        "moodDelta": {
+          "observer": 3,
+          "abstraction": 3,
+          "orderNeed": 2,
+          "shame": -2
+        },
+        "feedback": "问题一旦被重新命名，就不再是小题大做，而是记录、流程和自证成本的问题。"
+      },
+      {
+        "id": "allow-anger",
+        "label": "允许生气",
+        "description": "承认这件事就是很气人，不把它压成“算了就两块”。",
+        "moodDelta": {
+          "anger": 3,
+          "selfEsteem": 2,
+          "shame": -2,
+          "arousal": 1
+        },
+        "feedback": "你允许自己承认这件事很气人，但没有把愤怒升级成必须当场打赢的战争。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "small-money-not-small-problem",
+        "label": "小金额不代表小问题",
+        "description": "钱很少，但重复扣费、解释成本和被迫自证并不小。",
+        "pathDelta": {
+          "observer": 3,
+          "orderNeed": 2,
+          "selfEsteem": 2,
+          "shame": -1
+        }
+      },
+      {
+        "id": "not-taking-advantage",
+        "label": "她不是占便宜",
+        "description": "她要求的不是特殊照顾，而是系统承认她已经处理过这次异常。",
+        "pathDelta": {
+          "observer": 3,
+          "stability": 2,
+          "selfEsteem": 2,
+          "trust": 1
+        }
+      },
+      {
+        "id": "process-can-still-drain",
+        "label": "流程也会消耗人",
+        "description": "流程没有恶意表情，也没有大声骂人，但它仍然可以真实地消耗一个人。",
+        "pathDelta": {
+          "observer": 3,
+          "abstraction": 3,
+          "orderNeed": 2,
+          "trust": -1
+        }
+      },
+      {
+        "id": "body-owes-no-perfect-proof",
+        "label": "身体不欠完美自证",
+        "description": "人在又饿又痛的时候，没有义务当场修完每一个记录错误。",
+        "pathDelta": {
+          "stability": 4,
+          "selfEsteem": 3,
+          "strategist": 2,
+          "shame": -1
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "observer",
+      "orderNeed",
+      "stability",
+      "selfEsteem",
+      "actionPower",
+      "abstraction",
+      "strategist"
+    ],
+    "summaryText": "你听见的不是一场两块钱纠纷，而是一个已经主动处理过异常的人，又被流程推回了“你是不是没付”的位置。金额很小，但自证成本很高。你没有把它升级成必须当场打赢的战争，也没有把它压成“算了就两块”。你只是把问题重新命名：这是重复扣费，是记录不承认，是被迫自证，也是身体已经撑不住时不该继续硬耗的消耗。",
+    "meta": {
+      "pressure": "medium",
+      "directorTags": [
+        "observer",
+        "structure",
+        "shameSafe"
+      ],
+      "weight": 10
+    }
   },
   {
     "id": "armor-hole-trivia",
