@@ -37,11 +37,11 @@
       {
         "id": "literal-meaning",
         "label": "字面含义",
-        "description": "方向明确，大家只是开始讨论，未必在针对。",
+        "description": "方向被明确，大家只是开始讨论，未必针对谁。",
         "categories": [
           "literal"
         ],
-        "text": "方向明确，大家只是开始讨论，未必在针对。",
+        "text": "方向被明确，大家只是开始讨论，未必针对谁。",
         "type": "literal",
         "traitBias": [
           "stability"
@@ -66,13 +66,13 @@
       },
       {
         "id": "social-risk",
-        "label": "群冷场风险",
-        "description": "直接指出可能让气氛变紧张，也可能让边界变清楚。",
+        "label": "冷场风险",
+        "description": "直接指出可能让群里的气氛变得紧张，也可能获得好处。",
         "categories": [
           "hostility",
           "attack-signal"
         ],
-        "text": "直接指出可能让气氛变紧张，也可能让边界变清楚。",
+        "text": "直接指出可能让群里的气氛变得紧张，也可能获得好处。",
         "type": "hostility",
         "traitBias": [
           "aggression",
@@ -83,12 +83,12 @@
       {
         "id": "action-opportunity",
         "label": "绝佳的行动机会",
-        "description": "相似方案已经打开讨论入口，可以顺势补充和合并。",
+        "description": "讨论入口已经被打开，我可以顺势补充自己的想法。",
         "categories": [
           "process",
           "long-term-signal"
         ],
-        "text": "相似方案已经打开讨论入口，可以顺势补充和合并。",
+        "text": "讨论入口已经被打开，我可以顺势补充自己的想法。",
         "type": "process",
         "traitBias": [
           "orderNeed",
@@ -102,7 +102,7 @@
       {
         "id": "rejection",
         "label": "我被否定了",
-        "description": "把沉默理解成他人不认可自己。",
+        "description": "他人的沉默往往代表了不认可。",
         "moodDelta": {
           "sensitivity": 8,
           "arousal": 10,
@@ -114,7 +114,7 @@
       {
         "id": "competition",
         "label": "竞争罢了",
-        "description": "把讨论看成资源和位置的争夺。",
+        "description": "讨论是资源和位置的争夺。",
         "moodDelta": {
           "aggression": 8,
           "anger": 10,
@@ -126,7 +126,7 @@
       {
         "id": "noise",
         "label": "这无所谓吧",
-        "description": "认为大家可能只是没有看见或没有接上。",
+        "description": "大家可能只是没看见，或不太敢发表意见。",
         "moodDelta": {
           "abstraction": 5,
           "stability": 6,
@@ -137,8 +137,8 @@
       },
       {
         "id": "coordination",
-        "label": "新的协作机会来了，我要把握",
-        "description": "把相似想法看成可以合流的信号。",
+        "label": "这是好事啊。",
+        "description": "新的机会来了，我要把握。",
         "moodDelta": {
           "empathy": 6,
           "trust": 7,
@@ -151,8 +151,8 @@
     "behaviors": [
       {
         "id": "clarify",
-        "label": "补充说明",
-        "description": "展开自己的原始方案，邀请大家一起讨论。",
+        "label": "补充方案",
+        "description": "展开自己的方案，邀请大家一起讨论。",
         "moodDelta": {
           "actionPower": 8,
           "trust": 5,
@@ -163,7 +163,7 @@
       {
         "id": "withdraw",
         "label": "先退出",
-        "description": "不再发言，观察大家后续怎么说。",
+        "description": "不再发言，观察后续讨论。",
         "moodDelta": {
           "actionPower": -8,
           "pleasure": -5,
@@ -174,7 +174,7 @@
       {
         "id": "push-back",
         "label": "直接指出",
-        "description": "提醒大家自己刚刚已经提出类似想法。",
+        "description": "提醒大家自己已经提出类似想法。",
         "moodDelta": {
           "actionPower": 10,
           "anger": 5,
@@ -184,8 +184,8 @@
       },
       {
         "id": "ask",
-        "label": "询问连接",
-        "description": "现在先问，汇报的时候反正是我讲。",
+        "label": "问问对方看法",
+        "description": "先问，汇报的时候反正是我讲。",
         "moodDelta": {
           "empathy": 5,
           "trust": 6,
@@ -197,8 +197,8 @@
     "attributions": [
       {
         "id": "make",
-        "label": "我可以创造入口",
-        "description": "把注意力放在下一步能产出的东西上。",
+        "label": "狠狠地干",
+        "description": "我是结果导向，重点看这件事能带来什么成果吧。",
         "pathDelta": {
           "creator": 8,
           "actionPower": 4,
@@ -207,8 +207,8 @@
       },
       {
         "id": "read",
-        "label": "我要读懂局势",
-        "description": "把这次经验归结为需要更早判断群体节奏。",
+        "label": "听懂掌声",
+        "description": "下次我绝对打死都不第一个开口。",
         "pathDelta": {
           "strategist": 8,
           "abstraction": 4,
@@ -217,8 +217,8 @@
       },
       {
         "id": "please",
-        "label": "我要减少摩擦",
-        "description": "把重点放在减少沟通成本上。",
+        "label": "如果能早点明白就好了",
+        "description": "减少沟通成本才是节能减排第一要义。",
         "pathDelta": {
           "pleaser": 8,
           "empathy": 4,
@@ -227,8 +227,8 @@
       },
       {
         "id": "watch",
-        "label": "我先保持距离",
-        "description": "把沉默当成保护自己的方式。",
+        "label": "我先和他们保持距离",
+        "description": "沉默是金。",
         "pathDelta": {
           "observer": 6,
           "avoider": 6,
