@@ -656,6 +656,7 @@
     "id": "operator-hidden-charge",
     "title": "运营商扣费",
     "text": "你发现运营商莫名其妙扣了35元话费。你越想越烦，觉得这钱像是被偷偷吞掉了，眼看马上就要吃饭了。",
+    "image": "/images/events/operator-hidden-charge.png",
     "attentionHooks": [
       {
         "id": "economic-loss",
