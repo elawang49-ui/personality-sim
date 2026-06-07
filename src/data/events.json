@@ -37,11 +37,11 @@
       {
         "id": "literal-meaning",
         "label": "字面含义",
-        "description": "方向被明确，大家只是开始讨论，未必针对谁。",
+        "description": "方向被明确后，大家只是正常开始讨论，未必针对谁。",
         "categories": [
           "literal"
         ],
-        "text": "方向被明确，大家只是开始讨论，未必针对谁。",
+        "text": "方向被明确后，大家只是正常开始讨论，未必针对谁。",
         "type": "literal",
         "traitBias": [
           "stability"
@@ -279,7 +279,7 @@
       },
       {
         "id": "why-him-not-me",
-        "text": "不是，凭什么他说就有人回？",
+        "text": "不是，凭什么TA说就有人回？",
         "tone": "反击",
         "linkedAttentionHookIds": [
           "power-relation",
@@ -330,7 +330,7 @@
   {
     "id": "late-feedback",
     "title": "迟来的反馈",
-    "text": "你交付了一份草案。对方两天后才回复，只说“方向不太对，我们再看看”。没有指出具体问题。",
+    "text": "你交付了一份草案。对方两天后才回复，只说“方向不太对，我们再看看”。没有指出具体存在什么问题。",
     "attentionHooks": [
       {
         "id": "tone",
@@ -350,13 +350,13 @@
       },
       {
         "id": "rule",
-        "label": "规则",
-        "description": "对方没有说明什么才算“方向正确”",
+        "label": "规矩",
+        "description": "什么才算“方向正确”",
         "categories": [
           "rule",
           "responsibility"
         ],
-        "text": "对方没有说明什么才算“方向正确”",
+        "text": "什么才算“方向正确”",
         "type": "rule",
         "traitBias": [
           "orderNeed"
@@ -366,12 +366,12 @@
       {
         "id": "process",
         "label": "流程",
-        "description": "草案、反馈、修订之间缺少清晰步骤。",
+        "description": "缺少清晰的SOP，从草案、反馈到修改之间，没有清晰的步骤。",
         "categories": [
           "process",
           "responsibility"
         ],
-        "text": "草案、反馈、修订之间缺少清晰步骤。",
+        "text": "缺少清晰的SOP，从草案、反馈到修改之间，没有清晰的步骤",
         "type": "process",
         "traitBias": [
           "orderNeed",
@@ -382,12 +382,12 @@
       {
         "id": "structure",
         "label": "结构",
-        "description": "问题可能来自目标、标准和决策方式没有对齐。",
+        "description": "可能是我俩同步率不够高。",
         "categories": [
           "structure",
           "long-term-signal"
         ],
-        "text": "问题可能来自目标、标准和决策方式没有对齐。",
+        "text": "可能是我俩同步率不够高。",
         "type": "structure",
         "traitBias": [
           "abstraction"
@@ -396,13 +396,13 @@
       },
       {
         "id": "other-motive",
-        "label": "对方动机",
-        "description": "对方可能还没想清楚，只能先给出模糊判断。",
+        "label": "理解尊重",
+        "description": "可能对方还没想清楚，只能先给出模糊判断。",
         "categories": [
           "other-motive",
           "vulnerability"
         ],
-        "text": "对方可能还没想清楚，只能先给出模糊判断。",
+        "text": "可能对方还没想清楚，只能先给出模糊判断。",
         "type": "other-motive",
         "traitBias": [
           "empathy",
@@ -412,13 +412,13 @@
       },
       {
         "id": "attack-signal",
-        "label": "攻击信号",
-        "description": "模糊否定可能被感受为对个人产出/能力的打击。",
+        "label": "感觉我被攻击了",
+        "description": "这不是对我工作能力的否定嘛！！",
         "categories": [
           "attack-signal",
           "hostility"
         ],
-        "text": "模糊否定可能被感受为对个人产出/能力的打击。",
+        "text": "这不是对我工作能力的否定嘛！！",
         "type": "attack-signal",
         "traitBias": [
           "aggression",
@@ -430,8 +430,8 @@
     "tags": [
       {
         "id": "vague-threat",
-        "label": "总感觉他对我不怀好意",
-        "description": "把不明确反馈理解成潜在风险。",
+        "label": "潜在风险",
+        "description": "总感觉他对我不怀好意。",
         "moodDelta": {
           "sensitivity": 7,
           "arousal": 9,
@@ -442,8 +442,8 @@
       },
       {
         "id": "quality-gap",
-        "label": "可能就是质量问题",
-        "description": "认为作品可能没有达到对方期待。",
+        "label": "质量问题",
+        "description": "可能就是我没做好。",
         "moodDelta": {
           "shame": 8,
           "selfEsteem": -5,
@@ -453,7 +453,7 @@
       },
       {
         "id": "missing-criteria",
-        "label": "还没对齐需求",
+        "label": "对齐需求",
         "description": "问题可能在双方还没有对齐判断标准。",
         "moodDelta": {
           "abstraction": 7,
@@ -464,8 +464,8 @@
       },
       {
         "id": "shared-search",
-        "label": "大家一起找找方向",
-        "description": "把反馈看成还在找方向，而不是失败结论。",
+        "label": "找方向",
+        "description": "大家一起找找方向呗，不急。",
         "moodDelta": {
           "trust": 6,
           "pleasure": 4,
@@ -478,7 +478,7 @@
       {
         "id": "request-criteria",
         "label": "问他要标准",
-        "description": "请对方列出判断方向是否正确的三个条件。",
+        "description": "请对方列出判断方向正确的条件若干。",
         "moodDelta": {
           "orderNeed": 5,
           "actionPower": 8,
@@ -488,8 +488,8 @@
       },
       {
         "id": "revise-fast",
-        "label": "立刻重做",
-        "description": "先按自己的理解快速改一版，之后看看对方意见。",
+        "label": "勤能补拙",
+        "description": "按自己的理解快速改一版，之后看看对方意见。",
         "moodDelta": {
           "actionPower": 6,
           "arousal": 6,
@@ -500,7 +500,7 @@
       {
         "id": "defend",
         "label": "你理解错了",
-        "description": "说明草案背后的判断，争取让对方理解。",
+        "description": "说明草案背后的判断和自己的考量，争取让对方理解。",
         "moodDelta": {
           "selfEsteem": 4,
           "actionPower": 5,
@@ -510,8 +510,8 @@
       },
       {
         "id": "pause",
-        "label": "先拖一会",
-        "description": "先不回复，等情绪下降后再整理问题。",
+        "label": "拖就完事",
+        "description": "先拖一会，总之不把情绪带进工作。",
         "moodDelta": {
           "arousal": -8,
           "anger": -4,
@@ -523,8 +523,8 @@
     "attributions": [
       {
         "id": "systemize",
-        "label": "我需要建立自己的工作流程",
-        "description": "以后先问标准，再推进内容。",
+        "label": "工作流",
+        "description": "先问标准，再推进工作。",
         "pathDelta": {
           "strategist": 7,
           "orderNeed": 5,
@@ -533,8 +533,8 @@
       },
       {
         "id": "experiment",
-        "label": "没关系，好东西都是试出来的",
-        "description": "把模糊看成自我迭代的空间。",
+        "label": "自我迭代",
+        "description": "没关系，好东西都是一步步尝试出来的",
         "pathDelta": {
           "creator": 7,
           "abstraction": 4,
@@ -543,8 +543,8 @@
       },
       {
         "id": "appease",
-        "label": "肯定我也有问题",
-        "description": "把问题归因于自己没有提前照顾对方期待。",
+        "label": "归因",
+        "description": "肯定我也有问题",
         "pathDelta": {
           "pleaser": 7,
           "empathy": 4,
@@ -553,8 +553,8 @@
       },
       {
         "id": "protect",
-        "label": "我是低精力人，匿了",
-        "description": "把这次经历归结为不能太快投入。",
+        "label": "匿了",
+        "description": "我是低精力人，折腾不动。",
         "pathDelta": {
           "avoider": 7,
           "observer": 4,
@@ -605,7 +605,7 @@
       {
         "id": "they-dont-know-either",
         "text": "我感觉对方也没想清楚，只是先把我挡回来。",
-        "tone": "结构",
+        "tone": "反甲",
         "linkedAttentionHookIds": [
           "structure",
           "other-motive"
@@ -655,8 +655,7 @@
   {
     "id": "operator-hidden-charge",
     "title": "运营商扣费",
-    "text": "你发现运营商莫名其妙扣了35元话费。你越想越烦，觉得这钱像是被偷偷吞掉了，眼看马上就要吃饭了。",
-    "image": "/images/events/operator-hidden-charge.png",
+    "text": "你发现运营商莫名其妙扣了35元话费。你越想越烦，觉得这钱像是被什么看不见的大手偷偷吞掉了，眼看马上就要吃饭了。",
     "attentionHooks": [
       {
         "id": "economic-loss",
@@ -1289,6 +1288,322 @@
       "strategist"
     ],
     "summaryText": "你看见一个人从光模块、算力和宏大叙事，忽然落到“最对不起的是家人”。评论区刷起“这是好事啊”，它当然不是在认真说这是好事，而是在用黑色幽默处理巨大落差。你能看懂这个梗，但不一定要跟着刷。真正刺人的地方，是那些很大的词最后落到了具体的人身上。",
+    "meta": {
+      "pressure": "medium",
+      "directorTags": [
+        "observer",
+        "structure",
+        "shameSafe"
+      ],
+      "weight": 9
+    }
+  },
+  {
+    "id": "elevator-plan-in-fandou-garden",
+    "title": "翻斗花园的电梯计划",
+    "theme": "公共资源与人设背书",
+    "category": "中压结构观察类",
+    "text": "你是翻斗花园的一名居民。翻斗花园一直都有居委会，但平时没什么存在感。有一天，一个开着豪车、打扮得很像富二代的人来到翻斗花园，说这个小区太老旧了，应该加装电梯。居委会的人很高兴，觉得终于有人愿意带翻斗花园升级了，连夜开会，准备把小区维修基金交给他来统筹。公告也贴得很夸张，说这位年轻人背景很硬，资源很多，眼光很远，能带翻斗花园走向新时代。结果没过多久，富二代以前的朋友出来说：他哪是什么富二代，车是他岳父的，以前也不是这么回事。居民们这才开始翻旧账。有人说他讲话一直很大，有人说他朋友圈包装得太满，也有人说，居委会怎么连这都没核实，就差点把维修基金交出去了。后来，小区把那张夸张公告撤了，维修基金也不交了。翻斗花园又恢复了安静。只是大家从此记住了一件事：开豪车的人，不一定会修电梯。会讲未来的人，也不一定能负责现在。",
+    "attentionHooks": [
+      {
+        "id": "luxury-car-filter",
+        "label": "豪车滤镜",
+        "description": "开豪车和资源感很容易制造信任，但它不能直接证明一个人有执行能力。",
+        "categories": [
+          "structure",
+          "other-motive"
+        ],
+        "text": "你注意到，豪车和背景故事制造了一种“他应该很有办法”的感觉，但这和会不会修电梯不是一回事。",
+        "type": "status_signal",
+        "traitBias": [
+          "observer",
+          "abstraction"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "maintenance-fund",
+        "label": "维修基金",
+        "description": "真正被推上桌面的不是一个创意，而是小区居民共同的钱。",
+        "categories": [
+          "structure",
+          "responsibility"
+        ],
+        "text": "你意识到，问题不只是一个人包装得像不像，而是公共资金差点被交给一个没有被充分核验的人。",
+        "type": "public_resource",
+        "traitBias": [
+          "orderNeed",
+          "observer"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "exaggerated-notice",
+        "label": "夸张公告",
+        "description": "居委会的背书让这个人看起来更可信，也让风险变得更像集体共识。",
+        "categories": [
+          "structure",
+          "long-term-signal"
+        ],
+        "text": "公告写得越激动，居民越容易以为事情已经被核实过了。",
+        "type": "endorsement_risk",
+        "traitBias": [
+          "abstraction",
+          "orderNeed"
+        ],
+        "weight": 2
+      },
+      {
+        "id": "verify-present-first",
+        "label": "先查现在",
+        "description": "宏大未来感不能替代资质、合同、资金流向和责任边界。",
+        "categories": [
+          "structure",
+          "shameSafe"
+        ],
+        "text": "你把注意力从“他看起来有没有资源”，移回“他现在能不能对具体事情负责”。",
+        "type": "verification",
+        "traitBias": [
+          "orderNeed",
+          "stability"
+        ],
+        "weight": 2
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "fund-almost-handed-over",
+        "text": "等一下，维修基金差点就这么交出去了？",
+        "tone": "警觉",
+        "linkedAttentionHookIds": [
+          "maintenance-fund",
+          "exaggerated-notice"
+        ],
+        "emotionDelta": {
+          "arousal": 1,
+          "trust": -1,
+          "shame": -1
+        },
+        "traitDelta": {
+          "observer": 2,
+          "orderNeed": 2
+        },
+        "pathDelta": {
+          "observer": 2,
+          "strategist": 1
+        }
+      },
+      {
+        "id": "car-does-not-repair-elevator",
+        "text": "开豪车和会修电梯到底有什么关系。",
+        "tone": "拆解",
+        "linkedAttentionHookIds": [
+          "luxury-car-filter",
+          "verify-present-first"
+        ],
+        "emotionDelta": {
+          "stability": 1,
+          "shame": -1
+        },
+        "traitDelta": {
+          "abstraction": 2,
+          "observer": 2
+        },
+        "pathDelta": {
+          "observer": 3,
+          "abstraction": 1
+        }
+      },
+      {
+        "id": "notice-like-roadshow",
+        "text": "居委会这公告写得比招商路演还激动。",
+        "tone": "吐槽",
+        "linkedAttentionHookIds": [
+          "exaggerated-notice",
+          "luxury-car-filter"
+        ],
+        "emotionDelta": {
+          "pleasure": 1,
+          "anger": 1,
+          "arousal": 1
+        },
+        "traitDelta": {
+          "abstraction": 2,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "observer": 2,
+          "creator": 1
+        }
+      },
+      {
+        "id": "big-future-check-present",
+        "text": "未来讲得越大，越应该先查现在。",
+        "tone": "结构",
+        "linkedAttentionHookIds": [
+          "verify-present-first",
+          "maintenance-fund"
+        ],
+        "emotionDelta": {
+          "stability": 2,
+          "selfEsteem": 1,
+          "trust": -1
+        },
+        "traitDelta": {
+          "orderNeed": 2,
+          "abstraction": 2
+        },
+        "pathDelta": {
+          "strategist": 3,
+          "observer": 2
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "luxury-car-filter",
+        "label": "豪车滤镜",
+        "description": "资源感会制造信任，但不能直接证明一个人能负责具体项目。",
+        "moodDelta": {
+          "observer": 3,
+          "abstraction": 2,
+          "trust": -1
+        }
+      },
+      {
+        "id": "maintenance-fund",
+        "label": "维修基金",
+        "description": "被推上桌面的不是一个漂亮想法，而是居民共同的钱。",
+        "moodDelta": {
+          "orderNeed": 3,
+          "observer": 2,
+          "arousal": 1
+        }
+      },
+      {
+        "id": "exaggerated-notice",
+        "label": "夸张公告",
+        "description": "背书越热烈，越容易让人误以为核验已经完成。",
+        "moodDelta": {
+          "observer": 2,
+          "abstraction": 2,
+          "anger": 1,
+          "pleasure": 1
+        }
+      },
+      {
+        "id": "verify-present-first",
+        "label": "先查现在",
+        "description": "宏大未来不能替代资质、合同、资金流向和责任边界。",
+        "moodDelta": {
+          "orderNeed": 3,
+          "strategist": 2,
+          "stability": 2,
+          "shame": -1
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "check-qualification-contract-funds",
+        "label": "先看资质和合同",
+        "description": "先看资质、合同和资金流向，不被人设带着走。",
+        "moodDelta": {
+          "orderNeed": 3,
+          "strategist": 3,
+          "actionPower": 2,
+          "stability": 1
+        },
+        "feedback": "你把注意力从“他看起来很有资源”，拉回到谁负责、钱怎么走、合同怎么写。"
+      },
+      {
+        "id": "separate-status-from-responsibility",
+        "label": "拆开资源感",
+        "description": "把“他看起来很有资源”和“他能不能负责项目”分开放。",
+        "moodDelta": {
+          "observer": 3,
+          "abstraction": 3,
+          "shame": -1,
+          "stability": 1
+        },
+        "feedback": "你没有被豪车和大词带着走，而是把人设包装和具体执行能力拆成了两件事。"
+      },
+      {
+        "id": "question-fast-endorsement",
+        "label": "追问背书速度",
+        "description": "关注居委会为什么会这么快替他背书。",
+        "moodDelta": {
+          "observer": 3,
+          "orderNeed": 2,
+          "strategist": 2,
+          "trust": -1
+        },
+        "feedback": "你没有只盯着那个会讲未来的人，也开始看是谁把他的包装变成了公共决策。"
+      },
+      {
+        "id": "record-public-resource-risk",
+        "label": "记成风险样本",
+        "description": "把这件事记成一次公共资源风险样本。",
+        "moodDelta": {
+          "observer": 3,
+          "abstraction": 2,
+          "creator": 1,
+          "actionPower": 1
+        },
+        "feedback": "你把这件事从小区八卦里拆出来，记成了公共资源如何被人设和背书推着走的样本。"
+      }
+    ],
+    "attributions": [
+      {
+        "id": "packaging-cannot-replace-verification",
+        "label": "包装不能代替核验",
+        "description": "包装能制造信任感，但不能代替资质、合同和责任边界。",
+        "pathDelta": {
+          "observer": 4,
+          "abstraction": 3,
+          "strategist": 2
+        }
+      },
+      {
+        "id": "public-funds-need-process",
+        "label": "公共资金需要流程",
+        "description": "公共资金最怕被宏大叙事和熟人背书一起推着走。",
+        "pathDelta": {
+          "orderNeed": 4,
+          "observer": 3,
+          "strategist": 2
+        }
+      },
+      {
+        "id": "future-talk-not-present-responsibility",
+        "label": "未来感不是责任力",
+        "description": "会讲未来的人，不一定能负责现在的具体流程。",
+        "pathDelta": {
+          "abstraction": 3,
+          "observer": 3,
+          "stability": 2
+        }
+      },
+      {
+        "id": "verification-is-not-paranoia",
+        "label": "核验不是多疑",
+        "description": "不是居民太多疑，是流程本来就不该靠人设通过。",
+        "pathDelta": {
+          "selfEsteem": 3,
+          "stability": 3,
+          "orderNeed": 2,
+          "shame": -1
+        }
+      }
+    ],
+    "intendedPathBalance": [
+      "observer",
+      "orderNeed",
+      "strategist",
+      "abstraction",
+      "stability"
+    ],
+    "summaryText": "翻斗花园差点把维修基金交给一个看起来很有资源、很会讲未来的人。后来大家才发现，豪车、背景故事和夸张公告都不能替代资质、合同、资金流向和责任边界。你没有把这件事理解成“不信任有钱人”，而是把它重新命名为一次公共资源风险：开豪车的人，不一定会修电梯。会讲未来的人，也不一定能负责现在。",
     "meta": {
       "pressure": "medium",
       "directorTags": [
@@ -6349,6 +6664,324 @@
         "lightCreate"
       ],
       "weight": 10
+    }
+  },
+  {
+    "id": "comments-rewrite-fatigue",
+    "title": "评论区把疲惫改写成事件卡",
+    "theme": "被评论区改写的疲惫",
+    "intendedPathBalance": [
+      "creator",
+      "observer",
+      "stability"
+    ],
+    "text": "你发了一条小动态，配图里有摊开的稿纸、屏幕上的文档、没喝完的饮料，还有一只被护具固定住的手。文字很短：感觉快被项目榨干了。最近写东西、改系统、补细节，身体像被反复按进同一台机器里。\n\n一开始有人问你还好吗，让你先休息一下。你正准备说“还行，就是累”，评论区已经开始跑偏：有人研究桌上那杯饮料到底放了几天，有人说屏幕反光都比你的状态清醒，有人把这理解成项目制生物的生态切片，还有人认真总结：这不像求救，像内容生产者的默认皮肤。\n\n你沉默了几秒。\n\n他们没有完全接住你的疲惫。那种身体被榨干的感觉还在，肩膀和手腕也没有因为几个玩笑自动恢复。可是这个跑偏现场本身又太荒诞了，像评论区当场替你生成了一张事件卡：疲惫、误读、观察细节、玩梗、再把一切拖回创作系统里。\n\n你突然意识到，这确实能写进人格模拟器。\n\n但今天不能继续炼丹。好笑归好笑，你是真的累了。先截图，先关掉评论区，先把自己从素材堆里捞回来。之后再说。",
+    "image": "/images/events/comments-rewrite-fatigue.png",
+    "attentionHooks": [
+      {
+        "id": "fatigue-being-rewritten",
+        "label": "疲惫被改写",
+        "description": "你原本只是想说自己累了，结果评论区把它改写成了一场荒诞观察。",
+        "categories": [
+          "observe",
+          "create"
+        ],
+        "text": "你原本只是想说自己累了，结果评论区把它改写成了一场荒诞观察。",
+        "type": "reinterpretation",
+        "traitBias": [
+          "abstraction",
+          "sensitivity"
+        ],
+        "weight": 1.2
+      },
+      {
+        "id": "accidental-material",
+        "label": "意外素材",
+        "description": "别人没有完全按预期安慰你，但他们的误读本身变成了素材。",
+        "categories": [
+          "create",
+          "observe"
+        ],
+        "text": "别人没有完全按预期安慰你，但他们的误读本身变成了素材。",
+        "type": "material",
+        "traitBias": [
+          "abstraction",
+          "observer"
+        ],
+        "weight": 1.1
+      },
+      {
+        "id": "body-still-tired",
+        "label": "身体还是累的",
+        "description": "就算这件事很好笑，身体损耗也不是假的。",
+        "categories": [
+          "recover",
+          "observe"
+        ],
+        "text": "就算这件事很好笑，身体损耗也不是假的。",
+        "type": "body-limit",
+        "traitBias": [
+          "sensitivity",
+          "orderNeed"
+        ],
+        "weight": 1.1
+      },
+      {
+        "id": "rest-before-refining",
+        "label": "先休息再炼丹",
+        "description": "不是所有痛苦都要立刻转化，先停一下也是一种处理。",
+        "categories": [
+          "recover",
+          "create"
+        ],
+        "text": "不是所有痛苦都要立刻转化，先停一下也是一种处理。",
+        "type": "recovery-boundary",
+        "traitBias": [
+          "stability",
+          "orderNeed"
+        ],
+        "weight": 1
+      }
+    ],
+    "firstReactions": [
+      {
+        "id": "comments-turned-into-event-card",
+        "text": "他们没完全接住我，但好像把这件事改写成事件卡了。",
+        "tone": "荒诞",
+        "linkedAttentionHookIds": [
+          "fatigue-being-rewritten",
+          "accidental-material"
+        ],
+        "emotionDelta": {
+          "stability": 1,
+          "pleasure": 1,
+          "shame": -1
+        },
+        "traitDelta": {
+          "abstraction": 1,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "creator": 1,
+          "observer": 1
+        }
+      },
+      {
+        "id": "not-comfort-but-material",
+        "text": "这不是安慰，但确实有点素材价值。",
+        "tone": "清醒",
+        "linkedAttentionHookIds": [
+          "fatigue-being-rewritten",
+          "accidental-material"
+        ],
+        "emotionDelta": {
+          "selfEsteem": 1,
+          "pleasure": 1,
+          "stability": 1
+        },
+        "traitDelta": {
+          "abstraction": 1,
+          "orderNeed": 1
+        },
+        "pathDelta": {
+          "creator": 2,
+          "observer": 1
+        }
+      },
+      {
+        "id": "i-am-still-tired",
+        "text": "好笑归好笑，我是真的累了。",
+        "tone": "现实",
+        "linkedAttentionHookIds": [
+          "body-still-tired",
+          "rest-before-refining"
+        ],
+        "emotionDelta": {
+          "stability": 1,
+          "arousal": -1,
+          "selfEsteem": 1,
+          "shame": -1
+        },
+        "traitDelta": {
+          "sensitivity": 1,
+          "orderNeed": 1
+        },
+        "pathDelta": {
+          "observer": 1,
+          "strategist": 1
+        }
+      },
+      {
+        "id": "dont-refine-yourself-to-death",
+        "text": "不能什么都拿去炼丹，先把自己捞回来。",
+        "tone": "自救",
+        "linkedAttentionHookIds": [
+          "rest-before-refining",
+          "body-still-tired"
+        ],
+        "emotionDelta": {
+          "stability": 1,
+          "actionPower": 1,
+          "arousal": -1,
+          "selfEsteem": 1
+        },
+        "traitDelta": {
+          "orderNeed": 1,
+          "sensitivity": 1
+        },
+        "pathDelta": {
+          "strategist": 1,
+          "creator": 1
+        }
+      }
+    ],
+    "tags": [
+      {
+        "id": "comment-section-rewrite",
+        "label": "评论区改写",
+        "description": "你发的是疲惫，评论区接住的却是一场荒诞二创。",
+        "moodDelta": {
+          "observer": 2,
+          "abstraction": 1,
+          "pleasure": 1
+        }
+      },
+      {
+        "id": "not-quite-comfort",
+        "label": "没完全被安慰",
+        "description": "他们没有完全接住你的疲惫，但也没有恶意攻击你。",
+        "moodDelta": {
+          "stability": 1,
+          "trust": 1,
+          "shame": -1
+        }
+      },
+      {
+        "id": "usable-material",
+        "label": "可用素材",
+        "description": "尴尬、疲惫、误读和玩梗，都可以被整理成创作材料。",
+        "moodDelta": {
+          "creator": 2,
+          "observer": 1,
+          "pleasure": 1
+        }
+      },
+      {
+        "id": "body-needs-offline",
+        "label": "身体需要下线",
+        "description": "再有素材价值，也不能把身体继续当燃料烧。",
+        "moodDelta": {
+          "stability": 1,
+          "arousal": -1,
+          "selfEsteem": 1
+        }
+      },
+      {
+        "id": "small-absurd-relief",
+        "label": "小型荒诞回血",
+        "description": "这场误读没有解决疲惫，但让灰掉的一天多了一点可笑的形状。",
+        "moodDelta": {
+          "pleasure": 1,
+          "stability": 1,
+          "shame": -1
+        }
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "save-as-event-material",
+        "label": "把评论区截图存进素材库。",
+        "description": "不是马上开工，只是先把这个荒诞现场收起来。",
+        "moodDelta": {
+          "creator": 2,
+          "observer": 2,
+          "actionPower": 1
+        }
+      },
+      {
+        "id": "admit-real-fatigue",
+        "label": "承认自己是真的累了，不把疲惫全都转成笑点。",
+        "description": "好笑是一回事，身体被消耗也是另一回事。",
+        "moodDelta": {
+          "stability": 2,
+          "selfEsteem": 1,
+          "shame": -1,
+          "arousal": -1
+        }
+      },
+      {
+        "id": "write-down-core-scene",
+        "label": "只记下核心场面，今天不强行展开。",
+        "description": "先留下事件核，剩下的等恢复之后再处理。",
+        "moodDelta": {
+          "orderNeed": 2,
+          "creator": 1,
+          "actionPower": 1
+        }
+      },
+      {
+        "id": "close-comments-and-rest",
+        "label": "关掉评论区，先去休息。",
+        "description": "这次不继续刷新反馈，也不把自己钉在现场。",
+        "moodDelta": {
+          "stability": 2,
+          "arousal": -1,
+          "selfEsteem": 1,
+          "actionPower": 1
+        }
+      }
+    ],
+    "attributions": [
+      {
+        "id": "misreadings-can-be-material",
+        "label": "误读不一定只会伤人，有时候也会变成素材。",
+        "description": "前提是你还有力气把它捡起来，而不是当场继续燃烧。",
+        "pathDelta": {
+          "creator": 3,
+          "observer": 2,
+          "abstraction": 2
+        }
+      },
+      {
+        "id": "not-being-fully-held-is-not-total-rejection",
+        "label": "没有被完全接住，不等于被完全否定。",
+        "description": "评论区跑偏了，但这不必被解释成世界又一次站到你对面。",
+        "pathDelta": {
+          "stability": 1,
+          "trust": 1,
+          "observer": 2
+        }
+      },
+      {
+        "id": "fatigue-is-not-just-fuel",
+        "label": "疲惫不是只能拿来炼丹，也可以先被照顾。",
+        "description": "创作可以晚一点，身体不能无限延期。",
+        "pathDelta": {
+          "stability": 2,
+          "selfEsteem": 1,
+          "strategist": 2
+        }
+      },
+      {
+        "id": "absurdity-can-leave-a-small-light",
+        "label": "荒诞有时候会留下一点小光，不解决问题，但能让人喘口气。",
+        "description": "这不是鸡汤，也不是胜利，只是你把现场从纯消耗里拎出来了一点。",
+        "pathDelta": {
+          "creator": 2,
+          "observer": 2,
+          "pleasure": 1
+        }
+      }
+    ],
+    "meta": {
+      "pressure": "low",
+      "directorTags": [
+        "recover",
+        "lightCreate",
+        "observer",
+        "shameSafe"
+      ],
+      "weight": 11
     }
   }
 ]
