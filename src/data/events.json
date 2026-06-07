@@ -6664,7 +6664,8 @@
         "lightCreate"
       ],
       "weight": 10
-    }
+    },
+    "image": "/images/events/ice-cream-truce.png"
   },
   {
     "id": "comments-rewrite-fatigue",
