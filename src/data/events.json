@@ -82,13 +82,13 @@
       },
       {
         "id": "action-opportunity",
-        "label": "绝佳的行动机会",
-        "description": "讨论入口已经被打开，我可以顺势补充自己的想法。",
+        "label": "行动机会",
+        "description": "讨论入口已经打开，我可以顺势补充自己的想法。",
         "categories": [
           "process",
           "long-term-signal"
         ],
-        "text": "讨论入口已经被打开，我可以顺势补充自己的想法。",
+        "text": "讨论入口已经打开，我可以顺势补充自己的想法。",
         "type": "process",
         "traitBias": [
           "orderNeed",
@@ -113,8 +113,8 @@
       },
       {
         "id": "competition",
-        "label": "竞争罢了",
-        "description": "讨论是资源和位置的争夺。",
+        "label": "竞争",
+        "description": "讨论是项目分配资源和话语权的争夺。",
         "moodDelta": {
           "aggression": 8,
           "anger": 10,
@@ -162,7 +162,7 @@
       },
       {
         "id": "withdraw",
-        "label": "先退出",
+        "label": "沉默是金",
         "description": "不再发言，观察后续讨论。",
         "moodDelta": {
           "actionPower": -8,
@@ -184,8 +184,8 @@
       },
       {
         "id": "ask",
-        "label": "问问对方看法",
-        "description": "先问，汇报的时候反正是我讲。",
+        "label": "先质疑",
+        "description": "反正汇报的时候是我讲。",
         "moodDelta": {
           "empathy": 5,
           "trust": 6,
@@ -198,7 +198,7 @@
       {
         "id": "make",
         "label": "狠狠地干",
-        "description": "我是结果导向，重点看这件事能带来什么成果吧。",
+        "description": "重点看这件事能带来什么成果吧。",
         "pathDelta": {
           "creator": 8,
           "actionPower": 4,
@@ -659,13 +659,13 @@
     "attentionHooks": [
       {
         "id": "economic-loss",
-        "label": "小额经济损失",
-        "description": "不是一笔大钱，但真实地减少了你的生活预算。",
+        "label": "小额损失",
+        "description": "不算大钱，但真实地减少了生活预算。",
         "categories": [
           "responsibility",
           "long-term-signal"
         ],
-        "text": "不是一笔大钱，但真实地减少了你的生活预算。",
+        "text": "不算大钱，但真实地减少了生活预算。",
         "type": "responsibility",
         "traitBias": [
           "orderNeed",
@@ -675,14 +675,14 @@
       },
       {
         "id": "opaque-rules",
-        "label": "不透明的规则",
-        "description": "你不知道这笔扣费从哪里来，也不知道该如何快速追回",
+        "label": "规则",
+        "description": "不知道扣费从哪里来，也不知道该如何追回",
         "categories": [
           "rule",
           "process",
           "structure"
         ],
-        "text": "你不知道这笔扣费从哪里来，也不知道该如何快速追回",
+        "text": "不知道扣费从哪里来，也不知道该如何追回",
         "type": "rule",
         "traitBias": [
           "orderNeed",
@@ -694,12 +694,12 @@
       {
         "id": "institutional-power",
         "label": "压迫感",
-        "description": "面对庞大系统，你很难获得对等解释权",
+        "description": "“哎，XX。”",
         "categories": [
           "power-relation",
           "structure"
         ],
-        "text": "面对庞大系统，你很难获得对等解释权。",
+        "text": "“哎，XX。”",
         "type": "power-relation",
         "traitBias": [
           "abstraction",
@@ -709,13 +709,13 @@
       },
       {
         "id": "anger-transfer",
-        "label": "愤怒转移",
-        "description": "你没有立刻把愤怒指向系统，而是开始压缩自己的需求。",
+        "label": "内耗",
+        "description": "多大点事，就当是我自己的错。",
         "categories": [
           "hostility",
           "relationship-change"
         ],
-        "text": "你没有立刻把愤怒指向系统，而是开始压缩自己的需求。",
+        "text": "多大点事，就当是我自己的错。",
         "type": "hostility",
         "traitBias": [
           "aggression",
@@ -725,13 +725,13 @@
       },
       {
         "id": "self-punishment",
-        "label": "自我惩罚倾向",
-        "description": "你试图通过不吃饭，把外部损失从身体上补回来。",
+        "label": "自我惩罚",
+        "description": "算了，一顿饭罢了，大不了不吃。",
         "categories": [
           "hidden-belittling",
           "vulnerability"
         ],
-        "text": "你试图通过不吃饭，把外部损失从身体上补回来。",
+        "text": "算了，一顿饭罢了，大不了不吃。",
         "type": "hidden-belittling",
         "traitBias": [
           "sensitivity",
@@ -743,13 +743,13 @@
       {
         "id": "survival-pressure",
         "label": "生活压力",
-        "description": "小额损失之所以刺痛，是因为你正在精确计算每一笔支出。",
+        "description": "穷是我的原罪～",
         "categories": [
           "tone",
           "long-term-signal",
           "vulnerability"
         ],
-        "text": "小额损失之所以刺痛，是因为你正在精确计算每一笔支出。",
+        "text": "穷是我的原罪～",
         "type": "tone",
         "traitBias": [
           "sensitivity",
@@ -762,8 +762,8 @@
     "tags": [
       {
         "id": "small-money-let-it-go",
-        "label": "只是35块，算了吧",
-        "description": "只是不值得追究的小事。",
+        "label": "挥金如土",
+        "description": "只是35块，算了吧",
         "moodDelta": {
           "pleasure": -4,
           "anger": -2,
@@ -774,8 +774,8 @@
       },
       {
         "id": "opaque-system-extraction",
-        "label": "为什么不早点发提醒？",
-        "description": "把痛感指向规则不透明和解释权不对等。",
+        "label": "这河里吗",
+        "description": "为什么不早点发提醒？",
         "moodDelta": {
           "anger": 10,
           "arousal": 8,
@@ -786,8 +786,8 @@
       },
       {
         "id": "tricked-again",
-        "label": "我又被坑了",
-        "description": "把扣费理解成自己的失误",
+        "label": "天选被坑",
+        "description": "噫，诡计多端的城里人",
         "moodDelta": {
           "sensitivity": 6,
           "shame": 6,
@@ -798,8 +798,8 @@
       },
       {
         "id": "body-pays-the-bill",
-        "label": "让身体替损失买单",
-        "description": "向内的刀怎么戳都疼。",
+        "label": "苦难铸就意志",
+        "description": "抗一顿是一顿。",
         "moodDelta": {
           "shame": 9,
           "pleasure": -8,
@@ -812,8 +812,8 @@
     "behaviors": [
       {
         "id": "ignore-it",
-        "label": "忍了",
-        "description": "当作没发生，把这件事从今天里推开。",
+        "label": "无事发生",
+        "description": "偷偷把短信删掉，就当没看见。",
         "moodDelta": {
           "arousal": -4,
           "anger": -3,
@@ -823,8 +823,8 @@
       },
       {
         "id": "complain-to-operator",
-        "label": "查账单并投诉",
-        "description": "去查明扣费来源，联系客服要求解释。",
+        "label": "工单精英",
+        "description": "查明扣费来源，联系客服要求解释。",
         "moodDelta": {
           "actionPower": 10,
           "anger": 3,
@@ -834,8 +834,8 @@
       },
       {
         "id": "ask-friends",
-        "label": "发到群里问问",
-        "description": "向朋友吐槽，确认是不是有人也遇到过。",
+        "label": "问朋友",
+        "description": "万能的群友帮帮我！",
         "moodDelta": {
           "trust": 4,
           "empathy": 3,
@@ -845,8 +845,8 @@
       },
       {
         "id": "skip-lunch",
-        "label": "中午不吃了",
-        "description": "试图用节食抵消这笔莫名其妙的损失。",
+        "label": "不吃了",
+        "description": "不吃立省100%。",
         "moodDelta": {
           "pleasure": -10,
           "shame": 8,
@@ -859,8 +859,8 @@
     "attributions": [
       {
         "id": "too-poor",
-        "label": "是我太穷了",
-        "description": "把刺痛归因于自己资源太紧，连 35 元都放不下。",
+        "label": "我太穷了",
+        "description": "可恶，都快赶上一顿疯狂星期四了！",
         "pathDelta": {
           "pleaser": 5,
           "avoider": 5,
@@ -870,8 +870,8 @@
       },
       {
         "id": "system-is-opaque",
-        "label": "扣费系统本来就不透明",
-        "description": "把问题放回规则和解释权，而不是责怪自己小题大做。",
+        "label": "规则",
+        "description": "到底谁有耐心划完那堆密密麻麻的小字。",
         "pathDelta": {
           "observer": 7,
           "strategist": 6,
@@ -881,8 +881,8 @@
       },
       {
         "id": "solve-not-punish-self",
-        "label": "要解决问题，不惩罚身体",
-        "description": "把经验沉淀为追查扣费，而不是压缩基本需求。",
+        "label": "合理外耗",
+        "description": "要解决问题而不是解决自己。",
         "pathDelta": {
           "strategist": 7,
           "stability": 5,
@@ -905,7 +905,7 @@
     "firstReactions": [
       {
         "id": "thirty-five-still-hurts",
-        "text": "35 块不是大钱，但它就这么没了，我真的很烦。",
+        "text": "35块不是大钱，但它就这么没了，我真的很烦。",
         "tone": "刺痛",
         "linkedAttentionHookIds": [
           "economic-loss",
@@ -988,14 +988,14 @@
     "title": "这是好事啊",
     "theme": "互联网黑色幽默与宏大叙事塌缩",
     "category": "中压结构观察类",
-    "text": "前几天，你还看到一个人在谈光模块、算力和宏大叙事。那些词很大，像是离普通生活很远：产业周期、时代机会、技术路线、未来空间。几天后，他却说，最对不起的是家人。你看到这句话时，心里先是一沉。那种落差太大了，大到一时间不知道该怎么接。可评论区很快刷起了同一句话：“这是好事啊。”你盯着那几个字看了几秒，忽然意识到它当然不是在认真说这是好事。它很黑，很荒诞，也很互联网。评论区把悲剧、抽象、巨大落差和集体防御，压缩成了一句表情包。你能看懂这个梗，但不一定要跟着刷。真正刺人的地方，是那些宏大叙事最后落到了具体家庭身上。",
+    "text": "前几天，你还看到一个人在谈光模块、算力和宏大叙事。几天后，他却说，最对不起的是家人。可评论区很快刷起了同一句话和同一张表情包：“这是好事啊。”",
     "image": "/images/events/grand-narrative-collapse.png",
     "attentionHooks": [
       {
         "id": "grand-narrative-collapse",
-        "label": "宏大叙事塌缩",
-        "description": "前几天还在谈光模块和算力，几天后就变成了对不起家人。",
-        "text": "前几天还在谈光模块和算力，几天后就变成了对不起家人。",
+        "label": "牛皮早晚会破",
+        "description": "别听别人的牛，牛也不是牛市的牛。",
+        "text": "别听别人的牛，牛也不是牛市的牛。",
         "categories": [
           "observe",
           "structure"
@@ -1010,8 +1010,8 @@
       {
         "id": "meme-as-black-humor-defense",
         "label": "这是好事啊",
-        "description": "评论区用一句表情包，把沉重落差处理成黑色幽默。",
-        "text": "评论区用一句表情包，把沉重落差处理成黑色幽默。",
+        "description": "这是好事啊（重复）。",
+        "text": "这是好事啊（重复）。",
         "categories": [
           "observe",
           "structure"
@@ -1025,9 +1025,9 @@
       },
       {
         "id": "sorry-to-family",
-        "label": "对不起家人",
-        "description": "当一个人开始这样说，事情往往已经不只是判断错了。",
-        "text": "当一个人开始这样说，事情往往已经不只是判断错了。",
+        "label": "丸辣",
+        "description": "我也对不起家人🧎。",
+        "text": "我也对不起家人🧎。",
         "categories": [
           "structure",
           "observe"
@@ -1041,9 +1041,9 @@
       },
       {
         "id": "not-following-the-meme",
-        "label": "不跟风刷梗",
-        "description": "你能看懂梗，但也允许自己不把每个沉重场面都立刻玩笑化。",
-        "text": "你能看懂梗，但也允许自己不把每个沉重场面都立刻玩笑化。",
+        "label": "不跟风",
+        "description": "能看懂，但是先respect",
+        "text": "能看懂，但是先respect",
         "categories": [
           "observe",
           "structure"
@@ -1059,7 +1059,7 @@
     "firstReactions": [
       {
         "id": "black-humor-but-i-get-it",
-        "text": "这笑点也太黑了，但我确实懂为什么有人刷。",
+        "text": "这也太黑色幽默啦，但是也能理解他们为什么这么刷。",
         "tone": "黑色幽默",
         "linkedAttentionHookIds": [
           "meme-as-black-humor-defense",
@@ -1082,7 +1082,7 @@
       {
         "id": "what-happened-between",
         "text": "从算力叙事到对不起家人，中间到底发生了什么。",
-        "tone": "追问",
+        "tone": "思考中",
         "linkedAttentionHookIds": [
           "grand-narrative-collapse",
           "sorry-to-family"
@@ -1103,7 +1103,7 @@
       },
       {
         "id": "comments-cannot-be-serious",
-        "text": "评论区不是不懂痛苦，是已经不知道怎么正经接了。",
+        "text": "评论区已经不知道怎么正经接了。",
         "tone": "观察",
         "linkedAttentionHookIds": [
           "meme-as-black-humor-defense",
@@ -1124,7 +1124,7 @@
       },
       {
         "id": "not-following-this-one",
-        "text": "我先不跟风刷，这事有点沉。",
+        "text": "我先不跟风刷了，这还是有点太沉重了。",
         "tone": "克制",
         "linkedAttentionHookIds": [
           "not-following-the-meme",
@@ -1149,8 +1149,8 @@
     "tags": [
       {
         "id": "grand-narrative-collapse-tag",
-        "label": "宏大叙事塌缩",
-        "description": "前几天还在谈算力，几天后却说对不起家人。",
+        "label": "叙事塌缩",
+        "description": "前几天还在谈算力啥啥啥，几天后却说对不起家人。",
         "moodDelta": {
           "observer": 1,
           "abstraction": 2,
@@ -1160,7 +1160,7 @@
       {
         "id": "this-is-good-meme-tag",
         "label": "这是好事啊",
-        "description": "这句话不是在说事情真的好，而是在用梗处理不好处理的东西。",
+        "description": "倒不是说真的好，大家都在亏钱。",
         "moodDelta": {
           "observer": 1,
           "pleasure": 1,
@@ -1171,7 +1171,7 @@
       {
         "id": "sorry-to-family-tag",
         "label": "对不起家人",
-        "description": "这句话一出来，事情就从抽象判断落到了具体的人身上。",
+        "description": "再夸张的故事，也还是要人买单。",
         "moodDelta": {
           "sensitivity": 2,
           "stability": 1,
@@ -1182,7 +1182,7 @@
       {
         "id": "not-that-funny",
         "label": "笑不太出来",
-        "description": "你能看懂这个梗，但也知道这事不只是梗。",
+        "description": "能看懂这个梗，但也知道这事不只是梗。",
         "moodDelta": {
           "stability": 1,
           "selfEsteem": 2,
@@ -1194,8 +1194,8 @@
     "behaviors": [
       {
         "id": "save-but-not-share",
-        "label": "截图存一下",
-        "description": "你看见了这个荒诞现场，但没有立刻加入刷屏。",
+        "label": "有人截图了",
+        "description": "管他的，先截图。",
         "moodDelta": {
           "observer": 1,
           "stability": 1,
@@ -1205,45 +1205,45 @@
       },
       {
         "id": "check-context-first",
-        "label": "先看前后文",
-        "description": "先把时间线和上下文看清楚，再判断这场落差到底发生了什么。",
+        "label": "先看上下文",
+        "description": "不急，让子弹再飞一会。",
         "moodDelta": {
           "orderNeed": 2,
           "observer": 2,
           "stability": 1,
           "trust": 1
         },
-        "feedback": "你没有只接住表情包，而是先去看宏大叙事是怎么落到这一步的。"
+        "feedback": "你没有乱跟风玩梗，而是先看这个东西是怎么变成今天这样的。"
       },
       {
         "id": "close-comments-quietly",
         "label": "默默关掉评论区",
-        "description": "你能理解黑色幽默，但这一次不想继续往下刷。",
+        "description": "唯独这一次不想继续往下刷。",
         "moodDelta": {
           "stability": 1,
           "arousal": -2,
           "selfEsteem": 1,
           "shame": -1
         },
-        "feedback": "你没有要求自己必须跟上评论区的节奏，也没有把沉重场面立刻玩笑化。"
+        "feedback": "你没有跟风玩梗，只是想一个人静静。"
       },
       {
         "id": "record-black-humor-sample",
-        "label": "记录黑色幽默样本",
-        "description": "不是为了嘲笑谁，而是记录评论区如何处理巨大落差。",
+        "label": "观察人类",
+        "description": "没有看不起谁，只是忠诚记录评论区的每一刻。",
         "moodDelta": {
           "observer": 1,
           "creator": 1,
           "abstraction": 1
         },
-        "feedback": "你把它记成了一个互联网黑色幽默样本：不是好笑本身，而是大家如何处理不好处理的东西。"
+        "feedback": "你把它记成了一个互联网黑色幽默样本。"
       }
     ],
     "attributions": [
       {
         "id": "grand-narrative-lands-on-family",
-        "label": "宏大叙事会落到具体的人身上",
-        "description": "那些很大的词，最后可能都会落到某个家庭、某个人的身上。",
+        "label": "哈哈",
+        "description": "那些很大的词和故事，最后可能都会落到某个家庭、某个人的身上。",
         "pathDelta": {
           "observer": 2,
           "abstraction": 2,
@@ -1252,8 +1252,8 @@
       },
       {
         "id": "memes-can-be-defense",
-        "label": "玩梗也可能是防御",
-        "description": "黑色幽默不一定是不懂痛苦，也可能是大家不知道怎么接住它。",
+        "label": "玩梗",
+        "description": "不一定是大家不懂痛苦，也可能是习惯了自嘲。",
         "pathDelta": {
           "observer": 2,
           "abstraction": 1
@@ -1261,8 +1261,8 @@
       },
       {
         "id": "understand-not-join",
-        "label": "看懂不等于参与",
-        "description": "理解一种互联网反应，不等于必须跟着做同一种反应。",
+        "label": "只可远观",
+        "description": "理解不代表要跟着做。",
         "pathDelta": {
           "stability": 1,
           "selfEsteem": 2,
@@ -1271,8 +1271,8 @@
       },
       {
         "id": "not-really-good",
-        "label": "这不是真的好事",
-        "description": "这不是“好事”，这是互联网把不好处理的事压成一句话。",
+        "label": "孬",
+        "description": "这不是好事了，是孬。",
         "pathDelta": {
           "observer": 1,
           "strategist": 1,
@@ -1287,7 +1287,7 @@
       "selfEsteem",
       "strategist"
     ],
-    "summaryText": "你看见一个人从光模块、算力和宏大叙事，忽然落到“最对不起的是家人”。评论区刷起“这是好事啊”，它当然不是在认真说这是好事，而是在用黑色幽默处理巨大落差。你能看懂这个梗，但不一定要跟着刷。真正刺人的地方，是那些很大的词最后落到了具体的人身上。",
+    "summaryText": "散了吧，没瓜可吃了。",
     "meta": {
       "pressure": "medium",
       "directorTags": [
@@ -1303,17 +1303,17 @@
     "title": "翻斗花园的电梯计划",
     "theme": "公共资源与人设背书",
     "category": "中压结构观察类",
-    "text": "你是翻斗花园的一名居民。翻斗花园一直都有居委会，但平时没什么存在感。有一天，一个开着豪车、打扮得很像富二代的人来到翻斗花园，说这个小区太老旧了，应该加装电梯。居委会的人很高兴，觉得终于有人愿意带翻斗花园升级了，连夜开会，准备把小区维修基金交给他来统筹。公告也贴得很夸张，说这位年轻人背景很硬，资源很多，眼光很远，能带翻斗花园走向新时代。结果没过多久，富二代以前的朋友出来说：他哪是什么富二代，车是他岳父的，以前也不是这么回事。居民们这才开始翻旧账。有人说他讲话一直很大，有人说他朋友圈包装得太满，也有人说，居委会怎么连这都没核实，就差点把维修基金交出去了。后来，小区把那张夸张公告撤了，维修基金也不交了。翻斗花园又恢复了安静。只是大家从此记住了一件事：开豪车的人，不一定会修电梯。会讲未来的人，也不一定能负责现在。",
+    "text": "你是翻斗花园的一名居民。翻斗花园一直都有居委会，但平时没什么存在感。有一天，一个开着豪车、打扮得很像富二代的人来到翻斗花园，说这个小区太老旧了，应该加装电梯。居委会的人很高兴，觉得终于有人愿意带带翻斗花园了，连夜开会，准备把小区维修基金交给他。公告也贴得很夸张，说这位年轻人背景很硬，资源很多，眼光很远，能带翻斗花园走向新时代。结果没过多久，富二代以前的朋友爆料：他哪是什么富二代，车是他岳父的。居民们恍然大悟。后来，小区把那公告撤了，翻斗花园也再无下文。",
     "attentionHooks": [
       {
         "id": "luxury-car-filter",
         "label": "豪车滤镜",
-        "description": "开豪车和资源感很容易制造信任，但它不能直接证明一个人有执行能力。",
+        "description": "开豪车穿西装本身给人带来了信任，但不能直接证明一个人能力。",
         "categories": [
           "structure",
           "other-motive"
         ],
-        "text": "你注意到，豪车和背景故事制造了一种“他应该很有办法”的感觉，但这和会不会修电梯不是一回事。",
+        "text": "豪车和穿着给人“他应该很有办法”的感觉，但实际上真的如此吗？",
         "type": "status_signal",
         "traitBias": [
           "observer",
@@ -1324,12 +1324,12 @@
       {
         "id": "maintenance-fund",
         "label": "维修基金",
-        "description": "真正被推上桌面的不是一个创意，而是小区居民共同的钱。",
+        "description": "真正被推上桌面的不是一个想法，而是小区居民共同的钱。",
         "categories": [
           "structure",
           "responsibility"
         ],
-        "text": "你意识到，问题不只是一个人包装得像不像，而是公共资金差点被交给一个没有被充分核验的人。",
+        "text": "我们的钱差点打水漂了！！",
         "type": "public_resource",
         "traitBias": [
           "orderNeed",
@@ -1340,12 +1340,12 @@
       {
         "id": "exaggerated-notice",
         "label": "夸张公告",
-        "description": "居委会的背书让这个人看起来更可信，也让风险变得更像集体共识。",
+        "description": "一定要查！严查！公告是谁写的！",
         "categories": [
           "structure",
           "long-term-signal"
         ],
-        "text": "公告写得越激动，居民越容易以为事情已经被核实过了。",
+        "text": "公告写的这么大，还以为是已经核实了呢。",
         "type": "endorsement_risk",
         "traitBias": [
           "abstraction",
@@ -1355,8 +1355,8 @@
       },
       {
         "id": "verify-present-first",
-        "label": "先查现在",
-        "description": "宏大未来感不能替代资质、合同、资金流向和责任边界。",
+        "label": "尽职调查",
+        "description": "牌照这玩意可不好拿，你先展示一下。",
         "categories": [
           "structure",
           "shameSafe"
@@ -1438,7 +1438,7 @@
       },
       {
         "id": "big-future-check-present",
-        "text": "未来讲得越大，越应该先查现在。",
+        "text": "牛皮讲得越大，越应该先查现在干了啥。",
         "tone": "结构",
         "linkedAttentionHookIds": [
           "verify-present-first",
@@ -1463,7 +1463,7 @@
       {
         "id": "luxury-car-filter",
         "label": "豪车滤镜",
-        "description": "资源感会制造信任，但不能直接证明一个人能负责具体项目。",
+        "description": "背书能带来信任，但不能直接证明一个人能负责具体项目。",
         "moodDelta": {
           "observer": 3,
           "abstraction": 2,
@@ -1472,8 +1472,8 @@
       },
       {
         "id": "maintenance-fund",
-        "label": "维修基金",
-        "description": "被推上桌面的不是一个漂亮想法，而是居民共同的钱。",
+        "label": "foundation",
+        "description": "被推上桌面的不是美好愿景，而是大家的钱。",
         "moodDelta": {
           "orderNeed": 3,
           "observer": 2,
@@ -1483,7 +1483,7 @@
       {
         "id": "exaggerated-notice",
         "label": "夸张公告",
-        "description": "背书越热烈，越容易让人误以为核验已经完成。",
+        "description": "PPT和公告写那么夸张，真容易让人误以为尽调已经完成。",
         "moodDelta": {
           "observer": 2,
           "abstraction": 2,
@@ -1494,7 +1494,7 @@
       {
         "id": "verify-present-first",
         "label": "先查现在",
-        "description": "宏大未来不能替代资质、合同、资金流向和责任边界。",
+        "description": "专治各种不服各种吹牛逼。",
         "moodDelta": {
           "orderNeed": 3,
           "strategist": 2,
@@ -1506,7 +1506,7 @@
     "behaviors": [
       {
         "id": "check-qualification-contract-funds",
-        "label": "先看资质和合同",
+        "label": "看看你的",
         "description": "先看资质、合同和资金流向，不被人设带着走。",
         "moodDelta": {
           "orderNeed": 3,
@@ -1514,23 +1514,23 @@
           "actionPower": 2,
           "stability": 1
         },
-        "feedback": "你把注意力从“他看起来很有资源”，拉回到谁负责、钱怎么走、合同怎么写。"
+        "feedback": "你把注意力从“他看起来很有资源”，拉回到具体的各项指标上。"
       },
       {
         "id": "separate-status-from-responsibility",
-        "label": "拆开资源感",
-        "description": "把“他看起来很有资源”和“他能不能负责项目”分开放。",
+        "label": "拆解",
+        "description": "他看起来很有钱，也不代表这人就能成事。",
         "moodDelta": {
           "observer": 3,
           "abstraction": 3,
           "shame": -1,
           "stability": 1
         },
-        "feedback": "你没有被豪车和大词带着走，而是把人设包装和具体执行能力拆成了两件事。"
+        "feedback": "你没有被金钱迷惑双眼，而是把人设包装和具体执行能力拆成了两件事。"
       },
       {
         "id": "question-fast-endorsement",
-        "label": "追问背书速度",
+        "label": "追问",
         "description": "关注居委会为什么会这么快替他背书。",
         "moodDelta": {
           "observer": 3,
@@ -1538,26 +1538,26 @@
           "strategist": 2,
           "trust": -1
         },
-        "feedback": "你没有只盯着那个会讲未来的人，也开始看是谁把他的包装变成了公共决策。"
+        "feedback": "一个巴掌拍不响，你深谙这次道理。"
       },
       {
         "id": "record-public-resource-risk",
-        "label": "记成风险样本",
-        "description": "把这件事记成一次公共资源风险样本。",
+        "label": "记录",
+        "description": "太棒了，这就是我想要的素材。",
         "moodDelta": {
           "observer": 3,
           "abstraction": 2,
           "creator": 1,
           "actionPower": 1
         },
-        "feedback": "你把这件事从小区八卦里拆出来，记成了公共资源如何被人设和背书推着走的样本。"
+        "feedback": "你把这件事写成了新·翻斗花园的寓言。"
       }
     ],
     "attributions": [
       {
         "id": "packaging-cannot-replace-verification",
-        "label": "包装不能代替核验",
-        "description": "包装能制造信任感，但不能代替资质、合同和责任边界。",
+        "label": "实事求是",
+        "description": "人设包装能制造信任感，但不能代替责任和资质。",
         "pathDelta": {
           "observer": 4,
           "abstraction": 3,
@@ -1566,8 +1566,8 @@
       },
       {
         "id": "public-funds-need-process",
-        "label": "公共资金需要流程",
-        "description": "公共资金最怕被宏大叙事和熟人背书一起推着走。",
+        "label": "流程",
+        "description": "最怕被宏大叙事和熟人背书一起推着走。",
         "pathDelta": {
           "orderNeed": 4,
           "observer": 3,
@@ -1576,8 +1576,8 @@
       },
       {
         "id": "future-talk-not-present-responsibility",
-        "label": "未来感不是责任力",
-        "description": "会讲未来的人，不一定能负责现在的具体流程。",
+        "label": "责任",
+        "description": "能说会道的人，不一定能成事。",
         "pathDelta": {
           "abstraction": 3,
           "observer": 3,
@@ -1586,8 +1586,8 @@
       },
       {
         "id": "verification-is-not-paranoia",
-        "label": "核验不是多疑",
-        "description": "不是居民太多疑，是流程本来就不该靠人设通过。",
+        "label": "钱不是大风刮来的",
+        "description": "不是居民太多疑，而是本来就不该轻易相信人设。",
         "pathDelta": {
           "selfEsteem": 3,
           "stability": 3,
@@ -1603,7 +1603,7 @@
       "abstraction",
       "stability"
     ],
-    "summaryText": "翻斗花园差点把维修基金交给一个看起来很有资源、很会讲未来的人。后来大家才发现，豪车、背景故事和夸张公告都不能替代资质、合同、资金流向和责任边界。你没有把这件事理解成“不信任有钱人”，而是把它重新命名为一次公共资源风险：开豪车的人，不一定会修电梯。会讲未来的人，也不一定能负责现在。",
+    "summaryText": "翻斗花园又恢复了平静呢。",
     "meta": {
       "pressure": "medium",
       "directorTags": [
@@ -1623,13 +1623,13 @@
     "attentionHooks": [
       {
         "id": "knowledge-joke-mix",
-        "label": "知识和玩笑混在一起",
-        "description": "这道题把严肃冷知识和低级玩笑揉成了一团。",
+        "label": "混同",
+        "description": "这道题把冷知识和黄段子结合在一起了。",
         "categories": [
           "tone",
           "structure"
         ],
-        "text": "你注意到的不是洞本身，而是这道题背后的恶趣味。",
+        "text": "你注意到的不是洞本身，而是出题人的恶趣味。",
         "type": "mixed_frame",
         "traitBias": [
           "abstraction",
@@ -1639,8 +1639,8 @@
       },
       {
         "id": "group-direction",
-        "label": "别人怎么说？",
-        "description": "重点变成其他人的看法",
+        "label": "观察",
+        "description": "别人怎么说？",
         "categories": [
           "relationship-change",
           "other-motive"
@@ -1655,13 +1655,13 @@
       },
       {
         "id": "design-authority-display",
-        "label": "设计用途背后的展示欲",
-        "description": "“用途”这个问题里藏着权力、身体和审美的暗示。",
+        "label": "展示欲",
+        "description": "这个问题里藏着权力和审美的暗示。",
         "categories": [
           "power-relation",
           "long-term-signal"
         ],
-        "text": "你盯住的是“设计用途”这个问题背后的权力和审美暗示。",
+        "text": "你看到的远比表面来的多。",
         "type": "power_structure",
         "traitBias": [
           "abstraction",
@@ -1672,12 +1672,12 @@
       {
         "id": "standard-answer-anxiety",
         "label": "标准答案焦虑",
-        "description": "题目看起来像选择题，但标准可能根本不稳定。",
+        "description": "这题到底有没有标准答案，还是在诱导大家选一个共同答案？",
         "categories": [
           "rule",
           "process"
         ],
-        "text": "你忍不住想问：这题到底有没有标准答案，还是在诱导大家选一个共同答案。",
+        "text": "你开始认为：题目看起来像选择题，但可能根本没有标准答案。",
         "type": "unclear_rule",
         "traitBias": [
           "orderNeed",
@@ -1687,13 +1687,13 @@
       },
       {
         "id": "male-gaze-default",
-        "label": "凝视",
+        "label": "那个问题",
         "description": "这个玩笑可能默认了某种凝视。",
         "categories": [
           "hidden-belittling",
           "power-relation"
         ],
-        "text": "你其实在确认：这是无害玩笑，还是本身给你挖了个天坑。",
+        "text": "你其实在确认：这是无害玩笑，还是题目本身给你挖了个天坑。",
         "type": "default_gaze",
         "traitBias": [
           "sensitivity",
@@ -1704,13 +1704,13 @@
       },
       {
         "id": "cheap-joke-resistance",
-        "label": "对低级玩笑的反感",
+        "label": "反感",
         "description": "你对暧昧起哄本能地不耐烦。",
         "categories": [
           "hostility",
           "attack-signal"
         ],
-        "text": "倒不是没有幽默感，只是有点烦这种把人往低级笑点里推的气氛。",
+        "text": "倒不是没有幽默感，只是有点烦这种把人往低级笑话里推的气氛。",
         "type": "joke_resistance",
         "traitBias": [
           "aggression",
@@ -1723,7 +1723,7 @@
       {
         "id": "is-this-history-or-bait",
         "text": "等一下，这题到底是在考历史，还是在钓大家开黄腔？",
-        "tone": "辨框",
+        "tone": "辩证",
         "linkedAttentionHookIds": [
           "knowledge-joke-mix",
           "group-direction"
@@ -1805,8 +1805,8 @@
     "tags": [
       {
         "id": "this-is-frame-bait",
-        "label": "这题在钓大家怎么站队",
-        "description": "它表面问用途，实际在看你会往知识、玩笑还是起哄里走。",
+        "label": "框架",
+        "description": "这题在钓大家怎么站队。",
         "moodDelta": {
           "abstraction": 6,
           "arousal": 3,
@@ -1816,8 +1816,8 @@
       },
       {
         "id": "i-want-real-answer",
-        "label": "我想先知道它到底有没有正经答案",
-        "description": "你更在意题目是否严谨，而不是先加入玩笑",
+        "label": "求真",
+        "description": "我想先知道它到底有没有正经答案。",
         "moodDelta": {
           "orderNeed": 7,
           "actionPower": 3,
@@ -1827,8 +1827,8 @@
       },
       {
         "id": "cheap-joke-disguised-as-trivia",
-        "label": "这是披着冷知识皮的低级玩笑",
-        "description": "你把它理解成用历史外壳包装暧昧起哄",
+        "label": "定性",
+        "description": "这是披着冷知识皮的低级玩笑。",
         "moodDelta": {
           "anger": 7,
           "aggression": 5,
@@ -1838,8 +1838,8 @@
       },
       {
         "id": "maybe-just-silly-fun",
-        "label": "也许就是大家随便乐一下",
-        "description": "你先把它放在轻松荒诞的语境里，不急着定罪",
+        "label": "轻松",
+        "description": "也许就是大家随便乐一下",
         "moodDelta": {
           "pleasure": 4,
           "empathy": 3,
@@ -1851,8 +1851,8 @@
     "behaviors": [
       {
         "id": "look-up-before-answering",
-        "label": "先查一下再说",
-        "description": "你不急着选，先去确认它是不是有历史来源",
+        "label": "溯源",
+        "description": "不急着选，先去确认它是不是有历史来源",
         "moodDelta": {
           "actionPower": 5,
           "orderNeed": 4,
@@ -1862,8 +1862,8 @@
       },
       {
         "id": "drop-a-dry-joke",
-        "label": "用干巴巴的冷笑话接住",
-        "description": "你不完全扫兴，但也不把自己交给起哄",
+        "label": "绕远路",
+        "description": "对付这种冷笑话的办法，就是发个更冷的",
         "moodDelta": {
           "pleasure": 3,
           "creator": 2,
@@ -1873,8 +1873,8 @@
       },
       {
         "id": "call-out-the-frame",
-        "label": "直接指出这题在诱导起哄",
-        "description": "你把玩笑背后的框架说出来，让群里别装没看见",
+        "label": "挑明",
+        "description": "直接说出题者的意图。",
         "moodDelta": {
           "actionPower": 7,
           "anger": 4,
@@ -1884,8 +1884,8 @@
       },
       {
         "id": "stay-quiet-and-read-room",
-        "label": "先不答，看群里怎么飘",
-        "description": "你把这当成观察群体气氛的小窗口",
+        "label": "观察",
+        "description": "先不说话，看群里怎么飘",
         "moodDelta": {
           "observer": 3,
           "arousal": -2,
@@ -1897,8 +1897,8 @@
     "attributions": [
       {
         "id": "uncertain-info-needs-frame-reading",
-        "label": "模糊信息要先读框架",
-        "description": "以后遇到似是而非的梗，你会先看它在引导什么",
+        "label": "框架",
+        "description": "遇到似是而非的梗，你会先看它在引导什么",
         "pathDelta": {
           "observer": 8,
           "abstraction": 5,
@@ -1907,8 +1907,8 @@
       },
       {
         "id": "rigor-keeps-me-grounded",
-        "label": "标准答案能帮我稳住场面",
-        "description": "你把荒诞题转成查证、对齐和判断依据",
+        "label": "标准",
+        "description": "荒诞可以转成查证、对齐和判断依据",
         "pathDelta": {
           "strategist": 8,
           "orderNeed": 5,
@@ -1917,8 +1917,8 @@
       },
       {
         "id": "jokes-also-have-power",
-        "label": "玩笑也有权力方向",
-        "description": "你不再把所有起哄都当成无害气氛",
+        "label": "黑色幽默",
+        "description": "不是所有起哄都是无害的",
         "pathDelta": {
           "avenger": 6,
           "observer": 4,
@@ -1927,8 +1927,8 @@
       },
       {
         "id": "absurdity-can-be-made-into-material",
-        "label": "荒诞也能变成素材",
-        "description": "你把这个怪题收进自己的素材库，准备以后写成段子或小作品。",
+        "label": "素材",
+        "description": "准备以后写成段子或作品。",
         "pathDelta": {
           "creator": 7,
           "pleasure": 3,
@@ -1949,17 +1949,17 @@
   {
     "id": "friend-last-minute-cancel",
     "title": "朋友爽约",
-    "text": "你提前空出晚上，连路线都查好了。出门前半小时，朋友发来一句“今天有点累，下次吧”。你回了个“没事”，但手机放下后，房间突然安静得有点刺耳。",
+    "text": "周五你提前空出晚上，连路线都查好了，一下班就着急着回家，出门前半小时，朋友发来一句“今天有点累，下次吧”。你回了个“没事”，但手机放下后，房间里忽然有种诡异的安静。",
     "attentionHooks": [
       {
         "id": "late-tone",
-        "label": "轻飘飘的语气",
-        "description": "对方说得很轻巧，好像你的等待不需要被认真对待。",
+        "label": "轻视",
+        "description": "“好像我的等待不需要被认真对待。”",
         "categories": [
           "tone",
           "hidden-belittling"
         ],
-        "text": "对方说得很轻巧，好像你的等待不需要被认真对待。",
+        "text": "对方说得很轻巧。但是你呢？",
         "type": "tone",
         "traitBias": [
           "sensitivity",
@@ -1970,7 +1970,7 @@
       {
         "id": "time-cost",
         "label": "时间成本",
-        "description": "为了这个约定，你推掉了同事一起聚会的邀约。",
+        "description": "我的时间也是时间。",
         "categories": [
           "responsibility",
           "process"

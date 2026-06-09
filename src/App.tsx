@@ -82,14 +82,10 @@ function App() {
   }, [characterState, isProfileReady])
 
   useEffect(() => {
-    if (!isProfileReady) {
-      return
-    }
-
     window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
     })
-  }, [currentEventId, isProfileReady])
+  }, [currentEventId, hasEnteredTitle, isProfileReady, stage])
 
   const startPreviewState = useMemo(
     () =>
