@@ -4309,8 +4309,8 @@
       },
       {
         "id": "wipe-face-first",
-        "label": "先擦脸",
-        "description": "事情很乱，但可以先处理眼前这一点。",
+        "label": "整理",
+        "description": "虽然未来很迷茫，但我可以先收下这包纸巾。",
         "moodDelta": {
           "stability": 2,
           "actionPower": 2
@@ -4320,7 +4320,7 @@
     "behaviors": [
       {
         "id": "take-tissue",
-        "label": "接过纸巾，先把脸擦干净。",
+        "label": "放空",
         "description": "先把眼泪擦掉，不急着想明白全部事情。",
         "moodDelta": {
           "stability": 2,
@@ -4330,8 +4330,8 @@
       },
       {
         "id": "dont-explain-crying",
-        "label": "没有急着解释自己为什么哭。",
-        "description": "这次不把自己立刻交出去说明。",
+        "label": "不再解释",
+        "description": "我不用向任何人感到抱歉。",
         "moodDelta": {
           "trust": 2,
           "observer": 1
@@ -4339,8 +4339,8 @@
       },
       {
         "id": "small-thanks-window",
-        "label": "小声说了谢谢，然后继续看窗外。",
-        "description": "说完那句很小的谢谢，就先把脸转回去。",
+        "label": "道谢",
+        "description": "和阿姨说完谢谢，就接着看向窗外。",
         "moodDelta": {
           "trust": 1,
           "pleasure": 1,
@@ -4349,8 +4349,8 @@
       },
       {
         "id": "keep-unfinished-pack",
-        "label": "下飞机后，把那包没用完的纸巾塞进包里。",
-        "description": "不是什么纪念品，但你还是没扔。",
+        "label": "纪念品",
+        "description": "下飞机后，把那包没用完的纸巾塞进包里。",
         "moodDelta": {
           "stability": 1,
           "selfEsteem": 1,
@@ -4361,8 +4361,8 @@
     "attributions": [
       {
         "id": "not-everyone-needs-proof",
-        "label": "原来不是所有人看见我难受，都会先要一份证明材料。",
-        "description": "有些看见，不会立刻变成审问。",
+        "label": "理解尊重",
+        "description": "原来不是所有人看见我难受，都会先要一份证明材料。",
         "pathDelta": {
           "trust": 2,
           "selfEsteem": 1
@@ -4370,8 +4370,8 @@
       },
       {
         "id": "tissue-solves-face",
-        "label": "纸巾解决不了老板，但能先解决这张脸。",
-        "description": "先处理眼前这一点，也算一种撑住。",
+        "label": "行动机会",
+        "description": "纸巾解决不了老板，但能先解决我的难过。",
         "pathDelta": {
           "stability": 2,
           "actionPower": 2
@@ -4379,8 +4379,8 @@
       },
       {
         "id": "not-performing",
-        "label": "我不是想演，我是真的有点绷不住了。",
-        "description": "承认自己确实到了边上，不等于丢人。",
+        "label": "承认",
+        "description": "我不是想演戏，我是真的有点绷不住了。",
         "pathDelta": {
           "selfEsteem": 1,
           "arousal": -1
@@ -4388,8 +4388,8 @@
       },
       {
         "id": "not-all-bad",
-        "label": "世界今天没有好到哪里去，但也没有全坏。",
-        "description": "破事还在，但不是每一眼都带着审判。",
+        "label": "先相信",
+        "description": "世界今天没有好到哪里去，但也没有多坏。",
         "pathDelta": {
           "trust": 1,
           "stability": 2,
@@ -4401,8 +4401,8 @@
     "firstReactions": [
       {
         "id": "tiny-thanks",
-        "text": "谢谢……",
-        "tone": "接住",
+        "text": "谢谢阿姨……",
+        "tone": "信任",
         "linkedAttentionHookIds": [
           "specific-kindness",
           "tiny-thanks"
@@ -4421,7 +4421,7 @@
       {
         "id": "more-tears",
         "text": "完了，一递纸我更绷不住了。",
-        "tone": "松掉",
+        "tone": "怔住",
         "linkedAttentionHookIds": [
           "wipe-face-first",
           "specific-kindness"
@@ -4456,7 +4456,7 @@
       },
       {
         "id": "more-human-than-leave-defense",
-        "text": "这包纸巾比刚才那场请假答辩有人性多了。",
+        "text": "这包纸巾比请假答辩有人性多了。",
         "tone": "荒诞",
         "linkedAttentionHookIds": [
           "not-everyone-judges",
@@ -4501,17 +4501,17 @@
       ],
       "weight": 11
     },
-    "text": "中午到了。\n\n你本来已经准备好趴下睡十分钟。\n\n外套叠好了。\n手机扣过去了。\n连“我就眯一下”的心理建设都做完了。\n\n然后大老板来了。\n\n办公室里大部分人被叫去会议室。\n你不用参加。\n\n理论上，这是好事。\n\n问题是，会议室的玻璃是半透明的。\n\n里面看不太清你。\n但也不是完全看不见你。\n\n你这边灯还亮着，会议室里偶尔有人转头，\n你甚至能感觉到那种模糊的视线，从玻璃后面飘过来。\n\n没人说你不能睡。\n\n但这个环境看起来，也不是很支持人类睡觉。",
+    "text": "中午到了，你本来已经准备好趴下睡十分钟，结果大老板来了，办公室里大部分人都被叫走了。虽然你不用参加，但会议室的玻璃是半透明的，且离你工位不远，你这边的灯还亮着——这个环境看起来，就不是很支持人类睡觉。",
     "attentionHooks": [
       {
         "id": "translucent-gaze",
-        "label": "半透明凝视",
-        "description": "没有人明确看你，但空间让你觉得自己一直处在可见范围里。",
+        "label": "凝视",
+        "description": "没有人明确看你，但你觉得自己一直处在可见范围里。",
         "categories": [
           "observe",
           "structure"
         ],
-        "text": "没有人明确看你，但空间让你觉得自己一直处在可见范围里。",
+        "text": "没有人明确看你，但你觉得自己一直处在可见范围里。",
         "type": "environment",
         "traitBias": [
           "sensitivity",
@@ -4521,13 +4521,13 @@
       },
       {
         "id": "theoretical-freedom",
-        "label": "理论上的自由",
-        "description": "你不用开会，但也没有真正获得可以休息的空间。",
+        "label": "理论自由",
+        "description": "不用开会，但也没有真正获得可以休息的空间。",
         "categories": [
           "structure",
           "recover"
         ],
-        "text": "你不用开会，但也没有真正获得可以休息的空间。",
+        "text": "不用开会，但也没有真正获得可以休息的空间。",
         "type": "constraint",
         "traitBias": [
           "orderNeed",
@@ -4537,13 +4537,13 @@
       },
       {
         "id": "perform-awake",
-        "label": "装作清醒",
-        "description": "你开始思考怎样看起来不像在睡觉，而不是怎样真的休息。",
+        "label": "清醒",
+        "description": "开始思考怎样看起来像是在工作，而不是在休息。",
         "categories": [
           "observe",
           "self-control"
         ],
-        "text": "你开始思考怎样看起来不像在睡觉，而不是怎样真的休息。",
+        "text": "开始思考怎样看起来像是在工作，而不是在休息。",
         "type": "masking",
         "traitBias": [
           "pleaser",
@@ -4553,7 +4553,7 @@
       },
       {
         "id": "low-power-survival",
-        "label": "低功耗生存",
+        "label": "生存",
         "description": "既然睡不了，就至少把自己切到省电模式。",
         "categories": [
           "recover",
@@ -4571,7 +4571,7 @@
     "tags": [
       {
         "id": "translucent-gaze",
-        "label": "半透明凝视",
+        "label": "凝视",
         "description": "没有明确视线，但你知道自己处在可见范围里。",
         "moodDelta": {
           "observer": 4,
@@ -4581,7 +4581,7 @@
       },
       {
         "id": "nap-failed",
-        "label": "午休失败",
+        "label": "睡眠不足",
         "description": "不是不能睡，是这个场景让人很难真的睡下去。",
         "moodDelta": {
           "stability": -1,
@@ -4591,8 +4591,8 @@
       },
       {
         "id": "not-in-meeting-but-present",
-        "label": "不参会但在场",
-        "description": "你没有进入会议，但也没有完全离开会议的气场。",
+        "label": "结构",
+        "description": "没有进入会议，但也没有完全离开会议。",
         "moodDelta": {
           "orderNeed": 3,
           "observer": 2
@@ -4600,7 +4600,7 @@
       },
       {
         "id": "perform-awake",
-        "label": "装作清醒",
+        "label": "清醒",
         "description": "你开始维持一种“我正在正常工作”的表面状态。",
         "moodDelta": {
           "strategist": 2,
@@ -4623,8 +4623,8 @@
     "behaviors": [
       {
         "id": "open-serious-page",
-        "label": "打开一个看起来很正经的页面，假装在处理事情。",
-        "description": "你没有真的进入工作状态，只是先让自己看起来像一个正在工作的正常人类。",
+        "label": "faker",
+        "description": "你打开一个看起来很正经的页面，假装在处理事情。",
         "moodDelta": {
           "strategist": 3,
           "orderNeed": 2,
@@ -4635,8 +4635,8 @@
       },
       {
         "id": "headphones-three-minutes",
-        "label": "戴上耳机，闭眼三分钟，伪装成思考。",
-        "description": "如果不能睡，那就把休息伪装成一种深度思考。",
+        "label": "思考",
+        "description": "戴上耳机和兜帽口罩，假装自己是Alan Walker，实则在睡大觉。",
         "moodDelta": {
           "stability": 4,
           "arousal": -3,
@@ -4646,8 +4646,8 @@
       },
       {
         "id": "water-break",
-        "label": "去茶水间接水，顺便离开这个视线范围。",
-        "description": "你给自己找了一个非常合理的移动理由。",
+        "label": "行动机会",
+        "description": "去茶水间接水，顺便离开这个视线范围。",
         "moodDelta": {
           "actionPower": 3,
           "stability": 2,
@@ -4658,8 +4658,8 @@
       },
       {
         "id": "low-power-stare",
-        "label": "把午休改成低功耗发呆，不强行表演效率。",
-        "description": "你没有睡成，但至少没有继续逼自己高功耗运转。",
+        "label": "节能",
+        "description": "把午休改成低功耗发呆，不强行表演效率。",
         "moodDelta": {
           "stability": 5,
           "arousal": -3,
@@ -4672,8 +4672,8 @@
     "attributions": [
       {
         "id": "meeting-aura",
-        "label": "我没有被安排进会议，但也没有真正离开会议的气场。",
-        "description": "有些空间不需要命令，也能让人自动进入被管理状态。",
+        "label": "观察",
+        "description": "我没有被安排进会议，但也没有真正离开会议。",
         "pathDelta": {
           "observer": 4,
           "abstraction": 3,
@@ -4682,8 +4682,8 @@
       },
       {
         "id": "office-design-mask",
-        "label": "有些办公室设计，天然适合制造“我是不是该装一下”的错觉。",
-        "description": "玻璃什么也没说，但你已经开始调整坐姿了。",
+        "label": "结构",
+        "description": "有些办公室设计，天然适合制造“我是不是该装一下”的错觉。",
         "pathDelta": {
           "observer": 4,
           "abstraction": 4,
@@ -4692,8 +4692,8 @@
       },
       {
         "id": "bad-scene-for-shutdown",
-        "label": "午休失败不代表我懒，只是这个场景太不适合人类关机。",
-        "description": "不是你不够自律，是这个环境本来就不支持自然恢复。",
+        "label": "归因",
+        "description": "午休失败不是因为我不够自律，是这个环境本来就不支持自然恢复。",
         "pathDelta": {
           "stability": 3,
           "selfEsteem": 3,
@@ -4702,8 +4702,8 @@
       },
       {
         "id": "save-some-power",
-        "label": "先保存一点体力，比硬装精神更现实。",
-        "description": "真正的策略不是永远表现良好，而是知道什么时候该省电。",
+        "label": "节能",
+        "description": "先保存一点体力，比强装精神更现实。",
         "pathDelta": {
           "strategist": 3,
           "stability": 4,
@@ -4714,7 +4714,7 @@
     "firstReactions": [
       {
         "id": "not-free",
-        "text": "我不参会，但我好像也没自由。",
+        "text": "不用中午临时加班开会，但好像也没有休息的机会。",
         "tone": "荒诞",
         "linkedAttentionHookIds": [
           "theoretical-freedom",
@@ -4735,7 +4735,7 @@
       },
       {
         "id": "glass-knows-workplace",
-        "text": "这玻璃怎么这么懂职场。",
+        "text": "这玻璃怎么这么懂老板，建议封为CFO。",
         "tone": "吐槽",
         "linkedAttentionHookIds": [
           "translucent-gaze",
@@ -4813,17 +4813,17 @@
       ],
       "weight": 10
     },
-    "text": "你本来只是认识了一个新朋友。\n\n聊得还挺正常。\n对方也挺好说话。\n\n你甚至差点开始放心吐槽一点以前的破事。\n\n然后聊着聊着，对方突然说：\n\n“哦，你之前那个项目啊。”\n“我好像认识他们那边的人。”\n\n你手停了一下。\n\n再聊两句。\n\n发现不是“认识他们那边的人”。\n\n是他前同事在你前项目方。\n你前项目方的合作方，又认识你以前吐槽过的那个人。\n那个人的朋友，是你的大学同学。\n你沉默了。",
+    "text": "这几天你认识了一个新朋友，聊着聊着对方突然：“哦，你之前那个项目啊。我好像认识他们那边的人。”你手停了一下，再聊两句，发现事情没有那么简单。他前同事在你前项目工作，你前项目方的合作方，又认识你以前吐槽过的人，那个人的朋友，是你的大学同学。\n你沉默了。",
     "attentionHooks": [
       {
         "id": "what-does-this-mean",
         "label": "何意味",
-        "description": "以为只是新认识一个人，结果对方和旧项目、旧同事、旧圈子全能连上。",
+        "description": "以为只是新认识一个人，结果全能连上。这算什么，同事连连看吗？",
         "categories": [
           "observe",
           "structure"
         ],
-        "text": "以为只是新认识一个人，结果对方和旧项目、旧同事、旧圈子全能连上。",
+        "text": "以为只是新认识一个人，结果全能连上。这算什么，同事连连看吗？",
         "type": "structure",
         "traitBias": [
           "observer",
@@ -4833,13 +4833,13 @@
       },
       {
         "id": "old-save-still-chasing",
-        "label": "死去的回忆还在追杀我",
-        "description": "看起来是新地图，其实底下接着一堆旧存档。",
+        "label": "观察",
+        "description": "死去的回忆还在追杀我。",
         "categories": [
           "observe",
           "abstraction"
         ],
-        "text": "看起来是新地图，其实底下接着一堆旧存档。",
+        "text": "死去的回忆还在追杀我",
         "type": "abstraction",
         "traitBias": [
           "observer",
@@ -4849,13 +4849,13 @@
       },
       {
         "id": "invisible-hand-please",
-        "label": "看不见的大手哦内该",
-        "description": "有些话说出口前像吐槽，说出口后突然像可以被转发的素材。",
+        "label": "结构",
+        "description": "有些话说出口前像吐槽，说出口后突然像可以被转发的瓜条。",
         "categories": [
           "structure",
           "boundary"
         ],
-        "text": "有些话说出口前像吐槽，说出口后突然像可以被转发的素材。",
+        "text": "有些话说出口前像吐槽，说出口后突然像可以被转发的瓜条。",
         "type": "boundary",
         "traitBias": [
           "orderNeed",
@@ -4865,13 +4865,13 @@
       },
       {
         "id": "blur-the-complaint",
-        "label": "倒苦水要打码",
-        "description": "不是不能聊，而是人名、公司名和具体细节最好先糊一下。",
+        "label": "记得打马",
+        "description": "具体信息一定要脱敏！",
         "categories": [
           "trust",
           "structure"
         ],
-        "text": "不是不能聊，而是人名、公司名和具体细节最好先糊一下。",
+        "text": "具体信息一定要脱敏！",
         "type": "trust",
         "traitBias": [
           "observer",
@@ -4883,8 +4883,8 @@
     "tags": [
       {
         "id": "small-circle",
-        "label": "圈子太小",
-        "description": "你以为是新朋友，结果底下全是旧连接。",
+        "label": "观察",
+        "description": "世界还是太小了。",
         "moodDelta": {
           "observer": 4,
           "abstraction": 2,
@@ -4903,8 +4903,8 @@
       },
       {
         "id": "old-map-residue",
-        "label": "旧地图残留",
-        "description": "新关系底下，居然还能接回以前那堆事。",
+        "label": "结构",
+        "description": "居然还能接回以前那堆“破事”。",
         "moodDelta": {
           "abstraction": 4,
           "observer": 2,
@@ -4913,8 +4913,8 @@
       },
       {
         "id": "invisible-forward-button",
-        "label": "隐形转发按钮",
-        "description": "有些话一旦说得太清楚，就像突然多了一个看不见的出口。",
+        "label": "吓晕",
+        "description": "“有人截图了！”",
         "moodDelta": {
           "orderNeed": 3,
           "strategist": 2,
@@ -4923,8 +4923,8 @@
       },
       {
         "id": "blur-the-complaint",
-        "label": "倒苦水要打码",
-        "description": "情绪可以说，名字和细节先糊一下。",
+        "label": "直接",
+        "description": "以后这还有谁敢倒苦水！",
         "moodDelta": {
           "strategist": 4,
           "orderNeed": 3,
@@ -4933,8 +4933,8 @@
       },
       {
         "id": "occasion-matters",
-        "label": "不是不能信，是要分场合",
-        "description": "对方未必有问题，只是这事不能原图直出。",
+        "label": "信任",
+        "description": "对方不一定有问题，先自查看看有没有说错话。",
         "moodDelta": {
           "trust": 1,
           "stability": 2,
@@ -4945,8 +4945,8 @@
     "behaviors": [
       {
         "id": "stop-specific-names",
-        "label": "立刻停止补充具体人名和公司名。",
-        "description": "你没有突然冷场，只是把那些能被精准定位的词先咽了回去。",
+        "label": "后撤",
+        "description": "我先润了，不聊了886……啊不996去了。",
         "moodDelta": {
           "strategist": 4,
           "orderNeed": 3,
@@ -4955,8 +4955,8 @@
       },
       {
         "id": "make-it-vague",
-        "label": "把吐槽改成模糊描述，只说事不说身份。",
-        "description": "同一件事可以继续聊，但不一定要把人名、公司名和项目名全都原图直出。",
+        "label": "观察。",
+        "description": "可以继续聊，但不要聊到太具体的东西。",
         "moodDelta": {
           "observer": 3,
           "orderNeed": 3,
@@ -4966,8 +4966,8 @@
       },
       {
         "id": "cant-talk-naked-folder",
-        "label": "在心里新建一个“这事不能裸聊”的文件夹。",
-        "description": "不是以后什么都不说，是有些东西得先套个壳。",
+        "label": "抽象",
+        "description": "在心里新建一个“这事不能裸聊”的文件夹。",
         "moodDelta": {
           "abstraction": 4,
           "strategist": 3,
@@ -4989,8 +4989,8 @@
     "attributions": [
       {
         "id": "small-circle-not-conspiracy",
-        "label": "圈子小不一定是阴谋，可能只是地球 online 地图太窄。",
-        "description": "不是所有连接都代表危险，但默认大家互不认识，确实有点天真。",
+        "label": "观察",
+        "description": "圈子小不一定是阴谋，可能只是地球 online 地图太小了。",
         "pathDelta": {
           "observer": 4,
           "abstraction": 3,
@@ -4999,7 +4999,7 @@
       },
       {
         "id": "complaint-needs-blur",
-        "label": "倒苦水不是不能倒，是人名和细节最好先打码。",
+        "label": "稳定",
         "description": "情绪可以是真的，细节不一定要全裸奔。",
         "pathDelta": {
           "strategist": 4,
@@ -5009,8 +5009,8 @@
       },
       {
         "id": "trust-has-layers",
-        "label": "不是所有人都不能信，是每个人适合知道的版本不一样。",
-        "description": "有些人适合听完整版，有些人适合听打码版，有些人适合只知道“有个事”。",
+        "label": "信任",
+        "description": "不是所有人都不能信，是每个人适合知道的版本不一样",
         "pathDelta": {
           "trust": 2,
           "orderNeed": 3,
@@ -5020,8 +5020,8 @@
       },
       {
         "id": "not-a-capital-crime",
-        "label": "我刚才嘴快了一点，但也不是犯了什么死罪。",
-        "description": "复盘可以有，没必要把自己当泄密事故现场。",
+        "label": "没多大事",
+        "description": "我刚才嘴快了一点，但也不是犯了什么死罪。",
         "pathDelta": {
           "stability": 3,
           "selfEsteem": 2,
@@ -5033,7 +5033,7 @@
       {
         "id": "why-everyone-knows-each-other",
         "text": "“你们怎么都认识啊？！”",
-        "tone": "震惊 / 荒诞",
+        "tone": "荒诞",
         "linkedAttentionHookIds": [
           "what-does-this-mean",
           "old-save-still-chasing"
@@ -5052,7 +5052,7 @@
       {
         "id": "did-i-say-too-much",
         "text": "“等一下，我刚刚没说什么不能说的吧。”",
-        "tone": "复盘 / 警觉",
+        "tone": "复盘",
         "linkedAttentionHookIds": [
           "invisible-hand-please",
           "blur-the-complaint"
@@ -5072,7 +5072,7 @@
       {
         "id": "old-map-side-quest",
         "text": "“这不是新朋友，这是旧地图支线入口。”",
-        "tone": "吐槽 / 抽象",
+        "tone": "抽象",
         "linkedAttentionHookIds": [
           "old-save-still-chasing",
           "what-does-this-mean"
@@ -5092,7 +5092,7 @@
       {
         "id": "complaints-need-blur",
         "text": "“以后倒苦水也得打码了。”",
-        "tone": "自嘲 / 收束",
+        "tone": "自嘲",
         "linkedAttentionHookIds": [
           "blur-the-complaint",
           "invisible-hand-please"
@@ -5123,17 +5123,17 @@
       ],
       "weight": 9
     },
-    "text": "你刷到一篇报道。\n\n标题写得很热闹。\n什么少年天才。\n什么名师。\n什么教育传奇。\n还有学生家长在评论区说，遇到这样的老师是幸运。\n\n你盯着那张照片看了几秒。\n\n是他。\n\n很久以前，你问过他“为什么”。\n他没有回答。\n他只是皱着眉说，你怎么连这个都不懂。\n\n后来你开始害怕举手。\n害怕追问。\n害怕在学习里暴露自己还没懂。\n\n现在他被写成了一个很厉害的人。\n\n你甚至不想否认这件事。\n\n他可能确实聪明。\n可能确实有天赋。\n可能也真的教出过很多成绩很好的人。\n\n但你突然意识到，这些都不能自动覆盖另一件事。\n\n他当年让你觉得：\n不会，就是你这个人的问题。\n\n你把报道往下划了一点。\n又停住。\n\n原来一个人可以很强。\n也可以很不适合靠近某个小孩的自尊。\n\n这两件事并不冲突。",
+    "text": "你刷到一篇报道，少年天才名师教育传奇。学生家长在评论区说，遇到这样的老师太幸运了。你忽然想起来很久以前，你问过TA一道题“为什么这么做”，TA没有回答，只是皱着眉说，你怎么连这个都不懂。",
     "attentionHooks": [
       {
         "id": "authority-filter",
-        "label": "权威滤镜",
-        "description": "报道把他写成了传奇，但你知道那不是这段经历的全部。",
+        "label": "滤镜",
+        "description": "报道把老师写成了传奇，但你知道那不是全部。",
         "categories": [
           "observe",
           "structure"
         ],
-        "text": "报道把他写成了传奇，但你知道那不是这段经历的全部。",
+        "text": "报道把老师写成了传奇，但你知道那不是全部。",
         "type": "frame",
         "traitBias": [
           "abstraction",
@@ -5143,13 +5143,13 @@
       },
       {
         "id": "old-not-knowing",
-        "label": "当年的不会",
-        "description": "你想起自己不是不想学，而是越来越害怕暴露自己还没懂。",
+        "label": "观察",
+        "description": "自己不是不想学，而是越来越害怕暴露自己不懂。",
         "categories": [
           "observe",
           "recover"
         ],
-        "text": "你想起自己不是不想学，而是越来越害怕暴露自己还没懂。",
+        "text": "自己不是不想学，而是越来越害怕暴露自己不懂。",
         "type": "memory",
         "traitBias": [
           "sensitivity",
@@ -5159,13 +5159,13 @@
       },
       {
         "id": "strong-and-hurtful",
-        "label": "厉害和伤人可以同时存在",
-        "description": "你开始把他的能力和他当年对你的影响分开看。",
+        "label": "结构",
+        "description": "能力是能力，伤害是伤害。",
         "categories": [
           "structure",
           "recover"
         ],
-        "text": "你开始把他的能力和他当年对你的影响分开看。",
+        "text": "能力是能力，伤害是伤害。",
         "type": "reframe",
         "traitBias": [
           "abstraction",
@@ -5175,13 +5175,13 @@
       },
       {
         "id": "not-learning-itself",
-        "label": "不是学习本身",
-        "description": "真正让你退缩的，可能不是学习，而是被权威审判的感觉。",
+        "label": "结构",
+        "description": "真正让你退缩的，可能不是学习，而是被审判的感觉。",
         "categories": [
           "observe",
           "structure"
         ],
-        "text": "真正让你退缩的，可能不是学习，而是被权威审判的感觉。",
+        "text": "真正让你退缩的，可能不是学习，而是被审判的感觉。",
         "type": "insight",
         "traitBias": [
           "observer",
@@ -5193,8 +5193,8 @@
     "tags": [
       {
         "id": "authority-filter",
-        "label": "权威滤镜",
-        "description": "你看见了公共叙事里那个被包装好的版本。",
+        "label": "滤镜",
+        "description": "你看见了一个新的故事，但你知道这不是全部。",
         "moodDelta": {
           "observer": 4,
           "abstraction": 2,
@@ -5203,8 +5203,8 @@
       },
       {
         "id": "old-not-knowing",
-        "label": "当年的不会",
-        "description": "你想起自己曾经害怕问问题，也害怕被发现还没懂。",
+        "label": "敏感",
+        "description": "你想起自己曾经害怕问问题，也害怕被发现不懂装懂。",
         "moodDelta": {
           "sensitivity": 2,
           "arousal": 2,
@@ -5214,8 +5214,8 @@
       },
       {
         "id": "separate-the-two",
-        "label": "拆开来看",
-        "description": "你把“他很强”和“他当年伤害过我”分开放回两个位置。",
+        "label": "稳定",
+        "description": "你学会把很多事情拆开来看。",
         "moodDelta": {
           "stability": 3,
           "selfEsteem": 3,
@@ -5225,8 +5225,8 @@
       },
       {
         "id": "not-my-fault",
-        "label": "不是我的错",
-        "description": "不会不是罪，被教到害怕思考也不是你的错。",
+        "label": "自强",
+        "description": "不是我的错，我现在也过的很好。",
         "moodDelta": {
           "selfEsteem": 4,
           "shame": -3,
@@ -5235,8 +5235,8 @@
       },
       {
         "id": "re-understand-learning",
-        "label": "重新理解学习",
-        "description": "你开始意识到，学习不应该等于被审判。",
+        "label": "理解尊重",
+        "description": "学习不应该等于被审判。",
         "moodDelta": {
           "observer": 3,
           "abstraction": 2,
@@ -5248,8 +5248,8 @@
     "behaviors": [
       {
         "id": "do-not-read-comments",
-        "label": "没有点进评论区继续看夸奖。",
-        "description": "你知道自己现在不需要再用别人的赞美来审判自己一次。",
+        "label": "稳定",
+        "description": "你不看了，关掉了页面。",
         "moodDelta": {
           "stability": 3,
           "arousal": -2,
@@ -5259,8 +5259,8 @@
       },
       {
         "id": "scroll-past-photo",
-        "label": "把报道划过去，先让身体离开那张照片。",
-        "description": "你没有强迫自己继续盯着那个被包装好的版本。",
+        "label": "后撤",
+        "description": "你把发布这个文章的号拉黑了，连带转发的人一起。",
         "moodDelta": {
           "stability": 3,
           "arousal": -2,
@@ -5270,8 +5270,8 @@
       },
       {
         "id": "write-strong-not-right",
-        "label": "在备忘录里写下：厉害不等于有权伤人。",
-        "description": "你没有写长篇控诉，只是给这段旧经验留了一个更准确的标题。",
+        "label": "观察",
+        "description": "你的短视频起号文案突然有思路了，你在备忘录里写下：聪明不等于可以骂别人不聪明。",
         "moodDelta": {
           "observer": 3,
           "abstraction": 3,
@@ -5281,8 +5281,8 @@
       },
       {
         "id": "open-learning-page",
-        "label": "重新打开一个和学习有关的页面，停留一分钟。",
-        "description": "你不是立刻恢复热爱，只是试着确认学习本身并没有那么可怕。",
+        "label": "行动",
+        "description": "你重新打开了当年学不懂的题目，试图理解背后的逻辑。",
         "moodDelta": {
           "stability": 3,
           "selfEsteem": 3,
@@ -5295,8 +5295,8 @@
     "attributions": [
       {
         "id": "praise-does-not-absolve",
-        "label": "一个人被很多人称赞，不代表他在我这里也必须无罪。",
-        "description": "公共评价可以存在，我的经验也可以存在。",
+        "label": "观察",
+        "description": "一个人被很多人称赞，不代表他在我这里有好名声。",
         "pathDelta": {
           "observer": 4,
           "abstraction": 3,
@@ -5305,8 +5305,8 @@
       },
       {
         "id": "smart-not-exemption",
-        "label": "他可能确实很聪明，但聪明不是伤害别人的豁免权。",
-        "description": "能力和关系里的伤害不是同一个账本。",
+        "label": "结构",
+        "description": "他可能确实很聪明，但聪明不是伤害别人的豁免权。",
         "pathDelta": {
           "observer": 4,
           "strategist": 2,
@@ -5315,8 +5315,8 @@
       },
       {
         "id": "taught-to-fear-not-knowing",
-        "label": "我当年不是笨，只是被教到害怕暴露不会。",
-        "description": "你开始把羞耻从自己身上挪开一点。",
+        "label": "疗愈",
+        "description": "我一点也不笨，我只是不擅长做这件事",
         "pathDelta": {
           "selfEsteem": 4,
           "stability": 3,
@@ -5325,8 +5325,8 @@
       },
       {
         "id": "learning-is-not-humiliation",
-        "label": "学习本身没有错，错的是把不会变成羞辱。",
-        "description": "你把学习和那段权威关系重新拆开。",
+        "label": "稳定",
+        "description": "学习本身没有错，错的是这个世界。",
         "pathDelta": {
           "abstraction": 4,
           "stability": 3,
@@ -5337,7 +5337,7 @@
     "firstReactions": [
       {
         "id": "strong-but-i-hurt",
-        "text": "“他可能真的厉害，但我当年也是真的难受。”",
+        "text": "“他可能真的很厉害，但我当年也是真的难受。”",
         "tone": "清醒",
         "linkedAttentionHookIds": [
           "authority-filter",
@@ -5360,7 +5360,7 @@
       },
       {
         "id": "not-denying-ability",
-        "text": "“原来我不是在否认他的能力，我是在确认我的感受。”",
+        "text": "“我不是在否认他的能力，我是在确认我自己的感受。”",
         "tone": "整理",
         "linkedAttentionHookIds": [
           "authority-filter",
@@ -5384,7 +5384,7 @@
       {
         "id": "genius-not-for-me",
         "text": "“天才老师，也可以是不适合我的老师。”",
-        "tone": "结构化",
+        "tone": "结构",
         "linkedAttentionHookIds": [
           "strong-and-hurtful",
           "not-learning-itself"
@@ -5442,17 +5442,17 @@
       ],
       "weight": 11
     },
-    "text": "很久以前，你有一个朋友。\n\n对方在那套主流评价里，比你强很多。\n\n成绩好。\n做事稳。\n像那种很知道标准答案在哪里的人。\n\n你在那段关系里，经常觉得自己是更没用的那个。\n\n你会问作业。\n会被对方骂两句。\n但对方还是会帮。\n\n有一天，对方看见了你自己做的一个东西。\n\n不是考试。\n不是作业。\n\n是你自己偷偷折腾出来的东西。\n\n可能很粗糙。\n完成度也没多高。\n但确实是你一点点弄出来的。\n\n对方认真看了一会儿。\n\n然后说：\n\n“你这个，真的挺厉害的。”\n\n后来你们吵了一架。\n\n关系断了。\n\n没有惊天动地。\n只是对方没有再找你。\n你也没有再找对方。\n\n很多年后，你突然想起那句话。\n\n你已经不太记得当年抄过哪道题。\n也不太记得吵架到底是谁先说错了话。\n\n但你还记得那句认可。\n\n关系闹掰了。\n\n但那句话没有自动过期。",
+    "text": "很久以前，你有一个朋友。对方在主流评价里，比你强很多，成绩好，做事靠谱，标准答案好学生。你没事抄TA作业。有一天，对方看见了你自己做的一个小作品，虽然完成度也没多高。\n对方居然夸奖你说：“这个真的挺厉害的。”\n后来你们吵了一架，再也没有联系过彼此。",
     "attentionHooks": [
       {
         "id": "old-praise",
-        "label": "旧夸奖",
-        "description": "那句话没有改变后来的关系，但确实留下了一点证据。",
+        "label": "信任",
+        "description": "那句话没有改变后来的关系，但确实让我曾经开心过。",
         "categories": [
           "trust",
           "recover"
         ],
-        "text": "那句话没有改变后来的关系，但确实留下了一点证据。",
+        "text": "那句话没有改变后来的关系，但确实让我曾经开心过。",
         "type": "memory",
         "traitBias": [
           "sensitivity",
@@ -5462,13 +5462,13 @@
       },
       {
         "id": "once-seen",
-        "label": "被看见过",
-        "description": "对方不是在安慰你，而是真的看到了你在另一个系统里的能力。",
+        "label": "观察",
+        "description": "对方不是安慰，而是真的看到了我在另一个系统里的能力。",
         "categories": [
           "trust",
           "observe"
         ],
-        "text": "对方不是在安慰你，而是真的看到了你在另一个系统里的能力。",
+        "text": "对方不是在安慰，而是真的看到了我在另一个系统里的能力。",
         "type": "recognition",
         "traitBias": [
           "sensitivity",
@@ -5478,13 +5478,13 @@
       },
       {
         "id": "another-system",
-        "label": "另一个系统",
-        "description": "主流评价没有测到的东西，不代表不存在。",
+        "label": "结构",
+        "description": "没有被测验测出来的天赋，并不是不存在。",
         "categories": [
           "observe",
           "structure"
         ],
-        "text": "主流评价没有测到的东西，不代表不存在。",
+        "text": "没有被测验测出来的天赋，并不是不存在。",
         "type": "reframe",
         "traitBias": [
           "abstraction",
@@ -5494,13 +5494,13 @@
       },
       {
         "id": "relationship-breakpoint",
-        "label": "关系断点",
-        "description": "关系后来断了，但不必把曾经真实发生过的认可一起抹掉。",
+        "label": "修复",
+        "description": "虽然关系断了，但是TA曾经认可了我。",
         "categories": [
           "recover",
           "structure"
         ],
-        "text": "关系后来断了，但不必把曾经真实发生过的认可一起抹掉。",
+        "text": "虽然关系断了，但是TA曾经认可了我。",
         "type": "boundary",
         "traitBias": [
           "abstraction",
@@ -5512,7 +5512,7 @@
     "tags": [
       {
         "id": "old-praise",
-        "label": "旧夸奖",
+        "label": "信任",
         "description": "很久以前的一句话，突然从记忆里掉了出来。",
         "moodDelta": {
           "trust": 3,
@@ -5523,8 +5523,8 @@
       },
       {
         "id": "once-seen",
-        "label": "被看见过",
-        "description": "你意识到，当年真的有人认真看见过你做的东西。",
+        "label": "疗愈",
+        "description": "你意识到，当年真的有人认真看过你做的东西。",
         "moodDelta": {
           "trust": 4,
           "selfEsteem": 3,
@@ -5534,8 +5534,8 @@
       },
       {
         "id": "another-system",
-        "label": "另一个系统",
-        "description": "你不是没有能力，只是那套评价方式没有测到。",
+        "label": "观察",
+        "description": "你不是没有能力，只是你以前不知道。",
         "moodDelta": {
           "observer": 3,
           "abstraction": 3,
@@ -5545,8 +5545,8 @@
       },
       {
         "id": "relationship-breakpoint",
-        "label": "关系断点",
-        "description": "后来断掉的是关系，不一定是那一刻的真实。",
+        "label": "稳定",
+        "description": "后来断掉的是关系，但那一刻你们彼此信任。",
         "moodDelta": {
           "stability": 3,
           "trust": 2,
@@ -5558,8 +5558,8 @@
     "behaviors": [
       {
         "id": "admit-praise-happened",
-        "label": "承认那句夸奖曾经真的发生过。",
-        "description": "你不再急着把它当成自己记错了、想多了，或者对方随口说说。",
+        "label": "信任",
+        "description": "不急着把它当成自己记错了、想多了，或者对方随口说说，只是作为很多年后鼓励自己的回忆。",
         "moodDelta": {
           "trust": 4,
           "selfEsteem": 3,
@@ -5569,8 +5569,8 @@
       },
       {
         "id": "dont-rewrite-past-praise",
-        "label": "不把后来的闹掰，倒推成当时的认可也全是假的。",
-        "description": "你把关系结局和具体瞬间分开放。",
+        "label": "稳定",
+        "description": "那个时候，TA是真的觉得我很厉害。",
         "moodDelta": {
           "stability": 4,
           "abstraction": 3,
@@ -5580,8 +5580,8 @@
       },
       {
         "id": "look-back-at-the-thing",
-        "label": "回头看看自己当年做的那个东西。",
-        "description": "它可能粗糙，但确实是你在另一个系统里伸出来的一只手。",
+        "label": "观察",
+        "description": "回头看看自己当年做的那个东西。",
         "moodDelta": {
           "observer": 3,
           "selfEsteem": 3,
@@ -5591,8 +5591,8 @@
       },
       {
         "id": "write-other-system-ability",
-        "label": "把“我在别的系统里也有能力”记下来。",
-        "description": "你给自己留了一个不靠标准答案证明的坐标。",
+        "label": "行动",
+        "description": "把这件事情写进日记，就当给自己留了青春的回忆。",
         "moodDelta": {
           "selfEsteem": 4,
           "stability": 3,
@@ -5604,8 +5604,8 @@
     "attributions": [
       {
         "id": "good-moments-still-count",
-        "label": "一段关系后来断了，不代表里面所有好的瞬间都是假的。",
-        "description": "关系可以结束，但有效发生过的东西不必一起作废。",
+        "label": "关系",
+        "description": "一段关系后来断了，不代表里面所有的美好都是假的",
         "pathDelta": {
           "observer": 4,
           "stability": 3,
@@ -5614,7 +5614,7 @@
       },
       {
         "id": "standard-system-missed-me",
-        "label": "主流评价系统没测到我，不等于我没有能力。",
+        "label": "结构",
         "description": "不是所有能力都会被同一套标准看见。",
         "pathDelta": {
           "selfEsteem": 4,
@@ -5624,8 +5624,8 @@
       },
       {
         "id": "recognition-left-evidence",
-        "label": "被一个在标准系统里很强的人认真看见过，会留下很久的证据。",
-        "description": "那句认可不是结论，但它可以是一枚证据。",
+        "label": "稳定",
+        "description": "又有心情干活了，真好。",
         "pathDelta": {
           "trust": 4,
           "selfEsteem": 3,
@@ -5634,8 +5634,8 @@
       },
       {
         "id": "keep-praise-not-relationship",
-        "label": "我可以保留那句认可，不必同时保留那段关系。",
-        "description": "你把认可从关系废墟里单独捡了出来。",
+        "label": "稳定",
+        "description": "保留那句认可的同时，不必同时保留那段关系。",
         "pathDelta": {
           "stability": 4,
           "selfEsteem": 4,
