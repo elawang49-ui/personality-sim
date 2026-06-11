@@ -5648,7 +5648,7 @@
       {
         "id": "not-only-dragging-behind",
         "text": "“原来我不是只会拖后腿。”",
-        "tone": "松动",
+        "tone": "我很好",
         "linkedAttentionHookIds": [
           "once-seen",
           "another-system"
@@ -5669,8 +5669,8 @@
       },
       {
         "id": "remembered-this-long",
-        "text": "“那句话居然记了这么久。”",
-        "tone": "回响",
+        "text": "“那句话我居然记了这么久。”",
+        "tone": "复盘",
         "linkedAttentionHookIds": [
           "old-praise",
           "relationship-breakpoint"
@@ -5691,7 +5691,7 @@
       },
       {
         "id": "praise-was-real",
-        "text": "“我们后来闹掰了，但那句夸奖是真的。”",
+        "text": "“后来闹掰了，但那句夸奖是真的。”",
         "tone": "拆分",
         "linkedAttentionHookIds": [
           "relationship-breakpoint",
@@ -5714,8 +5714,8 @@
       },
       {
         "id": "not-measured-by-that-system",
-        "text": "“也许我只是没被当时那套系统测出来。”",
-        "tone": "重新归因",
+        "text": "“也许我也是个天才呢。”",
+        "tone": "归因",
         "linkedAttentionHookIds": [
           "another-system",
           "once-seen"
@@ -5750,17 +5750,17 @@
       ],
       "weight": 10
     },
-    "text": "分手之后，你以为这段关系已经彻底收尾了。\n\n该删的删了。\n该不看的也尽量不看。\n\n很多话没有讲完。\n但好像也没有地方继续讲。\n\n过了一段时间，你收到一个快递。\n\n拆开以后，你愣了一下。\n\n里面是一个你很久以前随口提过的东西。\n\n不是纪念日。\n不是节日。\n也不是什么标准答案式礼物。\n\n只是你某次聊天时，顺嘴说过一句：\n\n“这个好像还挺想要的。”\n\n你自己都快忘了。\n\n但对方记得。\n\n你拿着那个东西坐了一会儿。\n\n心里很乱。\n\n你给对方打电话。\n\n第一通，没人接。\n第二通，也没人接。\n\n后来你又打了几次。\n\n铃声响了很久。\n\n一直没有接通。\n\n你突然不知道该怎么办。\n\n这份礼物太具体了。\n\n具体到不像敷衍。\n\n但电话没有接通。\n\n也具体到不像还有下文。\n\n你看着那个东西，慢慢反应过来：\n\n原来被记得是真的。\n\n结束也是真的。\n\n它不能把关系修好。\n\n但它也不是假的。",
+    "text": "分手之后，你以为这段关系已经彻底收尾了。该删的删了，很多话没有讲完，但好像也没有地方继续讲。过了一段时间，你收到一个快递，拆开以后，你愣了一下。里面是一个你很久以前随口提过的东西。你给对方打电话，打了几次，一直没有接通。",
     "attentionHooks": [
       {
         "id": "late-gift",
-        "label": "迟来的礼物",
-        "description": "关系已经结束了，但那个很具体的东西突然出现在你面前。",
+        "label": "信任",
+        "description": "关系已经结束了，但曾经说过想要的东西突然出现在你面前。",
         "categories": [
           "trust",
           "observe"
         ],
-        "text": "关系已经结束了，但那个很具体的东西突然出现在你面前。",
+        "text": "关系已经结束了，但曾经说过想要的东西突然出现在你面前。",
         "type": "evidence",
         "traitBias": [
           "sensitivity",
@@ -5770,7 +5770,7 @@
       },
       {
         "id": "casual-sentence",
-        "label": "随口一句",
+        "label": "疗愈",
         "description": "你自己都快忘了的话，对方居然记得。",
         "categories": [
           "trust",
@@ -5787,12 +5787,12 @@
       {
         "id": "unanswered-call",
         "label": "电话未接",
-        "description": "礼物很具体，但沉默也很具体。",
+        "description": "礼物很具体，沉默也很具体。",
         "categories": [
           "observe",
           "structure"
         ],
-        "text": "礼物很具体，但沉默也很具体。",
+        "text": "礼物很具体，沉默也很具体。",
         "type": "boundary",
         "traitBias": [
           "orderNeed",
@@ -5802,13 +5802,13 @@
       },
       {
         "id": "complex-evidence",
-        "label": "复杂证据",
-        "description": "它证明曾经被听见过，但不能直接证明关系还能继续。",
+        "label": "结构",
+        "description": "早知如此何必当初。",
         "categories": [
           "recover",
           "structure"
         ],
-        "text": "它证明曾经被听见过，但不能直接证明关系还能继续。",
+        "text": "早知如此何必当初。",
         "type": "reframe",
         "traitBias": [
           "abstraction",
@@ -5821,7 +5821,7 @@
       {
         "id": "late-gift",
         "label": "迟来的礼物",
-        "description": "关系结束后，一个过于具体的东西突然到了你手里。",
+        "description": "关系结束后，它突然被送到了你手里。",
         "moodDelta": {
           "trust": 2,
           "arousal": 1,
@@ -5831,7 +5831,7 @@
       {
         "id": "casual-sentence",
         "label": "随口一句",
-        "description": "你自己都快忘了的东西，对方曾经认真记下过。",
+        "description": "你自己都快忘了的东西，对方居然真的记住了。",
         "moodDelta": {
           "trust": 3,
           "selfEsteem": 2,
@@ -5841,7 +5841,7 @@
       {
         "id": "unanswered-call",
         "label": "电话未接",
-        "description": "礼物像有下文，电话却没有接通。",
+        "description": "礼物像有下文的样子，电话却没有接通。",
         "moodDelta": {
           "arousal": 2,
           "trust": -1,
@@ -5850,8 +5850,8 @@
       },
       {
         "id": "complex-evidence",
-        "label": "复杂证据",
-        "description": "它不能修好关系，但也不能被你说成全是假的。",
+        "label": "观察",
+        "description": "礼物不能修复关系，但也不能说明感情都是假的。",
         "moodDelta": {
           "observer": 3,
           "abstraction": 2,
@@ -5863,7 +5863,7 @@
     "behaviors": [
       {
         "id": "put-gift-away-first",
-        "label": "把礼物先收好，不立刻做决定。",
+        "label": "稳定",
         "description": "你先把东西放下，没有立刻把它解释成复合、道歉或新的开始。",
         "moodDelta": {
           "stability": 3,
@@ -5874,8 +5874,8 @@
       },
       {
         "id": "stop-redialing",
-        "label": "停止继续反复拨号，给这件事留一点距离。",
-        "description": "铃声已经响了很久，你决定不再用下一通电话逼出答案。",
+        "label": "行动",
+        "description": "不继续打电话，直接给对方支付宝转账。",
         "moodDelta": {
           "stability": 4,
           "arousal": -3,
@@ -5885,8 +5885,8 @@
       },
       {
         "id": "admit-being-hit",
-        "label": "承认自己被这份具体的记得击中了。",
-        "description": "你没有装作无所谓，也没有骂自己怎么还会动摇。",
+        "label": "信任",
+        "description": "承认自己还有一点点喜欢。",
         "moodDelta": {
           "selfEsteem": 3,
           "shame": -2,
@@ -5896,8 +5896,8 @@
       },
       {
         "id": "keep-evidence-in-range",
-        "label": "不把礼物直接等同于复合，也不强行把它说成敷衍。",
-        "description": "你让这份证据停在它能证明的范围里。",
+        "label": "观察",
+        "description": "不把礼物直接等同于复合，也不强行把它说成敷衍",
         "moodDelta": {
           "observer": 3,
           "abstraction": 3,
@@ -5909,8 +5909,8 @@
     "attributions": [
       {
         "id": "heard-moments-still-count",
-        "label": "一段关系结束了，不代表里面所有被听见的瞬间都是假的。",
-        "description": "结束可以是真的，被记得也可以是真的。",
+        "label": "信任",
+        "description": "哎，还是有点想TA。",
         "pathDelta": {
           "trust": 3,
           "observer": 3,
@@ -5919,8 +5919,8 @@
       },
       {
         "id": "gift-not-renewal",
-        "label": "记得一个礼物，不等于有能力重新开始。",
-        "description": "具体的记得是一种证据，但不是自动续约。",
+        "label": "观察",
+        "description": "可能只是作为一种道歉吧。",
         "pathDelta": {
           "observer": 4,
           "abstraction": 3,
@@ -5929,8 +5929,8 @@
       },
       {
         "id": "moved-but-not-returned",
-        "label": "我可以承认它让我动摇，但不把自己立刻交回去。",
-        "description": "你允许自己被击中，也保留边界。",
+        "label": "稳定",
+        "description": "十分感动，然后拒绝了。",
         "pathDelta": {
           "selfEsteem": 3,
           "stability": 3,
@@ -5940,8 +5940,8 @@
       },
       {
         "id": "past-not-future",
-        "label": "有些东西只能证明曾经有过，不能证明以后还会有。",
-        "description": "你把曾经和以后拆开放，不让它们互相冒充。",
+        "label": "以后再说",
+        "description": "只在乎片刻拥有，不在乎天长地久。",
         "pathDelta": {
           "observer": 4,
           "abstraction": 3,
@@ -5996,7 +5996,7 @@
       },
       {
         "id": "too-specific-to-deny",
-        "text": "“这东西太具体了，具体到我没法当没发生。”",
+        "text": "“太具体了，没法当没发生。”",
         "tone": "混乱",
         "linkedAttentionHookIds": [
           "late-gift",
