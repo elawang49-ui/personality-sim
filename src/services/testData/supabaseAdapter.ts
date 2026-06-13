@@ -22,16 +22,23 @@ export class SupabaseTestDataAdapter implements TestDataAdapter {
   }
 
   async createSession(input: CreateSessionInput) {
-    await this.ensureAnonymousUser()
+    const ownerId = await this.ensureAnonymousUser()
     const sessionId = crypto.randomUUID()
     const { error } = await this.client.from('test_sessions').insert({
       id: sessionId,
+      owner_id: ownerId,
       total_rounds: input.totalRounds,
     })
 
     if (error) {
+      logSupabaseError('test_sessions', 'insert', error)
       throw error
     }
+
+    console.info('[test-data] Supabase write succeeded', {
+      table: 'test_sessions',
+      action: 'insert',
+    })
 
     return sessionId
   }
@@ -54,6 +61,7 @@ export class SupabaseTestDataAdapter implements TestDataAdapter {
     )
 
     if (error) {
+      logSupabaseError('test_answers', 'upsert', error)
       throw error
     }
   }
@@ -73,6 +81,7 @@ export class SupabaseTestDataAdapter implements TestDataAdapter {
     )
 
     if (resultError) {
+      logSupabaseError('test_results', 'upsert', resultError)
       throw resultError
     }
 
@@ -82,6 +91,7 @@ export class SupabaseTestDataAdapter implements TestDataAdapter {
       .eq('id', input.sessionId)
 
     if (sessionError) {
+      logSupabaseError('test_sessions', 'complete', sessionError)
       throw sessionError
     }
   }
@@ -92,6 +102,7 @@ export class SupabaseTestDataAdapter implements TestDataAdapter {
     })
 
     if (error) {
+      logSupabaseError('get_public_test_result', 'rpc', error)
       throw error
     }
 
@@ -111,17 +122,14 @@ export class SupabaseTestDataAdapter implements TestDataAdapter {
   }
 
   async recordShareEvent(input: RecordShareEventInput) {
-    const { error } = await this.client.from('share_events').upsert(
-      {
-        client_event_id: input.clientEventId,
-        result_id: input.resultId,
-        event_type: input.eventType,
-        occurred_at: input.timestamp,
-      },
-      { onConflict: 'client_event_id', ignoreDuplicates: true },
-    )
+    const { error } = await this.client.rpc('track_share_event', {
+      p_client_event_id: input.clientEventId,
+      p_result_id: input.resultId,
+      p_event_type: input.eventType,
+    })
 
     if (error) {
+      logSupabaseError('track_share_event', 'rpc', error)
       throw error
     }
   }
@@ -130,17 +138,63 @@ export class SupabaseTestDataAdapter implements TestDataAdapter {
     const { data, error } = await this.client.auth.getSession()
 
     if (error) {
+      logSupabaseError('auth', 'getSession', error)
       throw error
     }
 
     if (data.session) {
-      return
+      return data.session.user.id
     }
 
-    const { error: signInError } = await this.client.auth.signInAnonymously()
+    const { data: signInData, error: signInError } =
+      await this.client.auth.signInAnonymously()
 
     if (signInError) {
+      logSupabaseError('auth', 'signInAnonymously', signInError)
       throw signInError
     }
+
+    if (!signInData.user) {
+      const error = new Error('Anonymous sign-in returned no user')
+      logSupabaseError('auth', 'signInAnonymously', error)
+      throw error
+    }
+
+    console.info('[test-data] Supabase anonymous sign-in succeeded')
+    return signInData.user.id
+  }
+}
+
+function logSupabaseError(table: string, action: string, error: unknown) {
+  const details = getErrorDetails(error)
+
+  console.error('[test-data] Supabase operation failed', {
+    adapter: 'supabase',
+    table,
+    action,
+    ...details,
+  })
+}
+
+function getErrorDetails(error: unknown) {
+  if (!(error instanceof Error) && (typeof error !== 'object' || error === null)) {
+    return { message: String(error) }
+  }
+
+  const value = error as {
+    message?: unknown
+    code?: unknown
+    details?: unknown
+    hint?: unknown
+    status?: unknown
+  }
+
+  return {
+    message:
+      typeof value.message === 'string' ? value.message : 'Unknown Supabase error',
+    ...(typeof value.code === 'string' ? { code: value.code } : {}),
+    ...(typeof value.details === 'string' ? { details: value.details } : {}),
+    ...(typeof value.hint === 'string' ? { hint: value.hint } : {}),
+    ...(typeof value.status === 'number' ? { status: value.status } : {}),
   }
 }

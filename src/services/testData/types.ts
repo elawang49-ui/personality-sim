@@ -44,13 +44,12 @@ export type CompleteTestInput = {
   timestamp: string
 }
 
-export type ShareEventType = 'result_opened' | 'share_clicked'
+export type ShareEventType = 'result_open' | 'share_click'
 
 export type RecordShareEventInput = {
   clientEventId: string
   resultId: string
   eventType: ShareEventType
-  timestamp: string
 }
 
 export type StoredTestResult = {

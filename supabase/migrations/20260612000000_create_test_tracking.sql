@@ -35,7 +35,7 @@ create table if not exists public.share_events (
   client_event_id uuid not null unique,
   result_id uuid not null references public.test_results(result_id) on delete cascade,
   event_type text not null
-    check (event_type in ('result_opened', 'share_clicked')),
+    check (event_type in ('result_open', 'share_click')),
   occurred_at timestamptz not null default now()
 );
 
@@ -128,14 +128,10 @@ create policy "owners can read test results"
     )
   );
 
-create policy "visitors can record share events"
-  on public.share_events for insert to anon, authenticated
-  with check (event_type in ('result_opened', 'share_clicked'));
-
 grant select, insert, update on public.test_sessions to authenticated;
 grant select, insert, update on public.test_answers to authenticated;
 grant select, insert, update on public.test_results to authenticated;
-grant insert on public.share_events to anon, authenticated;
+revoke all on public.share_events from anon, authenticated;
 
 create or replace function public.get_public_test_result(
   requested_result_id uuid
@@ -148,7 +144,7 @@ returns table (
 language sql
 stable
 security definer
-set search_path = public
+set search_path = ''
 as $$
   select
     test_results.result_id,
@@ -161,3 +157,37 @@ $$;
 
 revoke all on function public.get_public_test_result(uuid) from public;
 grant execute on function public.get_public_test_result(uuid) to anon, authenticated;
+
+create or replace function public.track_share_event(
+  p_client_event_id uuid,
+  p_result_id uuid,
+  p_event_type text
+)
+returns void
+language plpgsql
+volatile
+security definer
+set search_path = ''
+as $$
+begin
+  if p_event_type not in ('result_open', 'share_click') then
+    raise exception 'Unsupported share event type'
+      using errcode = '22023';
+  end if;
+
+  insert into public.share_events (
+    client_event_id,
+    result_id,
+    event_type
+  )
+  values (
+    p_client_event_id,
+    p_result_id,
+    p_event_type
+  )
+  on conflict (client_event_id) do nothing;
+end;
+$$;
+
+revoke all on function public.track_share_event(uuid, uuid, text) from public;
+grant execute on function public.track_share_event(uuid, uuid, text) to anon, authenticated;

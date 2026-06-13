@@ -5,23 +5,46 @@ import type {
   CreateSessionInput,
   RecordAnswerInput,
   RecordShareEventInput,
+  TestDataAdapter,
 } from './types'
 
-const ACTIVE_SESSION_KEY = 'psti.active-session-id'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL?.trim()
-const supabaseKey = (
-  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ??
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-)?.trim()
+const supabaseKey =
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.trim() ||
+  import.meta.env.VITE_SUPABASE_ANON_KEY?.trim()
 
-const adapter =
+const adapter: TestDataAdapter | null =
   supabaseUrl && supabaseKey
     ? new SupabaseTestDataAdapter(supabaseUrl, supabaseKey)
-    : new MockTestDataAdapter()
+    : import.meta.env.DEV
+      ? new MockTestDataAdapter()
+      : null
 
 let pendingSession: Promise<string> | null = null
 
-export const testDataBackend = supabaseUrl && supabaseKey ? 'supabase' : 'mock'
+export const testDataBackend = adapter
+  ? supabaseUrl && supabaseKey
+    ? 'supabase'
+    : 'mock'
+  : 'unconfigured'
+
+const ACTIVE_SESSION_KEY = buildActiveSessionKey()
+
+console.info('[test-data] adapter selected', {
+  adapter: testDataBackend,
+  mode: import.meta.env.MODE,
+  hasSupabaseUrl: Boolean(supabaseUrl),
+  hasSupabaseKey: Boolean(supabaseKey),
+})
+
+export class TestDataConfigurationError extends Error {
+  constructor() {
+    super(
+      'Supabase is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY or VITE_SUPABASE_ANON_KEY.',
+    )
+    this.name = 'TestDataConfigurationError'
+  }
+}
 
 export function startNewTestSession(input: CreateSessionInput) {
   window.localStorage.removeItem(ACTIVE_SESSION_KEY)
@@ -29,18 +52,19 @@ export function startNewTestSession(input: CreateSessionInput) {
   return pendingSession
 }
 
-export function ensureTestSession(input: CreateSessionInput) {
+export async function ensureTestSession(input: CreateSessionInput) {
+  requireAdapter()
   const existingSessionId = window.localStorage.getItem(ACTIVE_SESSION_KEY)
 
   if (existingSessionId) {
-    return Promise.resolve(existingSessionId)
+    return existingSessionId
   }
 
   if (!pendingSession) {
     pendingSession = createAndRememberSession(input)
   }
 
-  return pendingSession
+  return await pendingSession
 }
 
 export function clearActiveTestSession() {
@@ -52,31 +76,59 @@ export async function recordTestAnswer(
   input: Omit<RecordAnswerInput, 'sessionId'>,
 ) {
   const sessionId = await ensureTestSession({ totalRounds: 10 })
-  await adapter.recordAnswer({ ...input, sessionId })
+  await requireAdapter().recordAnswer({ ...input, sessionId })
 }
 
 export async function completeTest(
   input: Omit<CompleteTestInput, 'sessionId'>,
 ) {
   const sessionId = await ensureTestSession({ totalRounds: 10 })
-  await adapter.completeTest({ ...input, sessionId })
+  await requireAdapter().completeTest({ ...input, sessionId })
 }
 
-export function getTestResult(resultId: string) {
-  return adapter.getResult(resultId)
+export async function getTestResult(resultId: string) {
+  return await requireAdapter().getResult(resultId)
 }
 
-export function recordShareEvent(input: RecordShareEventInput) {
-  return adapter.recordShareEvent(input)
+export async function recordShareEvent(input: RecordShareEventInput) {
+  await requireAdapter().recordShareEvent(input)
 }
 
 async function createAndRememberSession(input: CreateSessionInput) {
   try {
-    const sessionId = await adapter.createSession(input)
+    const sessionId = await requireAdapter().createSession(input)
     window.localStorage.setItem(ACTIVE_SESSION_KEY, sessionId)
     return sessionId
   } finally {
     pendingSession = null
+  }
+}
+
+function requireAdapter() {
+  if (!adapter) {
+    throw new TestDataConfigurationError()
+  }
+
+  return adapter
+}
+
+function buildActiveSessionKey() {
+  if (testDataBackend === 'supabase') {
+    return `psti.active-session-id.supabase.${getSupabaseProjectHost()}`
+  }
+
+  return `psti.active-session-id.${testDataBackend}`
+}
+
+function getSupabaseProjectHost() {
+  if (!supabaseUrl) {
+    return 'unknown-project'
+  }
+
+  try {
+    return new URL(supabaseUrl).host
+  } catch {
+    return 'invalid-url'
   }
 }
 

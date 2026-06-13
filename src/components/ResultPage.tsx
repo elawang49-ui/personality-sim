@@ -48,8 +48,7 @@ export function ResultPage({ resultId, onRestart }: ResultPageProps) {
         void recordShareEvent({
           clientEventId: getResultOpenEventId(resultId),
           resultId,
-          eventType: 'result_opened',
-          timestamp: new Date().toISOString(),
+          eventType: 'result_open',
         }).catch((error: unknown) => {
           console.error('Failed to record result open', error)
         })
@@ -71,8 +70,7 @@ export function ResultPage({ resultId, onRestart }: ResultPageProps) {
     void recordShareEvent({
       clientEventId: crypto.randomUUID(),
       resultId,
-      eventType: 'share_clicked',
-      timestamp: new Date().toISOString(),
+      eventType: 'share_click',
     }).catch((error: unknown) => {
       console.error('Failed to record share click', error)
     })

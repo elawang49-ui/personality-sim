@@ -21,7 +21,7 @@ type MockStore = {
   sessions: MockSession[]
   answers: RecordAnswerInput[]
   results: Array<CompleteTestInput>
-  shareEvents: RecordShareEventInput[]
+  shareEvents: Array<RecordShareEventInput & { occurredAt: string }>
 }
 
 const emptyStore: MockStore = {
@@ -108,7 +108,7 @@ export class MockTestDataAdapter implements TestDataAdapter {
         (event) => event.clientEventId === input.clientEventId,
       )
     ) {
-      store.shareEvents.push(input)
+      store.shareEvents.push({ ...input, occurredAt: new Date().toISOString() })
       writeStore(store)
     }
   }
