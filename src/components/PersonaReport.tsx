@@ -6,7 +6,9 @@ import type { ReactNode } from 'react'
 type PersonaReportProps = {
   report: PersonaReportData
   onRestart: () => void
-  onShare?: () => void
+  onCopyLink?: () => void
+  onGeneratePoster?: () => void
+  isGeneratingPoster?: boolean
   shareFeedback?: string
   statusMessage?: string
   onRetrySave?: () => void
@@ -15,7 +17,9 @@ type PersonaReportProps = {
 export function PersonaReport({
   report,
   onRestart,
-  onShare,
+  onCopyLink,
+  onGeneratePoster,
+  isGeneratingPoster = false,
   shareFeedback,
   statusMessage,
   onRetrySave,
@@ -76,9 +80,21 @@ export function PersonaReport({
       </section>
 
       <div className="report-actions">
-        {onShare && (
-          <button className="primary-button" type="button" onClick={onShare}>
-            {copy.reportPage.shareButton}
+        {onCopyLink && (
+          <button className="primary-button" type="button" onClick={onCopyLink}>
+            {copy.reportPage.copyLinkButton}
+          </button>
+        )}
+        {onGeneratePoster && (
+          <button
+            className="report-poster-button"
+            type="button"
+            onClick={onGeneratePoster}
+            disabled={isGeneratingPoster}
+          >
+            {isGeneratingPoster
+              ? copy.reportPage.generatingPosterButton
+              : copy.reportPage.generatePosterButton}
           </button>
         )}
         <button className="report-secondary-button" type="button" onClick={onRestart}>

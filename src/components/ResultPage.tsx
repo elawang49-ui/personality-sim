@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { toPng } from 'html-to-image'
 import { copy } from '../data/copy'
 import {
   getTestResult,
@@ -6,6 +7,7 @@ import {
   type StoredTestResult,
 } from '../services/testData'
 import { PersonaReport } from './PersonaReport'
+import { ResultPoster } from './ResultPoster'
 
 type ResultPageProps = {
   resultId: string
@@ -23,6 +25,9 @@ export function ResultPage({ resultId, onRestart }: ResultPageProps) {
     isUuid(resultId) ? { status: 'loading' } : { status: 'not-found' },
   )
   const [shareFeedback, setShareFeedback] = useState('')
+  const [isGeneratingPoster, setIsGeneratingPoster] = useState(false)
+  const posterRef = useRef<HTMLDivElement>(null)
+  const shareUrl = useMemo(() => buildResultUrl(resultId), [resultId])
 
   useEffect(() => {
     let isActive = true
@@ -65,37 +70,47 @@ export function ResultPage({ resultId, onRestart }: ResultPageProps) {
     }
   }, [resultId])
 
-  async function shareResult() {
+  async function copyResultLink() {
     setShareFeedback('')
-    void recordShareEvent({
-      clientEventId: crypto.randomUUID(),
-      resultId,
-      eventType: 'share_click',
-    }).catch((error: unknown) => {
-      console.error('Failed to record share click', error)
-    })
-
-    const shareData = {
-      title: copy.resultRoute.shareTitle,
-      text: copy.resultRoute.shareText,
-      url: window.location.href,
-    }
+    recordResultShare(resultId)
 
     try {
-      if (navigator.share) {
-        await navigator.share(shareData)
-        setShareFeedback(copy.resultRoute.shared)
-        return
-      }
-
-      await navigator.clipboard.writeText(window.location.href)
+      await copyText(shareUrl)
       setShareFeedback(copy.resultRoute.copied)
-    } catch (error) {
-      if (error instanceof DOMException && error.name === 'AbortError') {
-        return
-      }
-
+    } catch {
       setShareFeedback(copy.resultRoute.shareError)
+    }
+  }
+
+  async function generatePoster() {
+    const poster = posterRef.current
+
+    if (!poster || isGeneratingPoster) {
+      return
+    }
+
+    setIsGeneratingPoster(true)
+    setShareFeedback('')
+    recordResultShare(resultId)
+
+    try {
+      await document.fonts.ready
+      await waitForImages(poster)
+      const dataUrl = await toPng(poster, {
+        width: 1080,
+        height: 1920,
+        pixelRatio: 1,
+        cacheBust: true,
+        backgroundColor: '#f3eadc',
+      })
+
+      downloadImage(dataUrl, `personality-sim-${resultId}.png`)
+      setShareFeedback(copy.resultRoute.posterSaved)
+    } catch (error) {
+      console.error('Failed to generate result poster', error)
+      setShareFeedback(copy.resultRoute.posterError)
+    } finally {
+      setIsGeneratingPoster(false)
     }
   }
 
@@ -124,12 +139,21 @@ export function ResultPage({ resultId, onRestart }: ResultPageProps) {
   }
 
   return (
-    <PersonaReport
-      report={loadState.result.report}
-      shareFeedback={shareFeedback}
-      onRestart={onRestart}
-      onShare={shareResult}
-    />
+    <>
+      <PersonaReport
+        report={loadState.result.report}
+        shareFeedback={shareFeedback}
+        isGeneratingPoster={isGeneratingPoster}
+        onRestart={onRestart}
+        onCopyLink={copyResultLink}
+        onGeneratePoster={generatePoster}
+      />
+      <ResultPoster
+        ref={posterRef}
+        report={loadState.result.report}
+        shareUrl={shareUrl}
+      />
+    </>
   )
 }
 
@@ -184,4 +208,69 @@ function getResultOpenEventId(resultId: string) {
     '',
   )
   return clientEventId
+}
+
+function buildResultUrl(resultId: string) {
+  return new URL(`/result/${resultId}`, window.location.origin).toString()
+}
+
+function recordResultShare(resultId: string) {
+  void recordShareEvent({
+    clientEventId: crypto.randomUUID(),
+    resultId,
+    eventType: 'share_click',
+  }).catch((error: unknown) => {
+    console.error('Failed to record share click', error)
+  })
+}
+
+async function copyText(text: string) {
+  if (navigator.clipboard) {
+    try {
+      await navigator.clipboard.writeText(text)
+      return
+    } catch {
+      // Some embedded browsers expose Clipboard API but deny write permission.
+    }
+  }
+
+  const textArea = document.createElement('textarea')
+  textArea.value = text
+  textArea.style.position = 'fixed'
+  textArea.style.opacity = '0'
+  document.body.append(textArea)
+  textArea.select()
+
+  const didCopy = document.execCommand('copy')
+  textArea.remove()
+
+  if (!didCopy) {
+    throw new Error('Copy command failed')
+  }
+}
+
+async function waitForImages(container: HTMLElement) {
+  const images = Array.from(container.querySelectorAll('img'))
+
+  await Promise.all(
+    images.map((image) => {
+      if (image.complete) {
+        return Promise.resolve()
+      }
+
+      return new Promise<void>((resolve) => {
+        image.addEventListener('load', () => resolve(), { once: true })
+        image.addEventListener('error', () => resolve(), { once: true })
+      })
+    }),
+  )
+}
+
+function downloadImage(dataUrl: string, fileName: string) {
+  const link = document.createElement('a')
+  link.download = fileName
+  link.href = dataUrl
+  document.body.append(link)
+  link.click()
+  link.remove()
 }
