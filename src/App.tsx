@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { EventIntroPage } from './components/EventIntroPage'
 import { EventPanel } from './components/EventPanel'
 import { PersonaReport } from './components/PersonaReport'
+import { ResultPage } from './components/ResultPage'
 import { StartProfile } from './components/StartProfile'
 import { StatePanel } from './components/StatePanel'
 import { TitlePage } from './components/TitlePage'
@@ -33,11 +34,69 @@ import type {
   Stage,
   StartProfileTag,
 } from './engine/types'
+import {
+  clearActiveTestSession,
+  completeTest,
+  ensureTestSession,
+  recordTestAnswer,
+  startNewTestSession,
+} from './services/testData'
+import { buildStateChangeSummary } from './services/testData/stateSummary'
 import './App.css'
 
 const fallbackEvent = events[0]
+const totalRounds = 10
 
 function App() {
+  const [resultRouteId, setResultRouteId] = useState(() => getResultIdFromPath())
+
+  useEffect(() => {
+    function syncRoute() {
+      setResultRouteId(getResultIdFromPath())
+    }
+
+    window.addEventListener('popstate', syncRoute)
+    return () => window.removeEventListener('popstate', syncRoute)
+  }, [])
+
+  function openResult(resultId: string) {
+    window.history.pushState({}, '', `/result/${resultId}`)
+    setResultRouteId(resultId)
+  }
+
+  function restartFromResult() {
+    resetState()
+    clearActiveTestSession()
+    window.history.pushState({}, '', '/')
+    setResultRouteId(null)
+  }
+
+  if (resultRouteId) {
+    return (
+      <ResultPage
+        key={resultRouteId}
+        resultId={resultRouteId}
+        onRestart={restartFromResult}
+      />
+    )
+  }
+
+  return <TestExperience onResultReady={openResult} />
+}
+
+type TestExperienceProps = {
+  onResultReady: (resultId: string) => void
+}
+
+type PendingResult = {
+  resultId: string
+  report: ReturnType<typeof buildPersonaReport>
+  finalState: CharacterState
+  completedRounds: number
+  timestamp: string
+}
+
+function TestExperience({ onResultReady }: TestExperienceProps) {
   const [characterState, setCharacterState] =
     useState<CharacterState>(() => loadState())
   const [isProfileReady, setIsProfileReady] = useState(() =>
@@ -66,6 +125,10 @@ function App() {
   const [completedEvents, setCompletedEvents] = useState<CompletedEventRecord[]>(
     [],
   )
+  const [pendingResult, setPendingResult] = useState<PendingResult | null>(null)
+  const [isSavingResult, setIsSavingResult] = useState(false)
+  const [resultSaveFailed, setResultSaveFailed] = useState(false)
+  const saveAttemptRef = useRef(0)
   const event = useMemo(
     () => events.find((item) => item.id === currentEventId) ?? fallbackEvent,
     [currentEventId],
@@ -120,6 +183,9 @@ function App() {
     }
 
     setCharacterState(startPreviewState)
+    void ensureTestSession({ totalRounds }).catch((error: unknown) => {
+      console.error('Failed to create test session', error)
+    })
     saveState(startPreviewState)
     saveStartProfileReady()
     setIsProfileReady(true)
@@ -152,6 +218,12 @@ function App() {
     )
 
     setCharacterState(nextState)
+    trackAnswer(
+      'firstReaction',
+      option.id,
+      characterState,
+      nextState,
+    )
     setChoices({
       firstReaction: option,
       revealedAttentionHooks,
@@ -164,13 +236,19 @@ function App() {
   }
 
   function chooseTag(option: EventTagOption) {
-    setCharacterState((current) => applyDelta(current, option.moodDelta))
+    const nextState = applyDelta(characterState, option.moodDelta)
+
+    setCharacterState(nextState)
+    trackAnswer('label', option.id, characterState, nextState)
     setChoices((current) => ({ ...current, tag: option }))
     setStage('response')
   }
 
   function chooseBehavior(option: BehaviorOption) {
-    setCharacterState((current) => applyDelta(current, option.moodDelta))
+    const nextState = applyDelta(characterState, option.moodDelta)
+
+    setCharacterState(nextState)
+    trackAnswer('response', option.id, characterState, nextState)
     setChoices((current) => ({ ...current, behavior: option }))
     setStage('attribution')
   }
@@ -207,17 +285,29 @@ function App() {
       selectedAction: selectedAction.label,
       selectedAttribution: option.label,
     }
+    const nextCompletedEvents = [...completedEvents, completedEvent]
 
     setCharacterState(nextState)
-    setCompletedEvents((current) => [...current, completedEvent])
+    setCompletedEvents(nextCompletedEvents)
+    trackAnswer(
+      'attribution',
+      option.id,
+      characterState,
+      nextState,
+      result.summaryText,
+    )
     setChoices((current) => ({
       ...current,
       attribution: option,
       summaryText: result.summaryText,
     }))
-    const nextCompletedCount = completedEvents.length + 1
-    const nextStage = nextCompletedCount >= 10 ? 'report' : 'summary'
-    setStage(nextStage)
+    const nextCompletedCount = nextCompletedEvents.length
+
+    if (nextCompletedCount >= totalRounds) {
+      finishTest(nextState, nextCompletedEvents)
+    } else {
+      setStage('summary')
+    }
   }
 
   function goToNextEvent() {
@@ -228,7 +318,7 @@ function App() {
     })
 
     if (!nextEvent) {
-      setStage('report')
+      finishTest(characterState, completedEvents)
       return
     }
 
@@ -239,6 +329,8 @@ function App() {
   }
 
   function handleReset() {
+    saveAttemptRef.current += 1
+    clearActiveTestSession()
     setCharacterState(resetState())
     setIsProfileReady(false)
     setHasEnteredTitle(true)
@@ -254,19 +346,111 @@ function App() {
     setCurrentEventId(firstEvent.id)
     setChoices({})
     setCompletedEvents([])
+    setPendingResult(null)
+    setIsSavingResult(false)
+    setResultSaveFailed(false)
     setStage('eventIntro')
   }
 
   function handleStartFromTitle() {
+    void startNewTestSession({ totalRounds }).catch((error: unknown) => {
+      console.error('Failed to start test session', error)
+    })
     setHasEnteredTitle(true)
   }
 
   function handleContinueFromTitle() {
+    void ensureTestSession({ totalRounds }).catch((error: unknown) => {
+      console.error('Failed to continue test session', error)
+    })
     setHasEnteredTitle(true)
   }
 
+  function trackAnswer(
+    answerType: 'firstReaction' | 'label' | 'response' | 'attribution',
+    selectedOptionId: string,
+    before: CharacterState,
+    after: CharacterState,
+    summaryText?: string,
+  ) {
+    void recordTestAnswer({
+      eventId: event.id,
+      roundIndex: completedEvents.length + 1,
+      answerType,
+      selectedOptionId,
+      stateSummary: buildStateChangeSummary(
+        answerType,
+        before,
+        after,
+        summaryText,
+      ),
+      timestamp: new Date().toISOString(),
+    }).catch((error: unknown) => {
+      console.error('Failed to record test answer', error)
+    })
+  }
+
+  function finishTest(
+    finalState: CharacterState,
+    finalCompletedEvents: CompletedEventRecord[],
+  ) {
+    const result: PendingResult = {
+      resultId: crypto.randomUUID(),
+      report: buildPersonaReport(finalState, finalCompletedEvents),
+      finalState,
+      completedRounds: finalCompletedEvents.length,
+      timestamp: new Date().toISOString(),
+    }
+
+    setPendingResult(result)
+    setStage('report')
+    persistResult(result)
+  }
+
+  function persistResult(result: PendingResult) {
+    const attemptId = saveAttemptRef.current + 1
+    saveAttemptRef.current = attemptId
+    setIsSavingResult(true)
+    setResultSaveFailed(false)
+
+    void completeTest(result)
+      .then(() => {
+        if (saveAttemptRef.current === attemptId) {
+          onResultReady(result.resultId)
+        }
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to save test result', error)
+        if (saveAttemptRef.current === attemptId) {
+          setResultSaveFailed(true)
+        }
+      })
+      .finally(() => {
+        if (saveAttemptRef.current === attemptId) {
+          setIsSavingResult(false)
+        }
+      })
+  }
+
   if (stage === 'report') {
-    return <PersonaReport report={personaReport} onRestart={handleReset} />
+    return (
+      <PersonaReport
+        report={pendingResult?.report ?? personaReport}
+        statusMessage={
+          isSavingResult
+            ? copy.resultRoute.saving
+            : resultSaveFailed
+              ? copy.resultRoute.saveError
+              : undefined
+        }
+        onRestart={handleReset}
+        onRetrySave={
+          resultSaveFailed && pendingResult
+            ? () => persistResult(pendingResult)
+            : undefined
+        }
+      />
+    )
   }
 
   if (!hasEnteredTitle) {
@@ -298,7 +482,7 @@ function App() {
         <EventIntroPage
           event={event}
           roundIndex={completedEvents.length + 1}
-          totalRounds={10}
+          totalRounds={totalRounds}
           onEnterEvent={enterEvent}
         />
       ) : (
@@ -317,6 +501,11 @@ function App() {
       <StatePanel state={characterState} onReset={handleReset} />
     </div>
   )
+}
+
+function getResultIdFromPath() {
+  const match = window.location.pathname.match(/^\/result\/([^/]+)\/?$/)
+  return match ? decodeURIComponent(match[1]) : null
 }
 
 export default App

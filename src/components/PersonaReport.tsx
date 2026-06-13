@@ -6,9 +6,20 @@ import type { ReactNode } from 'react'
 type PersonaReportProps = {
   report: PersonaReportData
   onRestart: () => void
+  onShare?: () => void
+  shareFeedback?: string
+  statusMessage?: string
+  onRetrySave?: () => void
 }
 
-export function PersonaReport({ report, onRestart }: PersonaReportProps) {
+export function PersonaReport({
+  report,
+  onRestart,
+  onShare,
+  shareFeedback,
+  statusMessage,
+  onRetrySave,
+}: PersonaReportProps) {
   return (
     <main className="report-page">
       <section className="report-hero">
@@ -64,9 +75,23 @@ export function PersonaReport({ report, onRestart }: PersonaReportProps) {
         </ReportCard>
       </section>
 
-      <button className="primary-button report-restart" type="button" onClick={onRestart}>
-        {copy.reportPage.restartButton}
-      </button>
+      <div className="report-actions">
+        {onShare && (
+          <button className="primary-button" type="button" onClick={onShare}>
+            {copy.reportPage.shareButton}
+          </button>
+        )}
+        <button className="report-secondary-button" type="button" onClick={onRestart}>
+          {copy.reportPage.restartButton}
+        </button>
+        {onRetrySave && (
+          <button className="report-secondary-button" type="button" onClick={onRetrySave}>
+            {copy.resultRoute.retryButton}
+          </button>
+        )}
+        {statusMessage && <p className="report-action-feedback">{statusMessage}</p>}
+        {shareFeedback && <p className="report-action-feedback">{shareFeedback}</p>}
+      </div>
     </main>
   )
 }

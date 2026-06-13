@@ -173,7 +173,25 @@ export const copy = {
     frequentLabelsTitle: '高频标注',
     frequentActionsTitle: '高频回应',
     frequentAttributionsTitle: '高频归因',
+    shareButton: '分享结果',
     restartButton: '重新开始',
+  },
+
+  resultRoute: {
+    loading: '正在读取这份人格报告…',
+    notFoundTitle: '这份报告没有找到',
+    notFoundBody: '链接可能不完整，或者这份本地 mock 报告来自另一台设备。',
+    loadErrorTitle: '报告暂时读取失败',
+    loadErrorBody: '请稍后刷新页面重试。你的链接没有发生变化。',
+    backButton: '返回首页',
+    shared: '分享链接已准备好',
+    copied: '链接已复制',
+    shareError: '暂时无法复制，请从地址栏复制链接',
+    shareTitle: '我的 PSTI 人格报告',
+    shareText: '这是我的 PSTI 人格模拟测试结果。',
+    saving: '正在生成可分享链接…',
+    saveError: '结果保存失败，请重试。当前报告仍保留在本页。',
+    retryButton: '重试保存',
   },
 
   avatarCard: {

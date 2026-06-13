@@ -1123,8 +1123,71 @@
   font-variant-numeric: tabular-nums;
 }
 
-.report-restart {
-  justify-self: center;
+.report-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-secondary-button {
+  padding: 12px 20px;
+  border: 1px solid #cfc4b6;
+  border-radius: 999px;
+  color: #5a4c3c;
+  background: rgba(255, 255, 255, 0.76);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.report-secondary-button:hover {
+  background: #ffffff;
+}
+
+.report-action-feedback {
+  flex-basis: 100%;
+  margin: 0;
+  color: #6a6258;
+  font-size: 14px;
+  text-align: center;
+}
+
+.result-message-page {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 15% 5%, rgba(255, 255, 255, 0.8), transparent 36%),
+    #f7f3ed;
+}
+
+.result-message-card {
+  display: grid;
+  gap: 18px;
+  width: min(100%, 560px);
+  padding: 32px;
+  border: 1px solid rgba(217, 211, 200, 0.84);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 48px rgba(68, 56, 42, 0.08);
+}
+
+.result-message-card h1,
+.result-message-card p {
+  margin: 0;
+}
+
+.result-message-card h1 {
+  color: #211f1b;
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.result-message-card > p:not(.eyebrow) {
+  color: #6a6258;
+  line-height: 1.7;
 }
 
 @media (max-width: 860px) {

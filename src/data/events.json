@@ -6046,17 +6046,17 @@
   {
     "id": "come-again-next-time",
     "title": "下次再来",
-    "text": "下班之后，你整个人已经有点没电了。\n\n不是崩溃。\n\n就是那种很普通的疲惫。\n\n腿在走。\n脑子已经提前下班。\n\n你路过一家小店。\n\n本来只是想随便买点东西。\n顺便让自己不要直接瘫在路边。\n\n推门进去的时候，门口的铃响了一下。\n\n你抬头。\n\n柜台后面的人也抬头。\n\n你们对视了两秒。\n\n然后同时愣住。\n\n是小学同学。\n\n那种很多年没见，但名字突然从脑子角落里自己弹出来的小学同学。\n\n她先笑了一下。\n\n“你怎么在这儿？”\n\n你也笑了一下。\n\n“我还想问你呢。”\n\n其实也没聊什么特别大的事。\n\n就是问了问现在在哪儿。\n最近怎么样。\n怎么会开这家店。\n\n她说话还是很自然。\n\n像中间那些年没有完全消失。\n只是被生活折叠到别的页面去了。\n\n你买完东西准备走。\n\n她把袋子递给你，语气很随意地说：\n\n“下次再来啊。”\n\n理智告诉你：\n\n这就是正常客套。\n\n但脑子里另一个很不正经的系统提示已经弹出来了：\n\n支线任务已解锁。\n\n你走出店门的时候，还是很累。\n\n但好像没有刚才那么灰了。",
+    "text": "下班你路过一家小店。本来只是想随便买点东西，推门进去的时候，发现柜台后面的人是小学同学。你俩寒暄了一会，临走前她把袋子递给你，语气很随意地说：“下次再来啊。”",
     "attentionHooks": [
       {
         "id": "old-classmate-refresh",
-        "label": "旧同学刷新",
-        "description": "一个很多年没见的人，突然出现在你下班后的普通路线里。",
+        "label": "信任",
+        "description": "一个很多年没见的人，突然出现在下班后的普通路线里。",
         "categories": [
           "trust",
           "observe"
         ],
-        "text": "一个很多年没见的人，突然出现在你下班后的普通路线里。",
+        "text": "一个很多年没见的人，突然出现在下班后的普通路线里。",
         "type": "encounter",
         "traitBias": [
           "sensitivity",
@@ -6082,13 +6082,13 @@
       },
       {
         "id": "side-quest-entry",
-        "label": "支线入口",
-        "description": "现实没有发生大事，但你的脑子已经自动给它加上了任务提示音。",
+        "label": "观察",
+        "description": "总感觉什么地方的任务提示音已经响了。",
         "categories": [
           "observe",
           "lightCreate"
         ],
-        "text": "现实没有发生大事，但你的脑子已经自动给它加上了任务提示音。",
+        "text": "总感觉什么地方的任务提示音已经响了。",
         "type": "sideQuest",
         "traitBias": [
           "abstraction",
@@ -6098,13 +6098,13 @@
       },
       {
         "id": "ordinary-tired-recovery",
-        "label": "普通疲惫回血",
-        "description": "不是被拯救，只是疲惫的一天突然没那么灰。",
+        "label": "疗愈",
+        "description": "原本疲惫的一天似乎变得没有那么灰暗了。",
         "categories": [
           "recover",
           "structure"
         ],
-        "text": "不是被拯救，只是疲惫的一天突然没那么灰。",
+        "text": "原本疲惫的一天似乎变得没有那么灰暗了。",
         "type": "recovery",
         "traitBias": [
           "stability",
@@ -6116,7 +6116,7 @@
     "tags": [
       {
         "id": "old-classmate-refresh",
-        "label": "旧同学刷新",
+        "label": "信任",
         "description": "很多年没见的人，突然在一间小店里出现了。",
         "moodDelta": {
           "trust": 2,
@@ -6127,8 +6127,8 @@
       },
       {
         "id": "come-again-next-time",
-        "label": "下次再来",
-        "description": "一句普通客套，刚好给今天留了一点连接感。",
+        "label": "下次一定",
+        "description": "今天好像也是不太普通的一天。",
         "moodDelta": {
           "trust": 2,
           "pleasure": 1,
@@ -6139,7 +6139,7 @@
       {
         "id": "side-quest-entry",
         "label": "支线入口",
-        "description": "你知道这不一定有深意，但它确实很像现实突然弹出的任务提示。",
+        "description": "虽然没啥深意，但还是忍不住想是不是真的存在地球online这款游戏。",
         "moodDelta": {
           "creator": 2,
           "observer": 2,
@@ -6148,8 +6148,8 @@
       },
       {
         "id": "ordinary-tired-recovery",
-        "label": "普通疲惫回血",
-        "description": "没有什么大事发生，但你确实比刚才轻了一点。",
+        "label": "稳定",
+        "description": "没有什么大事发生，但你确实比刚才开心了一点。",
         "moodDelta": {
           "stability": 3,
           "pleasure": 2,
@@ -6161,8 +6161,8 @@
     "behaviors": [
       {
         "id": "reply-good-next-time",
-        "label": "正常回一句“好啊，下次来”。",
-        "description": "你没有过度发挥，只是接住了这句很普通的邀请。",
+        "label": "开心",
+        "description": "你很开心地回了一句：“好啊，下回来。”",
         "moodDelta": {
           "trust": 2,
           "stability": 1,
@@ -6172,8 +6172,8 @@
       },
       {
         "id": "late-realization",
-        "label": "出门以后才开始反应：刚才那是小学同学。",
-        "description": "迟来的反应让这件事变得有点好笑。",
+        "label": "观察",
+        "description": "“等一下，那是我的小学同学对吧！”",
         "moodDelta": {
           "observer": 3,
           "abstraction": 1,
@@ -6182,8 +6182,8 @@
       },
       {
         "id": "remember-without-overreading",
-        "label": "不急着过度解读，但把这件事记下来。",
-        "description": "你没有把它立刻写成故事，也没有把它当成完全没发生。",
+        "label": "稳定",
+        "description": "感觉生活是一点点小小的善意累积而成的温暖呢～",
         "moodDelta": {
           "stability": 3,
           "observer": 2,
@@ -6193,8 +6193,8 @@
       },
       {
         "id": "consider-going-again",
-        "label": "下次路过时，真的考虑再进去一次。",
-        "description": "不是为了推进什么关系，只是今天多了一个可以路过的地方。",
+        "label": "行动",
+        "description": "下次有空的话，真的来玩一下吧～",
         "moodDelta": {
           "trust": 2,
           "actionPower": 2,
@@ -6206,8 +6206,8 @@
     "attributions": [
       {
         "id": "ordinary-day-side-quest",
-        "label": "普通的一天也会突然刷出旧关系支线。",
-        "description": "现实有时候不会给主线进度，但会乱刷新 NPC。",
+        "label": "抽象",
+        "description": "有时候地球online不一定刷新主线进度，但会刷新 NPC。",
         "pathDelta": {
           "observer": 3,
           "abstraction": 2,
@@ -6216,8 +6216,8 @@
       },
       {
         "id": "small-courtesy-less-gray",
-        "label": "一句客套不一定有深意，但它确实让今天没那么灰。",
-        "description": "你不需要把它解释过头，也不用把它抹掉。",
+        "label": "愉悦",
+        "description": "“啊～真是愉悦啊～”",
         "pathDelta": {
           "stability": 3,
           "trust": 2,
@@ -6226,7 +6226,7 @@
       },
       {
         "id": "connection-before-story",
-        "label": "重逢不必立刻变成故事，先当成一个轻微的连接。",
+        "label": "观察",
         "description": "不是所有连接都要马上承担意义。",
         "pathDelta": {
           "observer": 2,
@@ -6236,8 +6236,8 @@
       },
       {
         "id": "familiarity-recovers-energy",
-        "label": "疲惫的时候，一点熟悉感也能让人回点血。",
-        "description": "它不是拯救，只是让你从完全掉电里回到一点点在线。",
+        "label": "回血",
+        "description": "总感觉是游戏里随机刷新出来的回复房间。",
         "pathDelta": {
           "stability": 4,
           "selfEsteem": 2,
@@ -6315,7 +6315,7 @@
       },
       {
         "id": "at-least-funny",
-        "text": "“算了，今天至少有一件事挺好笑的。”",
+        "text": "“今天至少有一件事，值得我笑一会。”",
         "tone": "回神",
         "linkedAttentionHookIds": [
           "ordinary-tired-recovery",
@@ -6350,17 +6350,17 @@
   {
     "id": "ice-cream-truce",
     "title": "巧乐兹停战协议",
-    "text": "你和上司已经连续两天不太对劲了。\n\n前一天是冷战。\n\n谁也不太想先说话。\n\n空气里全是那种：\n\n我知道你不爽，但我也不想现在处理。\n\n昨天终于没绷住。\n\n吵起来了。\n\n起因其实也不复杂。\n\n他觉得你没干什么。\n\n你觉得自己明明干了很多，只是没有被他看见。\n\n这句话最气人。\n\n不是因为事情多难解释。\n\n而是因为你突然发现，解释本身也很累。\n\n你气了一整天。\n\n到了晚上，他不知道从哪里买回来一根巧乐兹。\n\n递给你的时候，表情也很别扭。\n\n像是在说：\n\n我们能不能先停火。\n\n但他嘴上什么也没说。\n\n你看着那根雪糕，沉默了两秒。\n\n接了，好像显得你被一根巧乐兹收买。\n\n不接，又显得你在和雪糕过不去。\n\n最后你还是接了。\n\n但这不代表事情过去了。\n\n只是办公室里突然出现了一份非常低幼的停战协议。\n\n你刚拆开包装。\n\n老板就过来了。\n\n他看了看你。\n又看了看你上司。\n\n可能是想劝架。\n\n可能是真的看不下去了。\n\n他叹了口气，说：\n\n“你俩不要再吵了。”\n\n这句话本来还算正常。\n\n直到他又补了一句：\n\n“床头吵架床尾和嘛。”\n\n办公室安静了。\n\n非常安静。\n\n安静到那根巧乐兹的存在都变得可疑起来。\n\n你握着雪糕。\n你上司站在旁边。\n老板还一脸“我已经成功缓和气氛”的表情。\n\n你突然没那么气了。\n\n不是因为问题解决了。\n\n而是因为你脑子里只剩下一个念头：\n\n这场职场矛盾，怎么突然被老板劝成了奇怪的家庭伦理剧。",
+    "text": "你和你的上司已经冷战两天了，谁也不太想先说话，昨天终于没绷住吵起来了。起因是，他觉得你没干什么，而你觉得自己明明干了很多，只是没有被他看见。气了一整天。到了晚上，他不知道从哪里买回来一根巧乐兹。递给你的时候，表情也很别扭。大老板叹了口气，说：“你俩不要再吵了。床头吵架床尾和嘛。”",
     "attentionHooks": [
       {
         "id": "ice-cream-truce",
-        "label": "巧乐兹停战",
-        "description": "对方递来的不是解决方案，而是一种非常原始、非常低幼的停火信号。",
+        "label": "停战",
+        "description": "不儿，给雪糕何意味啊！",
         "categories": [
           "recover",
           "observe"
         ],
-        "text": "对方递来的不是解决方案，而是一种非常原始、非常低幼的停火信号。",
+        "text": "不儿，给雪糕何意味啊！",
         "type": "truce",
         "traitBias": [
           "sensitivity",
@@ -6370,13 +6370,13 @@
       },
       {
         "id": "invisible-work",
-        "label": "被看不见的工作",
-        "description": "你真正生气的不是雪糕，而是自己做过的事被说得像没发生。",
+        "label": "结构",
+        "description": "生气的点不是他用雪糕道歉，把人当小孩，重点是我明明做了不少事！",
         "categories": [
           "structure",
           "self-esteem"
         ],
-        "text": "你真正生气的不是雪糕，而是自己做过的事被说得像没发生。",
+        "text": "生气的点不是他用雪糕道歉，把人当小孩，重点是我明明做了不少事！",
         "type": "visibility",
         "traitBias": [
           "orderNeed",
@@ -6386,13 +6386,13 @@
       },
       {
         "id": "failed-mediation",
-        "label": "劝架翻车",
-        "description": "老板本来想缓和气氛，结果一句话把办公室劝成了奇怪的家庭伦理剧。",
+        "label": "翻车",
+        "description": "老板本来想缓和气氛，结果一句话把办公室变成了奇怪的家庭伦理剧……",
         "categories": [
           "observe",
           "lightCreate"
         ],
-        "text": "老板本来想缓和气氛，结果一句话把办公室劝成了奇怪的家庭伦理剧。",
+        "text": "老板本来想缓和气氛，结果一句话把办公室变成了奇怪的家庭伦理剧……",
         "type": "absurd",
         "traitBias": [
           "abstraction",
@@ -6402,13 +6402,13 @@
       },
       {
         "id": "absurd-truce",
-        "label": "荒诞停火",
-        "description": "问题没有解决，但场面已经离谱到让你暂时从愤怒里抽出来。",
+        "label": "荒诞",
+        "description": "虽然问题还没有解决，但是你忍不住想吐槽。",
         "categories": [
           "recover",
           "lightCreate"
         ],
-        "text": "问题没有解决，但场面已经离谱到让你暂时从愤怒里抽出来。",
+        "text": "虽然问题还没有解决，但是你忍不住想吐槽。",
         "type": "reframe",
         "traitBias": [
           "stability",
@@ -6420,8 +6420,8 @@
     "tags": [
       {
         "id": "ice-cream-truce",
-        "label": "巧乐兹停战",
-        "description": "一根雪糕解决不了分歧，但它确实让空气暂时没那么硬。",
+        "label": "巧乐兹",
+        "description": "雪糕解决不了当下，但真的不是玩那个梗吗？？？！！",
         "moodDelta": {
           "stability": 2,
           "pleasure": 2,
@@ -6432,8 +6432,8 @@
       },
       {
         "id": "invisible-work",
-        "label": "被看不见的工作",
-        "description": "你生气的核心，是自己做过的事被说得像没发生。",
+        "label": "自尊",
+        "description": "还是受不了他把我当小孩。",
         "moodDelta": {
           "selfEsteem": 2,
           "orderNeed": 3,
@@ -6444,8 +6444,8 @@
       },
       {
         "id": "failed-mediation",
-        "label": "劝架翻车",
-        "description": "老板想劝架，结果一句话把场面劝得更怪。",
+        "label": "抽象",
+        "description": "老板别误会！我和他真的不是你想的那样啊！",
         "moodDelta": {
           "observer": 3,
           "abstraction": 3,
@@ -6456,8 +6456,8 @@
       },
       {
         "id": "awkward-comedy",
-        "label": "尴尬喜剧",
-        "description": "这件事还没解决，但已经荒诞到有点像事件卡。",
+        "label": "创作",
+        "description": "不行，我好想把这件事做成彩蛋……",
         "moodDelta": {
           "creator": 1,
           "observer": 3,
@@ -6470,8 +6470,8 @@
     "behaviors": [
       {
         "id": "accept-truce-clarify-later",
-        "label": "接过巧乐兹，但把工作分歧另找时间讲清楚。",
-        "description": "你接受停火信号，但不把它当成问题已经解决。",
+        "label": "信任",
+        "description": "先接过雪糕，和好的事情之后再说。",
         "moodDelta": {
           "stability": 3,
           "actionPower": 3,
@@ -6482,8 +6482,8 @@
       },
       {
         "id": "make-work-visible",
-        "label": "先不继续吵，把“我做了什么”整理成可见记录。",
-        "description": "你不再只靠情绪解释，而是把被看不见的工作列出来。",
+        "label": "复盘",
+        "description": "不继续吵，把“我做了什么”整理成可见记录，发给上司。",
         "moodDelta": {
           "actionPower": 4,
           "orderNeed": 4,
@@ -6495,8 +6495,8 @@
       },
       {
         "id": "dont-escalate-boss-line",
-        "label": "对老板那句劝架保持沉默，避免让尴尬继续升级。",
-        "description": "你决定不在这个瞬间追问“床头床尾”到底是什么意思。",
+        "label": "稳定",
+        "description": "你决定不追问“床头吵架床尾和”到底是什么意思。",
         "moodDelta": {
           "stability": 3,
           "strategist": 3,
@@ -6507,8 +6507,8 @@
       },
       {
         "id": "archive-as-event-card",
-        "label": "把这件事记下来，因为它已经荒诞到像事件卡。",
-        "description": "你还没原谅，但这场面已经离谱到值得存档。",
+        "label": "创作",
+        "description": "虽然还没原谅上司，但是我得想办法把这事做成彩蛋。",
         "moodDelta": {
           "creator": 1,
           "observer": 3,
@@ -6521,7 +6521,7 @@
     "attributions": [
       {
         "id": "truce-not-resolution",
-        "label": "一根雪糕可以缓和气氛，但不能替代问题被讲清楚。",
+        "label": "自尊",
         "description": "停火可以有，复盘也不能省。",
         "pathDelta": {
           "strategist": 3,
@@ -6531,8 +6531,8 @@
       },
       {
         "id": "anger-points-to-work",
-        "label": "我生气的重点不是雪糕，是我的工作被当成没发生。",
-        "description": "你把情绪背后的问题重新对准了具体位置。",
+        "label": "行动",
+        "description": "化悲愤为干活的动力。",
         "pathDelta": {
           "selfEsteem": 3,
           "observer": 2,
@@ -6542,8 +6542,8 @@
       },
       {
         "id": "mediation-can-get-weirder",
-        "label": "有些劝架不是解决问题，是把空气劝得更怪。",
-        "description": "你开始意识到，荒诞有时候会比道理更快改变现场气压。",
+        "label": "管理学",
+        "description": "老板是管理学大师啊！！！",
         "pathDelta": {
           "observer": 4,
           "abstraction": 3,
@@ -6552,8 +6552,8 @@
       },
       {
         "id": "childish-temporary-truce",
-        "label": "职场矛盾偶尔会以非常低幼、非常荒诞的方式暂时停火。",
-        "description": "这不是和解宣言，只是现实递过来一份奇怪的临时协议。",
+        "label": "观察",
+        "description": "才没有和他和解，只是老板太会转移话题了！",
         "pathDelta": {
           "observer": 3,
           "creator": 1,
@@ -6566,7 +6566,7 @@
       {
         "id": "not-bought-by-ice-cream",
         "text": "“我不是被巧乐兹收买了，我只是刚好想吃。”",
-        "tone": "自嘲",
+        "tone": "傲娇系",
         "linkedAttentionHookIds": [
           "ice-cream-truce",
           "absurd-truce"
@@ -6590,7 +6590,7 @@
       {
         "id": "work-issue-not-over",
         "text": "“他说我没干活这件事还没过去。”",
-        "tone": "边界",
+        "tone": "天蝎座",
         "linkedAttentionHookIds": [
           "invisible-work",
           "ice-cream-truce"
@@ -6612,8 +6612,8 @@
       },
       {
         "id": "boss-hear-yourself",
-        "text": "“床头吵架床尾和？老板你要不要听听你在说什么。”",
-        "tone": "震惊",
+        "text": "“床头吵架床尾和？老板你要不要听听你在说什么？？”",
+        "tone": "愉悦",
         "linkedAttentionHookIds": [
           "failed-mediation",
           "absurd-truce"
@@ -6635,7 +6635,7 @@
       },
       {
         "id": "awkward-office-series",
-        "text": "“这办公室空气怎么突然变成了尴尬连续剧。”",
+        "text": "“办公室怎么变狗血连续剧现场了。”",
         "tone": "荒诞",
         "linkedAttentionHookIds": [
           "failed-mediation",
@@ -6669,25 +6669,25 @@
   },
   {
     "id": "comments-rewrite-fatigue",
-    "title": "评论区把疲惫改写成事件卡",
+    "title": "朋友圈的评论",
     "theme": "被评论区改写的疲惫",
     "intendedPathBalance": [
       "creator",
       "observer",
       "stability"
     ],
-    "text": "你发了一条小动态，配图里有摊开的稿纸、屏幕上的文档、没喝完的饮料，还有一只被护具固定住的手。文字很短：感觉快被项目榨干了。最近写东西、改系统、补细节，身体像被反复按进同一台机器里。\n\n一开始有人问你还好吗，让你先休息一下。你正准备说“还行，就是累”，评论区已经开始跑偏：有人研究桌上那杯饮料到底放了几天，有人说屏幕反光都比你的状态清醒，有人把这理解成项目制生物的生态切片，还有人认真总结：这不像求救，像内容生产者的默认皮肤。\n\n你沉默了几秒。\n\n他们没有完全接住你的疲惫。那种身体被榨干的感觉还在，肩膀和手腕也没有因为几个玩笑自动恢复。可是这个跑偏现场本身又太荒诞了，像评论区当场替你生成了一张事件卡：疲惫、误读、观察细节、玩梗、再把一切拖回创作系统里。\n\n你突然意识到，这确实能写进人格模拟器。\n\n但今天不能继续炼丹。好笑归好笑，你是真的累了。先截图，先关掉评论区，先把自己从素材堆里捞回来。之后再说。",
+    "text": "最近工作太狠了，你的手也腱鞘炎了，听从AI的建议你买了个护具，突然觉得这件事很好笑可以发朋友圈，结果朋友圈的评论让这件事更黑色幽默了。",
     "image": "/images/events/comments-rewrite-fatigue.png",
     "attentionHooks": [
       {
         "id": "fatigue-being-rewritten",
-        "label": "疲惫被改写",
-        "description": "你原本只是想说自己累了，结果评论区把它改写成了一场荒诞观察。",
+        "label": "观察",
+        "description": "原本只是想卖个惨，怎么评论区完全长歪了啊喂！",
         "categories": [
           "observe",
           "create"
         ],
-        "text": "你原本只是想说自己累了，结果评论区把它改写成了一场荒诞观察。",
+        "text": "原本只是想卖个惨，怎么评论区完全长歪了啊喂！",
         "type": "reinterpretation",
         "traitBias": [
           "abstraction",
@@ -6697,13 +6697,13 @@
       },
       {
         "id": "accidental-material",
-        "label": "意外素材",
-        "description": "别人没有完全按预期安慰你，但他们的误读本身变成了素材。",
+        "label": "创造",
+        "description": "不按照预期的安慰，反而呢，成为了创作素材。",
         "categories": [
           "create",
           "observe"
         ],
-        "text": "别人没有完全按预期安慰你，但他们的误读本身变成了素材。",
+        "text": "不按照预期的安慰，反而呢，成为了创作素材。",
         "type": "material",
         "traitBias": [
           "abstraction",
@@ -6713,13 +6713,13 @@
       },
       {
         "id": "body-still-tired",
-        "label": "身体还是累的",
-        "description": "就算这件事很好笑，身体损耗也不是假的。",
+        "label": "观察",
+        "description": "就算这件事很好笑，我的手也是真的受伤了啊喂。",
         "categories": [
           "recover",
           "observe"
         ],
-        "text": "就算这件事很好笑，身体损耗也不是假的。",
+        "text": "就算这件事很好笑，我的手也是真的受伤了啊喂。",
         "type": "body-limit",
         "traitBias": [
           "sensitivity",
@@ -6729,13 +6729,13 @@
       },
       {
         "id": "rest-before-refining",
-        "label": "先休息再炼丹",
-        "description": "不是所有痛苦都要立刻转化，先停一下也是一种处理。",
+        "label": "先休息",
+        "description": "不过确实该先休息一下了。",
         "categories": [
           "recover",
           "create"
         ],
-        "text": "不是所有痛苦都要立刻转化，先停一下也是一种处理。",
+        "text": "不过确实该先休息一下了。",
         "type": "recovery-boundary",
         "traitBias": [
           "stability",
@@ -6747,7 +6747,7 @@
     "firstReactions": [
       {
         "id": "comments-turned-into-event-card",
-        "text": "他们没完全接住我，但好像把这件事改写成事件卡了。",
+        "text": "评论区正在帮我把这事儿做成事件卡。",
         "tone": "荒诞",
         "linkedAttentionHookIds": [
           "fatigue-being-rewritten",
@@ -6769,7 +6769,7 @@
       },
       {
         "id": "not-comfort-but-material",
-        "text": "这不是安慰，但确实有点素材价值。",
+        "text": "压根没人安慰我！！！都只是在关心自己罢了！",
         "tone": "清醒",
         "linkedAttentionHookIds": [
           "fatigue-being-rewritten",
@@ -6792,7 +6792,7 @@
       {
         "id": "i-am-still-tired",
         "text": "好笑归好笑，我是真的累了。",
-        "tone": "现实",
+        "tone": "稳定",
         "linkedAttentionHookIds": [
           "body-still-tired",
           "rest-before-refining"
@@ -6814,7 +6814,7 @@
       },
       {
         "id": "dont-refine-yourself-to-death",
-        "text": "不能什么都拿去炼丹，先把自己捞回来。",
+        "text": "先别急着吐槽吧，还是先关心自己。",
         "tone": "自救",
         "linkedAttentionHookIds": [
           "rest-before-refining",
@@ -6839,8 +6839,8 @@
     "tags": [
       {
         "id": "comment-section-rewrite",
-        "label": "评论区改写",
-        "description": "你发的是疲惫，评论区接住的却是一场荒诞二创。",
+        "label": "结构",
+        "description": "虽然发的是自己受伤了，但他们怎么完全不觉得我会受伤的样子！",
         "moodDelta": {
           "observer": 2,
           "abstraction": 1,
@@ -6849,8 +6849,8 @@
       },
       {
         "id": "not-quite-comfort",
-        "label": "没完全被安慰",
-        "description": "他们没有完全接住你的疲惫，但也没有恶意攻击你。",
+        "label": "稳定",
+        "description": "没人关心我，但也没人攻击我。",
         "moodDelta": {
           "stability": 1,
           "trust": 1,
@@ -6869,8 +6869,8 @@
       },
       {
         "id": "body-needs-offline",
-        "label": "身体需要下线",
-        "description": "再有素材价值，也不能把身体继续当燃料烧。",
+        "label": "先下了",
+        "description": "这件事再好玩也得休息好。",
         "moodDelta": {
           "stability": 1,
           "arousal": -1,
@@ -6879,8 +6879,8 @@
       },
       {
         "id": "small-absurd-relief",
-        "label": "小型荒诞回血",
-        "description": "这场误读没有解决疲惫，但让灰掉的一天多了一点可笑的形状。",
+        "label": "乐",
+        "description": "原本疲惫的一天多了点黑色幽默。",
         "moodDelta": {
           "pleasure": 1,
           "stability": 1,
@@ -6891,8 +6891,8 @@
     "behaviors": [
       {
         "id": "save-as-event-material",
-        "label": "把评论区截图存进素材库。",
-        "description": "不是马上开工，只是先把这个荒诞现场收起来。",
+        "label": "先存档",
+        "description": "不打算现在就开始做，让素材在我的相册里再憋一会。",
         "moodDelta": {
           "creator": 2,
           "observer": 2,
@@ -6901,7 +6901,7 @@
       },
       {
         "id": "admit-real-fatigue",
-        "label": "承认自己是真的累了，不把疲惫全都转成笑点。",
+        "label": "稳定",
         "description": "好笑是一回事，身体被消耗也是另一回事。",
         "moodDelta": {
           "stability": 2,
@@ -6912,8 +6912,8 @@
       },
       {
         "id": "write-down-core-scene",
-        "label": "只记下核心场面，今天不强行展开。",
-        "description": "先留下事件核，剩下的等恢复之后再处理。",
+        "label": "行动",
+        "description": "先存档，剩下的等手伤恢复之后再处理。",
         "moodDelta": {
           "orderNeed": 2,
           "creator": 1,
@@ -6922,8 +6922,8 @@
       },
       {
         "id": "close-comments-and-rest",
-        "label": "关掉评论区，先去休息。",
-        "description": "这次不继续刷新反馈，也不把自己钉在现场。",
+        "label": "先去休息",
+        "description": "奖励自己发呆一小时。",
         "moodDelta": {
           "stability": 2,
           "arousal": -1,
@@ -6935,8 +6935,8 @@
     "attributions": [
       {
         "id": "misreadings-can-be-material",
-        "label": "误读不一定只会伤人，有时候也会变成素材。",
-        "description": "前提是你还有力气把它捡起来，而不是当场继续燃烧。",
+        "label": "抽象",
+        "description": "万事万物皆可成为段子。",
         "pathDelta": {
           "creator": 3,
           "observer": 2,
@@ -6945,8 +6945,8 @@
       },
       {
         "id": "not-being-fully-held-is-not-total-rejection",
-        "label": "没有被完全接住，不等于被完全否定。",
-        "description": "评论区跑偏了，但这不必被解释成世界又一次站到你对面。",
+        "label": "信任",
+        "description": "世界……并没有拒绝我。",
         "pathDelta": {
           "stability": 1,
           "trust": 1,
@@ -6955,8 +6955,8 @@
       },
       {
         "id": "fatigue-is-not-just-fuel",
-        "label": "疲惫不是只能拿来炼丹，也可以先被照顾。",
-        "description": "创作可以晚一点，身体不能无限延期。",
+        "label": "匿了",
+        "description": "身体重要，我先睡了。",
         "pathDelta": {
           "stability": 2,
           "selfEsteem": 1,
@@ -6965,8 +6965,8 @@
       },
       {
         "id": "absurdity-can-leave-a-small-light",
-        "label": "荒诞有时候会留下一点小光，不解决问题，但能让人喘口气。",
-        "description": "这不是鸡汤，也不是胜利，只是你把现场从纯消耗里拎出来了一点。",
+        "label": "观察",
+        "description": "难过了这么久，终于有点乐子可以找了。",
         "pathDelta": {
           "creator": 2,
           "observer": 2,
