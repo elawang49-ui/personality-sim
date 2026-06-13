@@ -178,7 +178,13 @@ function logSupabaseError(table: string, action: string, error: unknown) {
 
 function getErrorDetails(error: unknown) {
   if (!(error instanceof Error) && (typeof error !== 'object' || error === null)) {
-    return { message: String(error) }
+    return {
+      message: String(error),
+      code: null,
+      status: null,
+      details: null,
+      hint: null,
+    }
   }
 
   const value = error as {
@@ -192,9 +198,9 @@ function getErrorDetails(error: unknown) {
   return {
     message:
       typeof value.message === 'string' ? value.message : 'Unknown Supabase error',
-    ...(typeof value.code === 'string' ? { code: value.code } : {}),
-    ...(typeof value.details === 'string' ? { details: value.details } : {}),
-    ...(typeof value.hint === 'string' ? { hint: value.hint } : {}),
-    ...(typeof value.status === 'number' ? { status: value.status } : {}),
+    code: typeof value.code === 'string' ? value.code : null,
+    status: typeof value.status === 'number' ? value.status : null,
+    details: typeof value.details === 'string' ? value.details : null,
+    hint: typeof value.hint === 'string' ? value.hint : null,
   }
 }

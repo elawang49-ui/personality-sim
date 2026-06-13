@@ -6,6 +6,7 @@ type StartProfileProps = {
   previewState: CharacterState
   selectedTags: StartProfileTag[]
   warning: string
+  isConnecting: boolean
   onToggle: (tag: StartProfileTag) => void
   onConfirm: () => void
 }
@@ -14,6 +15,7 @@ export function StartProfile({
   previewState,
   selectedTags,
   warning,
+  isConnecting,
   onToggle,
   onConfirm,
 }: StartProfileProps) {
@@ -69,10 +71,10 @@ export function StartProfile({
           <button
             className="primary-button start-confirm"
             type="button"
-            disabled={selectedTags.length === 0}
+            disabled={selectedTags.length === 0 || isConnecting}
             onClick={onConfirm}
           >
-            {copy.startProfile.confirmButton}
+            {isConnecting ? '正在连接…' : copy.startProfile.confirmButton}
           </button>
         </aside>
       </section>

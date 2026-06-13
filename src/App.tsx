@@ -40,6 +40,7 @@ import {
   ensureTestSession,
   recordTestAnswer,
   startNewTestSession,
+  TestDataConfigurationError,
 } from './services/testData'
 import { buildStateChangeSummary } from './services/testData/stateSummary'
 import './App.css'
@@ -107,6 +108,8 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     [],
   )
   const [profileWarning, setProfileWarning] = useState('')
+  const [dataConnectionError, setDataConnectionError] = useState('')
+  const [isConnectingData, setIsConnectingData] = useState(false)
   const [selectedEventIds, setSelectedEventIds] = useState<string[]>(() => {
     const firstEvent =
       selectNextEvent({
@@ -176,16 +179,26 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     })
   }
 
-  function confirmStartProfile() {
+  async function confirmStartProfile() {
     if (selectedStartTags.length === 0) {
       setProfileWarning(copy.startProfile.minSelectionWarning)
       return
     }
 
+    setIsConnectingData(true)
+    setProfileWarning('')
+
+    try {
+      await ensureTestSession({ totalRounds })
+    } catch (error) {
+      console.error('Failed to confirm test session', error)
+      setProfileWarning(getDataConnectionMessage(error))
+      return
+    } finally {
+      setIsConnectingData(false)
+    }
+
     setCharacterState(startPreviewState)
-    void ensureTestSession({ totalRounds }).catch((error: unknown) => {
-      console.error('Failed to create test session', error)
-    })
     saveState(startPreviewState)
     saveStartProfileReady()
     setIsProfileReady(true)
@@ -336,6 +349,8 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     setHasEnteredTitle(true)
     setSelectedStartTags([])
     setProfileWarning('')
+    setDataConnectionError('')
+    setIsConnectingData(false)
     const firstEvent =
       selectNextEvent({
         events,
@@ -352,18 +367,34 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     setStage('eventIntro')
   }
 
-  function handleStartFromTitle() {
-    void startNewTestSession({ totalRounds }).catch((error: unknown) => {
+  async function handleStartFromTitle() {
+    setDataConnectionError('')
+    setIsConnectingData(true)
+
+    try {
+      await startNewTestSession({ totalRounds })
+      setHasEnteredTitle(true)
+    } catch (error) {
       console.error('Failed to start test session', error)
-    })
-    setHasEnteredTitle(true)
+      setDataConnectionError(getDataConnectionMessage(error))
+    } finally {
+      setIsConnectingData(false)
+    }
   }
 
-  function handleContinueFromTitle() {
-    void ensureTestSession({ totalRounds }).catch((error: unknown) => {
+  async function handleContinueFromTitle() {
+    setDataConnectionError('')
+    setIsConnectingData(true)
+
+    try {
+      await ensureTestSession({ totalRounds })
+      setHasEnteredTitle(true)
+    } catch (error) {
       console.error('Failed to continue test session', error)
-    })
-    setHasEnteredTitle(true)
+      setDataConnectionError(getDataConnectionMessage(error))
+    } finally {
+      setIsConnectingData(false)
+    }
   }
 
   function trackAnswer(
@@ -457,6 +488,8 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     return (
       <TitlePage
         hasProgress={isProfileReady}
+        connectionError={dataConnectionError}
+        isConnecting={isConnectingData}
         onStart={handleStartFromTitle}
         onContinue={handleContinueFromTitle}
         onRestart={handleReset}
@@ -470,6 +503,7 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
         previewState={startPreviewState}
         selectedTags={selectedStartTags}
         warning={profileWarning}
+        isConnecting={isConnectingData}
         onToggle={toggleStartTag}
         onConfirm={confirmStartProfile}
       />
@@ -501,6 +535,14 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
       <StatePanel state={characterState} onReset={handleReset} />
     </div>
   )
+}
+
+function getDataConnectionMessage(error: unknown) {
+  if (error instanceof TestDataConfigurationError) {
+    return '数据连接失败：生产环境缺少 Supabase 配置，请联系管理员。'
+  }
+
+  return '数据连接失败，请检查网络后重试。测试尚未开始。'
 }
 
 function getResultIdFromPath() {
