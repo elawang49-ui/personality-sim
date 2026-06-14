@@ -1,6 +1,9 @@
 import { forwardRef } from 'react'
+import { QRCodeSVG } from 'qrcode.react'
 import { getAvatarForReport } from '../data/avatarMap'
 import type { PersonaReportData } from '../engine/report'
+
+const websiteUrl = 'https://personalitysim.icu'
 
 type ResultPosterProps = {
   report: PersonaReportData
@@ -46,9 +49,23 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
 
           <footer className="result-poster-footer">
             <p>不是 MBTI，是摸爬滚打模拟器</p>
-            <div>
-              <span>查看完整结果</span>
-              <strong>{shareUrl}</strong>
+            <div className="result-poster-share-row">
+              <div className="result-poster-link">
+                <span>查看完整结果</span>
+                <strong>{shareUrl}</strong>
+              </div>
+              <div className="result-poster-qr">
+                <QRCodeSVG
+                  value={websiteUrl}
+                  size={176}
+                  bgColor="#fffaf1"
+                  fgColor="#201d19"
+                  level="M"
+                  marginSize={2}
+                />
+                <span>扫码进入测试</span>
+                <strong>personalitysim.icu</strong>
+              </div>
             </div>
           </footer>
         </article>
