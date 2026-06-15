@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { toPng } from 'html-to-image'
 import { EventIntroPage } from './components/EventIntroPage'
 import { EventPanel } from './components/EventPanel'
 import { PersonaReport } from './components/PersonaReport'
 import { ResultPage } from './components/ResultPage'
+import { ResultPoster } from './components/ResultPoster'
 import { StartProfile } from './components/StartProfile'
 import { StatePanel } from './components/StatePanel'
 import { TitlePage } from './components/TitlePage'
@@ -131,7 +133,10 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
   const [pendingResult, setPendingResult] = useState<PendingResult | null>(null)
   const [isSavingResult, setIsSavingResult] = useState(false)
   const [resultSaveFailed, setResultSaveFailed] = useState(false)
+  const [shareFeedback, setShareFeedback] = useState('')
+  const [isGeneratingPoster, setIsGeneratingPoster] = useState(false)
   const saveAttemptRef = useRef(0)
+  const posterRef = useRef<HTMLDivElement>(null)
   const event = useMemo(
     () => events.find((item) => item.id === currentEventId) ?? fallbackEvent,
     [currentEventId],
@@ -364,6 +369,8 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     setPendingResult(null)
     setIsSavingResult(false)
     setResultSaveFailed(false)
+    setShareFeedback('')
+    setIsGeneratingPoster(false)
     setStage('eventIntro')
   }
 
@@ -463,24 +470,69 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
       })
   }
 
+  async function generatePoster() {
+    const poster = posterRef.current
+
+    if (!poster || !pendingResult || isGeneratingPoster) {
+      return
+    }
+
+    setIsGeneratingPoster(true)
+    setShareFeedback('')
+
+    try {
+      await document.fonts.ready
+      await waitForImages(poster)
+      const dataUrl = await toPng(poster, {
+        width: 1080,
+        height: 1920,
+        pixelRatio: 1,
+        cacheBust: true,
+        backgroundColor: '#f3eadc',
+      })
+
+      downloadImage(dataUrl, `personality-sim-${pendingResult.resultId}.png`)
+      setShareFeedback(copy.resultRoute.posterSaved)
+    } catch (error) {
+      console.error('Failed to generate result poster', error)
+      setShareFeedback(copy.resultRoute.posterError)
+    } finally {
+      setIsGeneratingPoster(false)
+    }
+  }
+
   if (stage === 'report') {
+    const report = pendingResult?.report ?? personaReport
+
     return (
-      <PersonaReport
-        report={pendingResult?.report ?? personaReport}
-        statusMessage={
-          isSavingResult
-            ? copy.resultRoute.saving
-            : resultSaveFailed
-              ? copy.resultRoute.saveError
+      <>
+        <PersonaReport
+          report={report}
+          shareFeedback={shareFeedback}
+          isGeneratingPoster={isGeneratingPoster}
+          statusMessage={
+            isSavingResult
+              ? copy.resultRoute.saving
+              : resultSaveFailed
+                ? copy.resultRoute.saveError
+                : undefined
+          }
+          onRestart={handleReset}
+          onGeneratePoster={pendingResult ? generatePoster : undefined}
+          onRetrySave={
+            resultSaveFailed && pendingResult
+              ? () => persistResult(pendingResult)
               : undefined
-        }
-        onRestart={handleReset}
-        onRetrySave={
-          resultSaveFailed && pendingResult
-            ? () => persistResult(pendingResult)
-            : undefined
-        }
-      />
+          }
+        />
+        {pendingResult && (
+          <ResultPoster
+            ref={posterRef}
+            report={report}
+            shareUrl={buildResultUrl(pendingResult.resultId)}
+          />
+        )}
+      </>
     )
   }
 
@@ -548,6 +600,36 @@ function getDataConnectionMessage(error: unknown) {
 function getResultIdFromPath() {
   const match = window.location.pathname.match(/^\/result\/([^/]+)\/?$/)
   return match ? decodeURIComponent(match[1]) : null
+}
+
+function buildResultUrl(resultId: string) {
+  return new URL(`/result/${resultId}`, window.location.origin).toString()
+}
+
+async function waitForImages(container: HTMLElement) {
+  const images = Array.from(container.querySelectorAll('img'))
+
+  await Promise.all(
+    images.map((image) => {
+      if (image.complete) {
+        return Promise.resolve()
+      }
+
+      return new Promise<void>((resolve) => {
+        image.addEventListener('load', () => resolve(), { once: true })
+        image.addEventListener('error', () => resolve(), { once: true })
+      })
+    }),
+  )
+}
+
+function downloadImage(dataUrl: string, fileName: string) {
+  const link = document.createElement('a')
+  link.download = fileName
+  link.href = dataUrl
+  document.body.append(link)
+  link.click()
+  link.remove()
 }
 
 export default App
