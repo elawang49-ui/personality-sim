@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avatar Preview V2</title>
+    <style>
+      :root {
+        color: #f7ead6;
+        background: #191614;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background:
+          radial-gradient(circle at top left, rgba(186, 83, 58, 0.18), transparent 34rem),
+          radial-gradient(circle at bottom right, rgba(88, 129, 87, 0.14), transparent 30rem),
+          #191614;
+      }
+
+      main {
+        width: min(1360px, calc(100vw - 40px));
+        margin: 0 auto;
+        padding: 36px 0 48px;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: #d6a461;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(32px, 5vw, 64px);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+      }
+
+      .note {
+        max-width: 560px;
+        margin: 0;
+        color: #bfae99;
+        line-height: 1.65;
+      }
+
+      .stats {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 18px 0 28px;
+      }
+
+      .pill {
+        border: 1px solid rgba(247, 234, 214, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 250, 241, 0.07);
+        color: #ead7bc;
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(247, 234, 214, 0.13);
+        border-radius: 22px;
+        background:
+          linear-gradient(180deg, rgba(255, 250, 241, 0.09), rgba(255, 250, 241, 0.04)),
+          #211d1a;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+        padding: 12px;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        background-size: 18px 18px;
+        opacity: 0.35;
+      }
+
+      .avatar-frame {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 18px;
+        background:
+          radial-gradient(circle, rgba(255, 250, 241, 0.12), transparent 68%),
+          #151312;
+        margin-bottom: 12px;
+      }
+
+      img {
+        width: min(88%, 128px);
+        height: min(88%, 128px);
+        object-fit: contain;
+        image-rendering: auto;
+      }
+
+      img.missing {
+        display: none;
+      }
+
+      .missing-label {
+        display: none;
+        color: #8f8172;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      img.missing + .missing-label {
+        display: block;
+      }
+
+      .id {
+        position: relative;
+        margin: 0 0 6px;
+        color: #d6a461;
+        font-family:
+          "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 11px;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+
+      .title {
+        position: relative;
+        margin: 0;
+        color: #fff4df;
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1.35;
+      }
+
+      .path {
+        position: relative;
+        margin: 8px 0 0;
+        color: #8f8172;
+        font-size: 11px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+
+      @media (max-width: 1100px) {
+        .grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        main {
+          width: min(100vw - 24px, 520px);
+          padding-top: 24px;
+        }
+
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <p class="eyebrow">Personality Sim / Avatar Regen Preview V2</p>
+          <h1>精神状态头像墙</h1>
+        </div>
+        <p class="note">
+          静态预览页，只读取 <code>/images/avatars_regen_preview_v2/</code>。
+          已生成的预览图会显示；未生成的 persona 槽位会标记为 missing preview。
+        </p>
+      </header>
+
+      <section class="stats" aria-label="preview stats">
+        <span class="pill">32 persona slots</span>
+        <span class="pill">128x128 PNG target</span>
+        <span class="pill">transparent sticker preview</span>
+        <span class="pill">no React route / no API</span>
+      </section>
+
+      <section class="grid" id="avatarGrid" aria-label="avatar preview grid"></section>
+    </main>
+
+    <script>
+      const personas = [
+        ["creator_internal", "精神内耗码字工"],
+        ["creator_armor", "叠甲防杠造梦师"],
+        ["creator_burst", "狂暴键盘手"],
+        ["creator_review", "黑历史复盘师"],
+        ["observer_internal", "高敏感显微镜"],
+        ["observer_armor", "人间清醒"],
+        ["observer_burst", "前线记者"],
+        ["observer_review", "复盘侠"],
+        ["strategist_internal", "军师"],
+        ["strategist_armor", "泉水指挥官"],
+        ["strategist_burst", "内有狂犬"],
+        ["strategist_review", "贤者模式操盘手"],
+        ["pleaser_internal", "老好人"],
+        ["pleaser_armor", "滴水不漏客套怪"],
+        ["pleaser_burst", "樱桃炸弹"],
+        ["pleaser_review", "人情世故精算师"],
+        ["avenger_internal", "死亡笔记持有者"],
+        ["avenger_armor", "刺猬"],
+        ["avenger_burst", "有仇就报活阎王"],
+        ["avenger_review", "人类尸检官"],
+        ["avoider_internal", "自闭蘑菇人"],
+        ["avoider_armor", "社交安全大师"],
+        ["avoider_burst", "又怂又爆"],
+        ["avoider_review", "吃瓜大师"],
+        ["caregiver_internal", "保姆"],
+        ["caregiver_armor", "腹黑高手"],
+        ["caregiver_burst", "暴躁小菩萨"],
+        ["caregiver_review", "金牌感情调解大师"],
+        ["judge_internal", "完美主义审判长"],
+        ["judge_armor", "正义执行者"],
+        ["judge_burst", "持剑人"],
+        ["judge_review", "规则解构狂"],
+      ];
+
+      const grid = document.querySelector("#avatarGrid");
+
+      for (const [id, title] of personas) {
+        const path = `/images/avatars_regen_preview_v2/${id}.png`;
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="avatar-frame">
+            <img src="${path}" alt="${title} preview avatar" loading="lazy" />
+            <span class="missing-label">missing preview</span>
+          </div>
+          <p class="id">${id}</p>
+          <p class="title">${title}</p>
+          <p class="path">${path}</p>
+        `;
+        const img = card.querySelector("img");
+        img.addEventListener("error", () => {
+          img.classList.add("missing");
+          img.removeAttribute("src");
+        });
+        grid.append(card);
+      }
+    </script>
+  </body>
+</html>

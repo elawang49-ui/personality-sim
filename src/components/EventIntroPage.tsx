@@ -26,11 +26,13 @@ export function EventIntroPage({
         <p className="event-intro-text">{event.text}</p>
 
         {event.image && (
-          <img
-            className="event-image"
-            src={event.image}
-            alt={`${event.title} 插图`}
-          />
+          <div className="event-image-frame">
+            <img
+              className="event-image"
+              src={event.image}
+              alt={`${event.title} 插图`}
+            />
+          </div>
         )}
 
         <div className="event-intro-actions">

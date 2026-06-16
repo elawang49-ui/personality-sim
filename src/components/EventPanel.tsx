@@ -148,7 +148,7 @@ export function EventPanel({
         )}
 
         {stage === 'summary' && (
-          <div className="summary">
+          <div className="summary round-summary">
             <ChoiceLine
               label={copy.eventPanel.choiceLabels.firstReaction}
               value={choices.firstReaction?.text}

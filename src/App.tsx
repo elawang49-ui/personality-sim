@@ -488,7 +488,7 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
         height: 1920,
         pixelRatio: 1,
         cacheBust: true,
-        backgroundColor: '#f3eadc',
+        backgroundColor: '#17161c',
       })
 
       downloadImage(dataUrl, `personality-sim-${pendingResult.resultId}.png`)

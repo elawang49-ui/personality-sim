@@ -101,7 +101,7 @@ export function ResultPage({ resultId, onRestart }: ResultPageProps) {
         height: 1920,
         pixelRatio: 1,
         cacheBust: true,
-        backgroundColor: '#f3eadc',
+        backgroundColor: '#17161c',
       })
 
       downloadImage(dataUrl, `personality-sim-${resultId}.png`)
@@ -138,10 +138,12 @@ export function ResultPage({ resultId, onRestart }: ResultPageProps) {
     )
   }
 
+  const report = normalizeStoredReport(loadState.result.report)
+
   return (
     <>
       <PersonaReport
-        report={loadState.result.report}
+        report={report}
         shareFeedback={shareFeedback}
         isGeneratingPoster={isGeneratingPoster}
         onRestart={onRestart}
@@ -150,7 +152,7 @@ export function ResultPage({ resultId, onRestart }: ResultPageProps) {
       />
       <ResultPoster
         ref={posterRef}
-        report={loadState.result.report}
+        report={report}
         shareUrl={shareUrl}
       />
     </>
@@ -222,6 +224,35 @@ function recordResultShare(resultId: string) {
   }).catch((error: unknown) => {
     console.error('Failed to record share click', error)
   })
+}
+
+function normalizeStoredReport(report: StoredTestResult['report']) {
+  // Public result links can outlive frontend report-shape changes. These
+  // fallbacks only prevent missing old fields from replacing valid report data.
+  return {
+    ...report,
+    personaKey: normalizeString(report.personaKey, 'unknown'),
+    typeName: normalizeString(report.typeName, '人格报告'),
+    personaTag: normalizeString(report.personaTag, report.typeName || '人格称号'),
+    reportText: normalizeString(
+      report.reportText,
+      copy.reportGeneration.defaultStrongReading,
+    ),
+    topPaths: normalizeArray(report.topPaths),
+    frequentAttentionTypes: normalizeArray(report.frequentAttentionTypes),
+    frequentAttentionLabels: normalizeArray(report.frequentAttentionLabels),
+    frequentLabels: normalizeArray(report.frequentLabels),
+    frequentActions: normalizeArray(report.frequentActions),
+    frequentAttributions: normalizeArray(report.frequentAttributions),
+  }
+}
+
+function normalizeString(value: unknown, fallback: string) {
+  return typeof value === 'string' && value.trim() ? value : fallback
+}
+
+function normalizeArray<T>(value: T[] | undefined) {
+  return Array.isArray(value) ? value : []
 }
 
 async function copyText(text: string) {

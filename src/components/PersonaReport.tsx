@@ -24,6 +24,8 @@ export function PersonaReport({
   statusMessage,
   onRetrySave,
 }: PersonaReportProps) {
+  const hasTopPaths = report.topPaths.length > 0
+
   return (
     <main className="report-page">
       <section className="report-hero">
@@ -38,18 +40,22 @@ export function PersonaReport({
       <section className="top-path-section">
         <p className="eyebrow">{copy.reportPage.topPathEyebrow}</p>
         <h2>{copy.reportPage.topPathTitle}</h2>
-        <div className="top-path-grid">
-          {report.topPaths.map((path, index) => (
-            <article className="top-path-card" key={path.key}>
-              <span className="path-rank">#{index + 1}</span>
-              <div>
-                <h3>{path.label}</h3>
-                <p>{path.summary}</p>
-              </div>
-              <strong>{path.value}</strong>
-            </article>
-          ))}
-        </div>
+        {hasTopPaths ? (
+          <div className="top-path-grid">
+            {report.topPaths.map((path, index) => (
+              <article className="top-path-card" key={path.key}>
+                <span className="path-rank">#{index + 1}</span>
+                <div>
+                  <h3>{path.label}</h3>
+                  <p>{path.summary}</p>
+                </div>
+                <strong>{path.value}</strong>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="top-path-empty">路径数据缺失，请重新完成一次测试。</p>
+        )}
       </section>
 
       <section className="report-stats">
@@ -113,13 +119,23 @@ export function PersonaReport({
 }
 
 function ReportText({ text }: { text: string }) {
+  const paragraphs = text
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+    .filter((paragraph) => !isPathHeading(paragraph))
+
   return (
     <div className="report-text">
-      {text.split(/\n{2,}/).map((paragraph) => (
+      {paragraphs.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
       ))}
     </div>
   )
+}
+
+function isPathHeading(paragraph: string) {
+  return paragraph.replace(/\s/g, '') === '你的路径：'
 }
 
 function ReportCard({
