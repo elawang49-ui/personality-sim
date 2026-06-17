@@ -12,21 +12,15 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL?.trim()
 const supabaseKey =
   import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.trim() ||
   import.meta.env.VITE_SUPABASE_ANON_KEY?.trim()
+const hasSupabaseConfig = Boolean(supabaseUrl && supabaseKey)
 
-const adapter: TestDataAdapter | null =
-  supabaseUrl && supabaseKey
-    ? new SupabaseTestDataAdapter(supabaseUrl, supabaseKey)
-    : import.meta.env.DEV
-      ? new MockTestDataAdapter()
-      : null
+const adapter: TestDataAdapter = supabaseUrl && supabaseKey
+  ? new SupabaseTestDataAdapter(supabaseUrl, supabaseKey)
+  : new MockTestDataAdapter()
 
 let pendingSession: Promise<string> | null = null
 
-export const testDataBackend = adapter
-  ? supabaseUrl && supabaseKey
-    ? 'supabase'
-    : 'mock'
-  : 'unconfigured'
+export const testDataBackend = hasSupabaseConfig ? 'supabase' : 'mock'
 
 const ACTIVE_SESSION_KEY = buildActiveSessionKey()
 
@@ -36,6 +30,12 @@ console.info('[test-data] adapter selected', {
   hasSupabaseUrl: Boolean(supabaseUrl),
   hasSupabaseKey: Boolean(supabaseKey),
 })
+
+if (!hasSupabaseConfig) {
+  console.warn(
+    '[test-data] Supabase is not configured; using localStorage mock storage. Results are only available in this browser.',
+  )
+}
 
 export class TestDataConfigurationError extends Error {
   constructor() {
@@ -105,10 +105,6 @@ async function createAndRememberSession(input: CreateSessionInput) {
 }
 
 function requireAdapter() {
-  if (!adapter) {
-    throw new TestDataConfigurationError()
-  }
-
   return adapter
 }
 

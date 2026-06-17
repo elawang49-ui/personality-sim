@@ -1,13 +1,19 @@
 import type { CharacterState, EventPressure, SimEvent, StateDelta } from './types'
 
 const DIRECTOR_TOP_PICK_COUNT = 5
+const DEFAULT_EVENT_WEIGHT = 10
 
-type DirectorTag =
-  | 'trustRepair'
-  | 'recover'
-  | 'shameSafe'
-  | 'lowArousal'
-  | 'lightCreate'
+const VALID_DIRECTOR_TAGS = [
+  'trustRepair',
+  'recover',
+  'shameSafe',
+  'lowArousal',
+  'lightCreate',
+] as const
+
+type DirectorTag = (typeof VALID_DIRECTOR_TAGS)[number]
+
+const validDirectorTags = new Set<string>(VALID_DIRECTOR_TAGS)
 
 type EventProfile = {
   pressure: EventPressure
@@ -107,15 +113,39 @@ function scoreEvent(
 function getEventProfile(event: SimEvent): EventProfile {
   const net = sumEventDelta(event)
   const tags = Array.isArray(event.meta?.directorTags)
-    ? (event.meta.directorTags as DirectorTag[])
+    ? normalizeDirectorTags(event.id, event.meta.directorTags)
     : inferDirectorTags(net)
 
   return {
     pressure: event.meta?.pressure ?? inferPressure(net),
     tags,
-    weight: event.meta?.weight ?? 10,
+    weight: normalizeEventWeight(event.meta?.weight),
     net,
   }
+}
+
+function normalizeDirectorTags(eventId: string, tags: string[]) {
+  const normalizedTags = tags.filter(isDirectorTag)
+
+  if (import.meta.env.DEV && normalizedTags.length !== tags.length) {
+    const unknownTags = tags.filter((tag) => !isDirectorTag(tag))
+    console.warn('[event-director] unknown directorTags ignored', {
+      eventId,
+      unknownTags,
+    })
+  }
+
+  return normalizedTags
+}
+
+function isDirectorTag(tag: string): tag is DirectorTag {
+  return validDirectorTags.has(tag)
+}
+
+function normalizeEventWeight(weight: unknown) {
+  return typeof weight === 'number' && Number.isFinite(weight) && weight > 0
+    ? weight
+    : DEFAULT_EVENT_WEIGHT
 }
 
 function inferDirectorTags(net: StateDelta): DirectorTag[] {
@@ -194,9 +224,20 @@ function addDelta(total: StateDelta, delta?: StateDelta) {
 }
 
 function weightedPick(scored: { event: SimEvent; score: number }[]) {
-  const floor = Math.min(...scored.map((item) => item.score))
-  const weights = scored.map((item) => item.score - floor + 1)
+  const finiteScores = scored
+    .map((item) => item.score)
+    .filter((score) => Number.isFinite(score))
+  const floor = finiteScores.length > 0 ? Math.min(...finiteScores) : 0
+  const weights = scored.map((item) =>
+    normalizePickWeight(
+      Number.isFinite(item.score) ? item.score - floor + 1 : undefined,
+    ),
+  )
   const totalWeight = weights.reduce((sum, weight) => sum + weight, 0)
+  if (!Number.isFinite(totalWeight) || totalWeight <= 0) {
+    return scored[0]?.event
+  }
+
   let roll = Math.random() * totalWeight
 
   for (let index = 0; index < scored.length; index += 1) {
@@ -207,4 +248,10 @@ function weightedPick(scored: { event: SimEvent; score: number }[]) {
   }
 
   return scored[0].event
+}
+
+function normalizePickWeight(weight: unknown) {
+  return typeof weight === 'number' && Number.isFinite(weight) && weight > 0
+    ? weight
+    : DEFAULT_EVENT_WEIGHT
 }

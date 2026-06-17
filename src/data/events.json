@@ -320,9 +320,8 @@
     "meta": {
       "pressure": "medium",
       "directorTags": [
-        "workPressure",
-        "arousalSpike",
-        "lightCreate"
+        "lightCreate",
+        "recover"
       ],
       "weight": 10
     }
@@ -645,9 +644,7 @@
     "meta": {
       "pressure": "medium",
       "directorTags": [
-        "workPressure",
-        "shameSpike",
-        "arousalSpike"
+        "recover"
       ],
       "weight": 9
     }
@@ -1291,9 +1288,10 @@
     "meta": {
       "pressure": "medium",
       "directorTags": [
-        "observer",
-        "structure",
-        "shameSafe"
+        "shameSafe",
+        "recover",
+        "lowArousal",
+        "lightCreate"
       ],
       "weight": 9
     }
@@ -1607,9 +1605,9 @@
     "meta": {
       "pressure": "medium",
       "directorTags": [
-        "observer",
-        "structure",
-        "shameSafe"
+        "shameSafe",
+        "recover",
+        "lightCreate"
       ],
       "weight": 9
     }
@@ -1939,9 +1937,9 @@
     "meta": {
       "pressure": "medium",
       "directorTags": [
-        "publicPressure",
         "lightCreate",
-        "shameSafe"
+        "shameSafe",
+        "recover"
       ],
       "weight": 10
     }
@@ -2899,9 +2897,7 @@
     "meta": {
       "pressure": "medium",
       "directorTags": [
-        "workPressure",
-        "shameSpike",
-        "arousalSpike"
+        "recover"
       ],
       "weight": 9
     }
@@ -4170,9 +4166,8 @@
     "meta": {
       "pressure": "medium",
       "directorTags": [
-        "relationshipPressure",
-        "trustDamage",
-        "shameSpike"
+        "recover",
+        "lightCreate"
       ],
       "weight": 8
     }
@@ -4491,13 +4486,9 @@
     "meta": {
       "pressure": "low",
       "directorTags": [
-        "lowPressure",
         "recover",
         "shameSafe",
-        "lowArousal",
-        "workPressure",
-        "observer",
-        "structure"
+        "lowArousal"
       ],
       "weight": 11
     },
@@ -4806,10 +4797,9 @@
     "meta": {
       "pressure": "medium",
       "directorTags": [
-        "relationshipPressure",
-        "observer",
-        "structure",
-        "shameSafe"
+        "shameSafe",
+        "recover",
+        "lightCreate"
       ],
       "weight": 10
     },
@@ -5117,9 +5107,9 @@
       "pressure": "medium",
       "directorTags": [
         "shameSafe",
-        "mediumPressure",
-        "observer",
-        "structure"
+        "recover",
+        "lowArousal",
+        "lightCreate"
       ],
       "weight": 9
     },
@@ -5437,8 +5427,8 @@
         "trustRepair",
         "recover",
         "shameSafe",
-        "selfEsteemRepair",
-        "observer"
+        "lowArousal",
+        "lightCreate"
       ],
       "weight": 11
     },
@@ -5745,8 +5735,7 @@
       "directorTags": [
         "trustRepair",
         "recover",
-        "shameSafe",
-        "observer"
+        "shameSafe"
       ],
       "weight": 10
     },
@@ -6659,9 +6648,10 @@
     "meta": {
       "pressure": "medium",
       "directorTags": [
-        "workPressure",
         "recover",
-        "lightCreate"
+        "lightCreate",
+        "shameSafe",
+        "lowArousal"
       ],
       "weight": 10
     },
@@ -6979,8 +6969,8 @@
       "directorTags": [
         "recover",
         "lightCreate",
-        "observer",
-        "shameSafe"
+        "shameSafe",
+        "lowArousal"
       ],
       "weight": 11
     }
