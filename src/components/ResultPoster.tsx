@@ -15,25 +15,38 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
     const summary = getPosterReportExcerpt(report.reportText)
     const [topPath, ...secondaryPaths] = report.topPaths.slice(0, 3)
     const posterShareUrl = toPublicShareUrl(shareUrl)
+    const raidResult = report.raidResult
 
     return (
       <div className="result-poster-stage" aria-hidden="true">
         <article className="result-poster" ref={ref}>
           <header className="result-poster-header">
-            <span>PERSONALITY-SIM / 最终结算</span>
-            <span>摸爬滚打人格报告</span>
+            <span>EXTRACTION RESULT</span>
+            <span>{raidResult?.hasExtracted ? '已撤离' : '完成全部轮次'}</span>
           </header>
 
           <div className="result-poster-main">
-            <p className="result-poster-kicker">测出来了，你是</p>
-            <h1>{report.typeName}</h1>
+            <section className="result-poster-terminal-hero">
+              <div>
+                <p className="result-poster-kicker">撤离人设</p>
+                <h1>{report.typeName}</h1>
+                <span>{report.personaTag}</span>
+              </div>
+              {raidResult && (
+                <div className="result-poster-cash">
+                  <small>{raidResult.hasExtracted ? '带出金额' : '最终金额'}</small>
+                  <strong>{formatCurrency(raidResult.cashValue)}</strong>
+                  <em>{raidResult.cashLevel}</em>
+                </div>
+              )}
+            </section>
 
             <div className="result-poster-qr-block">
               <QRCodeSVG
                 value={posterShareUrl}
                 size={136}
-                bgColor="#e0dee5"
-                fgColor="#17161c"
+                bgColor="#eafff3"
+                fgColor="#07100c"
                 level="M"
                 marginSize={2}
               />
@@ -44,7 +57,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
             <div className="result-poster-persona">
               <img src={getAvatarForReport(report)} alt="" />
               <div>
-                <span>人格称号</span>
+                <span>PERSONA ID</span>
                 <strong>{report.personaTag}</strong>
                 {topPath && <small>主路径：{topPath.label}</small>}
               </div>
@@ -54,7 +67,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
 
             {topPath ? (
               <section className="result-poster-top-path">
-                <small>TOP 1 PATH</small>
+                <small>PRIMARY PATH</small>
                 <div>
                   <strong>{topPath.label}</strong>
                   <em>{topPath.value}</em>
@@ -82,7 +95,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
           </div>
 
           <footer className="result-poster-footer">
-            <p>不是 MBTI，是摸爬滚打模拟器</p>
+            <p>现实撤离行动 / personalitysim.icu</p>
             <div className="result-poster-share-row">
               <div className="result-poster-link">
                 <span>查看完整结果</span>
@@ -142,6 +155,10 @@ function truncatePosterText(text: string, maxLength: number) {
   }
 
   return `${slice.replace(/[，、；：,.!?！？。]*$/, '')}……`
+}
+
+function formatCurrency(value: number) {
+  return `¥${Math.round(value).toLocaleString('zh-CN')}`
 }
 
 function isPathHeading(paragraph: string) {

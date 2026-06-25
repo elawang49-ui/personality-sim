@@ -1,9 +1,9 @@
 import { copy } from '../data/copy'
 import { startTags } from '../data/startTags'
-import type { CharacterState, StartProfileTag } from '../engine/types'
+import { RAID_STARTING_CASH } from '../engine/raid'
+import type { StartProfileTag } from '../engine/types'
 
 type StartProfileProps = {
-  previewState: CharacterState
   selectedTags: StartProfileTag[]
   warning: string
   isConnecting: boolean
@@ -12,7 +12,6 @@ type StartProfileProps = {
 }
 
 export function StartProfile({
-  previewState,
   selectedTags,
   warning,
   isConnecting,
@@ -60,12 +59,18 @@ export function StartProfile({
             )}
           </div>
           <div className="start-preview-list">
-            {previewKeys.map((key) => (
-              <div className="start-preview-row" key={key}>
-                <span>{copy.shortStateLabels[key]}</span>
-                <strong>{previewState[key]}</strong>
-              </div>
-            ))}
+            <div className="start-preview-row">
+              <span>入场资金</span>
+              <strong>¥{RAID_STARTING_CASH.toLocaleString('zh-CN')}</strong>
+            </div>
+            <div className="start-preview-row">
+              <span>行动目标</span>
+              <strong>撤离</strong>
+            </div>
+            <div className="start-preview-row">
+              <span>携带底色</span>
+              <strong>{selectedTags.length} / 3</strong>
+            </div>
           </div>
           {warning && <p className="start-warning">{warning}</p>}
           <button
@@ -82,30 +87,10 @@ export function StartProfile({
   )
 }
 
-const previewKeys: Array<keyof CharacterState> = [
-  'sensitivity',
-  'orderNeed',
-  'abstraction',
-  'empathy',
-  'aggression',
-  'selfEsteem',
-  'actionPower',
-]
-
 function describeImpact(tag: StartProfileTag) {
-  const delta = { ...tag.traitDelta, ...tag.pathDelta }
-  return Object.entries(delta)
-    .filter(([, value]) => value !== undefined && value !== 0)
-    .slice(0, 3)
-    .map(
-      ([key, value]) =>
-        `${copy.shortStateLabels[key as keyof CharacterState]} ${formatDelta(
-          value ?? 0,
-        )}`,
-    )
-    .join(' / ')
-}
+  const impactCount =
+    Object.values(tag.traitDelta).filter((value) => value !== 0).length +
+    Object.values(tag.pathDelta ?? {}).filter((value) => value !== 0).length
 
-function formatDelta(value: number) {
-  return value > 0 ? `+${value}` : `${value}`
+  return impactCount > 4 ? '影响行动状态与撤离风格' : '轻量影响本局行动'
 }

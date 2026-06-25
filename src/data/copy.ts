@@ -35,7 +35,7 @@ export const copy = {
       label: '这事在你心里算什么？',
       response: '你打算怎么处理？',
       attribution: '它后来变成了什么？',
-      summary: '本轮沉淀',
+      summary: '本轮结算',
       report: '最终结算',
     } satisfies Record<Stage, string>,
     choiceLabels: {
@@ -45,7 +45,8 @@ export const copy = {
       attribution: '人格归因',
     },
     attentionContinueButton: '确认',
-    nextEventButton: '进入下一事件',
+    nextEventButton: '继续',
+    extractButton: '撤离结算',
     reactionTraceTitle: '这个反应留下了一点痕迹',
     reactionTraceDetails: '展开看看',
     deltaTitles: {
@@ -78,9 +79,10 @@ export const copy = {
   },
 
   statePanel: {
-    eyebrow: '角色状态',
-    title: '当前数值',
+    eyebrow: '现实撤离行动',
+    title: '行动面板',
     resetButton: '重置',
+    raidGroupTitle: '当前局势',
     groups: [
       {
         title: '核心倾向',

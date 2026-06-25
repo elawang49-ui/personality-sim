@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { toPng } from 'html-to-image'
 import { copy } from '../data/copy'
+import { getCashLevel } from '../engine/raid'
 import {
   getTestResult,
   recordShareEvent,
@@ -238,6 +239,7 @@ function normalizeStoredReport(report: StoredTestResult['report']) {
       report.reportText,
       copy.reportGeneration.defaultStrongReading,
     ),
+    raidResult: normalizeRaidResult(report.raidResult),
     topPaths: normalizeArray(report.topPaths),
     frequentAttentionTypes: normalizeArray(report.frequentAttentionTypes),
     frequentAttentionLabels: normalizeArray(report.frequentAttentionLabels),
@@ -253,6 +255,24 @@ function normalizeString(value: unknown, fallback: string) {
 
 function normalizeArray<T>(value: T[] | undefined) {
   return Array.isArray(value) ? value : []
+}
+
+function normalizeRaidResult(value: StoredTestResult['report']['raidResult']) {
+  if (!value || typeof value.cashValue !== 'number') {
+    return undefined
+  }
+
+  return {
+    hasExtracted: Boolean(value.hasExtracted),
+    completedRounds: normalizeNumber(value.completedRounds, 0),
+    maxRounds: normalizeNumber(value.maxRounds, 10),
+    cashValue: value.cashValue,
+    cashLevel: normalizeString(value.cashLevel, getCashLevel(value.cashValue)),
+  }
+}
+
+function normalizeNumber(value: unknown, fallback: number) {
+  return typeof value === 'number' && Number.isFinite(value) ? value : fallback
 }
 
 async function copyText(text: string) {

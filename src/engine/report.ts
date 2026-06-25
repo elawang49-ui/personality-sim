@@ -4,6 +4,7 @@ import type {
   PersonaTypeDefinition,
   PersonaVariant,
 } from '../data/personaTypes'
+import type { RaidResult } from './raid'
 import type { CharacterState, StateKey } from './types'
 
 export type CompletedEventRecord = {
@@ -32,6 +33,7 @@ export type PersonaReportData = {
   typeName: string
   personaTag: string
   reportText: string
+  raidResult?: RaidResult
   topPaths: PathScore[]
   frequentAttentionTypes: FrequencyItem[]
   frequentAttentionLabels: FrequencyItem[]

@@ -1,6 +1,7 @@
 import { AttentionHooks } from './AttentionHooks'
 import { OptionButton } from './OptionButton'
 import { copy } from '../data/copy'
+import type { RaidCashEvent } from '../engine/raid'
 import { getLabelToneClass } from '../utils/labelColorMap'
 import type {
   AttributionOption,
@@ -22,6 +23,10 @@ type EventPanelProps = {
   onBehavior: (option: BehaviorOption) => void
   onAttribution: (option: AttributionOption) => void
   onNextEvent: () => void
+  onExtract: () => void
+  cashDelta: number
+  cashEvents: RaidCashEvent[]
+  cashValue: number
 }
 
 export function EventPanel({
@@ -34,6 +39,10 @@ export function EventPanel({
   onBehavior,
   onAttribution,
   onNextEvent,
+  onExtract,
+  cashDelta,
+  cashEvents,
+  cashValue,
 }: EventPanelProps) {
   return (
     <main className="event-panel">
@@ -47,7 +56,9 @@ export function EventPanel({
       )}
 
       <section className="stage-block">
-        <h2>{copy.eventPanel.stageTitles[stage]}</h2>
+        <h2 className={stage === 'summary' ? 'summary-stage-title' : undefined}>
+          {copy.eventPanel.stageTitles[stage]}
+        </h2>
 
         {stage === 'firstReaction' && (
           <div className="option-list">
@@ -148,37 +159,82 @@ export function EventPanel({
         )}
 
         {stage === 'summary' && (
-          <div className="summary round-summary">
-            <ChoiceLine
-              label={copy.eventPanel.choiceLabels.firstReaction}
-              value={choices.firstReaction?.text}
-            />
-            <ChoiceLine
-              label={copy.eventPanel.choiceLabels.eventTag}
-              value={choices.tag?.label}
-            />
-            <ChoiceLine
-              label={copy.eventPanel.choiceLabels.behavior}
-              value={choices.behavior?.label}
-            />
-            <ChoiceLine
-              label={copy.eventPanel.choiceLabels.attribution}
-              value={choices.attribution?.label}
-            />
-            {choices.firstReaction && (
-              <RoundTrace
-                attribution={choices.attribution}
-                reaction={choices.firstReaction}
+          <div className="round-summary-shell">
+            <div className="summary round-summary round-summary-modal">
+              <img
+                className="round-summary-image"
+                src={getSettlementImage(event)}
+                alt={`${event.title} ${copy.eventPanel.imageAltSuffix}`}
               />
-            )}
-            <p>{choices.summaryText}</p>
-            <button className="primary-button" type="button" onClick={onNextEvent}>
-              {copy.eventPanel.nextEventButton}
-            </button>
+              <RoundCashChange
+                cashDelta={cashDelta}
+                cashEvents={cashEvents}
+                cashValue={cashValue}
+              />
+              <p>{choices.summaryText}</p>
+              <div className="round-summary-actions">
+                <button className="primary-button" type="button" onClick={onNextEvent}>
+                  {copy.eventPanel.nextEventButton}
+                </button>
+                <button
+                  className="report-secondary-button"
+                  type="button"
+                  onClick={onExtract}
+                >
+                  {copy.eventPanel.extractButton}
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </section>
     </main>
+  )
+}
+
+function getSettlementImage(event: SimEvent) {
+  return `/images/settlements/${event.id}.svg`
+}
+
+function RoundCashChange({
+  cashDelta,
+  cashEvents,
+  cashValue,
+}: {
+  cashDelta: number
+  cashEvents: RaidCashEvent[]
+  cashValue: number
+}) {
+  const toneClass =
+    cashDelta > 0
+      ? 'cash-positive'
+      : cashDelta < 0
+        ? 'cash-negative'
+        : 'cash-neutral'
+
+  return (
+    <div className="round-cash-summary">
+      <div>
+        <span>本轮金额变化</span>
+        <strong className={toneClass}>{formatDeltaCurrency(cashDelta)}</strong>
+        {cashEvents.map((cashEvent) => (
+          <em
+            className={
+              cashEvent.amount >= 0
+                ? 'cash-event-burst cash-event-positive'
+                : 'cash-event-burst cash-event-negative'
+            }
+            key={cashEvent.id}
+          >
+            {formatDeltaCurrency(cashEvent.amount)} {cashEvent.label}
+          </em>
+        ))}
+      </div>
+      <div>
+        <span>当前带出金额</span>
+        <strong>{formatCurrency(cashValue)}</strong>
+      </div>
+    </div>
   )
 }
 
@@ -200,21 +256,6 @@ function ReactionTrace({ reaction }: { reaction: FirstReactionOption }) {
     <div className="reaction-trace">
       <p className="trace-title">{copy.eventPanel.reactionTraceTitle}</p>
       <p>{buildReactionSentence(reaction)}</p>
-    </div>
-  )
-}
-
-function RoundTrace({
-  attribution,
-  reaction,
-}: {
-  attribution?: AttributionOption
-  reaction: FirstReactionOption
-}) {
-  return (
-    <div className="round-trace">
-      <p className="trace-title">{copy.eventPanel.roundTraceTitle}</p>
-      <p>{buildRoundSentence(reaction, attribution)}</p>
     </div>
   )
 }
@@ -243,12 +284,11 @@ function buildReactionSentence(reaction: FirstReactionOption) {
   return copy.eventPanel.reactionSentences.fallback
 }
 
-function buildRoundSentence(
-  reaction: FirstReactionOption,
-  attribution?: AttributionOption,
-) {
-  void reaction
-  void attribution
+function formatCurrency(value: number) {
+  return `¥${Math.round(value).toLocaleString('zh-CN')}`
+}
 
-  return copy.eventPanel.roundTrace.suffix
+function formatDeltaCurrency(value: number) {
+  const rounded = Math.round(value)
+  return `${rounded >= 0 ? '+' : '-'}¥${Math.abs(rounded).toLocaleString('zh-CN')}`
 }

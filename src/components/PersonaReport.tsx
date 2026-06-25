@@ -25,9 +25,26 @@ export function PersonaReport({
   onRetrySave,
 }: PersonaReportProps) {
   const hasTopPaths = report.topPaths.length > 0
+  const raidResult = report.raidResult
 
   return (
     <main className="report-page">
+      <section className="report-terminal-hero">
+        <div className="report-terminal-identity">
+          <p className="report-terminal-kicker">EXTRACTION PROFILE</p>
+          <h1>{report.typeName}</h1>
+          <span>{report.personaTag}</span>
+        </div>
+        {raidResult && (
+          <div className="report-terminal-cash">
+            <span>{raidResult.hasExtracted ? '带出金额' : '最终金额'}</span>
+            <strong>{formatCurrency(raidResult.cashValue)}</strong>
+            <em>{raidResult.cashLevel}</em>
+          </div>
+        )}
+      </section>
+
+      {raidResult && <RaidResultStrip report={raidResult} />}
       <section className="report-hero">
         <div className="report-title-card">
           <p className="eyebrow">{copy.reportPage.eyebrow}</p>
@@ -118,6 +135,31 @@ export function PersonaReport({
   )
 }
 
+function RaidResultStrip({
+  report,
+}: {
+  report: NonNullable<PersonaReportData['raidResult']>
+}) {
+  return (
+    <section className="raid-result-strip">
+      <div>
+        <span>撤离状态</span>
+        <strong>
+          {report.hasExtracted ? '已撤离' : '完成全部轮次'}
+        </strong>
+      </div>
+      <div>
+        <span>{report.hasExtracted ? '带出金额' : '最终金额'}</span>
+        <strong>{formatCurrency(report.cashValue)}</strong>
+      </div>
+      <div>
+        <span>撤离评价</span>
+        <strong>{report.cashLevel}</strong>
+      </div>
+    </section>
+  )
+}
+
 function ReportText({ text }: { text: string }) {
   const paragraphs = text
     .split(/\n{2,}/)
@@ -136,6 +178,10 @@ function ReportText({ text }: { text: string }) {
 
 function isPathHeading(paragraph: string) {
   return paragraph.replace(/\s/g, '') === '你的路径：'
+}
+
+function formatCurrency(value: number) {
+  return `¥${Math.round(value).toLocaleString('zh-CN')}`
 }
 
 function ReportCard({

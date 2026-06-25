@@ -67,6 +67,7 @@ const projectDriveSignals = [
 
 export function calculatePathUpdate({
   characterState,
+  event,
   selectedLabel,
   selectedAction,
   selectedAttribution,
@@ -106,7 +107,13 @@ export function calculatePathUpdate({
     emotionDelta,
     traitDelta,
     pathDelta,
-    summaryText: buildSummaryText(),
+    summaryText: buildSummaryText({
+      eventId: event.id,
+      selectedLabel,
+      selectedAction,
+      selectedAttribution,
+      pathDelta,
+    }),
   }
 }
 
@@ -125,6 +132,62 @@ function matchesOption(
   return signals.some((signal) => haystack.includes(signal))
 }
 
-function buildSummaryText() {
-  return copy.pathUpdate.summaryText
+function buildSummaryText({
+  eventId,
+  selectedLabel,
+  selectedAction,
+  selectedAttribution,
+  pathDelta,
+}: {
+  eventId: string
+  selectedLabel: EventTagOption
+  selectedAction: BehaviorOption
+  selectedAttribution: AttributionOption
+  pathDelta: StateDelta
+}) {
+  const eventSummary = eventSummaryText[eventId]?.[selectedAttribution.id]
+
+  if (eventSummary) {
+    return eventSummary
+  }
+
+  const pathSummary = getPathSummary(pathDelta)
+
+  return `你把这次「${selectedLabel.label}」用「${selectedAction.label}」处理掉，最后记成「${selectedAttribution.label}」：${pathSummary}`
+}
+
+const eventSummaryText: Record<string, Record<string, string>> = {
+  'operator-hidden-charge': {
+    'too-poor': '你把35块记成生活预算里的一个破洞。',
+    'system-is-opaque': '你没有放过这笔扣费，而是把看不见的规则标了出来。',
+    'solve-not-punish-self': '你决定追回问题，不再让身体替运营商买单。',
+    'turn-anger-into-action': '你把火气换成查账单、投诉和记录。',
+  },
+}
+
+function getPathSummary(pathDelta: StateDelta) {
+  const [topPath] = Object.entries(pathDelta)
+    .filter(([, value]) => (value ?? 0) > 0)
+    .sort(([, first], [, second]) => (second ?? 0) - (first ?? 0))
+
+  switch (topPath?.[0]) {
+    case 'creator':
+      return '这次遭遇被你拆成了一个还能继续推进的项目。'
+    case 'strategist':
+      return '这次遭遇被你收进了下次可用的规则里。'
+    case 'pleaser':
+      return '这次遭遇被你放进了对他人期待的判断里。'
+    case 'observer':
+      return '这次遭遇没有凭空消失，而是被你记进了局势里。'
+    case 'avenger':
+      return '这次不爽被你留成了下一次反击的燃料。'
+    case 'avoider':
+      return '这次遭遇被你折成了一条更清楚的撤退路线。'
+    case 'caregiver':
+      return '这次遭遇变成了照顾自己或他人的提醒。'
+    case 'judge':
+      return '这次遭遇被你记成了一条不想再让步的标准。'
+    default:
+      return copy.pathUpdate.summaryText
+  }
 }

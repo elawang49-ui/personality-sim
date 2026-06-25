@@ -18,6 +18,18 @@ import {
   type CompletedEventRecord,
 } from './engine/report'
 import {
+  buildRaidResult,
+  calculateRaidRoundGain,
+  createRaidEventSchedule,
+  createRaidRoundNarrative,
+  createRaidViewModel,
+  getRaidEventCashEvents,
+  getScheduledRaidCashEvents,
+  RAID_STARTING_CASH,
+  type RaidCashEvent,
+  type RaidEventSchedule,
+} from './engine/raid'
+import {
   applyDelta,
   initialState,
   loadStartProfileReady,
@@ -135,6 +147,14 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
   const [resultSaveFailed, setResultSaveFailed] = useState(false)
   const [shareFeedback, setShareFeedback] = useState('')
   const [isGeneratingPoster, setIsGeneratingPoster] = useState(false)
+  const [raidCashValue, setRaidCashValue] = useState(RAID_STARTING_CASH)
+  const [lastRoundCashDelta, setLastRoundCashDelta] = useState(0)
+  const [lastRoundCashEvents, setLastRoundCashEvents] = useState<RaidCashEvent[]>(
+    [],
+  )
+  const [raidEventSchedule, setRaidEventSchedule] =
+    useState<RaidEventSchedule>(() => createRaidEventSchedule(totalRounds))
+  const [hasExtracted, setHasExtracted] = useState(false)
   const saveAttemptRef = useRef(0)
   const posterRef = useRef<HTMLDivElement>(null)
   const event = useMemo(
@@ -144,6 +164,24 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
   const personaReport = useMemo(
     () => buildPersonaReport(characterState, completedEvents),
     [characterState, completedEvents],
+  )
+  const currentRaidRound = useMemo(() => {
+    if (stage === 'summary' || stage === 'report') {
+      return Math.max(1, completedEvents.length)
+    }
+
+    return completedEvents.length + 1
+  }, [completedEvents.length, stage])
+  const raidViewModel = useMemo(
+    () =>
+      createRaidViewModel({
+        state: characterState,
+        roundIndex: currentRaidRound,
+        maxRounds: totalRounds,
+        cashValue: raidCashValue,
+        cashDelta: lastRoundCashDelta,
+      }),
+    [characterState, currentRaidRound, lastRoundCashDelta, raidCashValue],
   )
 
   useEffect(() => {
@@ -217,6 +255,11 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     setCurrentEventId(firstEvent.id)
     setChoices({})
     setCompletedEvents([])
+    setRaidCashValue(RAID_STARTING_CASH)
+    setLastRoundCashDelta(0)
+    setLastRoundCashEvents([])
+    setRaidEventSchedule(createRaidEventSchedule(totalRounds))
+    setHasExtracted(false)
     setStage('eventIntro')
   }
 
@@ -304,25 +347,45 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
       selectedAttribution: option.label,
     }
     const nextCompletedEvents = [...completedEvents, completedEvent]
+    const roundIndex = nextCompletedEvents.length
+    const cashEvents = [
+      ...getRaidEventCashEvents(event.id),
+      ...getScheduledRaidCashEvents(raidEventSchedule, roundIndex),
+    ]
+    const roundCashDelta =
+      calculateRaidRoundGain({
+        before: characterState,
+        after: nextState,
+        roundIndex,
+      }) + cashEvents.reduce((sum, cashEvent) => sum + cashEvent.amount, 0)
+    const nextRaidCashValue = raidCashValue + roundCashDelta
+    const summaryText = createRaidRoundNarrative({
+      eventId: event.id,
+      cashDelta: roundCashDelta,
+      cashEvents,
+    })
 
     setCharacterState(nextState)
     setCompletedEvents(nextCompletedEvents)
+    setRaidCashValue(nextRaidCashValue)
+    setLastRoundCashDelta(roundCashDelta)
+    setLastRoundCashEvents(cashEvents)
     trackAnswer(
       'attribution',
       option.id,
       characterState,
       nextState,
-      result.summaryText,
+      summaryText,
     )
     setChoices((current) => ({
       ...current,
       attribution: option,
-      summaryText: result.summaryText,
+      summaryText,
     }))
     const nextCompletedCount = nextCompletedEvents.length
 
     if (nextCompletedCount >= totalRounds) {
-      finishTest(nextState, nextCompletedEvents)
+      finishTest(nextState, nextCompletedEvents, false, nextRaidCashValue)
     } else {
       setStage('summary')
     }
@@ -343,7 +406,14 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     setSelectedEventIds((current) => [...current, nextEvent.id])
     setCurrentEventId(nextEvent.id)
     setChoices({})
+    setLastRoundCashDelta(0)
+    setLastRoundCashEvents([])
     setStage('eventIntro')
+  }
+
+  function extractToReport() {
+    setHasExtracted(true)
+    finishTest(characterState, completedEvents, true, raidCashValue)
   }
 
   function handleReset() {
@@ -371,6 +441,11 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     setResultSaveFailed(false)
     setShareFeedback('')
     setIsGeneratingPoster(false)
+    setRaidCashValue(RAID_STARTING_CASH)
+    setLastRoundCashDelta(0)
+    setLastRoundCashEvents([])
+    setRaidEventSchedule(createRaidEventSchedule(totalRounds))
+    setHasExtracted(false)
     setStage('eventIntro')
   }
 
@@ -431,10 +506,20 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
   function finishTest(
     finalState: CharacterState,
     finalCompletedEvents: CompletedEventRecord[],
+    extracted = hasExtracted,
+    finalCashValue = raidCashValue,
   ) {
+    const report = buildPersonaReport(finalState, finalCompletedEvents)
+    report.raidResult = buildRaidResult({
+      hasExtracted: extracted,
+      completedRounds: finalCompletedEvents.length,
+      maxRounds: totalRounds,
+      cashValue: finalCashValue,
+    })
+
     const result: PendingResult = {
       resultId: crypto.randomUUID(),
-      report: buildPersonaReport(finalState, finalCompletedEvents),
+      report,
       finalState,
       completedRounds: finalCompletedEvents.length,
       timestamp: new Date().toISOString(),
@@ -552,7 +637,6 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
   if (!isProfileReady) {
     return (
       <StartProfile
-        previewState={startPreviewState}
         selectedTags={selectedStartTags}
         warning={profileWarning}
         isConnecting={isConnectingData}
@@ -582,9 +666,13 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
           onBehavior={chooseBehavior}
           onAttribution={chooseAttribution}
           onNextEvent={goToNextEvent}
+          onExtract={extractToReport}
+          cashDelta={lastRoundCashDelta}
+          cashEvents={lastRoundCashEvents}
+          cashValue={raidCashValue}
         />
       )}
-      <StatePanel state={characterState} onReset={handleReset} />
+      <StatePanel raid={raidViewModel} onReset={handleReset} />
     </div>
   )
 }
