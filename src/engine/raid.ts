@@ -22,14 +22,19 @@ export type RaidViewModel = {
 }
 
 export type RaidCashEvent = {
-  id: 'operator-hidden-charge' | 'lottery-jackpot' | 'stock-crash'
+  id:
+    | 'operator-hidden-charge'
+    | 'lottery-jackpot'
+    | 'a-share-crash'
+    | 'us-stock-crash'
   label: string
   amount: number
 }
 
 export type RaidEventSchedule = {
   lotteryJackpotRound?: number
-  stockCrashRounds: number[]
+  aShareCrashRounds: number[]
+  usStockCrashRounds: number[]
 }
 
 type RaidViewModelParams = {
@@ -56,7 +61,8 @@ type RaidRoundNarrativeParams = {
 export const RAID_STARTING_CASH = 1000
 export const OPERATOR_HIDDEN_CHARGE_AMOUNT = 35
 export const LOTTERY_JACKPOT_AMOUNT = 1888
-export const STOCK_CRASH_AMOUNT = 420
+export const A_SHARE_CRASH_AMOUNT = 4200
+export const US_STOCK_CRASH_AMOUNT = 42000
 
 const pathKeys: StateKey[] = [
   'creator',
@@ -138,7 +144,9 @@ export function createRaidEventSchedule(maxRounds: number): RaidEventSchedule {
   return {
     lotteryJackpotRound:
       Math.random() < 0.2 ? randomRound(maxRounds) : undefined,
-    stockCrashRounds:
+    aShareCrashRounds:
+      Math.random() < 0.2 ? pickUniqueRounds(maxRounds, 2) : [],
+    usStockCrashRounds:
       Math.random() < 0.1 ? pickUniqueRounds(maxRounds, 2) : [],
   }
 }
@@ -157,11 +165,19 @@ export function getScheduledRaidCashEvents(
     })
   }
 
-  if (schedule.stockCrashRounds.includes(roundIndex)) {
+  if (schedule.aShareCrashRounds.includes(roundIndex)) {
     events.push({
-      id: 'stock-crash',
+      id: 'a-share-crash',
       label: 'A股崩盘',
-      amount: -STOCK_CRASH_AMOUNT,
+      amount: -A_SHARE_CRASH_AMOUNT,
+    })
+  }
+
+  if (schedule.usStockCrashRounds.includes(roundIndex)) {
+    events.push({
+      id: 'us-stock-crash',
+      label: '美股崩盘',
+      amount: -US_STOCK_CRASH_AMOUNT,
     })
   }
 
@@ -189,24 +205,45 @@ export function createRaidRoundNarrative({
 }: RaidRoundNarrativeParams) {
   const amount = formatCurrency(Math.abs(cashDelta))
   const lotteryEvent = cashEvents.find((event) => event.id === 'lottery-jackpot')
-  const stockCrashEvent = cashEvents.find((event) => event.id === 'stock-crash')
+  const aShareCrashEvent = cashEvents.find(
+    (event) => event.id === 'a-share-crash',
+  )
+  const usStockCrashEvent = cashEvents.find(
+    (event) => event.id === 'us-stock-crash',
+  )
   const operatorEvent = cashEvents.find(
     (event) => event.id === 'operator-hidden-charge',
   )
+
+  if (usStockCrashEvent && aShareCrashEvent) {
+    return pick([
+      `A股先跌，美股又补了一脚，两个市场一起把包里的钱打穿，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
+      `盘面红得像警报灯，A股和美股同时下坠，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
+      `你还没来得及撤，A股和美股的崩盘提示一起弹出，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
+    ])
+  }
+
+  if (usStockCrashEvent) {
+    return pick([
+      `美股隔夜跳水，虚拟账户像被抽掉地板，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
+      `纳指一根长阴砸下来，你的屏幕红得发烫，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
+      `美股崩盘新闻刷满首页，包里的钱被海外市场卷走一大截，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
+    ])
+  }
+
+  if (aShareCrashEvent) {
+    return pick([
+      `A股突然下砸，你的虚拟持仓当场冒烟，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
+      `市场一根绿柱砸下来，屏幕比你的脸还冷，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
+      `A股崩盘消息弹出来，包里的钱被现实削了一刀，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
+    ])
+  }
 
   if (lotteryEvent) {
     return pick([
       `路过彩票店随手刮了一张，柜台老板沉默了三秒：中大奖了，本轮净带走${amount}。`,
       `你本来只是想买瓶水，顺手刮开一张彩票，结果直接爆金币，本轮净带走${amount}。`,
       `现实突然给你开了一次补给箱，彩票大奖掉进包里，本轮净带走${amount}。`,
-    ])
-  }
-
-  if (stockCrashEvent) {
-    return pick([
-      `A股突然下砸，你的虚拟持仓当场冒烟，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
-      `市场一根绿柱砸下来，屏幕比你的脸还冷，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
-      `A股崩盘消息弹出来，包里的钱被现实削了一刀，本轮净变化${formatDeltaCurrency(cashDelta)}。`,
     ])
   }
 
