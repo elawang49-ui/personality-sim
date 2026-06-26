@@ -23,8 +23,10 @@ import {
   createRaidEventSchedule,
   createRaidRoundNarrative,
   createRaidViewModel,
+  getRaidChoiceCashEvents,
   getRaidEventCashEvents,
   getScheduledRaidCashEvents,
+  isRaidCashRewardBlocked,
   RAID_STARTING_CASH,
   type RaidCashEvent,
   type RaidEventSchedule,
@@ -124,6 +126,7 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
   const [profileWarning, setProfileWarning] = useState('')
   const [dataConnectionError, setDataConnectionError] = useState('')
   const [isConnectingData, setIsConnectingData] = useState(false)
+  const [showObjectiveIntro, setShowObjectiveIntro] = useState(false)
   const [selectedEventIds, setSelectedEventIds] = useState<string[]>(() => {
     const firstEvent =
       selectNextEvent({
@@ -261,6 +264,7 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     setRaidEventSchedule(createRaidEventSchedule(totalRounds))
     setHasExtracted(false)
     setStage('eventIntro')
+    setShowObjectiveIntro(true)
   }
 
   function enterEvent() {
@@ -348,15 +352,32 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     }
     const nextCompletedEvents = [...completedEvents, completedEvent]
     const roundIndex = nextCompletedEvents.length
+    const shouldAllowCashReward = isHealingEvent(event)
+    const scheduledCashEvents = getScheduledRaidCashEvents(
+      raidEventSchedule,
+      roundIndex,
+    ).filter(
+      (cashEvent) =>
+        cashEvent.amount <= 0 ||
+        shouldAllowCashReward ||
+        !isRaidCashRewardBlocked(nextState),
+    )
     const cashEvents = [
       ...getRaidEventCashEvents(event.id),
-      ...getScheduledRaidCashEvents(raidEventSchedule, roundIndex),
+      ...getRaidChoiceCashEvents([
+        { kind: 'firstReaction', option: choices.firstReaction },
+        { kind: 'label', option: selectedLabel },
+        { kind: 'response', option: selectedAction },
+        { kind: 'attribution', option },
+      ]),
+      ...scheduledCashEvents,
     ]
     const roundCashDelta =
       calculateRaidRoundGain({
         before: characterState,
         after: nextState,
         roundIndex,
+        allowPressureReward: shouldAllowCashReward,
       }) + cashEvents.reduce((sum, cashEvent) => sum + cashEvent.amount, 0)
     const nextRaidCashValue = raidCashValue + roundCashDelta
     const summaryText = createRaidRoundNarrative({
@@ -446,6 +467,7 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
     setLastRoundCashEvents([])
     setRaidEventSchedule(createRaidEventSchedule(totalRounds))
     setHasExtracted(false)
+    setShowObjectiveIntro(false)
     setStage('eventIntro')
   }
 
@@ -647,33 +669,54 @@ function TestExperience({ onResultReady }: TestExperienceProps) {
   }
 
   return (
-    <div className="app-shell">
-      {stage === 'eventIntro' ? (
-        <EventIntroPage
-          event={event}
-          roundIndex={completedEvents.length + 1}
-          totalRounds={totalRounds}
-          onEnterEvent={enterEvent}
-        />
-      ) : (
-        <EventPanel
-          event={event}
-          stage={stage}
-          choices={choices}
-          onFirstReaction={chooseFirstReaction}
-          onContinueFromAttention={continueFromAttention}
-          onTag={chooseTag}
-          onBehavior={chooseBehavior}
-          onAttribution={chooseAttribution}
-          onNextEvent={goToNextEvent}
-          onExtract={extractToReport}
-          cashDelta={lastRoundCashDelta}
-          cashEvents={lastRoundCashEvents}
-          cashValue={raidCashValue}
-        />
+    <>
+      <div className="app-shell">
+        {stage === 'eventIntro' ? (
+          <EventIntroPage
+            event={event}
+            roundIndex={completedEvents.length + 1}
+            totalRounds={totalRounds}
+            onEnterEvent={enterEvent}
+          />
+        ) : (
+          <EventPanel
+            event={event}
+            stage={stage}
+            choices={choices}
+            onFirstReaction={chooseFirstReaction}
+            onContinueFromAttention={continueFromAttention}
+            onTag={chooseTag}
+            onBehavior={chooseBehavior}
+            onAttribution={chooseAttribution}
+            onNextEvent={goToNextEvent}
+            onExtract={extractToReport}
+            cashDelta={lastRoundCashDelta}
+            cashEvents={lastRoundCashEvents}
+            cashValue={raidCashValue}
+          />
+        )}
+        <StatePanel raid={raidViewModel} onReset={handleReset} />
+      </div>
+      {showObjectiveIntro && (
+        <ObjectiveIntroOverlay onContinue={() => setShowObjectiveIntro(false)} />
       )}
-      <StatePanel raid={raidViewModel} onReset={handleReset} />
-    </div>
+    </>
+  )
+}
+
+function ObjectiveIntroOverlay({ onContinue }: { onContinue: () => void }) {
+  return (
+    <button
+      className="objective-intro-overlay"
+      type="button"
+      aria-label="目标：活下去"
+      onClick={onContinue}
+    >
+      <span className="objective-intro-modal">
+        <span className="objective-line objective-label">目标：</span>
+        <span className="objective-line objective-value">活下去</span>
+      </span>
+    </button>
   )
 }
 
@@ -718,6 +761,15 @@ function downloadImage(dataUrl: string, fileName: string) {
   document.body.append(link)
   link.click()
   link.remove()
+}
+
+function isHealingEvent(event: { meta?: { pressure?: string; directorTags?: string[] } }) {
+  const healingTags = new Set(['trustRepair', 'recover', 'shameSafe', 'lowArousal'])
+
+  return (
+    event.meta?.pressure === 'low' ||
+    event.meta?.directorTags?.some((tag) => healingTags.has(tag)) === true
+  )
 }
 
 export default App

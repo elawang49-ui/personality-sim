@@ -18,12 +18,12 @@ export function EventIntroPage({
       <article className="event-intro-card">
         <header className="event-intro-header">
           <p className="event-intro-kicker">
-            事件 {roundIndex} / {totalRounds}
+            案子 {roundIndex} / {totalRounds}
           </p>
           <h1 className="event-intro-title">{event.title}</h1>
         </header>
 
-        <p className="event-intro-text">{event.text}</p>
+        <p className="event-intro-text">{formatEventIntroText(event.text)}</p>
 
         {event.image && (
           <div className="event-image-frame">
@@ -41,10 +41,14 @@ export function EventIntroPage({
             type="button"
             onClick={onEnterEvent}
           >
-            进入事件
+            进入案子
           </button>
         </div>
       </article>
     </main>
   )
+}
+
+function formatEventIntroText(text: string) {
+  return text.replace(/。(?=.)/g, '。\n')
 }

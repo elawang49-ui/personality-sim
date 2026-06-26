@@ -21,7 +21,10 @@ export function TitlePage({
     <main className="title-page">
       <section className="title-card">
         <p className="eyebrow">{copy.titlePage.eyebrow}</p>
-        <h1>{copy.titlePage.title}</h1>
+        <h1 className="title-lockup">
+          <span className="title-lead">{copy.titlePage.titleLead}</span>
+          <span className="title-main">{copy.titlePage.title}</span>
+        </h1>
         <p className="title-subtitle">{copy.titlePage.subtitle}</p>
         <p className="title-copy">{copy.titlePage.description}</p>
         {connectionError && <p className="start-warning">{connectionError}</p>}

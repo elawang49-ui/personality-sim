@@ -133,7 +133,7 @@ function getPosterReportExcerpt(reportText: string) {
     .filter((paragraph) => !isPathHeading(paragraph))
     .join('\n\n')
 
-  return truncatePosterText(content || reportText, 240)
+  return truncatePosterText(content || reportText, 150)
 }
 
 function truncatePosterText(text: string, maxLength: number) {

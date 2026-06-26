@@ -1,7 +1,9 @@
 import type { CharacterState, EventPressure, SimEvent, StateDelta } from './types'
+import { hasRaidEventCashCost } from './raid'
 
 const DIRECTOR_TOP_PICK_COUNT = 5
 const DEFAULT_EVENT_WEIGHT = 10
+const CASH_CASE_PRIORITY_ROUNDS = 7
 
 const VALID_DIRECTOR_TAGS = [
   'trustRepair',
@@ -53,7 +55,12 @@ export function selectNextEvent({
   const scored = candidates
     .map((event) => ({
       event,
-      score: scoreEvent(event, characterState, recentHighPressureCount),
+      score: scoreEvent(
+        event,
+        characterState,
+        recentHighPressureCount,
+        usedEventIds.length,
+      ),
     }))
     .sort((a, b) => b.score - a.score)
 
@@ -66,9 +73,22 @@ function scoreEvent(
   event: SimEvent,
   characterState: CharacterState,
   recentHighPressureCount: number,
+  usedEventCount: number,
 ) {
   const profile = getEventProfile(event)
   let score = profile.weight
+  const isEarlyCaseRound = usedEventCount < 3
+  const isCashCostCase = hasRaidEventCashCost(event.id)
+
+  if (isCashCostCase && usedEventCount < CASH_CASE_PRIORITY_ROUNDS) {
+    score += 20
+  }
+
+  if (isEarlyCaseRound) {
+    if (profile.pressure === 'medium') score += 18
+    if (profile.pressure === 'high') score += 10
+    if (profile.pressure === 'low') score -= 18
+  }
 
   if (recentHighPressureCount > 0 && profile.pressure === 'high') {
     score -= 24 * recentHighPressureCount

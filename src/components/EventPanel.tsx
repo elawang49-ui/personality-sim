@@ -212,28 +212,42 @@ function RoundCashChange({
         ? 'cash-negative'
         : 'cash-neutral'
 
+  const baseGain =
+    cashDelta - cashEvents.reduce((sum, cashEvent) => sum + cashEvent.amount, 0)
+  const cashBefore = cashValue - cashDelta
+
   return (
     <div className="round-cash-summary">
-      <div>
+      <div className="round-cash-total">
         <span>本轮金额变化</span>
         <strong className={toneClass}>{formatDeltaCurrency(cashDelta)}</strong>
-        {cashEvents.map((cashEvent) => (
-          <em
-            className={
-              cashEvent.amount >= 0
-                ? 'cash-event-burst cash-event-positive'
-                : 'cash-event-burst cash-event-negative'
-            }
-            key={cashEvent.id}
-          >
-            {formatDeltaCurrency(cashEvent.amount)} {cashEvent.label}
-          </em>
-        ))}
       </div>
-      <div>
+      <div className="round-cash-total">
         <span>当前带出金额</span>
         <strong>{formatCurrency(cashValue)}</strong>
+        <em>
+          {formatCurrency(cashBefore)} → {formatCurrency(cashValue)}
+        </em>
       </div>
+      <div className="round-cash-ledger">
+        <LedgerRow label="基础带出收益" amount={baseGain} />
+        {cashEvents.map((cashEvent, index) => (
+          <LedgerRow
+            key={`${cashEvent.id}-${index}`}
+            label={cashEvent.label}
+            amount={cashEvent.amount}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function LedgerRow({ label, amount }: { label: string; amount: number }) {
+  return (
+    <div className={amount < 0 ? 'cash-ledger-row cash-ledger-loss' : 'cash-ledger-row'}>
+      <span>{label}</span>
+      <strong>{formatDeltaCurrency(amount)}</strong>
     </div>
   )
 }

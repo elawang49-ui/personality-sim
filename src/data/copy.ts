@@ -3,7 +3,8 @@ import type { Stage, StateKey } from '../engine/types'
 export const copy = {
   titlePage: {
     eyebrow: '现实敲打人格小剧场',
-    title: '别再 MBTI 了！',
+    titleLead: '上班就是',
+    title: '搜打撤',
     subtitle: '摸爬滚打模拟器',
     description:
       '生活你看扁我，我只会扁扁地走开',
@@ -35,7 +36,7 @@ export const copy = {
       label: '这事在你心里算什么？',
       response: '你打算怎么处理？',
       attribution: '它后来变成了什么？',
-      summary: '本轮结算',
+      summary: '本案结算',
       report: '最终结算',
     } satisfies Record<Stage, string>,
     choiceLabels: {
@@ -45,7 +46,7 @@ export const copy = {
       attribution: '人格归因',
     },
     attentionContinueButton: '确认',
-    nextEventButton: '继续',
+    nextEventButton: '下一个案子',
     extractButton: '撤离结算',
     reactionTraceTitle: '这个反应留下了一点痕迹',
     reactionTraceDetails: '展开看看',
